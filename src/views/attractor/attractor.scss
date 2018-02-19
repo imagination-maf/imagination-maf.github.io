@@ -1,0 +1,14 @@
+.attractor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    .attractor-item {
+        flex: 1;
+        .attractor-item-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
