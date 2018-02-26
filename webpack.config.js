@@ -38,10 +38,19 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
-            }, {
+            },
+            {
                 test: /\.svg$/,
-                loader: 'vue-svg-loader'
-            }, {
+                loader: 'vue-svg-loader',
+                options: {
+                    svgo: {
+                        plugins: [
+                            {convertStyleToAttrs: true}
+                        ]
+                    }
+                }
+            },
+            {
                 test: /\.(png|jpg|gif)$/,
                 loader: 'file-loader',
                 options: {

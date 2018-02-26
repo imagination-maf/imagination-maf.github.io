@@ -3,10 +3,10 @@ import VueRouter from 'vue-router';
 
 import './sass/index.scss';
 
-import Attractor from './views/attractor/attractor.js';
-import Location from './views/location/location.js';
+import Attractor from './views/attractor.vue';
+import Location from './views/location.vue';
 
-import "./components/header/header.js";
+import "./components/header.vue";
 
 Vue.use(VueRouter);
 

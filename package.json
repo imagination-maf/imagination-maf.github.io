@@ -1,5 +1,5 @@
 {
-  "name": "maf-app-communities-portfolio",
+  "name": "maf-portfolio-vue",
   "description": "A retail app to show communities and neighbourhoods for sale",
   "version": "1.0.0",
   "author": "Lawrence Burden <lawrence.burden@imagination.com>",
@@ -12,7 +12,8 @@
   "dependencies": {
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
-    "vue-svg-loader": "^0.5.0"
+    "vue-svg-loader": "^0.5.0",
+    "maf-module-fonts": "git+ssh://git@bitbucket.org:imagination/maf-module-fonts.git"
   },
   "browserslist": [
     "> 1%",
