@@ -9,51 +9,55 @@
         },
         data() {
             return {
-                levelStructure: ['World-1-zoom', 'Region-1-zoom', 'City-1-zoom', 'borough', 'community'],
+                levelStructure: ['world', 'region', 'city', 'road'],
                 mapStyle: {}
             }
         },
         computed : {
             levelName : function () {
                 return this.$route.query.level;
-            },
-            levelId : function () {
-                return this.$route.query.id;
-            },
-            zoomLevel: function () {
-                let classList = {};
-                classList[this.levelName] = true;
-                if(this.levelId){
-                    classList[this.levelId] = true;
-                }
-                return classList;
             }
         },
         methods: {
-            zoom: function (dir) {
-                let levelIndex = this.levelStructure.indexOf(this.levelName);
-                console.log('level index', levelIndex);
-                if(levelIndex + dir !== -1 && levelIndex + dir !== this.levelStructure.length) {
-                    console.log('passing route');
-                    this.$router.push({ query: { level: this.levelStructure[levelIndex + dir], id: this.levelId }});
-                    this.getZoomTransform(this.levelStructure[levelIndex + dir]);
+            zoomOut: function () {
+                let currentLevelIndex = this.levelStructure.indexOf(this.levelName);
+                if(currentLevelIndex - 1  !== -1) {
+                    let query = Object.assign({}, this.$route.query);
+                    delete query[this.levelName];
+                    query.level = this.levelStructure[currentLevelIndex - 1];
+                    this.$router.push({ path: 'location', query: query});
+                }
+            },
+            zoomIn: function () {
+                let currentLevelIndex = this.levelStructure.indexOf(this.levelName);
+                if(currentLevelIndex + 1  !== this.levelStructure.length) {
+                    let query = Object.assign({}, this.$route.query);
+                    let nextLevel = this.levelStructure[this.levelStructure.indexOf(this.levelName) + 1];
+                    query[nextLevel] = this.$route.query[this.levelName];
+                    query.level = nextLevel;
+                    this.$router.push({ query: query});
                 }
             },
             mapClick: function($event) {
-                // TODO Add check for corretc items;
+                // TODO Add check for correct items;
                 console.log('path', [$event.path[0]]);
-                let levelIndex = this.levelStructure.indexOf(this.levelName);
-                this.$router.push({ query: { level: this.levelStructure[levelIndex + 1] }});
-                this.getZoomTransform(this.levelStructure[levelIndex + 1]);
+                // let levelIndex = this.levelStructure.indexOf(this.levelName);
+                // this.$router.push({ query: { level: this.levelStructure[levelIndex + 1] }});
             },
-            getZoomTransform: function(zoomId) {
-                let map = document.getElementById('svg-map');
-                let zoomFocus = document.getElementById(zoomId);
+            findZoomCoordinates: function(level, zoomId) {
+                if(level === undefined || zoomId === undefined) {
+                    return {'transform': `scale( 1 ) translate( 0px, 0px )`};
+                }
+
+                let map = document.getElementById(`svg-${level}`);
+
+                let levelCapitalCase = level.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+                let zoomFocus = document.getElementById(`${levelCapitalCase}-${zoomId}-zoom`);
+
                 let coor = {
                     min: {'x': null, 'y': null},
                     max: {'x': null, 'y': null}
                 }
-
                 for(var i = 0; i < Math.ceil(zoomFocus.getTotalLength()); i++) {
                     let point = zoomFocus.getPointAtLength(i)
                     coor.min.x = coor.min.x === null || point.x < coor.min.x ? point.x : coor.min.x;
@@ -66,51 +70,75 @@
                 let translateX = (map.width.baseVal.value / 2) - ((coor.min.x + coor.max.x) / 2);
                 let translateY = (map.height.baseVal.value / 2) - ((coor.min.y + coor.max.y) / 2);
 
-                this.mapStyle = {'transform': `scale( ${scale} ) translate( ${translateX}px, ${translateY}px )`};
+                return {
+                    'transform': `scale( ${scale} ) translate( ${translateX}px, ${translateY}px )`
+                };
+            },
+            getZoomTransform: function(zoomId) {
+                let mapStyleObjects = this.levelStructure.map( (level) => {
+                    let obj = {};
+                    obj[level] = this.findZoomCoordinates(level, this.$route.query[level]);
+                    return obj;
+                });
+                this.mapStyle = Object.assign({}, ...mapStyleObjects);
             }
         },
         mounted(){
-            let svgMap = document.getElementById('svg-map');
-            console.log('svg map >>>>>>', svgMap);
+            let svgMap = document.getElementById('svg-world');
+
             svgMap.addEventListener('load', () => {
                 svgMap.removeEventListener('load', () => {});
-                this.$router.push({ query: { level: this.levelStructure[0] }});
-                this.getZoomTransform(this.levelName);
+                this.getZoomTransform();
             })
+        },
+        watch: {
+            levelName: function(){
+                this.getZoomTransform();
+            }
         }
     });
 </script>
 
 <template>
 <div class="container">
-    <div class="panel" v-show="levelName === 'World-1-zoom' || levelName === 'Region-1-zoom'">
+    <div class="panel" v-show="levelName === 'world' || levelName === 'region'">
         <h2 class="panel-title">GROUP FOOTPRINT</h2>
         <h3 class="panel-subtitle">UNITED ARAB EMIRATES</h3>
         <ul class="menu panel-text">
             <li class="menu-item">Communities</li>
             <li class="menu-item">Consumer Finance</li>
-            <li class="menu-item">Energy & Facilities Management</li>
+            <li class="menu-item">Energy &amp; Facilities Management</li>
             <li class="menu-item">Fashion</li>
-            <li class="menu-item">Hypermarkets & Supermarkets</li>
+            <li class="menu-item">Hypermarkets &amp; Supermarkets</li>
             <li class="menu-item">Healthcare</li>
             <li class="menu-item">Hotels</li>
-            <li class="menu-item">Restaurants & Cafes</li>
+            <li class="menu-item">Restaurants &amp; Cafes</li>
             <li class="menu-item">Shopping Malls</li>
             <li class="menu-item">Speciality Retail Stores</li>
             <li class="menu-item">Unique Leisure Destinations</li>
         </ul>
     </div>
-    <div class="map" :class="zoomLevel" @click="mapClick($event)">
-        <MapImage id="svg-map" class="image" :style="[mapStyle]" />
+    <div class="map" :class="{'visible': levelName === 'world'}" @click="mapClick($event)">
+        <MapImage id="svg-world" class="image" :style="[mapStyle.world]" />
     </div>
-    <div class="controls" v-show="levelName !== 'World-1-zoom' && levelName !== 'Region-1-zoom'">
-        <button class="button" type="button" @click="zoom(-1)">Zoom Out</button>
-        <button class="button" type="button" @click="zoom(1)">Zoom In</button>
+    <div class="map" :class="{'visible': levelName === 'region'}" @click="mapClick($event)">
+        <MapImage id="svg-region" class="image" :style="[mapStyle.region]" />
+    </div>
+    <div class="map" :class="{'visible': levelName === 'city'}" @click="mapClick($event)">
+        <MapImage id="svg-city" class="image" :style="[mapStyle.city]" />
+    </div>
+    <div class="map" :class="{'visible': levelName === 'road'}" @click="mapClick($event)">
+        <MapImage id="svg-road" class="image" :style="[mapStyle.road]" />
+    </div>
+    <!--<div class="controls" v-show="levelName !== 'world' && levelName !== 'region'">-->
+    <div class="controls">
+        <button class="button" type="button" @click="zoomOut()">Zoom Out</button>
+        <button class="button" type="button" @click="zoomIn()">Zoom In</button>
     </div>
 </div>
 </template>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .container {
     width: 100%;
     height: 100%;
@@ -153,13 +181,18 @@
     align-items: center;
     overflow: hidden;
     background-color: #cccccc;
+    opacity: 0;
+    pointer-events: none;
+    &.visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 .image {
+    transition-delay: 0.25s;
     transition: transform 1.5s ease-out;
     overflow: visible !important;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 svg:not(:root) {

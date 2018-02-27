@@ -12,7 +12,7 @@
         },
         methods: {
             navigateToLocation: function(community) {
-                this.$router.push({ path: 'location', query: { level: 'city', id: community }});
+                this.$router.push({ path: 'location', query: { level: 'city', world: 1, region: 1, city: community}});
             }
         },
     });
@@ -20,16 +20,16 @@
 
 <template>
     <div class="attractor">
-        <div class="attractor-item" @click="navigateToLocation('al-zahia')">
+        <div class="attractor-item" @click="navigateToLocation(1)">
             <img :src="alZahiaLanding" class="attractor-item-image" />
         </div>
-        <div class="attractor-item" @click="navigateToLocation('waterfront-city')">
+        <div class="attractor-item" @click="navigateToLocation(2)">
             <img :src="waterfrontCityLanding" class="attractor-item-image" />
         </div>
-        <div class="attractor-item" @click="navigateToLocation('tilal-al-ghaf')">
+        <div class="attractor-item" @click="navigateToLocation(3)">
             <img :src="tilalAlGhafLanding" class="attractor-item-image" />
         </div>
-        <div class="attractor-item" @click="navigateToLocation('al-mouj-muscat')">
+        <div class="attractor-item" @click="navigateToLocation(4)">
             <img :src="alMoujMuscatLanding" class="attractor-item-image" />
         </div>
     </div>
