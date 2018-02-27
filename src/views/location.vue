@@ -1,11 +1,17 @@
 <script>
     import Vue from 'vue';
     import '../images/maps/css/map.css';
-    import MapImage from '../images/maps/map.svg';
+    import WorldImage from '../images/maps/world.svg';
+    import RegionImage from '../images/maps/region.svg';
+    import CityImage from '../images/maps/city.svg';
+    import RoadImage from '../images/maps/road.svg';
 
     export default Vue.component('location', {
         components: {
-            MapImage
+            WorldImage,
+            RegionImage,
+            CityImage,
+            RoadImage
         },
         data() {
             return {
@@ -119,16 +125,16 @@
         </ul>
     </div>
     <div class="map" :class="{'visible': levelName === 'world'}" @click="mapClick($event)">
-        <MapImage id="svg-world" class="image" :style="[mapStyle.world]" />
+        <WorldImage id="svg-world" class="image" :style="[mapStyle.world]" />
     </div>
     <div class="map" :class="{'visible': levelName === 'region'}" @click="mapClick($event)">
-        <MapImage id="svg-region" class="image" :style="[mapStyle.region]" />
+        <RegionImage id="svg-region" class="image" :style="[mapStyle.region]" />
     </div>
     <div class="map" :class="{'visible': levelName === 'city'}" @click="mapClick($event)">
-        <MapImage id="svg-city" class="image" :style="[mapStyle.city]" />
+        <CityImage id="svg-city" class="image" :style="[mapStyle.city]" />
     </div>
     <div class="map" :class="{'visible': levelName === 'road'}" @click="mapClick($event)">
-        <MapImage id="svg-road" class="image" :style="[mapStyle.road]" />
+        <RoadImage id="svg-road" class="image" :style="[mapStyle.road]" />
     </div>
     <!--<div class="controls" v-show="levelName !== 'world' && levelName !== 'region'">-->
     <div class="controls">
