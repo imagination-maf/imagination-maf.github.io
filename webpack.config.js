@@ -45,7 +45,11 @@ module.exports = {
                 options: {
                     svgo: {
                         plugins: [
-                            {convertStyleToAttrs: true}
+                            {convertShapeToPath: false},
+                            {removeUnusedNS: false},
+                            {cleanupIDs: false},
+                            {moveElemsAttrsToGroup: false},
+                            {moveGroupAttrsToElems: false}
                         ]
                     }
                 }

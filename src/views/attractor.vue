@@ -12,7 +12,7 @@
         },
         methods: {
             navigateToLocation: function(community) {
-                this.$router.push({ path: 'location', query: { level: 'city', world: 1, region: 1, city: community}});
+                this.$router.push({ path: 'location', query: { level: 'city', id: community}});
             }
         },
     });
