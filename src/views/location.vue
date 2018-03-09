@@ -1,18 +1,18 @@
 <script>
     import Vue from 'vue';
-    import WorldImage from '../images/maps/world.svg';
-    import RegionImage from '../images/maps/region.svg';
-    import City1Image from '../images/maps/city1.svg';
-    import City2Image from '../images/maps/city2.svg';
-    import City3Image from '../images/maps/city3.svg';
+    import WorldImage from '../images/maps/World.svg';
+    import UAERegionImage from '../images/maps/UAE-region.svg';
+    import SharjahCityImage from '../images/maps/Sharjah-city.svg';
+    import SharjahRoadImage from '../images/maps/Sharjah-road.svg';
+    import MarkerInfo from '../components/markerInfo.vue';
 
     export default Vue.component('location', {
         components: {
             WorldImage,
-            RegionImage,
-            City1Image,
-            City2Image,
-            City3Image
+            UAERegionImage,
+            SharjahCityImage,
+            SharjahRoadImage,
+            MarkerInfo
         },
         data() {
             return {
@@ -23,7 +23,8 @@
                     'zoom': 'zoom',
                     'parent': 'parent'
                 },
-                styles: {}
+                styles: {},
+                hideMarkers: false
             }
         },
         computed : {
@@ -33,13 +34,27 @@
             mapStyles: function () {
                 let styleList = {};
                 Object.keys(this.styles).forEach( (key, index) => {
-                    styleList[key] = this.styles[key][this.selectedView] ? this.styles[key][this.selectedView] : {};
+                    styleList[key] = this.styles[key][this.selectedView] ? this.styles[key][this.selectedView] : {'display': 'none'};
                 });
                 return styleList;
+            },
+            optionsAvailable: function () {
+                let currentMapElement = document.getElementById(this.selectedView);
+                if(currentMapElement) {
+                    let children = Array.from(currentMapElement.children);
+                    // Loop through each child (we know zoom ids will be the first level)
+                    return children.filter( (child) => {
+                        // Check is the child's id matches '--zoom'
+                        return child.id.match(this.definitions.modifier + this.definitions.zoom);
+                    }).length;
+                } else {
+                    return null;
+                }
             }
         },
         methods: {
             zoomOut: function () {
+                this.hideMarkers = true;
                 // Converts --parent to --zoom
                 let zoomElement = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom;
                 // Searches for the parent where --zoom is present
@@ -50,6 +65,7 @@
                 }
             },
             zoomIn: function () {
+                this.hideMarkers = true;
                 let currentMapElement = document.getElementById(this.selectedView);
                 let children = Array.from(currentMapElement.children);
                 // Loop through each child (we know zoom ids will be the first level)
@@ -64,7 +80,11 @@
                     }
                 });
             },
+            viewMasterplan: function () {
+                this.$router.push({ path: 'community' });
+            },
             mapClick: function($event) {
+                this.hideMarkers = true;
                 // The path of elements clicked starting from lowest point first
                 let pathElements = $event.path.reverse();
                 // Loop through the elements
@@ -152,121 +172,129 @@
 
             let loadedSVGImage = () => {
                 // Increment the number of SVGs loaded
-                numLoaded++;
-                // If loaded all SVGS
-                if(numToLoad === numLoaded){
-                    for(var index = 0; index < mapElements.length; index++) {
-                        // Get the name of the svg image;
-                        let name = mapElements[index].id;
+                for(var index = 0; index < mapElements.length; index++) {
+                    let markerElements = mapElements[index].querySelectorAll('g[id$=--marker], g[id$=--button], g[id=Map_labels]');
+                    for(let j = 0; j < markerElements.length; j++) {
+                        markerElements[j].classList.add('marker');
+                    }
 
-                        // Get all the transformation states possible for this map element
-                        let styles = {};
+                    let zoomElements = mapElements[index].querySelectorAll('rect[id$=--zoom]');
+                    for(let k = 0; k < zoomElements.length; k++) {
+                        zoomElements[k].classList.add('zoom-container');
+                    }
 
-                        /** GETS THE POSITION WHERE IT SHOULD BE IN THE PARENT SVG **/
-                        // Gets the map elements parent SVG;
-                        let parentSVG = this.findParentSVG(name.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom);
+                    // Get the name of the svg image;
+                    let name = mapElements[index].id;
 
-                        // If it has a parent, finds the position it should be when parent active;
-                        let positionInParent = (parentSVG !== '') ? this.getPlacement(name.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom, parentSVG) : null;
+                    // Get all the transformation states possible for this map element
+                    let styles = {};
 
-                        // Set the CSS style when map elements parent is active
-                        if(positionInParent) {
-                            styles[parentSVG] = {
-                                'transform': `translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px ) scale3d( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale }, 1)`
+                    styles[name] = {};
+
+                    /** GETS THE POSITION WHERE IT SHOULD BE IN THE PARENT SVG **/
+                    // Gets the map elements parent SVG;
+                    let parentSVG = this.findParentSVG(name.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom);
+
+                    // If it has a parent, finds the position it should be when parent active;
+                    let positionInParent = (parentSVG !== '') ? this.getPlacement(name.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom, parentSVG) : null;
+
+                    // Set the CSS style when map elements parent is active
+                    if(positionInParent) {
+                        styles[parentSVG] = {
+                            'transform': `translate3d( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px, 0 ) scale3d( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale }, 1)`
+                        };
+                    }
+
+                    /** GETS THE CHILDREN IN THE MAP ELEMENT **/
+                    // So can zoom into each of these
+                    let childSVGContainer = Array.from(mapElements[index].children);
+                    // Loop through each child (we know zoom ids will be the first level)
+                    childSVGContainer.forEach( (child) => {
+                        // Check is the child's id matches '--zoom'
+                        if(child.id.match(this.definitions.modifier + this.definitions.zoom)){
+                            // Converts the --zoom to be --parent to refer to another map element
+                            let childParent = child.id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent;
+                            // Gets the position of the child in the current map element
+                            let positionInImage = this.getPlacement(child.id, name);
+
+                            // Sets the CSS transform when the child id is active
+                            styles[childParent] = {
+                                'transform': `translate3d( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px, 0 ) scale3d( ${ positionInImage.scale }, ${ positionInImage.scale }, 1)`
                             };
                         }
+                    });
 
-                        /** GETS THE CHILDREN IN THE MAP ELEMENT **/
-                        // So can zoom into each of these
-                        let childSVGContainer = Array.from(mapElements[index].children);
-                        // Loop through each child (we know zoom ids will be the first level)
-                        childSVGContainer.forEach( (child) => {
-                            // Check is the child's id matches '--zoom'
-                            if(child.id.match(this.definitions.modifier + this.definitions.zoom)){
-                                // Converts the --zoom to be --parent to refer to another map element
-                                let childParent = child.id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent;
-                                // Gets the position of the child in the current map element
-                                let positionInImage = this.getPlacement(child.id, name);
-
-                                // Sets the CSS transform when the child id is active
-                                styles[childParent] = {
-                                    'transform': `translate( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px ) scale3d( ${ positionInImage.scale }, ${ positionInImage.scale }, 1)`
-                                };
-                            }
-                        });
-
-                        // Vue call to bind the new styles to the data object
-                        Vue.set(this.styles, name, styles);
-                    }
+                    // Vue call to bind the new styles to the data object
+                    Vue.set(this.styles, name, styles);
                 }
             }
 
-            // Loops through the container's children
-            mapElements.forEach( (child) => {
-                // Checks if the child is an svg
-                if(child instanceof SVGElement) {
-                    // Increments the number of loads to wait for
-                    numToLoad++;
-                    // Adds a listener for the loader
-                    child.addEventListener('load', function($event) {
-                        child.removeEventListener('load', function(){});
-                        loadedSVGImage();
-                    })
+            loadedSVGImage();
+        },
+        watch: {
+            hideMarkers: function (val) {
+                if(val) {
+                    this.timer = window.setTimeout( () => {
+                        this.hideMarkers = false;
+                    }, 3000);
                 }
-            });
+            }
         }
     });
 </script>
 
 <template>
 <div class="container">
-    <!-- <div class="panel" v-show="levelName === 'world' || levelName === 'region'"> -->
-    <div class="panel">
-        <h2 class="panel-title">GROUP FOOTPRINT</h2>
-        <h3 class="panel-subtitle">UNITED ARAB EMIRATES</h3>
-        <ul class="menu panel-text">
-            <li class="menu-item">Communities</li>
-            <li class="menu-item">Consumer Finance</li>
-            <li class="menu-item">Energy &amp; Facilities Management</li>
-            <li class="menu-item">Fashion</li>
-            <li class="menu-item">Hypermarkets &amp; Supermarkets</li>
-            <li class="menu-item">Healthcare</li>
-            <li class="menu-item">Hotels</li>
-            <li class="menu-item">Restaurants &amp; Cafes</li>
-            <li class="menu-item">Shopping Malls</li>
-            <li class="menu-item">Speciality Retail Stores</li>
-            <li class="menu-item">Unique Leisure Destinations</li>
-        </ul>
-    </div>
-    <div id="map-container" class="map" @click="mapClick($event)">
+    <MarkerInfo></MarkerInfo>
+    <div id="map-container" class="map" :class="{'marker-status': hideMarkers}" @click="mapClick($event)">
         <WorldImage
             class="image"
             :class="{ 'active': selectedView === 'app_x5F_world--parent' }"
             :style="[mapStyles['app_x5F_world--parent']]" />
-        <RegionImage
+        <UAERegionImage
             class="image"
-            :class="{ 'active': selectedView === 'app_x5F_region--parent' }"
-            :style="[mapStyles['app_x5F_region--parent']]" />
-        <City1Image
+            :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }"
+            :style="[mapStyles['app_x5F_UAE--parent']]" />
+        <SharjahCityImage
             class="image"
-            :class="{ 'active': selectedView === 'app_x5F_city1--parent' }"
-            :style="[mapStyles['app_x5F_city1--parent']]" />
-        <City2Image
+            :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }"
+            :style="[mapStyles['app_x5F_Sharjah--parent']]" />
+        <SharjahRoadImage
             class="image"
-            :class="{ 'active': selectedView === 'app_x5F_city2--parent' }"
-            :style="[mapStyles['app_x5F_city2--parent']]" />
-        <City3Image
-            class="image"
-            :class="{ 'active': selectedView === 'app_x5F_city3--parent' }"
-            :style="[mapStyles['app_x5F_city3--parent']]" />
+            :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }"
+            :style="[mapStyles['app_x5F_Sharjah-road--parent']]" />
     </div>
-    <!--<div class="controls" v-show="levelName !== 'world' && levelName !== 'region'">-->
+    <!-- <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0"> -->
     <div class="controls">
-        <button class="button" type="button" @click="zoomOut()">Zoom Out</button>
-        <button class="button" type="button" @click="zoomIn()">Zoom In</button>
+        <div class="controls-row">
+            <button class="button zoom" type="button" @click="zoomOut()">Zoom Out</button>
+            <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @click="zoomIn()">Zoom In</button>
+        </div>
+        <div class="controls-row">
+            <button class="button masterplan" type="button" @click="viewMasterplan()">View Masterplan</button>
+        </div>
     </div>
 </div>
 </template>
+
+<style lang="scss">
+.marker-status {
+    .marker {
+        // transition: visibility 5s ease;
+        // visibility: hidden !important;
+        display: none !important;
+        // opacity: 0;
+    }
+}
+
+.marker {
+    // transition: opacity 0.25s ease 0.1s;
+}
+
+.zoom-container {
+    visibility: hidden !important;
+}
+</style>
 
 <style lang="scss" scoped>
 .container {
@@ -275,29 +303,6 @@
     display: flex;
     align-items: center;
     position: relative;
-}
-
-.panel {
-    left: 0;
-    top: 0;
-    width: 25%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    background: linear-gradient(to right, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 0) 100%);
-    padding-left: 2rem;
-    z-index: 1;
-    .panel-title {
-        padding-top: 3rem;
-        color: #676767;
-    }
-    .panel-subtitle {
-        color: #8a0836;
-    }
-    .panel-text {
-        color: #777777;
-    }
 }
 
 .map {
@@ -310,7 +315,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: #cccccc;
+    background-color: #ffffff;
 }
 
 .image {
@@ -320,10 +325,18 @@
     overflow: visible !important;
     opacity: 0;
     pointer-events: none;
-    transition: transform 1.5s ease-out, opacity 0.25s;
+    transition: transform 1s ease-out 0.5s, opacity 0s ease-out 2s;
+    outline: 1px solid transparent;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
     &.active {
         opacity: 1;
         pointer-events: auto;
+        transition: transform 1s ease-out 0.5s, opacity 0s ease-out 0s;
+    }
+    &.instant {
+        // transition: transform 1.5s ease-out, opacity 0.25s ease-out 0s;
     }
 }
 
@@ -339,14 +352,41 @@ svg:not(:root) {
 .controls {
     position: absolute;
     bottom: 1rem;
-    left: 0;
-    right: 0;
+    left: 42.5%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    .button {
-        font-size: 1.5rem;
-        margin: 0 1rem;
+    align-items: center;
+    width: 20%;
+    .controls-row {
+        display: flex;
+        width: 100%;
+        margin: 0.25rem 0;
+        .button {
+            font-size: 1.5rem;
+            margin: 0;
+            flex: 1;
+            padding: 0.5rem 0;
+            outline: none;
+            &.zoom {
+                background-color: #881839;
+                color: #fdfdfb;
+                &:first-child {
+                    margin-right: 0.5rem;
+                }
+                &:last-child {
+                    margin-left: 0.5rem;
+                }
+                &.disabled {
+                    opacity: 0.25;
+                    pointer-events: none;
+                }
+            }
+            &.masterplan {
+                background-color: #b3965e;
+                color: #fdfdfb;
+            }
+        }
     }
 }
 </style>

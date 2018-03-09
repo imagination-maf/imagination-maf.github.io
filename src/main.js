@@ -4,7 +4,9 @@ import VueRouter from 'vue-router';
 import './sass/index.scss';
 
 import Attractor from './views/attractor.vue';
+import CommunitySelection from './views/communitySelection.vue';
 import Location from './views/location.vue';
+import Community from './views/community.vue';
 
 import "./components/header.vue";
 
@@ -14,11 +16,23 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
-            component: Attractor
+            component: Attractor,
+            name: 'attractor'
+        },
+        {
+            path: '/community-selection',
+            component: CommunitySelection,
+            name: 'community-selection'
         },
         {
             path: '/location',
-            component: Location
+            component: Location,
+            name: 'location'
+        },
+        {
+            path: '/community',
+            component: Community,
+            name: 'community'
         }
     ]
 });

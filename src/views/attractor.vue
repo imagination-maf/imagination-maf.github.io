@@ -1,52 +1,81 @@
 <script>
     import Vue from 'vue';
+    import LocationMenu from '../components/locationMenu.vue';
 
     export default Vue.component('attractor', {
+        components: {
+            LocationMenu
+        },
         data() {
             return {
-                alZahiaLanding: require('../images/attractor/al-zahia/al-zahia.png'),
-                waterfrontCityLanding: require('../images/attractor/waterfront-city/waterfront-city.png'),
-                tilalAlGhafLanding: require('../images/attractor/tilal-al-ghaf/tilal-al-ghaf.png'),
-                alMoujMuscatLanding: require('../images/attractor/al-mouj-muscat/al-mouj-muscat.png')
+                mainLogo: require('../images/logo/logo.png'),
+                interval: null,
+                itemNum: 0
             }
         },
         methods: {
-            navigateToLocation: function(community) {
-                this.$router.push({ path: 'location', query: { view: community}});
+            navigateToMenu: function(community) {
+                this.$router.push({ path: 'community-selection' });
+            },
+            navigateItems: function() {
+                this.interval = window.setInterval( () => {
+                    this.itemNum = (this.itemNum + 1) % 3;
+                }, 9900);
             }
         },
+        mounted() {
+            this.navigateItems();
+        },
+        beforeDestroy() {
+            window.clearInterval(this.interval);
+            this.interval = null;
+            delete this.interval;
+        }
     });
 </script>
 
 <template>
     <div class="attractor">
-        <div class="attractor-item" @click="navigateToLocation('app_x5F_city1--parent')">
-            <img :src="alZahiaLanding" class="attractor-item-image" />
-        </div>
-        <div class="attractor-item" @click="navigateToLocation('app_x5F_city2--parent')">
-            <img :src="waterfrontCityLanding" class="attractor-item-image" />
-        </div>
-        <div class="attractor-item" @click="navigateToLocation('app_x5F_city3--parent')">
-            <img :src="tilalAlGhafLanding" class="attractor-item-image" />
-        </div>
-        <div class="attractor-item" @click="navigateToLocation('app_x5F_city3--parent')">
-            <img :src="alMoujMuscatLanding" class="attractor-item-image" />
-        </div>
+        <transition name="fade">
+            <div v-if="itemNum === 0" class="attractor-item" @click="navigateToMenu()">
+                <img class="attractor-item-image" :src="mainLogo" />
+            </div>
+        </transition>
+        <transition name="fade">
+            <div v-if="itemNum === 1" class="attractor-item" @click="navigateToMenu()">
+                <button type="button" class="attractor-item-button">Tap here to discover more</button>
+            </div>
+        </transition>
+        <transition name="fade">
+            <div v-if="itemNum === 2" class="attractor-item">
+                <LocationMenu />
+            </div>
+        </transition>
     </div>
 </template>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .attractor {
     width: 100%;
     height: 100%;
     display: flex;
     .attractor-item {
-        flex: 1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .attractor-item-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+            width: 30%;
+        }
+        .attractor-item-button {
+            padding: 1rem 2rem;
+            font-size: 2rem;
+            background-color: rgb(138,21,56);
+            color: rgb(255,255,255);
         }
     }
 }
