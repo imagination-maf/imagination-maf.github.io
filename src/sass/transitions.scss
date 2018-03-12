@@ -8,13 +8,13 @@
     opacity: 0;
 }
 
-.mapchange-enter-active {
-    transition: opacity 7.5s ease-out;
+
+.map-switch-enter-active {
+    transition: opacity 0.75s ease-out 3.5s;
 }
-.mapchange-leave-active {
-    transition: opacity 7.5s ease-out;
+.map-switch-leave-active {
+    transition: opacity 0.75s ease-out 0s;
 }
-.mapchange-enter, .fade-leave-to {
-    background-color: red;
+.map-switch-enter, .map-switch-leave-to {
     opacity: 0;
 }

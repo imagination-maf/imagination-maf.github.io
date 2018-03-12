@@ -21,10 +21,13 @@
                     'modifier': '--',
                     'button': 'button',
                     'zoom': 'zoom',
-                    'parent': 'parent'
+                    'parent': 'parent',
+                    'image': 'image'
                 },
                 styles: {},
-                hideMarkers: false
+                sizeModifiers: {},
+                hideMarkers: false,
+                pngImages: []
             }
         },
         computed : {
@@ -32,9 +35,10 @@
                 return this.$route.query.view;
             },
             mapStyles: function () {
+                // Gets the list of styles available
                 let styleList = {};
                 Object.keys(this.styles).forEach( (key, index) => {
-                    styleList[key] = this.styles[key][this.selectedView] ? this.styles[key][this.selectedView] : {'display': 'none'};
+                    styleList[key] = this.styles[key][this.selectedView] ? this.styles[key][this.selectedView] : '';
                 });
                 return styleList;
             },
@@ -53,8 +57,24 @@
             }
         },
         methods: {
+            applyStylesToImages: function () {
+                let imageName = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.image;
+
+                let imagesElements = Array.from(document.getElementById('map-container').children).filter( (child) => child.tagName == 'IMG');
+
+                imagesElements.forEach( (image) => {
+                    let svgLink = image.id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent;
+
+                    if(imageName === image.id) {
+                        image.classList.add('active');
+                    } else {
+                        image.classList.remove('active');
+                    }
+
+                    image.style.transform = this.mapStyles[svgLink];
+                })
+            },
             zoomOut: function () {
-                this.hideMarkers = true;
                 // Converts --parent to --zoom
                 let zoomElement = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom;
                 // Searches for the parent where --zoom is present
@@ -65,7 +85,6 @@
                 }
             },
             zoomIn: function () {
-                this.hideMarkers = true;
                 let currentMapElement = document.getElementById(this.selectedView);
                 let children = Array.from(currentMapElement.children);
                 // Loop through each child (we know zoom ids will be the first level)
@@ -84,7 +103,6 @@
                 this.$router.push({ path: 'community' });
             },
             mapClick: function($event) {
-                this.hideMarkers = true;
                 // The path of elements clicked starting from lowest point first
                 let pathElements = $event.path.reverse();
                 // Loop through the elements
@@ -105,22 +123,14 @@
                 }
             },
             findSVGPosition: function(element){
-                // Sets the initial coordinates to null
-                let coor = {
-                    min: {'x': null, 'y': null},
-                    max: {'x': null, 'y': null}
+                let rotate = element.transform.baseVal[0] ? element.transform.baseVal[0].angle : 0;
+                return {
+                    'x': element.x.baseVal.value,
+                    'y': element.y.baseVal.value,
+                    'width': element.width.baseVal.value,
+                    'height': element.height.baseVal.value,
+                    'rotate': rotate
                 }
-
-                // Loops through the svg line to get the minimum and maximum points for x and y
-                for(var i = 0; i < Math.ceil(element.getTotalLength()); i++) {
-                    let point = element.getPointAtLength(i)
-                    coor.min.x = coor.min.x === null || point.x < coor.min.x ? point.x : coor.min.x;
-                    coor.max.x = coor.max.x === null || point.x > coor.max.x ? point.x : coor.max.x;
-                    coor.min.y = coor.min.y === null || point.y < coor.min.y ? point.y : coor.min.y;
-                    coor.max.y = coor.max.y === null || point.y > coor.max.y ? point.y : coor.max.y;
-                }
-
-                return coor;
             },
             getPlacement: function(viewToFind, parent) {
                 let parentElement = document.getElementById(parent);
@@ -129,16 +139,23 @@
                 let locationCoords = this.findSVGPosition(childElement);
 
                 // Gets the size of the child compared to parent
-                let scale = parentElement.width.baseVal.value / (locationCoords.max.x - locationCoords.min.x);
+                // let scale = parentElement.width.baseVal.value / (locationCoords.max.x - locationCoords.min.x);
                 // Finds the X distance of the child element from the center of the parent
-                let translateX = (parentElement.width.baseVal.value / 2) - ((locationCoords.min.x + locationCoords.max.x) / 2);
+                // let translateX = (parentElement.width.baseVal.value / 2) - ((locationCoords.min.x + locationCoords.max.x) / 2);
                 // Finds the Y distance of the child element from the center of the parent
-                let translateY = (parentElement.height.baseVal.value / 2) - ((locationCoords.min.y + locationCoords.max.y) / 2);
+                // let translateY = (parentElement.height.baseVal.value / 2) - ((locationCoords.min.y + locationCoords.max.y) / 2);
+
+                let scale = parentElement.width.baseVal.value / locationCoords.width;
+                let translateX = (parentElement.width.baseVal.value / 2) - (locationCoords.width / 2);
+                let translateY = (parentElement.height.baseVal.value / 2) - (locationCoords.height / 2);
+
+                console.log('scale', scale, 'translateX', translateX, 'translateY', translateY);
 
                 return {
                     translateX: translateX,
                     translateY: translateY,
-                    scale: scale
+                    scale: scale,
+                    rotate: locationCoords.rotate
                 }
             },
             findParentSVG: function(id) {
@@ -166,30 +183,71 @@
         },
         mounted(){
             let container = document.getElementById('map-container');
-            let mapElements = Array.from(container.children);
-            let numToLoad = 0;
-            let numLoaded = 0;
+            let mapElements = Array.from(container.children).filter((child) => child instanceof SVGElement);
+            let convertions = [];
+
+            let convertToPNGImage = (svg) => {
+                return new Promise((resolve, reject) => {
+                    // changeUIStatus(svg, false);
+
+                    let markers = svg.querySelectorAll('g[id$=--marker], g[id$=--button], g[id=Map_labels], rect[id$=--zoom]');
+                    for(let l = 0; l < markers.length; l++) {
+                        markers[l].style.display = 'none';
+                    }
+
+                    // Create an svg image that can be applied to a canvas
+                    let wrapper = document.createElement('div');
+                    wrapper.appendChild(svg.cloneNode(true));
+                    let data = "data:image/svg+xml;base64," + window.btoa(wrapper.innerHTML.replace(/[\u00A0-\u2666]/g, (c) => '&#' + c.charCodeAt(0) + ';'));
+                    let newSVGImage = new Image();
+                    newSVGImage.src = data;
+
+                    for(let l = 0; l < markers.length; l++) {
+                        markers[l].style.display = 'block';
+                    }
+
+                    newSVGImage.onload = () => {
+                        let canvas = document.createElement('canvas');
+                        let context = canvas.getContext('2d');
+                        canvas.width = window.innerWidth * 5;
+                        canvas.height = window.innerHeight * 5;
+                        context.drawImage(newSVGImage, 0, 0, svg.width.baseVal.value, svg.height.baseVal.value, 0, 0, canvas.width, canvas.height);
+
+                        let PNGImage = new Image();
+                        PNGImage.src = canvas.toDataURL('image/png');
+                        PNGImage.classList.add('png-image');
+                        PNGImage.id = svg.id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.image;
+
+                        let container = document.getElementById('map-container');
+                        container.appendChild(PNGImage);
+
+                        // Hide the visual data
+                        svg.querySelector('g[id=map-data]').style.display = 'none';
+
+                        resolve();
+                    }
+
+                    newSVGImage.onerror = () => {
+                        reject();
+                    }
+                });
+            }
 
             let loadedSVGImage = () => {
                 // Increment the number of SVGs loaded
                 for(var index = 0; index < mapElements.length; index++) {
-                    let markerElements = mapElements[index].querySelectorAll('g[id$=--marker], g[id$=--button], g[id=Map_labels]');
-                    for(let j = 0; j < markerElements.length; j++) {
-                        markerElements[j].classList.add('marker');
-                    }
-
-                    let zoomElements = mapElements[index].querySelectorAll('rect[id$=--zoom]');
-                    for(let k = 0; k < zoomElements.length; k++) {
-                        zoomElements[k].classList.add('zoom-container');
-                    }
-
-                    // Get the name of the svg image;
+                    // The SVG Name image;
                     let name = mapElements[index].id;
 
                     // Get all the transformation states possible for this map element
                     let styles = {};
+                    styles[name] = 'translate(0px, 0px) scale(1)';
 
-                    styles[name] = {};
+                    // Adds class to each zoom container
+                    let zoomElements = mapElements[index].querySelectorAll('rect[id$=--zoom]');
+                    for(let k = 0; k < zoomElements.length; k++) {
+                        zoomElements[k].classList.add('container');
+                    }
 
                     /** GETS THE POSITION WHERE IT SHOULD BE IN THE PARENT SVG **/
                     // Gets the map elements parent SVG;
@@ -200,9 +258,7 @@
 
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
-                        styles[parentSVG] = {
-                            'transform': `translate3d( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px, 0 ) scale3d( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale }, 1)`
-                        };
+                        styles[parentSVG] = `translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px ) scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale })`;
                     }
 
                     /** GETS THE CHILDREN IN THE MAP ELEMENT **/
@@ -218,26 +274,28 @@
                             let positionInImage = this.getPlacement(child.id, name);
 
                             // Sets the CSS transform when the child id is active
-                            styles[childParent] = {
-                                'transform': `translate3d( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px, 0 ) scale3d( ${ positionInImage.scale }, ${ positionInImage.scale }, 1)`
-                            };
+                            styles[childParent] = `translate( ${ 0 }px, ${ positionInImage.translateY * positionInImage.scale }px ) scale( ${ positionInImage.scale }, ${ positionInImage.scale })`;
                         }
                     });
 
                     // Vue call to bind the new styles to the data object
                     Vue.set(this.styles, name, styles);
                 }
+
+                for(let loadIndex = 0; loadIndex < mapElements.length; loadIndex++) {
+                    convertions.push(convertToPNGImage(mapElements[loadIndex]));
+                }
+
+                Promise.all(convertions).then( () => {
+                    this.applyStylesToImages();
+                });
             }
 
             loadedSVGImage();
         },
         watch: {
-            hideMarkers: function (val) {
-                if(val) {
-                    this.timer = window.setTimeout( () => {
-                        this.hideMarkers = false;
-                    }, 3000);
-                }
+            mapStyles: function (val) {
+                this.applyStylesToImages();
             }
         }
     });
@@ -245,25 +303,39 @@
 
 <template>
 <div class="container">
+    <!-- TODO Add condition here to check if markers are available -->
     <MarkerInfo></MarkerInfo>
     <div id="map-container" class="map" :class="{'marker-status': hideMarkers}" @click="mapClick($event)">
-        <WorldImage
-            class="image"
-            :class="{ 'active': selectedView === 'app_x5F_world--parent' }"
-            :style="[mapStyles['app_x5F_world--parent']]" />
-        <UAERegionImage
-            class="image"
-            :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }"
-            :style="[mapStyles['app_x5F_UAE--parent']]" />
-        <SharjahCityImage
-            class="image"
-            :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }"
-            :style="[mapStyles['app_x5F_Sharjah--parent']]" />
-        <SharjahRoadImage
-            class="image"
-            :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }"
-            :style="[mapStyles['app_x5F_Sharjah-road--parent']]" />
+        <transition name="map-switch">
+            <WorldImage
+                class="image"
+                v-show="selectedView === 'app_x5F_world--parent'" />
+                <!-- :class="{ 'active': selectedView === 'app_x5F_world--parent' }" /> -->
+                <!-- :style="[mapStyles['app_x5F_world--parent']]" /> -->
+        </transition>
+        <transition name="map-switch">
+            <UAERegionImage
+                class="image"
+                v-show="selectedView === 'app_x5F_UAE--parent'" />
+                <!-- :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }" /> -->
+                <!-- :style="[mapStyles['app_x5F_UAE--parent']]" /> -->
+        </transition>
+        <transition name="map-switch">
+            <SharjahCityImage
+                class="image"
+                v-show="selectedView === 'app_x5F_Sharjah--parent'" />
+                <!-- :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }" /> -->
+                <!-- :style="[mapStyles['app_x5F_Sharjah--parent']]" /> -->
+        </transition>
+        <transition name="map-switch">
+            <SharjahRoadImage
+                class="image"
+                v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
+                <!-- :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }" /> -->
+                <!-- :style="[mapStyles['app_x5F_Sharjah-road--parent']]" /> -->
+        </transition>
     </div>
+
     <!-- <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0"> -->
     <div class="controls">
         <div class="controls-row">
@@ -294,6 +366,21 @@
 .zoom-container {
     visibility: hidden !important;
 }
+
+.png-image {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: transform 1s ease-out 1s, opacity 0.25s ease-out 2s;
+    &.active {
+        opacity: 1;
+        transition: transform 1s ease-out 1s, opacity 0.25s ease-out 0s;
+    }
+}
 </style>
 
 <style lang="scss" scoped>
@@ -323,21 +410,7 @@
     left: 0;
     top: 0;
     overflow: visible !important;
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 1s ease-out 0.5s, opacity 0s ease-out 2s;
-    outline: 1px solid transparent;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    will-change: transform, opacity;
-    &.active {
-        opacity: 1;
-        pointer-events: auto;
-        transition: transform 1s ease-out 0.5s, opacity 0s ease-out 0s;
-    }
-    &.instant {
-        // transition: transform 1.5s ease-out, opacity 0.25s ease-out 0s;
-    }
+    will-change: opacity;
 }
 
 svg:not(:root) {
