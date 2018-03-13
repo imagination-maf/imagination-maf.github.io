@@ -27,7 +27,12 @@
                 styles: {},
                 sizeModifiers: {},
                 hideMarkers: false,
-                pngImages: []
+                pngImages: {
+                    'World': require('../images/maps/World.png'),
+                    'UAERegion': require('../images/maps/UAE-region.png'),
+                    'SharjahCity': require('../images/maps/Sharjah-city.png'),
+                    'SharjahRoad': require('../images/maps/Sharjah-road.png')
+                }
             }
         },
         computed : {
@@ -57,23 +62,6 @@
             }
         },
         methods: {
-            applyStylesToImages: function () {
-                let imageName = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.image;
-
-                let imagesElements = Array.from(document.getElementById('map-container').children).filter( (child) => child.tagName == 'IMG');
-
-                imagesElements.forEach( (image) => {
-                    let svgLink = image.id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent;
-
-                    if(imageName === image.id) {
-                        image.classList.add('active');
-                    } else {
-                        image.classList.remove('active');
-                    }
-
-                    image.style.transform = this.mapStyles[svgLink];
-                })
-            },
             zoomOut: function () {
                 // Converts --parent to --zoom
                 let zoomElement = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom;
@@ -138,18 +126,9 @@
                 // finds the coordinates of the child element in its parent
                 let locationCoords = this.findSVGPosition(childElement);
 
-                // Gets the size of the child compared to parent
-                // let scale = parentElement.width.baseVal.value / (locationCoords.max.x - locationCoords.min.x);
-                // Finds the X distance of the child element from the center of the parent
-                // let translateX = (parentElement.width.baseVal.value / 2) - ((locationCoords.min.x + locationCoords.max.x) / 2);
-                // Finds the Y distance of the child element from the center of the parent
-                // let translateY = (parentElement.height.baseVal.value / 2) - ((locationCoords.min.y + locationCoords.max.y) / 2);
-
                 let scale = parentElement.width.baseVal.value / locationCoords.width;
-                let translateX = (parentElement.width.baseVal.value / 2) - (locationCoords.width / 2);
-                let translateY = (parentElement.height.baseVal.value / 2) - (locationCoords.height / 2);
-
-                console.log('scale', scale, 'translateX', translateX, 'translateY', translateY);
+                let translateX = (parentElement.width.baseVal.value / 2) - (locationCoords.x + (locationCoords.width / 2) );
+                let translateY = (parentElement.height.baseVal.value / 2) - (locationCoords.y + (locationCoords.height / 2) );
 
                 return {
                     translateX: translateX,
@@ -184,54 +163,6 @@
         mounted(){
             let container = document.getElementById('map-container');
             let mapElements = Array.from(container.children).filter((child) => child instanceof SVGElement);
-            let convertions = [];
-
-            let convertToPNGImage = (svg) => {
-                return new Promise((resolve, reject) => {
-                    // changeUIStatus(svg, false);
-
-                    let markers = svg.querySelectorAll('g[id$=--marker], g[id$=--button], g[id=Map_labels], rect[id$=--zoom]');
-                    for(let l = 0; l < markers.length; l++) {
-                        markers[l].style.display = 'none';
-                    }
-
-                    // Create an svg image that can be applied to a canvas
-                    let wrapper = document.createElement('div');
-                    wrapper.appendChild(svg.cloneNode(true));
-                    let data = "data:image/svg+xml;base64," + window.btoa(wrapper.innerHTML.replace(/[\u00A0-\u2666]/g, (c) => '&#' + c.charCodeAt(0) + ';'));
-                    let newSVGImage = new Image();
-                    newSVGImage.src = data;
-
-                    for(let l = 0; l < markers.length; l++) {
-                        markers[l].style.display = 'block';
-                    }
-
-                    newSVGImage.onload = () => {
-                        let canvas = document.createElement('canvas');
-                        let context = canvas.getContext('2d');
-                        canvas.width = window.innerWidth * 5;
-                        canvas.height = window.innerHeight * 5;
-                        context.drawImage(newSVGImage, 0, 0, svg.width.baseVal.value, svg.height.baseVal.value, 0, 0, canvas.width, canvas.height);
-
-                        let PNGImage = new Image();
-                        PNGImage.src = canvas.toDataURL('image/png');
-                        PNGImage.classList.add('png-image');
-                        PNGImage.id = svg.id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.image;
-
-                        let container = document.getElementById('map-container');
-                        container.appendChild(PNGImage);
-
-                        // Hide the visual data
-                        svg.querySelector('g[id=map-data]').style.display = 'none';
-
-                        resolve();
-                    }
-
-                    newSVGImage.onerror = () => {
-                        reject();
-                    }
-                });
-            }
 
             let loadedSVGImage = () => {
                 // Increment the number of SVGs loaded
@@ -241,7 +172,7 @@
 
                     // Get all the transformation states possible for this map element
                     let styles = {};
-                    styles[name] = 'translate(0px, 0px) scale(1)';
+                    styles[name] = {transform: 'translate(0px, 0px) scale(1)'};
 
                     // Adds class to each zoom container
                     let zoomElements = mapElements[index].querySelectorAll('rect[id$=--zoom]');
@@ -258,7 +189,12 @@
 
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
-                        styles[parentSVG] = `translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px ) scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale })`;
+                        styles[parentSVG] = {
+                            transform: `
+                            translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px )
+                            rotate( ${positionInParent.rotate}deg )
+                            scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
+                        };
                     }
 
                     /** GETS THE CHILDREN IN THE MAP ELEMENT **/
@@ -274,29 +210,16 @@
                             let positionInImage = this.getPlacement(child.id, name);
 
                             // Sets the CSS transform when the child id is active
-                            styles[childParent] = `translate( ${ 0 }px, ${ positionInImage.translateY * positionInImage.scale }px ) scale( ${ positionInImage.scale }, ${ positionInImage.scale })`;
+                            styles[childParent] = {transform: `translate( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px ) rotate( ${ positionInImage.rotate }deg ) scale( ${ positionInImage.scale }, ${ positionInImage.scale })`};
                         }
                     });
 
                     // Vue call to bind the new styles to the data object
                     Vue.set(this.styles, name, styles);
                 }
-
-                for(let loadIndex = 0; loadIndex < mapElements.length; loadIndex++) {
-                    convertions.push(convertToPNGImage(mapElements[loadIndex]));
-                }
-
-                Promise.all(convertions).then( () => {
-                    this.applyStylesToImages();
-                });
             }
 
             loadedSVGImage();
-        },
-        watch: {
-            mapStyles: function (val) {
-                this.applyStylesToImages();
-            }
         }
     });
 </script>
@@ -306,34 +229,58 @@
     <!-- TODO Add condition here to check if markers are available -->
     <MarkerInfo></MarkerInfo>
     <div id="map-container" class="map" :class="{'marker-status': hideMarkers}" @click="mapClick($event)">
-        <transition name="map-switch">
-            <WorldImage
-                class="image"
-                v-show="selectedView === 'app_x5F_world--parent'" />
-                <!-- :class="{ 'active': selectedView === 'app_x5F_world--parent' }" /> -->
-                <!-- :style="[mapStyles['app_x5F_world--parent']]" /> -->
-        </transition>
-        <transition name="map-switch">
-            <UAERegionImage
-                class="image"
-                v-show="selectedView === 'app_x5F_UAE--parent'" />
-                <!-- :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }" /> -->
-                <!-- :style="[mapStyles['app_x5F_UAE--parent']]" /> -->
-        </transition>
-        <transition name="map-switch">
-            <SharjahCityImage
-                class="image"
-                v-show="selectedView === 'app_x5F_Sharjah--parent'" />
-                <!-- :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }" /> -->
-                <!-- :style="[mapStyles['app_x5F_Sharjah--parent']]" /> -->
-        </transition>
-        <transition name="map-switch">
-            <SharjahRoadImage
-                class="image"
-                v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
-                <!-- :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }" /> -->
-                <!-- :style="[mapStyles['app_x5F_Sharjah-road--parent']]" /> -->
-        </transition>
+        <!-- World -->
+            <img
+                id="app_x5F_world--image"
+                class="png-image"
+                :src="pngImages.World"
+                :style="[mapStyles['app_x5F_world--parent']]"
+                :class="{ 'active': selectedView === 'app_x5F_world--parent' }" />
+            <transition name="map-switch">
+                <WorldImage
+                    class="image"
+                    v-show="selectedView === 'app_x5F_world--parent'" />
+            </transition>
+        <!-- End of World -->
+        <!-- UAE -->
+            <img
+                id="app_x5F_UAE--image"
+                class="png-image"
+                :src="pngImages.UAERegion"
+                :style="[mapStyles['app_x5F_UAE--parent']]"
+                :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }" />
+            <transition name="map-switch">
+                <UAERegionImage
+                    class="image"
+                    v-show="selectedView === 'app_x5F_UAE--parent'" />
+            </transition>
+        <!-- End of UAE -->
+        <!-- Sharjah City -->
+            <img
+                id="app_x5F_Sharjah--image"
+                class="png-image"
+                :src="pngImages.SharjahCity"
+                :style="[mapStyles['app_x5F_Sharjah--parent']]"
+                :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }" />
+            <transition name="map-switch">
+                <SharjahCityImage
+                    class="image"
+                    v-show="selectedView === 'app_x5F_Sharjah--parent'" />
+            </transition>
+        <!-- End of Sharjah City -->
+        <!-- Sharjah Road -->
+            <img
+                id="app_x5F_Sharjah-road--image"
+                class="png-image"
+                :src="pngImages.SharjahRoad"
+                :style="[mapStyles['app_x5F_Sharjah-road--parent']]"
+                :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }" />
+            <transition name="map-switch">
+                <SharjahRoadImage
+                    class="image"
+                    v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
+            </transition>
+        <!-- End of Sharjah Road -->
     </div>
 
     <!-- <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0"> -->
@@ -350,19 +297,6 @@
 </template>
 
 <style lang="scss">
-.marker-status {
-    .marker {
-        // transition: visibility 5s ease;
-        // visibility: hidden !important;
-        display: none !important;
-        // opacity: 0;
-    }
-}
-
-.marker {
-    // transition: opacity 0.25s ease 0.1s;
-}
-
 .zoom-container {
     visibility: hidden !important;
 }
