@@ -10,10 +10,10 @@
 
 
 .map-switch-enter-active {
-    transition: opacity 0.75s ease-out 3.5s;
+    transition: opacity 0.25s ease-out 1.25s;
 }
 .map-switch-leave-active {
-    transition: opacity 0.75s ease-out 0s;
+    transition: opacity 0.25s ease-out 0s;
 }
 .map-switch-enter, .map-switch-leave-to {
     opacity: 0;

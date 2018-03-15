@@ -44,7 +44,7 @@ export default Vue.component('location-menu', {
 
 <template>
 <div class="location-menu">
-    <div class="location-menu-item" @click="navigateToLocation('app_x5F_city1--parent')">
+    <div class="location-menu-item" @click="navigateToLocation('app_x5F_world--parent')">
         <transition name="fade">
             <img v-show="slideshowStatus.odd === true" :src="images.alZahiaLandingPrimary" class="location-menu-item-image" />
         </transition>
@@ -52,7 +52,7 @@ export default Vue.component('location-menu', {
             <img v-show="slideshowStatus.odd === false" :src="images.alZahiaLandingSecondary" class="location-menu-item-image" />
         </transition>
     </div>
-    <div class="location-menu-item" @click="navigateToLocation('app_x5F_city2--parent')">
+    <div class="location-menu-item" @click="navigateToLocation('app_x5F_world--parent')">
         <transition name="fade">
             <img v-show="slideshowStatus.even === true" :src="images.waterfrontCityLandingPrimary" class="location-menu-item-image" />
         </transition>
@@ -60,7 +60,7 @@ export default Vue.component('location-menu', {
             <img v-show="slideshowStatus.even === false" :src="images.waterfrontCityLandingSecondary" class="location-menu-item-image" />
         </transition>
     </div>
-    <div class="location-menu-item" @click="navigateToLocation('app_x5F_city3--parent')">
+    <div class="location-menu-item" @click="navigateToLocation('app_x5F_world--parent')">
         <transition name="fade">
             <img v-show="slideshowStatus.odd === true" :src="images.tilalAlGhafLandingPrimary" class="location-menu-item-image" />
         </transition>
@@ -68,7 +68,7 @@ export default Vue.component('location-menu', {
             <img v-show="slideshowStatus.odd === false" :src="images.tilalAlGhafLandingSecondary" class="location-menu-item-image" />
         </transition>
     </div>
-    <div class="location-menu-item" @click="navigateToLocation('app_x5F_city3--parent')">
+    <div class="location-menu-item" @click="navigateToLocation('app_x5F_world--parent')">
         <transition name="fade">
             <img v-show="slideshowStatus.even === true" :src="images.alMoujMuscatLandingPrimary" class="location-menu-item-image" />
         </transition>

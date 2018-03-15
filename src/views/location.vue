@@ -189,9 +189,8 @@
 
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
-                        styles[parentSVG] = {
-                            transform: `
-                            translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px )
+                        styles[parentSVG] = { transform:
+                            `translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px )
                             rotate( ${positionInParent.rotate}deg )
                             scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
                         };
@@ -210,7 +209,10 @@
                             let positionInImage = this.getPlacement(child.id, name);
 
                             // Sets the CSS transform when the child id is active
-                            styles[childParent] = {transform: `translate( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px ) rotate( ${ positionInImage.rotate }deg ) scale( ${ positionInImage.scale }, ${ positionInImage.scale })`};
+                            styles[childParent] = { transform:
+                                `translate( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px )
+                                rotate( ${ positionInImage.rotate }deg )
+                                scale( ${ positionInImage.scale }, ${ positionInImage.scale } )`};
                         }
                     });
 
@@ -309,10 +311,10 @@
     left: 0;
     top: 0;
     z-index: -1;
-    transition: transform 1s ease-out 1s, opacity 0.25s ease-out 2s;
+    transition: transform 0.5s ease-out 0.25s, opacity 0.25s ease-out 0.75s;
     &.active {
         opacity: 1;
-        transition: transform 1s ease-out 1s, opacity 0.25s ease-out 0s;
+        transition: transform 0.5s ease-out 0.25s, opacity 0.25s ease-out 0s;
     }
 }
 </style>
