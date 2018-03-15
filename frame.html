@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>MAF Portfolio Container</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        html,
+        body,
+        main {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100%;
+        }
+
+        .iframe {
+            width: 50%;
+            height: 50%;
+            border: 1px solid #eee;
+        }
+
+        .upside {
+            transform: rotateZ(180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <iframe
+            class="iframe upside"
+            src="index.html"></iframe>
+        <iframe
+            class="iframe upside"
+            src="index.html"></iframe>
+        <iframe
+            class="iframe"
+            src="index.html"></iframe>
+        <iframe
+            class="iframe"
+            src="index.html"></iframe>
+    </div>
+</body>
+</html>
