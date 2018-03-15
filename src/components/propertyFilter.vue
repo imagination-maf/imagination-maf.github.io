@@ -103,9 +103,6 @@ export default Vue.component('property-filter', {
 
 <style lang="scss" scoped>
 .community {
-    position: absolute;
-    right: 0;
-    top: 0;
     width: 25%;
     height: 100%;
     display: flex;
