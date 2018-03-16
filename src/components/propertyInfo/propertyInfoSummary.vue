@@ -2,6 +2,7 @@
 import Vue from 'vue';
 
 export default Vue.component('property-info-summary', {
+    props: ['property'],
     data() {
         return {
             images: {
@@ -28,19 +29,19 @@ export default Vue.component('property-info-summary', {
                 <h3>FEATURES</h3>
                 <div class="info-features-item">
                     <img :src="images.iconBed" class="info-features-icon" />
-                    <p class="info-features-text">3.5</p>
+                    <p class="info-features-text">{{ property.bedrooms }}</p>
                 </div>
                 <div class="info-features-item">
                     <img :src="images.iconBath" class="info-features-icon" />
-                    <p class="info-features-text">3</p>
+                    <p class="info-features-text">{{ property.bathrooms }}</p>
                 </div>
                 <div class="info-features-item">
                     <img :src="images.iconSofa" class="info-features-icon" />
-                    <p class="info-features-text">2</p>
+                    <p class="info-features-text">{{ property.livingrooms }}</p>
                 </div>
                 <div class="info-features-item">
                     <img :src="images.iconGarage" class="info-features-icon" />
-                    <p class="info-features-text">3</p>
+                    <p class="info-features-text">{{ property.garages }}</p>
                 </div>
             </div>
             <ul class="info-cta">
@@ -52,14 +53,14 @@ export default Vue.component('property-info-summary', {
         <h3>Details</h3>
         <div class="info-row">
             <div class="info-details">
-                <div class="info-details-item">Lot Number: 178</div>
-                <div class="info-details-item">Type: Villa</div>
-                <div class="info-details-item">Built up Area: 5,356m<!--<sup>2</sup>--></div>
+                <div class="info-details-item">Lot Number: {{ property.plot_number }}</div>
+                <div class="info-details-item">Type: {{ property.type }}</div>
+                <div class="info-details-item">Built up Area: {{ property.builtup_area }}m</div>
             </div>
             <div class="info-details">
-                <div class="info-details-item">Avaliability: Avaliable</div>
-                <div class="info-details-item">Plot Area: 4,785m<!--<sup>2</sup>--></div>
-                <div class="info-details-item">Price: 3,450,000 AED</div>
+                <div class="info-details-item">Avaliability: {{ property.availability }}</div>
+                <div class="info-details-item">Plot Area: {{ property.plot_area }}m</div>
+                <div class="info-details-item">Price: {{ property.price }}AED</div>
             </div>
         </div>
     </div>

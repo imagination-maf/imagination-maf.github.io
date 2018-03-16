@@ -25,8 +25,8 @@ export default Vue.component('property-filter', {
             <h3 class="community-menu-title">Residential properties</h3>
             <span>Tap to show/hide</span>
             <div class="community-menu-item">
-                <p @click="changeFilter('3-bed-townhouse')">3-Bedroom Townhouse</p>
-                <ul v-show="propertyTypeFilter['3-bed-townhouse']">
+                <p @click="changeFilter('active_3TH')">3-Bedroom Townhouse</p>
+                <ul v-show="propertyTypeFilter['active_3TH']">
                     <li>
                         <div class="status available" style="background-color: #11c"></div>
                         <span>Available</span>
@@ -38,8 +38,8 @@ export default Vue.component('property-filter', {
                 </ul>
             </div>
             <div>
-                <p @click="changeFilter('3-bed-villa')">3-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['3-bed-villa']">
+                <p @click="changeFilter('active_3V')">3-Bedroom Villa</p>
+                <ul v-show="propertyTypeFilter['active_3V']">
                     <li>
                         <div class="status available" style="background-color: #11c"></div>
                         <span>Available</span>
@@ -51,8 +51,8 @@ export default Vue.component('property-filter', {
                 </ul>
             </div>
             <div>
-                <p @click="changeFilter('4-bed-villa')">4-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['4-bed-villa']">
+                <p @click="changeFilter('active_4V')">4-Bedroom Villa</p>
+                <ul v-show="propertyTypeFilter['active_4V']">
                     <li>
                         <div class="status available" style="background-color: #11c"></div>
                         <span>Available</span>
@@ -64,8 +64,8 @@ export default Vue.component('property-filter', {
                 </ul>
             </div>
             <div>
-                <p @click="changeFilter('5-bed-villa')">5-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['5-bed-villa']">
+                <p @click="changeFilter('active_5V')">5-Bedroom Villa</p>
+                <ul v-show="propertyTypeFilter['active_5V']">
                     <li>
                         <div class="status available" style="background-color: #11c"></div>
                         <span>Available</span>
@@ -77,8 +77,8 @@ export default Vue.component('property-filter', {
                 </ul>
             </div>
             <div>
-                <p @click="changeFilter('6-bed-villa')">6-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['6-bed-villa']">
+                <p @click="changeFilter('active_6V')">6-Bedroom Villa</p>
+                <ul v-show="propertyTypeFilter['active_6V']">
                     <li>
                         <div class="status available" style="background-color: #11c"></div>
                         <span>Available</span>

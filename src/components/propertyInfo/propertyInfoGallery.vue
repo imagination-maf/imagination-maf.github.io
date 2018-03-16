@@ -2,6 +2,7 @@
 import Vue from 'vue';
 
 export default Vue.component('property-info-gallery', {
+    props: ['property'],
     methods: {
         backToSummary: function() {
             this.$emit('changeView', 'summary');

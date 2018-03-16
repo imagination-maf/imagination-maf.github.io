@@ -16,6 +16,7 @@
                 propertyTypeFilter: {},
                 amenitiesFilter: false,
                 propertyInfoActive: false,
+                activeProperty: null,
                 pngContainerScale: null,
                 svgContainerScale: null,
                 pngTransform: null,
@@ -24,10 +25,11 @@
                     alZahia: require('../images/masterplans/al_zahia_background.png')
                 },
                 propertyList: ['3V', '4V', '5V', '6V', '2TH', '3TH', '4TH'],
+                availableList: ['unavailable', 'available'],
                 dataPoints: {
                     alZahia: {
                         alLilac: {
-                            'container': 'AL_ZAHIA_PLOT_BOUNDARIES',
+                            'plot_boundary': 'AL_ZAHIA_PLOT_BOUNDARIES',
                             'png': {
                                 'scale': 2.2,
                                 'translate': [-150, 438]
@@ -41,8 +43,10 @@
                 }
             }
         },
-        computed : {
-
+        computed: {
+            filterPng: function() {
+                return Object.keys(this.propertyTypeFilter).filter( (key) => this.propertyTypeFilter[key] ).length;
+            }
         },
         methods: {
             setPropertyTypeFilter: function(key) {
@@ -51,11 +55,36 @@
             setAmenitiesFilter: function() {
                 this.amenitiesFilter = !this.amenitiesFilter;
             },
-            openPropertyInfo: function() {
+            openPropertyInfo: function(data) {
+                this.activeProperty = data;
                 this.propertyInfoActive = true;
             },
             closePropertyInfo: function() {
+                this.activeProperty = null;
                 this.propertyInfoActive = false;
+            },
+            svgPressed: function($event) {
+                let elementPressed = $event.path[0];
+                if(elementPressed.id){
+                    let dummyData = {
+                        'id': elementPressed.id,
+                        'bedrooms': 3,
+                        'bathrooms': 2,
+                        'livingrooms': 3,
+                        'garages': 1,
+                        'plot_number': 111,
+                        'unit_type': '3V',
+                        'type': 'Villa',
+                        'builtup_area': 2000,
+                        'plot_area': 2500,
+                        'availability': true,
+                        'price': 10000000
+                    }
+                    // id bedrooms bathrooms livingrooms garages plot_number unit_type
+       // type builtup_area plot_area availability price
+
+                    this.openPropertyInfo(dummyData);
+                }
             }
         },
         mounted() {
@@ -68,7 +97,6 @@
                 let area = document.getElementById('area');
 
                 let pngImage = document.getElementById('png-image');
-                console.log('area', [area], area.clientWidth, (area.clientWidth / pngImage.width));
                 this.pngContainerScale = {'transform': 'scale(' + (area.clientWidth / pngImage.width) + ')' };
 
                 let svgImage = document.getElementById('svg-image');
@@ -84,13 +112,18 @@
                     'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
                 };
 
-                let boundaryContainer = this.dataPoints.alZahia.alLilac.container;
-                let children = Array.from(document.getElementById(boundaryContainer).children);
-                for(let index = 0; index < children.length; index++) {
-                    children[index].classList.add('type_' + this.propertyList[Math.floor(Math.random() * this.propertyList.length)]);
+                let plotBoundaryContainer = this.dataPoints.alZahia.alLilac.plot_boundary;
+                let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
+                for(let index = 0; index < plotBoundaries.length; index++) {
+                    let dummyType = Math.floor(Math.random() * this.propertyList.length);
+                    let dummyAvailable = Math.floor(Math.random() * this.availableList.length);
+                    // plotBoundaries[index].classList.add(this.data[plotBoundaries[index].available])
+                    plotBoundaries[index].classList.add('type_' + this.propertyList[dummyType]);
+                    // plotBoundaries[index].classList.add(this.data[plotBoundaries[index].unit_type])
+                    plotBoundaries[index].classList.add(this.availableList[dummyAvailable]);
                 }
 
-            }, 1000 );
+            }, 2500 );
         }
     });
 </script>
@@ -98,10 +131,10 @@
 <template>
 <div class="container">
     <div id="area">
-        <div id="png-container" :style="pngContainerScale">
+        <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
             <img :src="images.alZahia" class="png-image" id="png-image" :style="pngTransform" />
         </div>
-        <div id="svg-container" :style="svgContainerScale">
+        <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
             <AlZahia class="svg-image" id="svg-image" :style="svgTransform" />
         </div>
     </div>
@@ -110,7 +143,7 @@
     <button @click="openPropertyInfo()" type="button">Open Property Info</button> -->
 
     <PropertyFilter :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
-    <PropertyInfo v-if="propertyInfoActive" v-on:close="closePropertyInfo" />
+    <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
 </div>
 </template>
 
@@ -145,6 +178,14 @@
     top: 0;
     overflow: hidden;
     transform-origin: 0px 0px 0px;
+    &.filters {
+        #png-image {
+            filter: grayscale(0.9);
+        }
+    }
+    #png-image {
+        transition: filter 0.5s ease-out;
+    }
 }
 
 svg:not(:root) {
@@ -152,139 +193,169 @@ svg:not(:root) {
 }
 </style>
 
-<style>
-
+<style lang="scss">
 .type_3V {
     display: block !important;
-    fill: #f6962d !important;
+    fill: none;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1.5;
+    stroke-miterlimit: 10;
+    transition: fill 0.5s ease;
 }
+.active_3V {
+    .type_3V {
+        &.available {
+            fill: rgba(246,150,46,0.75) !important;
+            stroke: #ffffff !important;
+        }
+        &.unavailable {
+            fill: rgba(255,255,255,0.75) !important;
+            stroke: rgb(246,150,46) !important;
+        }
+    }
+}
+
 .type_4V {
     display: block !important;
-    fill: #fbb831 !important;
+    fill: none;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1.5;
+    stroke-miterlimit: 10;
 }
+.active_4V {
+    .type_4V {
+        &.available {
+            fill: rgba(251,184,49, 0.75) !important;
+            stroke: #ffffff !important;
+        }
+        &.unavailable {
+            // stroke-width: 2;
+            fill: rgba(255,255,255,0.75) !important;
+            stroke: rgb(251,184,49) !important;
+        }
+    }
+}
+
 .type_5V {
     display: block !important;
-    fill: #1bb1af !important;
+    fill: none;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1.5;
+    stroke-miterlimit: 10;
 }
+.active_5V {
+    .type_5V {
+        &.available {
+            fill: rgba(27,177,175,0.75) !important;
+            stroke: #ffffff !important;
+        }
+        &.unavailable {
+            // stroke-width: 2;
+            fill: rgba(255,255,255,0.75) !important;
+            stroke: rgb(27,177,175) !important;
+        }
+    }
+}
+
 .type_6V {
     display: block !important;
-    fill: #5f6062 !important;
+    fill: none;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1.5;
+    stroke-miterlimit: 10;
 }
+.active_6V {
+    .type_6V {
+        &.available {
+            fill: rgba(95,96,98,0.75) !important;
+            stroke: #ffffff !important;
+        }
+        &.unavailable {
+            // stroke-width: 2;
+            fill: rgba(255,255,255,0.75) !important;
+            stroke: rgb(95, 96, 98) !important;
+        }
+    }
+}
+
 .type_2TH {
     display: block !important;
-    fill: #6ea340 !important;
+    fill: none;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1.5;
+    stroke-miterlimit: 10;
 }
+.active_2TH {
+    .type_2TH {
+        &.available {
+            fill: rgba(110,163,64,0.75) !important;
+            stroke: #ffffff !important;
+        }
+        &.unavailable {
+            // stroke-width: 2;
+            fill: rgba(255,255,255,0.75) !important;
+            stroke: rgb(110,163,64) !important;
+        }
+    }
+}
+
 .type_3TH {
     display: block !important;
-    fill: #1897d3 !important;
+    fill: none;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1.5;
+    stroke-miterlimit: 10;
 }
+.active_3TH {
+    .type_3TH {
+        &.available {
+            fill: rgba(24,151,210,0.75) !important;
+            stroke: #ffffff !important;
+        }
+        &.unavailable {
+            // stroke-width: 2;
+            fill: rgba(255,255,255,0.75) !important;
+            stroke: rgb(24,151,210) !important;
+        }
+    }
+}
+
 .type_4TH {
     display: block !important;
-    fill: #07477d !important;
-}
-.st0{
-    display: none;
-    /* fill: none;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-dasharray: 3,3,3,3; */
-}
-.st1{
-    display: none;
-    /* fill: none;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-dasharray: 3,3,3,3,0,0; */
-}
-.st2{
-    display: none;
-    /* fill: none;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10; */
-}
-.st3{
-    display: none;
-    /* fill: none;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-dasharray: 8.1535,4.0768; */
-}
-.st4{
-    display: none;
-    /* fill: none;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-dasharray: 20.3838,10.1919; */
-}
-.st5{
-    display: none;
-    /* fill: #808080;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-miterlimit: 10; */
-}
-.st6{
-    display: none;
-    /* fill-rule: evenodd;
+    fill: none;
+    fill-rule: evenodd;
     clip-rule: evenodd;
-    fill: #00FF00;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-miterlimit: 10; */
-}
-.st7{
-    display: none;
-    /* fill-rule: evenodd;
-    clip-rule: evenodd;
-    fill: #FF0000;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-miterlimit: 10; */
-}
-.st8{
-    display: none;
-}
-.st9{
-    display: none;
-}
-.st10{
-    display: none;
-    /* fill: #ff0000;
-    stroke: #989898;
-    stroke-width: 0.25;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke: none;
+    stroke-width: 1.5;
     stroke-miterlimit: 10;
-    stroke-dasharray: 4.588931e-02,4.588931e-02; */
 }
-.st11{
-    display: none;
+.active_3TH {
+    .type_3TH {
+        &.available {
+            fill: rgba(7,71,125,0.75) !important;
+            stroke: #ffffff !important;
+        }
+        &.unavailable {
+            // stroke-width: 2;
+            fill: rgba(255,255,255,0.75) !important;
+            stroke: rgb(7,71,125) !important;
+        }
+    }
 }
-.st12{
-    /* fill:#BF00FF; */
-    display: none;
-}
-.st13{
-    /* font-family:'ArialMT'; */
-    display: none;
-}
-.st14{
-    /* font-size:2.7639px; */
+
+.st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16 {
     display: none;
 }
 </style>

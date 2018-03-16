@@ -6,6 +6,7 @@ import PropertyInfoTour from './propertyInfo/propertyInfoTour.vue';
 import PropertyInfoGallery from './propertyInfo/propertyInfoGallery.vue';
 
 export default Vue.component('property-info', {
+    props: ['property'],
     components: {
         PropertyInfoSummary,
         PropertyInfoFloorplan,
@@ -32,10 +33,10 @@ export default Vue.component('property-info', {
     <div class="info">
         <div class="info-content">
             <div class="info-close" @click="closeInfo()">X</div>
-            <PropertyInfoSummary v-if="currentView === 'summary'" v-on:changeView="changeView" />
-            <PropertyInfoFloorplan v-if="currentView === 'floorplan'" v-on:changeView="changeView" />
-            <PropertyInfoTour v-if="currentView === 'tour'" v-on:changeView="changeView" />
-            <PropertyInfoGallery v-if="currentView === 'gallery'" v-on:changeView="changeView" />
+            <PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" />
+            <PropertyInfoFloorplan v-if="currentView === 'floorplan'" :property="property" v-on:changeView="changeView" />
+            <PropertyInfoTour v-if="currentView === 'tour'" :property="property" v-on:changeView="changeView" />
+            <PropertyInfoGallery v-if="currentView === 'gallery'" :property="property" v-on:changeView="changeView" />
         </div>
     </div>
 </template>
