@@ -8,8 +8,11 @@ export default Vue.component('app-header', {
         }
     },
     methods: {
-        home: function(){
+        home: function() {
             this.$router.push({ path: 'location', query: { view: 'app_x5F_world--parent' }});
+        },
+        goBack: function() {
+            this.$router.go(-1);
         }
     }
 });
@@ -18,6 +21,7 @@ export default Vue.component('app-header', {
 <template>
     <div class="header" v-if="['attractor'].indexOf($route.name) === -1">
         <img class="header-logo" :src='logo' @click="home()" />
+        <span class="header-back" @click="goBack()">BACK</span>
     </div>
 </template>
 
@@ -28,12 +32,18 @@ export default Vue.component('app-header', {
     height: 8rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: #ffffff;
     box-shadow: 1rem 0.25rem 6rem #aaa;
     .header-logo {
         height: 3.5rem;
         width: auto;
         margin-left: 8rem;
+    }
+    .header-back {
+        display: block;
+        margin-right: 8rem;
+        font-size: 1.2rem;
     }
 }
 </style>

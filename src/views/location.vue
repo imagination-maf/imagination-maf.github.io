@@ -16,6 +16,7 @@
         },
         data() {
             return {
+                loadingComplete: false,
                 definitions : {
                     'separator': '_',
                     'modifier': '--',
@@ -25,13 +26,16 @@
                     'image': 'image'
                 },
                 styles: {},
-                sizeModifiers: {},
-                hideMarkers: false,
+                rotations: {},
                 pngImages: {
                     'World': require('../images/maps/World.png'),
                     'UAERegion': require('../images/maps/UAE-region.png'),
                     'SharjahCity': require('../images/maps/Sharjah-city.png'),
                     'SharjahRoad': require('../images/maps/Sharjah-road.png')
+                },
+                fullscreenTransform: {
+                    'png': {},
+                    'svg': {}
                 }
             }
         },
@@ -92,7 +96,7 @@
             },
             mapClick: function($event) {
                 // The path of elements clicked starting from lowest point first
-                let pathElements = $event.path.reverse();
+                let pathElements = $event.path;
                 // Loop through the elements
                 for(var i = 0; i < pathElements.length; i++) {
                     // If the beginning of the id is 'app_' we know its one we're looking for
@@ -117,7 +121,10 @@
                     'y': element.y.baseVal.value,
                     'width': element.width.baseVal.value,
                     'height': element.height.baseVal.value,
-                    'rotate': rotate
+                    'rotate': {
+                        'origin': [element.x.baseVal.value + (element.width.baseVal.value / 2), element.y.baseVal.value + (element.height.baseVal.value / 2)],
+                        'angle': rotate
+                    }
                 }
             },
             getPlacement: function(viewToFind, parent) {
@@ -158,27 +165,82 @@
                     }
                 }
                 return parent;
-            }
-        },
-        mounted(){
-            let container = document.getElementById('map-container');
-            let mapElements = Array.from(container.children).filter((child) => child instanceof SVGElement);
+            },
+            fitToWindow: (id) => {
+                let imageElement = document.getElementById(id);
+                let width = (imageElement instanceof SVGElement) ? imageElement.width.baseVal.value : imageElement.width;
+                let height = (imageElement instanceof SVGElement) ? imageElement.height.baseVal.value : imageElement.height;
 
-            let loadedSVGImage = () => {
+                let scaleX = window.innerWidth / width;
+                let scaleY = window.innerHeight / height;
+                return (scaleX < scaleY) ? scaleX : scaleY;
+            },
+            setupSvgImages: function() {
+                let svgContainer = document.getElementById('svg-container');
+                let svgImages = Array.from(svgContainer.children).filter((child) => child instanceof SVGElement);
+
+                for(let i = 0; i < svgImages.length; i++) {
+                    // Adds class to each zoom container
+                    let zoomPaths = svgImages[i].querySelectorAll('rect[id$=--zoom]');
+                    for(let j = 0; j < zoomPaths.length; j++) {
+                        zoomPaths[j].classList.add('container');
+                    }
+
+                    let scale = this.fitToWindow(svgImages[i].id);
+                    let transform = {
+                        'transform': `scale( ${ scale } )`,
+                        'transform-origin': '0px 0px 0px'
+                    }
+                    Vue.set(this.fullscreenTransform.svg, svgImages[i].id, transform);
+                }
+            },
+            setupPngImages: function(callback) {
+                let pngContainer = document.getElementById('png-container');
+                let pngImages = Array.from(pngContainer.children).filter( (child) => child.tagName == 'IMG' );
+                let pngsLoaded = 0;
+
+                let fitPngsToWindow = () => {
+                    for(let i = 0; i < pngImages.length; i++) {
+                        let imageParentName = pngImages[i].id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent;
+                        let scale = this.fitToWindow(pngImages[i].id);
+                        let transform = {
+                            'transform': `scale( ${ scale } )`,
+                            'transform-origin': '0px 0px 0px'
+                        }
+                        Vue.set(this.fullscreenTransform.png, imageParentName, transform);
+                    }
+
+                    callback();
+                }
+
+                let pngLoaded = () => {
+                    pngsLoaded++;
+                    if(pngImages.length === pngsLoaded) {
+                        fitPngsToWindow();
+                    }
+                }
+
+                for(let j = 0; j < pngImages.length; j++) {
+                    pngImages[j].addEventListener('load', () => {
+                        pngImages[j].removeEventListener('load', () => {});
+                        pngLoaded();
+                    })
+                }
+            },
+            setupTransforms: function() {
+                let container = document.getElementById('svg-container');
+                let maps = Array.from(container.children).filter((child) => child instanceof SVGElement);
+
                 // Increment the number of SVGs loaded
-                for(var index = 0; index < mapElements.length; index++) {
+                for(let index = 0; index < maps.length; index++) {
                     // The SVG Name image;
-                    let name = mapElements[index].id;
+                    let name = maps[index].id;
 
                     // Get all the transformation states possible for this map element
                     let styles = {};
+                    let rotations = {};
                     styles[name] = {transform: 'translate(0px, 0px) scale(1)'};
-
-                    // Adds class to each zoom container
-                    let zoomElements = mapElements[index].querySelectorAll('rect[id$=--zoom]');
-                    for(let k = 0; k < zoomElements.length; k++) {
-                        zoomElements[k].classList.add('container');
-                    }
+                    rotations[name] = {transform: 'rotate(0deg)'};
 
                     /** GETS THE POSITION WHERE IT SHOULD BE IN THE PARENT SVG **/
                     // Gets the map elements parent SVG;
@@ -189,16 +251,19 @@
 
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
+                        rotations[parentSVG] = {
+                            'transform': 'rotate( ${ positionInParent.rotate.angle }deg )',
+                            'transform-origin': `${ positionInParent.rotate.origin[0] }px ${ positionInParent.rotate.origin[1] }px`
+                        };
                         styles[parentSVG] = { transform:
                             `translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px )
-                            rotate( ${positionInParent.rotate}deg )
                             scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
                         };
                     }
 
                     /** GETS THE CHILDREN IN THE MAP ELEMENT **/
                     // So can zoom into each of these
-                    let childSVGContainer = Array.from(mapElements[index].children);
+                    let childSVGContainer = Array.from(maps[index].children);
                     // Loop through each child (we know zoom ids will be the first level)
                     childSVGContainer.forEach( (child) => {
                         // Check is the child's id matches '--zoom'
@@ -209,9 +274,12 @@
                             let positionInImage = this.getPlacement(child.id, name);
 
                             // Sets the CSS transform when the child id is active
+                            rotations[parentSVG] = {
+                                'transform': 'rotate( ${ positionInImage.rotate.angle }deg )',
+                                'transform-origin': `${ positionInImage.rotate.origin[0] }px ${ positionInImage.rotate.origin[1] }px`
+                            };
                             styles[childParent] = { transform:
                                 `translate( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px )
-                                rotate( ${ positionInImage.rotate }deg )
                                 scale( ${ positionInImage.scale }, ${ positionInImage.scale } )`};
                         }
                     });
@@ -220,8 +288,15 @@
                     Vue.set(this.styles, name, styles);
                 }
             }
+        },
+        mounted(){
+            let callback = () => {
+                this.loadingComplete = true;
+            }
 
-            loadedSVGImage();
+            this.setupSvgImages();
+            this.setupTransforms();
+            this.setupPngImages(callback);
         }
     });
 </script>
@@ -230,63 +305,77 @@
 <div class="container">
     <!-- TODO Add condition here to check if markers are available -->
     <MarkerInfo></MarkerInfo>
-    <div id="map-container" class="map" :class="{'marker-status': hideMarkers}" @click="mapClick($event)">
-        <!-- World -->
+    <div id="map-container" class="map" @click="mapClick($event)">
+        <div id="png-container" :style="[fullscreenTransform.png[selectedView]]">
+            <!-- World -->
             <img
                 id="app_x5F_world--image"
                 class="png-image"
                 :src="pngImages.World"
                 :style="[mapStyles['app_x5F_world--parent']]"
                 :class="{ 'active': selectedView === 'app_x5F_world--parent' }" />
-            <transition name="map-switch">
-                <WorldImage
-                    class="image"
-                    v-show="selectedView === 'app_x5F_world--parent'" />
-            </transition>
-        <!-- End of World -->
-        <!-- UAE -->
+            <!-- End of World -->
+            <!-- UAE -->
             <img
                 id="app_x5F_UAE--image"
                 class="png-image"
                 :src="pngImages.UAERegion"
                 :style="[mapStyles['app_x5F_UAE--parent']]"
                 :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }" />
-            <transition name="map-switch">
-                <UAERegionImage
-                    class="image"
-                    v-show="selectedView === 'app_x5F_UAE--parent'" />
-            </transition>
-        <!-- End of UAE -->
-        <!-- Sharjah City -->
+            <!-- End of UAE -->
+            <!-- Sharjah City -->
             <img
                 id="app_x5F_Sharjah--image"
                 class="png-image"
                 :src="pngImages.SharjahCity"
                 :style="[mapStyles['app_x5F_Sharjah--parent']]"
                 :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }" />
-            <transition name="map-switch">
-                <SharjahCityImage
-                    class="image"
-                    v-show="selectedView === 'app_x5F_Sharjah--parent'" />
-            </transition>
-        <!-- End of Sharjah City -->
-        <!-- Sharjah Road -->
+            <!-- End of Sharjah City -->
+            <!-- Sharjah Road -->
             <img
                 id="app_x5F_Sharjah-road--image"
                 class="png-image"
                 :src="pngImages.SharjahRoad"
                 :style="[mapStyles['app_x5F_Sharjah-road--parent']]"
                 :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }" />
+            <!-- End of Sharjah Road -->
+        </div>
+        <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
+            <!-- World -->
+            <transition name="map-switch">
+                <WorldImage
+                    class="image"
+                    v-show="selectedView === 'app_x5F_world--parent'" />
+            </transition>
+            <!-- End of World -->
+            <!-- UAE -->
+            <transition name="map-switch">
+                <UAERegionImage
+                    class="image"
+                    v-show="selectedView === 'app_x5F_UAE--parent'" />
+            </transition>
+            <!-- End of UAE -->
+            <!-- Sharjah City -->
+            <transition name="map-switch">
+                <SharjahCityImage
+                    class="image"
+                    v-show="selectedView === 'app_x5F_Sharjah--parent'" />
+            </transition>
+            <!-- End of Sharjah City -->
+            <!-- Sharjah Road -->
             <transition name="map-switch">
                 <SharjahRoadImage
                     class="image"
                     v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
             </transition>
-        <!-- End of Sharjah Road -->
+            <!-- End of Sharjah Road -->
+        </div>
+        <div class="loading" v-if="!loadingComplete">
+            Loading...
+        </div>
     </div>
 
-    <!-- <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0"> -->
-    <div class="controls">
+    <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
         <div class="controls-row">
             <button class="button zoom" type="button" @click="zoomOut()">Zoom Out</button>
             <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @click="zoomIn()">Zoom In</button>
@@ -303,19 +392,41 @@
     visibility: hidden !important;
 }
 
+#png-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#svg-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 .png-image {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
     position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
+    opacity: 0;
     transition: transform 0.5s ease-out 0.25s, opacity 0.25s ease-out 0.75s;
     &.active {
         opacity: 1;
         transition: transform 0.5s ease-out 0.25s, opacity 0.25s ease-out 0s;
     }
+}
+
+.loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
 }
 </style>
 
@@ -342,9 +453,6 @@
 }
 
 .image {
-    position: absolute;
-    left: 0;
-    top: 0;
     overflow: visible !important;
     will-change: opacity;
 }

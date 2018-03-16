@@ -78,7 +78,7 @@
                         'builtup_area': 2000,
                         'plot_area': 2500,
                         'availability': true,
-                        'price': 10000000
+                        'price': 1300000
                     }
                     // id bedrooms bathrooms livingrooms garages plot_number unit_type
        // type builtup_area plot_area availability price
@@ -200,19 +200,19 @@ svg:not(:root) {
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
-    stroke-width: 1.5;
+    stroke-width: 1;
     stroke-miterlimit: 10;
     transition: fill 0.5s ease;
 }
 .active_3V {
     .type_3V {
         &.available {
-            fill: rgba(246,150,46,0.75) !important;
-            stroke: #ffffff !important;
+            fill: rgba(246,150,46,0.9) !important;
+            stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(255,255,255,0.75) !important;
-            stroke: rgb(246,150,46) !important;
+            fill: rgba(246,150,46,0.25) !important;
+            stroke: #3C3C3D !important;
         }
     }
 }
@@ -223,19 +223,19 @@ svg:not(:root) {
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
-    stroke-width: 1.5;
+    stroke-width: 1;
     stroke-miterlimit: 10;
 }
 .active_4V {
     .type_4V {
         &.available {
-            fill: rgba(251,184,49, 0.75) !important;
-            stroke: #ffffff !important;
+            fill: rgba(251,184,49, 0.9) !important;
+            stroke: #3C3C3D !important;
         }
         &.unavailable {
             // stroke-width: 2;
-            fill: rgba(255,255,255,0.75) !important;
-            stroke: rgb(251,184,49) !important;
+            fill: rgba(251,184,49, 0.25) !important;
+            stroke: #3C3C3D !important;
         }
     }
 }
@@ -246,19 +246,19 @@ svg:not(:root) {
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
-    stroke-width: 1.5;
+    stroke-width: 1;
     stroke-miterlimit: 10;
 }
 .active_5V {
     .type_5V {
         &.available {
-            fill: rgba(27,177,175,0.75) !important;
-            stroke: #ffffff !important;
+            fill: rgba(27,177,175,0.9) !important;
+            stroke: #3C3C3D !important;
         }
         &.unavailable {
             // stroke-width: 2;
-            fill: rgba(255,255,255,0.75) !important;
-            stroke: rgb(27,177,175) !important;
+            fill: rgba(27,177,175,0.25) !important;
+            stroke: #3C3C3D !important;
         }
     }
 }
@@ -269,19 +269,18 @@ svg:not(:root) {
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
-    stroke-width: 1.5;
+    stroke-width: 1;
     stroke-miterlimit: 10;
 }
 .active_6V {
     .type_6V {
         &.available {
-            fill: rgba(95,96,98,0.75) !important;
-            stroke: #ffffff !important;
+            fill: rgba(95,96,98,0.9) !important;
+            stroke: #3C3C3D !important;
         }
         &.unavailable {
-            // stroke-width: 2;
-            fill: rgba(255,255,255,0.75) !important;
-            stroke: rgb(95, 96, 98) !important;
+            fill: rgba(95,96,98,0.25) !important;
+            stroke: #3C3C3D !important;
         }
     }
 }
@@ -292,19 +291,19 @@ svg:not(:root) {
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
-    stroke-width: 1.5;
+    stroke-width: 1;
     stroke-miterlimit: 10;
 }
 .active_2TH {
     .type_2TH {
         &.available {
-            fill: rgba(110,163,64,0.75) !important;
-            stroke: #ffffff !important;
+            fill: rgba(110,163,64,0.9) !important;
+            stroke: #3C3C3D !important;
         }
         &.unavailable {
             // stroke-width: 2;
-            fill: rgba(255,255,255,0.75) !important;
-            stroke: rgb(110,163,64) !important;
+            fill: rgba(110,163,64,0.25) !important;
+            stroke: #3C3C3D !important;
         }
     }
 }
@@ -315,19 +314,19 @@ svg:not(:root) {
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
-    stroke-width: 1.5;
+    stroke-width: 1;
     stroke-miterlimit: 10;
 }
 .active_3TH {
     .type_3TH {
         &.available {
-            fill: rgba(24,151,210,0.75) !important;
-            stroke: #ffffff !important;
+            fill: rgba(24,151,210,0.9) !important;
+            stroke: #3C3C3D !important;
         }
         &.unavailable {
             // stroke-width: 2;
-            fill: rgba(255,255,255,0.75) !important;
-            stroke: rgb(24,151,210) !important;
+            fill: rgba(24,151,210,0.25) !important;
+            stroke: #3C3C3D !important;
         }
     }
 }
@@ -338,19 +337,19 @@ svg:not(:root) {
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
-    stroke-width: 1.5;
+    stroke-width: 1;
     stroke-miterlimit: 10;
 }
 .active_3TH {
     .type_3TH {
         &.available {
-            fill: rgba(7,71,125,0.75) !important;
-            stroke: #ffffff !important;
+            fill: rgba(7,71,125,0.9) !important;
+            stroke: #3C3C3D !important;
         }
         &.unavailable {
             // stroke-width: 2;
-            fill: rgba(255,255,255,0.75) !important;
-            stroke: rgb(7,71,125) !important;
+            fill: rgba(7,71,125,0.25) !important;
+            stroke: #3C3C3D !important;
         }
     }
 }
