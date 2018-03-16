@@ -51,6 +51,17 @@
                 });
                 return styleList;
             },
+            rotationStyles: function () {
+                // Gets the list of styles available
+                console.log('rotation styleee');
+                let styleList = {};
+                Object.keys(this.rotations).forEach( (key, index) => {
+                    console.log('rotationssss', key, index);
+                    styleList[key] = this.rotations[key][this.selectedView] ? this.rotations[key][this.selectedView] : '';
+                });
+                console.log('styleeee listtt', styleList);
+                return styleList;
+            },
             optionsAvailable: function () {
                 let currentMapElement = document.getElementById(this.selectedView);
                 if(currentMapElement) {
@@ -196,7 +207,10 @@
             },
             setupPngImages: function(callback) {
                 let pngContainer = document.getElementById('png-container');
-                let pngImages = Array.from(pngContainer.children).filter( (child) => child.tagName == 'IMG' );
+                // let pngImages = Array.from(pngContainer.children).filter( (child) => child.tagName == 'IMG' );
+                let pngImages = Array.from(pngContainer.children).map( (child) => {
+                    return Array.from(child.children)[0];
+                });
                 let pngsLoaded = 0;
 
                 let fitPngsToWindow = () => {
@@ -252,7 +266,7 @@
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
                         rotations[parentSVG] = {
-                            'transform': 'rotate( ${ positionInParent.rotate.angle }deg )',
+                            'transform': `rotate( ${ positionInParent.rotate.angle }deg )`,
                             'transform-origin': `${ positionInParent.rotate.origin[0] }px ${ positionInParent.rotate.origin[1] }px`
                         };
                         styles[parentSVG] = { transform:
@@ -274,8 +288,8 @@
                             let positionInImage = this.getPlacement(child.id, name);
 
                             // Sets the CSS transform when the child id is active
-                            rotations[parentSVG] = {
-                                'transform': 'rotate( ${ positionInImage.rotate.angle }deg )',
+                            rotations[childParent] = {
+                                'transform': `rotate( ${ -positionInImage.rotate.angle }deg )`,
                                 'transform-origin': `${ positionInImage.rotate.origin[0] }px ${ positionInImage.rotate.origin[1] }px`
                             };
                             styles[childParent] = { transform:
@@ -284,7 +298,9 @@
                         }
                     });
 
+                    console.log(name, rotations);
                     // Vue call to bind the new styles to the data object
+                    Vue.set(this.rotations, name, rotations);
                     Vue.set(this.styles, name, styles);
                 }
             }
@@ -308,36 +324,50 @@
     <div id="map-container" class="map" @click="mapClick($event)">
         <div id="png-container" :style="[fullscreenTransform.png[selectedView]]">
             <!-- World -->
-            <img
-                id="app_x5F_world--image"
-                class="png-image"
-                :src="pngImages.World"
-                :style="[mapStyles['app_x5F_world--parent']]"
-                :class="{ 'active': selectedView === 'app_x5F_world--parent' }" />
+            <div
+                class="png-image-container"
+                :style="[rotationStyles['app_x5F_world--parent']]"
+                :class="{ 'active': selectedView === 'app_x5F_world--parent' }">
+                <img
+                    id="app_x5F_world--image"
+                    class="png-image"
+                    :src="pngImages.World"
+                    :style="[mapStyles['app_x5F_world--parent']]" />
+            </div>
             <!-- End of World -->
             <!-- UAE -->
-            <img
-                id="app_x5F_UAE--image"
-                class="png-image"
-                :src="pngImages.UAERegion"
-                :style="[mapStyles['app_x5F_UAE--parent']]"
-                :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }" />
+            <div
+                class="png-image-container"
+                :style="[rotationStyles['app_x5F_UAE--parent']]"
+                :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }">
+                <img
+                    id="app_x5F_UAE--image"
+                    class="png-image"
+                    :src="pngImages.UAERegion"
+                    :style="[mapStyles['app_x5F_UAE--parent']]" />
+            </div>
             <!-- End of UAE -->
             <!-- Sharjah City -->
-            <img
-                id="app_x5F_Sharjah--image"
-                class="png-image"
-                :src="pngImages.SharjahCity"
-                :style="[mapStyles['app_x5F_Sharjah--parent']]"
-                :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }" />
+            <div
+                class="png-image-container"
+                :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }" :style="[rotationStyles['app_x5F_Sharjah--parent']]">
+                <img
+                    id="app_x5F_Sharjah--image"
+                    class="png-image"
+                    :src="pngImages.SharjahCity"
+                    :style="[mapStyles['app_x5F_Sharjah--parent']]" />
+            </div>
             <!-- End of Sharjah City -->
             <!-- Sharjah Road -->
-            <img
-                id="app_x5F_Sharjah-road--image"
-                class="png-image"
-                :src="pngImages.SharjahRoad"
-                :style="[mapStyles['app_x5F_Sharjah-road--parent']]"
-                :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }" />
+            <div
+                class="png-image-container"
+                :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }" :style="[rotationStyles['app_x5F_Sharjah-road--parent']]">
+                <img
+                    id="app_x5F_Sharjah-road--image"
+                    class="png-image"
+                    :src="pngImages.SharjahRoad"
+                    :style="[mapStyles['app_x5F_Sharjah-road--parent']]" />
+            </div>
             <!-- End of Sharjah Road -->
         </div>
         <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
@@ -404,16 +434,23 @@
     top: 0;
 }
 
-.png-image {
+.png-image-container {
     position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
     opacity: 0;
-    transition: transform 0.5s ease-out 0.25s, opacity 0.25s ease-out 0.75s;
+    transition: transform 0.25s ease-out 0.75s, opacity 0.25s ease-out 1s;
     &.active {
         opacity: 1;
-        transition: transform 0.5s ease-out 0.25s, opacity 0.25s ease-out 0s;
+        transition: transform 0.25s ease-out 0.75s, opacity 0.25s ease-out 0s;
+    }
+}
+.png-image {
+    transition: transform 0.5s ease-out 0.25s;
+    transform-origin: 50% 50% 0;
+    &.active {
+        transition: transform 0.5s ease-out 0.25s;
     }
 }
 
