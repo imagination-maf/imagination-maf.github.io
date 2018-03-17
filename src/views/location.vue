@@ -25,7 +25,8 @@
                     'parent': 'parent',
                     'image': 'image'
                 },
-                styles: {},
+                scales: {},
+                translations: {},
                 rotations: {},
                 pngImages: {
                     'World': require('../images/maps/World.png'),
@@ -43,11 +44,19 @@
             selectedView : function () {
                 return this.$route.query.view;
             },
-            mapStyles: function () {
+            scaleStyles: function () {
                 // Gets the list of styles available
                 let styleList = {};
-                Object.keys(this.styles).forEach( (key, index) => {
-                    styleList[key] = this.styles[key][this.selectedView] ? this.styles[key][this.selectedView] : '';
+                Object.keys(this.scales).forEach( (key, index) => {
+                    styleList[key] = this.scales[key][this.selectedView] ? this.scales[key][this.selectedView] : '';
+                });
+                return styleList;
+            },
+            translationStyles: function () {
+                // Gets the list of styles available
+                let styleList = {};
+                Object.keys(this.translations).forEach( (key, index) => {
+                    styleList[key] = this.translations[key][this.selectedView] ? this.translations[key][this.selectedView] : '';
                 });
                 return styleList;
             },
@@ -207,8 +216,9 @@
             },
             setupPngImages: function(callback) {
                 let pngContainer = document.getElementById('png-container');
-                // let pngImages = Array.from(pngContainer.children).filter( (child) => child.tagName == 'IMG' );
                 let pngImages = Array.from(pngContainer.children).map( (child) => {
+                    return Array.from(child.children)[0]
+                }).map( (child) => {
                     return Array.from(child.children)[0];
                 });
                 let pngsLoaded = 0;
@@ -251,9 +261,12 @@
                     let name = maps[index].id;
 
                     // Get all the transformation states possible for this map element
-                    let styles = {};
+                    let scales = {};
                     let rotations = {};
-                    styles[name] = {transform: 'translate(0px, 0px) scale(1)'};
+                    let translations = {};
+
+                    translations[name] = {transform: 'translate(0px, 0px)'};
+                    scales[name] = {transform: 'scale(1)'};
                     rotations[name] = {transform: 'rotate(0deg)'};
 
                     /** GETS THE POSITION WHERE IT SHOULD BE IN THE PARENT SVG **/
@@ -266,12 +279,13 @@
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
                         rotations[parentSVG] = {
-                            'transform': `rotate( ${ positionInParent.rotate.angle }deg )`,
-                            'transform-origin': `${ positionInParent.rotate.origin[0] }px ${ positionInParent.rotate.origin[1] }px`
+                            'transform': `rotate( ${ positionInParent.rotate.angle }deg )`
                         };
-                        styles[parentSVG] = { transform:
-                            `translate( ${ -positionInParent.translateX }px, ${ -positionInParent.translateY }px )
-                            scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
+                        translations[parentSVG] = {
+                            transform: `translate( ${ -positionInParent.translateX * (positionInParent.scale) }px, ${ -positionInParent.translateY * (positionInParent.scale) }px )`
+                        };
+                        scales[parentSVG] = {
+                            transform: `scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
                         };
                     }
 
@@ -292,16 +306,19 @@
                                 'transform': `rotate( ${ -positionInImage.rotate.angle }deg )`,
                                 'transform-origin': `${ positionInImage.rotate.origin[0] }px ${ positionInImage.rotate.origin[1] }px`
                             };
-                            styles[childParent] = { transform:
-                                `translate( ${ positionInImage.translateX * positionInImage.scale }px, ${ positionInImage.translateY * positionInImage.scale }px )
-                                scale( ${ positionInImage.scale }, ${ positionInImage.scale } )`};
+                            translations[childParent] = {
+                                'transform': `translate( ${ positionInImage.translateX }px, ${ positionInImage.translateY }px )`
+                            };
+                            scales[childParent] = {
+                                transform: `scale( ${ positionInImage.scale }, ${ positionInImage.scale } )`
+                            };
                         }
                     });
 
-                    console.log(name, rotations);
                     // Vue call to bind the new styles to the data object
                     Vue.set(this.rotations, name, rotations);
-                    Vue.set(this.styles, name, styles);
+                    Vue.set(this.scales, name, scales);
+                    Vue.set(this.translations, name, translations);
                 }
             }
         },
@@ -325,48 +342,66 @@
         <div id="png-container" :style="[fullscreenTransform.png[selectedView]]">
             <!-- World -->
             <div
-                class="png-image-container"
-                :style="[rotationStyles['app_x5F_world--parent']]"
+                class="png-image-container-scale"
+                :style="[scaleStyles['app_x5F_world--parent']]"
                 :class="{ 'active': selectedView === 'app_x5F_world--parent' }">
-                <img
-                    id="app_x5F_world--image"
-                    class="png-image"
-                    :src="pngImages.World"
-                    :style="[mapStyles['app_x5F_world--parent']]" />
+                <div
+                    class="png-image-container-translate"
+                    :style="[translationStyles['app_x5F_world--parent']]">
+                    <img
+                        id="app_x5F_world--image"
+                        class="png-image"
+                        :src="pngImages.World"
+                        :style="[rotationStyles['app_x5F_world--parent']]"/>
+                </div>
             </div>
             <!-- End of World -->
             <!-- UAE -->
             <div
-                class="png-image-container"
-                :style="[rotationStyles['app_x5F_UAE--parent']]"
+                class="png-image-container-scale"
+                :style="[scaleStyles['app_x5F_UAE--parent']]"
                 :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }">
-                <img
-                    id="app_x5F_UAE--image"
-                    class="png-image"
-                    :src="pngImages.UAERegion"
-                    :style="[mapStyles['app_x5F_UAE--parent']]" />
+                <div
+                    class="png-image-container-translate"
+                    :style="[translationStyles['app_x5F_UAE--parent']]">
+                    <img
+                        id="app_x5F_UAE--image"
+                        class="png-image"
+                        :src="pngImages.UAERegion"
+                        :style="[rotationStyles['app_x5F_UAE--parent']]"/>
+                </div>
             </div>
             <!-- End of UAE -->
             <!-- Sharjah City -->
             <div
-                class="png-image-container"
-                :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }" :style="[rotationStyles['app_x5F_Sharjah--parent']]">
-                <img
-                    id="app_x5F_Sharjah--image"
-                    class="png-image"
-                    :src="pngImages.SharjahCity"
-                    :style="[mapStyles['app_x5F_Sharjah--parent']]" />
+                class="png-image-container-scale"
+                :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }"
+                :style="[scaleStyles['app_x5F_Sharjah--parent']]">
+                <div
+                    class="png-image-container-translate"
+                    :style="[translationStyles['app_x5F_Sharjah--parent']]">
+                    <img
+                        id="app_x5F_Sharjah--image"
+                        class="png-image"
+                        :src="pngImages.SharjahCity"
+                        :style="[rotationStyles['app_x5F_Sharjah--parent']]" />
+                </div>
             </div>
             <!-- End of Sharjah City -->
             <!-- Sharjah Road -->
             <div
-                class="png-image-container"
-                :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }" :style="[rotationStyles['app_x5F_Sharjah-road--parent']]">
-                <img
-                    id="app_x5F_Sharjah-road--image"
-                    class="png-image"
-                    :src="pngImages.SharjahRoad"
-                    :style="[mapStyles['app_x5F_Sharjah-road--parent']]" />
+                class="png-image-container-scale"
+                :style="[scaleStyles['app_x5F_Sharjah-road--parent']]"
+                :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }">
+                <div
+                    class="png-image-container-translate"
+                    :style="[translationStyles['app_x5F_Sharjah-road--parent']]">
+                    <img
+                        id="app_x5F_Sharjah-road--image"
+                        class="png-image"
+                        :src="pngImages.SharjahRoad"
+                        :style="[rotationStyles['app_x5F_Sharjah-road--parent']]" />
+                </div>
             </div>
             <!-- End of Sharjah Road -->
         </div>
@@ -434,22 +469,21 @@
     top: 0;
 }
 
-.png-image-container {
+.png-image-container-scale {
     position: absolute;
     left: 0;
     top: 0;
     z-index: -1;
     opacity: 0;
-    transition: transform 0.25s ease-out 0.75s, opacity 0.25s ease-out 1s;
+    transition: transform 0.5s ease-out 0.25s, opacity 0s ease-out 0.75s;
     &.active {
         opacity: 1;
-        transition: transform 0.25s ease-out 0.75s, opacity 0.25s ease-out 0s;
+        transition: transform 0.5s ease-out 0.25s, opacity 0s ease-out 0s;
     }
-}
-.png-image {
-    transition: transform 0.5s ease-out 0.25s;
-    transform-origin: 50% 50% 0;
-    &.active {
+    .png-image-container-translate {
+        transition: transform 0.5s ease-out 0.25s;
+    }
+    .png-image {
         transition: transform 0.5s ease-out 0.25s;
     }
 }
