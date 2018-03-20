@@ -1,0 +1,9 @@
+options:
+  docker: true
+
+pipelines:
+  tags:
+    'v*.*.*':
+      - step:
+          script:
+            - make upload
