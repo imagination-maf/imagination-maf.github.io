@@ -446,6 +446,6 @@
 		</g>
 	</g>
 </g>
-<rect id="app_x5F_Sharjah--zoom" x="1042.5" y="501" transform="matrix(0.5765 -0.8171 0.8171 0.5765 30.9416 1100.0624)" style="fill:none;stroke:#1D1D1B;stroke-width:0.5524;stroke-miterlimit:10;" width="68.4" height="38.4"/>
-<rect id="app_x5F_Dubai--zoom" x="1014.2" y="546.3" transform="matrix(0.5765 -0.8171 0.8171 0.5765 -18.0778 1096.1908)" style="fill:none;stroke:#1D1D1B;stroke-width:0.5524;stroke-miterlimit:10;" width="68.4" height="38.4"/>
+<rect id="app_x5F_Sharjah--zoom" x="1042.5" y="501" transform="matrix(0.5765 -0.8171 0.8171 0.5765 30.9416 1100.0624)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="68.4" height="38.4"/>
+<rect id="app_x5F_Dubai--zoom" x="1014.2" y="546.3" transform="matrix(0.5765 -0.8171 0.8171 0.5765 -18.0778 1096.1908)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="68.4" height="38.4"/>
 </svg>

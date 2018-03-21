@@ -3,9 +3,9 @@
 <svg version="1.1" id="app_x5F_world--parent" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 x="0px" y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;"
 	 xml:space="preserve">
-<rect id="app_x5F_UAE--zoom" x="1150.9" y="477.2" style="fill:none;stroke:#1D1D1B;stroke-width:0.75;stroke-miterlimit:10;" width="173.4" height="97.5"/>
-<rect id="app_x5F_Lebanon--zoom" x="874.4" y="325.8" transform="matrix(0.1496 -0.9887 0.9887 0.1496 426.5725 1167.2114)" style="fill:none;stroke:#1D1D1B;stroke-width:0.3469;stroke-miterlimit:10;" width="34.9" height="19.6"/>
-<rect id="app_x5F_Oman--zoom" x="1280.4" y="618" transform="matrix(0.5781 -0.816 0.816 0.5781 35.0206 1331.5051)" style="fill:none;stroke:#1D1D1B;stroke-width:0.4917;stroke-miterlimit:10;" width="49.4" height="27.8"/>
+<rect id="app_x5F_UAE--zoom" x="1150.9" y="477.2" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="173.4" height="97.5"/>
+<rect id="app_x5F_Lebanon--zoom" x="874.4" y="325.8" transform="matrix(0.1496 -0.9887 0.9887 0.1496 426.5725 1167.2114)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="34.9" height="19.6"/>
+<rect id="app_x5F_Oman--zoom" x="1280.4" y="618" transform="matrix(0.5781 -0.816 0.816 0.5781 35.0206 1331.5051)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="49.4" height="27.8"/>
 <g id="app_x5F_Iraq--marker" transform="translate(978.000000, 334.000000)">
 	<polygon id="Fill-124" style="fill:#8A1538;" points="26.9,5 26.9,28.7 34.9,28.7 38.8,33 42.8,28.7 50.7,28.7 50.7,5 	"/>
 	<g id="Group" transform="translate(5.000000, 5.000000)">
