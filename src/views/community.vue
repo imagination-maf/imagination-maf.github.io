@@ -13,6 +13,7 @@
         },
         data() {
             return {
+                loaded: false,
                 propertyTypeFilter: {},
                 amenitiesFilter: false,
                 propertyInfoActive: false,
@@ -123,14 +124,16 @@
                     plotBoundaries[index].classList.add(this.availableList[dummyAvailable]);
                 }
 
-            }, 2500 );
+                this.loaded = true;
+
+            }, 2000 );
         }
     });
 </script>
 
 <template>
 <div class="container">
-    <div id="area">
+    <div id="area" v-bind:class="{ visible: loaded }">
         <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
             <img :src="images.alZahia" class="png-image" id="png-image" :style="pngTransform" />
         </div>
@@ -160,6 +163,7 @@
     width: 75%;
     height: 100%;
     position: relative;
+    opacity: 0;
 }
 
 #svg-container {
@@ -357,4 +361,17 @@ svg:not(:root) {
 .st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16 {
     display: none;
 }
+
+#area.visible {
+    animation-name: fade-in;
+    animation-fill-mode: both;
+    animation-duration: .5s;
+    animation-duration: 1s
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 </style>
