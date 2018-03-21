@@ -1,9 +1,15 @@
-options:
-  docker: true
-
 pipelines:
   tags:
     'v*.*.*':
       - step:
+          name: Build and upload docker image
+          services:
+            - docker
           script:
             - make upload
+      - step:
+          name: Deploy to staging
+          deployment: staging
+          image: flyte/rancher-tools
+          script:
+            - python deploy/deploy.py 1a5 maf-staging
