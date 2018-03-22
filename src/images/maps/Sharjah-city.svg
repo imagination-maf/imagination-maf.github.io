@@ -3,7 +3,7 @@
 <svg version="1.1" id="app_x5F_Sharjah--parent" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 x="0px" y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;"
 	 xml:space="preserve">
-<rect id="app_x5F_Sharjah-road--zoom" x="1434.3" y="658.4" transform="matrix(0.9884 -0.1521 0.1521 0.9884 -89.8251 239.8509)" style="fill:none;stroke:#1D1D1B;stroke-width:0.6224;stroke-miterlimit:10;" width="177.1" height="97.3"/>
+<rect id="app_x5F_Sharjah-road--zoom" x="1434.3" y="658.4" transform="matrix(0.9884 -0.1521 0.1521 0.9884 -89.8251 239.8509)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="177.1" height="97.3"/>
 <g id="Map_labels">
 	<path id="Line-2_26_" style="fill:#8A1538;stroke:#8A1538;stroke-width:1.2447;stroke-linecap:square;" d="M1536.6,801.2h33.4"/>
 	<text transform="matrix(1 0 0 1 962.5029 476.6725)" style="enable-background:new    ;"><tspan x="0" y="0" style="fill:#8A1538; font-family:'MarselisPro'; font-size:13.9353px;">Burj Khali</tspan><tspan x="60.1" y="0" style="fill:#8A1538; font-family:'MarselisPro'; font-size:13.9353px;">f</tspan><tspan x="64.6" y="0" style="fill:#8A1538; font-family:'MarselisPro'; font-size:13.9353px;">a</tspan></text>

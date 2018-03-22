@@ -47,7 +47,7 @@
 	</g>
 	<text transform="matrix(1 0 0 1 1250.7041 382.8381)" style="fill:#989898; font-family:'MarselisPro'; font-size:16.9987px;">RAS AL-KHAIMAH</text>
 </g>
-<g id="app_x5F_Dubai--button">
+<g disabled-id="app_x5F_Dubai--button">
 	<g id="app_x5F_Dubai--marker" transform="translate(1032.000000, 577.000000)">
 		<polygon id="Fill-124_1_" style="fill:#8A1538;" points="0,-18.6 0,5.1 7.9,5.1 11.8,9.4 15.9,5.1 23.8,5.1 23.8,-18.6 		"/>
 		<g id="Group_1_" transform="translate(5.000000, 5.000000)">
@@ -446,6 +446,6 @@
 		</g>
 	</g>
 </g>
-<rect id="app_x5F_Sharjah--zoom" x="1042.5" y="501" transform="matrix(0.5765 -0.8171 0.8171 0.5765 30.9416 1100.0624)" style="fill:none;stroke:#1D1D1B;stroke-width:0.5524;stroke-miterlimit:10;" width="68.4" height="38.4"/>
-<rect id="app_x5F_Dubai--zoom" x="1014.2" y="546.3" transform="matrix(0.5765 -0.8171 0.8171 0.5765 -18.0778 1096.1908)" style="fill:none;stroke:#1D1D1B;stroke-width:0.5524;stroke-miterlimit:10;" width="68.4" height="38.4"/>
+<rect id="app_x5F_Sharjah--zoom" x="1042.5" y="501" transform="matrix(0.5765 -0.8171 0.8171 0.5765 30.9416 1100.0624)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="68.4" height="38.4"/>
+<rect id="app_x5F_Dubai--zoom" x="1014.2" y="546.3" transform="matrix(0.5765 -0.8171 0.8171 0.5765 -18.0778 1096.1908)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="68.4" height="38.4"/>
 </svg>

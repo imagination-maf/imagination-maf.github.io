@@ -3,9 +3,9 @@
 <svg version="1.1" id="app_x5F_world--parent" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 x="0px" y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;"
 	 xml:space="preserve">
-<rect id="app_x5F_UAE--zoom" x="1150.9" y="477.2" style="fill:none;stroke:#1D1D1B;stroke-width:0.75;stroke-miterlimit:10;" width="173.4" height="97.5"/>
-<rect id="app_x5F_Lebanon--zoom" x="874.4" y="325.8" transform="matrix(0.1496 -0.9887 0.9887 0.1496 426.5725 1167.2114)" style="fill:none;stroke:#1D1D1B;stroke-width:0.3469;stroke-miterlimit:10;" width="34.9" height="19.6"/>
-<rect id="app_x5F_Oman--zoom" x="1280.4" y="618" transform="matrix(0.5781 -0.816 0.816 0.5781 35.0206 1331.5051)" style="fill:none;stroke:#1D1D1B;stroke-width:0.4917;stroke-miterlimit:10;" width="49.4" height="27.8"/>
+<rect id="app_x5F_UAE--zoom" x="1150.9" y="477.2" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="173.4" height="97.5"/>
+<rect id="app_x5F_Lebanon--zoom" x="874.4" y="325.8" transform="matrix(0.1496 -0.9887 0.9887 0.1496 426.5725 1167.2114)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="34.9" height="19.6"/>
+<rect id="app_x5F_Oman--zoom" x="1280.4" y="618" transform="matrix(0.5781 -0.816 0.816 0.5781 35.0206 1331.5051)" style="fill:none;stroke:#1D1D1B;stroke-width:0;stroke-miterlimit:10;" width="49.4" height="27.8"/>
 <g id="app_x5F_Iraq--marker" transform="translate(978.000000, 334.000000)">
 	<polygon id="Fill-124" style="fill:#8A1538;" points="26.9,5 26.9,28.7 34.9,28.7 38.8,33 42.8,28.7 50.7,28.7 50.7,5 	"/>
 	<g id="Group" transform="translate(5.000000, 5.000000)">
@@ -143,7 +143,7 @@
 			c-0.1,0-0.3-0.1-0.4-0.1c-0.2,0-0.4-0.1-0.7-0.1C35.1-1.9,34.8-1.8,34.4-1.7z"/>
 	</g>
 </g>
-<g id="app_x5F_Lebanon--button">
+<g disabled-id="app_x5F_Lebanon--button">
 	<path id="Line-4-Copy-5" style="fill:none;stroke:#8A1538;stroke-width:2;" d="M886.3,337h-52.4"/>
 	<g id="app_x5F_Lebanon--marker" transform="translate(856.000000, 319.000000)">
 		<polygon id="Fill-124_12_" style="fill:#8A1538;" points="28.3,5.2 28.3,28.9 36.2,28.9 40.2,33.2 44.1,28.9 52,28.9 52,5.2 		"/>
@@ -421,7 +421,7 @@
 			L791.4,349.5z"/>
 	</g>
 </g>
-<g id="app_x5F_Oman--button">
+<g disabled-id="app_x5F_Oman--button">
 	<path id="Line-4-Copy-4" style="fill:none;stroke:#8A1538;stroke-width:2;" d="M1359.9,622.8h-52.4"/>
 	<g id="app_x5F_Oman--marker" transform="translate(1260.000000, 608.000000)">
 		<polygon id="Fill-124_14_" style="fill:#8A1538;" points="23.8,1.9 23.8,25.6 31.7,25.6 35.6,29.9 39.6,25.6 47.5,25.6 47.5,1.9
