@@ -5,6 +5,7 @@ is preinstalled.
 """
 import argparse
 from os import environ as env
+from datetime import datetime
 
 import rancher_tools as rt
 
@@ -31,14 +32,34 @@ def main():
     new_frontend = rt.clone_svc(
         old_frontend,
         new_frontend_name,
-        new_image=f'registry-maf.0x07.co.uk:5000/maf-portfolio:{tag}'
+        new_image=f'registry-maf.0x07.co.uk:5000/maf-portfolio:{tag}',
+        launch_config=dict(
+            labels={
+                'io.rancher.container.pull_image': 'always',
+                'service_name': 'frontend',
+                'replaced': old_frontend['id'],
+                'created': datetime.now().isoformat(),
+                'tag': tag
+            }
+        )
     )
 
     print('Waiting for new service to become active..')
     new_frontend = rt.await_active(new_frontend, timeout=60)
 
+    print('Waiting for new service to become healthy..')
+    new_frontend = rt.await_healthy(new_frontend, timeout=60)
+
     print('Updating load balancer to use new service..')
     lb = rt.change_lb_svc_target(lb, 443, '/', new_frontend['id'])
+
+    print('Removing all old services except for the last two.')
+    old_frontends = rt.filter_stack_svcs_by_label(
+        stack, 'service_name', 'frontend')
+    for of in old_frontends:
+        if of['id'] not in (new_frontend['id'], old_frontend['id']):
+            print('Deleting %s' % of['name'])
+            rt.delete_svc(of)
 
     print('Finished!')
 
