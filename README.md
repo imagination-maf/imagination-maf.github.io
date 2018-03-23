@@ -40,6 +40,10 @@ The `deploy/deploy.py` script will perform the following functions using the Ran
 - Updates the load balancer to point to the new service instead of the old one
 - Removes any old frontend services, except for the one we've just made and the one we just replaced. This is so that we can switch back to the old service by manually changing the load balancer back using the Rancher UI.
 
+### Deploying to live
+
+Once the above process has completed automatically on the staging stack, a live deployment can be triggered manually. In order to deploy a new version to live, go to the [Bitbucket Pipelines](https://bitbucket.org/imagination/maf-portfolio-vue/addon/pipelines/home#!/) page and select the build you want to deploy. If the build has completed and deployed to staging, then you will be presented with a 'Run' button on the 'Deploy to live' stage. Press the button to deploy to the live stack.
+
 ### Docker image
 
 The Docker image created as part of the auto-build (or manually with `make build`) contains an Nginx web server configured to serve the HTML files in the root directory, plus the `dist` directory created as part of `npm run build` on port 80.
