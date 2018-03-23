@@ -14,6 +14,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('env')
     p.add_argument('stack')
+    p.add_argument('--https-port', type=int, default=443)
     args = p.parse_args()
 
     tag = env['BITBUCKET_TAG']
@@ -25,7 +26,7 @@ def main():
     lb = rt.get_svc_by_stack_and_name(stack, 'lb')
 
     print('Getting existing frontend service..')
-    old_frontend = rt.get_lb_svc_target(lb, 443, '/')
+    old_frontend = rt.get_lb_svc_target(lb, args.https_port, '/')
 
     new_frontend_name = f'frontend-{tag}'.replace('.', '-')
     print(f'Creating new service {new_frontend_name!r}..')
@@ -51,7 +52,7 @@ def main():
     new_frontend = rt.await_healthy(new_frontend, timeout=60)
 
     print('Updating load balancer to use new service..')
-    lb = rt.change_lb_svc_target(lb, 443, '/', new_frontend['id'])
+    lb = rt.change_lb_svc_target(lb, args.https_port, '/', new_frontend['id'])
 
     print('Removing all old services except for the last two.')
     old_frontends = rt.filter_stack_svcs_by_label(
