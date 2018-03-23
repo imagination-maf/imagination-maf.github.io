@@ -45,6 +45,13 @@ def main():
         )
     )
 
+    print('Activating services..')
+    try:
+        new_frontend = rt.activate_svc(new_frontend)
+    except Exception:
+        # Must already be activated
+        pass
+
     print('Waiting for new service to become active..')
     new_frontend = rt.await_active(new_frontend, timeout=60)
 
