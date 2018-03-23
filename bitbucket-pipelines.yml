@@ -10,13 +10,13 @@ pipelines:
       - step:
           name: Deploy to staging
           deployment: staging
-          image: flyte/rancher-tools
+          image: flyte/rancher-tools:v0.0.2
           script:
             - python deploy/deploy.py 1a5 maf-staging
       - step:
           name: Deploy to live
           deployment: production
           trigger: manual
-          image: flyte/rancher-tools
+          image: flyte/rancher-tools:v0.0.2
           script:
             - python deploy/deploy.py 1a5 maf-live --https-port 10443
