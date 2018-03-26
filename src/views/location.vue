@@ -37,7 +37,8 @@
                 fullscreenTransform: {
                     'png': {},
                     'svg': {}
-                }
+                },
+                'direction': 'in'
             }
         },
         computed : {
@@ -87,6 +88,7 @@
         },
         methods: {
             zoomOut: function () {
+                this.direction = 'out';
                 // Converts --parent to --zoom
                 let zoomElement = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom;
                 // Searches for the parent where --zoom is present
@@ -97,6 +99,7 @@
                 }
             },
             zoomIn: function () {
+                this.direction = 'in';
                 let currentMapElement = document.getElementById(this.selectedView);
                 let children = Array.from(currentMapElement.children);
                 // Loop through each child (we know zoom ids will be the first level)
@@ -115,6 +118,7 @@
                 this.$router.push({ path: 'community' });
             },
             mapClick: function($event) {
+                this.direction = 'in';
                 // The path of elements clicked starting from lowest point first
                 let pathElements = $event.path;
                 // Loop through the elements
@@ -339,7 +343,7 @@
     <!-- TODO Add condition here to check if markers are available -->
     <MarkerInfo></MarkerInfo>
     <div id="map-container" class="map" @click="mapClick($event)">
-        <div id="png-container" :style="[fullscreenTransform.png[selectedView]]">
+        <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
             <!-- World -->
             <div
                 class="png-image-container-scale"
@@ -461,31 +465,49 @@
     position: absolute;
     left: 0;
     top: 0;
+    .png-image-container-scale {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        opacity: 0;
+    }
+    &.in {
+        .png-image-container-scale {
+            transition: transform 0.5s linear 0.25s, opacity 0.1s linear 1s;
+            &.active {
+                opacity: 1;
+                transition: transform 0.5s linear 0.25s, opacity 0.1s linear 0s;
+            }
+            .png-image-container-translate {
+                transition: transform 0.225s ease-out 0.25s;
+            }
+            .png-image {
+                transition: transform 0.2s linear 0.75s;
+            }
+        }
+    }
+    &.out {
+        .png-image-container-scale {
+            transition: transform 0.5s linear 0.45s, opacity 0.1s linear 0.45s;
+            &.active {
+                opacity: 1;
+                transition: transform 0.5s linear 0.45s, opacity 0.1s linear 0s;
+            }
+            .png-image-container-translate {
+                transition: transform 0.225s ease-out 0.725s;
+            }
+            .png-image {
+                transition: transform 0.2s linear 0.25s;
+            }
+        }
+    }
 }
 
 #svg-container {
     position: absolute;
     left: 0;
     top: 0;
-}
-
-.png-image-container-scale {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -1;
-    opacity: 0;
-    transition: transform 0.5s ease-out 0.25s, opacity 0s ease-out 0.75s;
-    &.active {
-        opacity: 1;
-        transition: transform 0.5s ease-out 0.25s, opacity 0s ease-out 0s;
-    }
-    .png-image-container-translate {
-        transition: transform 0.5s ease-out 0.25s;
-    }
-    .png-image {
-        transition: transform 0.5s ease-out 0.25s;
-    }
 }
 
 .loading {
