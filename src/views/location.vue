@@ -117,6 +117,8 @@
             mapClick: function($event) {
                 // The path of elements clicked starting from lowest point first
                 let pathElements = $event.path;
+                // Polyfill path if not on Chrome
+                if (!pathElements) pathElements = this.getComposedPath($event.target);
                 // Loop through the elements
                 for(var i = 0; i < pathElements.length; i++) {
                     // If the beginning of the id is 'app_' we know its one we're looking for
@@ -320,6 +322,21 @@
                     Vue.set(this.scales, name, scales);
                     Vue.set(this.translations, name, translations);
                 }
+            },
+            getComposedPath: function(el) {
+                // Chrome is the only browser that has click event path
+                // Polyfill for Chrome's path or rather the composedPath standard
+                var path = [];
+                while (el) {
+                    path.push(el);
+                    if (el.tagName === 'HTML') {
+                        path.push(document);
+                        path.push(window);
+                        return path;
+                    }
+                    el = el.parentElement;
+                }
+                return path;
             }
         },
         mounted(){
