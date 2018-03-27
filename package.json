@@ -1,7 +1,7 @@
 {
   "name": "maf-portfolio-vue",
   "description": "A retail app to show communities and neighbourhoods for sale",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "Lawrence Burden <lawrence.burden@imagination.com>",
   "license": "MIT",
   "private": true,
