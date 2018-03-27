@@ -1,9 +1,11 @@
 <script>
     import Vue from 'vue';
     import LocationMenu from '../components/locationMenu.vue';
+    import AppHeader from '../components/header.vue';
 
     export default Vue.component('community-selection', {
         components: {
+            AppHeader,
             LocationMenu
         },
         data() {
@@ -13,8 +15,11 @@
 </script>
 
 <template>
-    <div class="menu">
-        <LocationMenu />
+    <div class="app">
+        <AppHeader />
+        <div class="menu">
+            <LocationMenu />
+        </div>
     </div>
 </template>
 

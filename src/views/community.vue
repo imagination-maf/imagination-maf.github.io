@@ -1,5 +1,6 @@
 <script>
     import Vue from 'vue';
+    import AppHeader from '../components/header.vue';
     import PropertyFilter from '../components/propertyFilter.vue';
     import PropertyInfo from '../components/propertyInfo.vue';
 
@@ -9,6 +10,7 @@
 
     export default Vue.component('community', {
         components: {
+            AppHeader,
             PropertyFilter,
             PropertyInfo,
             AlZahia
@@ -86,8 +88,7 @@
             let pngImage = document.getElementById('png-image');
             pngImage.addEventListener('load', () => {
                 // add query here
-                // let query = 'api=eq.alzahia';
-                let query = null;
+                let query = 'api=eq.' + this.community;
                 this.getData(query).then( (res) => {
                     this.data = res.data;
                     this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
@@ -129,17 +130,20 @@
 </script>
 
 <template>
-<div class="container">
-    <div id="area" v-bind:class="{ visible: loaded }">
-        <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
-            <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
+<div class="app">
+    <AppHeader />
+    <div class="container">
+        <div id="area" v-bind:class="{ visible: loaded }">
+            <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
+                <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
+            </div>
+            <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
+                <AlZahia ng-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
+            </div>
         </div>
-        <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
-            <AlZahia ng-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
-        </div>
+        <PropertyFilter :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
+        <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
     </div>
-    <PropertyFilter :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
-    <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
 </div>
 </template>
 

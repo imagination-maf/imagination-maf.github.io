@@ -5,6 +5,7 @@
     import SharjahCityImage from '../images/maps/Sharjah-city.svg';
     import SharjahRoadImage from '../images/maps/Sharjah-road.svg';
     import MarkerInfo from '../components/markerInfo.vue';
+    import AppHeader from '../components/header.vue';
 
     import config from '../data/config.js';
 
@@ -14,7 +15,8 @@
             UAERegionImage,
             SharjahCityImage,
             SharjahRoadImage,
-            MarkerInfo
+            MarkerInfo,
+            AppHeader
         },
         data() {
             return {
@@ -377,118 +379,121 @@
 </script>
 
 <template>
-<div class="container">
-    <!-- TODO Add condition here to check if markers are available -->
-    <MarkerInfo></MarkerInfo>
-    <div id="map-container" class="map" @click="mapClick($event)">
-        <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
-            <!-- World -->
-            <div
-                class="png-image-container-scale"
-                :style="[scaleStyles['app_x5F_world--parent']]"
-                :class="{ 'active': selectedView === 'app_x5F_world--parent' }">
+<div class="app">
+    <AppHeader />
+    <div class="container">
+        <!-- TODO Add condition here to check if markers are available -->
+        <MarkerInfo></MarkerInfo>
+        <div id="map-container" class="map" @click="mapClick($event)">
+            <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
+                <!-- World -->
                 <div
-                    class="png-image-container-translate"
-                    :style="[translationStyles['app_x5F_world--parent']]">
-                    <img
-                        id="app_x5F_world--image"
-                        class="png-image"
-                        :src="pngImages.World"
-                        :style="[rotationStyles['app_x5F_world--parent']]"/>
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_world--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_world--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_world--parent']]">
+                        <img
+                            id="app_x5F_world--image"
+                            class="png-image"
+                            :src="pngImages.World"
+                            :style="[rotationStyles['app_x5F_world--parent']]"/>
+                    </div>
                 </div>
-            </div>
-            <!-- End of World -->
-            <!-- UAE -->
-            <div
-                class="png-image-container-scale"
-                :style="[scaleStyles['app_x5F_UAE--parent']]"
-                :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }">
+                <!-- End of World -->
+                <!-- UAE -->
                 <div
-                    class="png-image-container-translate"
-                    :style="[translationStyles['app_x5F_UAE--parent']]">
-                    <img
-                        id="app_x5F_UAE--image"
-                        class="png-image"
-                        :src="pngImages.UAERegion"
-                        :style="[rotationStyles['app_x5F_UAE--parent']]"/>
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_UAE--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_UAE--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_UAE--parent']]">
+                        <img
+                            id="app_x5F_UAE--image"
+                            class="png-image"
+                            :src="pngImages.UAERegion"
+                            :style="[rotationStyles['app_x5F_UAE--parent']]"/>
+                    </div>
                 </div>
-            </div>
-            <!-- End of UAE -->
-            <!-- Sharjah City -->
-            <div
-                class="png-image-container-scale"
-                :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }"
-                :style="[scaleStyles['app_x5F_Sharjah--parent']]">
+                <!-- End of UAE -->
+                <!-- Sharjah City -->
                 <div
-                    class="png-image-container-translate"
-                    :style="[translationStyles['app_x5F_Sharjah--parent']]">
-                    <img
-                        id="app_x5F_Sharjah--image"
-                        class="png-image"
-                        :src="pngImages.SharjahCity"
-                        :style="[rotationStyles['app_x5F_Sharjah--parent']]" />
+                    class="png-image-container-scale"
+                    :class="{ 'active': selectedView === 'app_x5F_Sharjah--parent' }"
+                    :style="[scaleStyles['app_x5F_Sharjah--parent']]">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Sharjah--parent']]">
+                        <img
+                            id="app_x5F_Sharjah--image"
+                            class="png-image"
+                            :src="pngImages.SharjahCity"
+                            :style="[rotationStyles['app_x5F_Sharjah--parent']]" />
+                    </div>
                 </div>
-            </div>
-            <!-- End of Sharjah City -->
-            <!-- Sharjah Road -->
-            <div
-                class="png-image-container-scale"
-                :style="[scaleStyles['app_x5F_Sharjah-road--parent']]"
-                :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }">
+                <!-- End of Sharjah City -->
+                <!-- Sharjah Road -->
                 <div
-                    class="png-image-container-translate"
-                    :style="[translationStyles['app_x5F_Sharjah-road--parent']]">
-                    <img
-                        id="app_x5F_Sharjah-road--image"
-                        class="png-image"
-                        :src="pngImages.SharjahRoad"
-                        :style="[rotationStyles['app_x5F_Sharjah-road--parent']]" />
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Sharjah-road--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Sharjah-road--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Sharjah-road--parent']]">
+                        <img
+                            id="app_x5F_Sharjah-road--image"
+                            class="png-image"
+                            :src="pngImages.SharjahRoad"
+                            :style="[rotationStyles['app_x5F_Sharjah-road--parent']]" />
+                    </div>
                 </div>
+                <!-- End of Sharjah Road -->
             </div>
-            <!-- End of Sharjah Road -->
+            <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
+                <!-- World -->
+                <transition name="map-switch">
+                    <WorldImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_world--parent'" />
+                </transition>
+                <!-- End of World -->
+                <!-- UAE -->
+                <transition name="map-switch">
+                    <UAERegionImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_UAE--parent'" />
+                </transition>
+                <!-- End of UAE -->
+                <!-- Sharjah City -->
+                <transition name="map-switch">
+                    <SharjahCityImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Sharjah--parent'" />
+                </transition>
+                <!-- End of Sharjah City -->
+                <!-- Sharjah Road -->
+                <transition name="map-switch">
+                    <SharjahRoadImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
+                </transition>
+                <!-- End of Sharjah Road -->
+            </div>
+            <div class="loading" v-if="!loadingComplete">
+                Loading...
+            </div>
         </div>
-        <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
-            <!-- World -->
-            <transition name="map-switch">
-                <WorldImage
-                    class="image"
-                    v-show="selectedView === 'app_x5F_world--parent'" />
-            </transition>
-            <!-- End of World -->
-            <!-- UAE -->
-            <transition name="map-switch">
-                <UAERegionImage
-                    class="image"
-                    v-show="selectedView === 'app_x5F_UAE--parent'" />
-            </transition>
-            <!-- End of UAE -->
-            <!-- Sharjah City -->
-            <transition name="map-switch">
-                <SharjahCityImage
-                    class="image"
-                    v-show="selectedView === 'app_x5F_Sharjah--parent'" />
-            </transition>
-            <!-- End of Sharjah City -->
-            <!-- Sharjah Road -->
-            <transition name="map-switch">
-                <SharjahRoadImage
-                    class="image"
-                    v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
-            </transition>
-            <!-- End of Sharjah Road -->
-        </div>
-        <div class="loading" v-if="!loadingComplete">
-            Loading...
-        </div>
-    </div>
 
-    <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
-        <div class="controls-row">
-            <button class="button zoom" type="button" @click="zoomOut()">Zoom Out</button>
-            <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @click="zoomIn()">Zoom In</button>
-        </div>
-        <div class="controls-row">
-            <button class="button masterplan" type="button" @click="viewMasterplan()">View Masterplan</button>
+        <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
+            <div class="controls-row">
+                <button class="button zoom" type="button" @click="zoomOut()">Zoom Out</button>
+                <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @click="zoomIn()">Zoom In</button>
+            </div>
+            <div class="controls-row">
+                <button class="button masterplan" type="button" @click="viewMasterplan()">View Masterplan</button>
+            </div>
         </div>
     </div>
 </div>

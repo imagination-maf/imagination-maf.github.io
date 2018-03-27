@@ -9,8 +9,6 @@ import Location from './views/location.vue';
 import Community from './views/community.vue';
 import Overview from './views/overview.vue';
 
-import "./components/header.vue";
-
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -48,10 +46,7 @@ new Vue({
   router,
   template: `
 <main>
-    <app-header></app-header>
-    <div class="app">
-        <router-view></router-view>
-    </div>
+    <router-view></router-view>
 </main>
 `,
 })

@@ -48,7 +48,7 @@ export default Vue.component('property-info-summary', {
                 </div>
                 <div class="info-features-item" v-if="property.garage_area">
                     <img :src="images.iconGarage" class="info-features-icon" />
-                    <p class="info-features-text">{{ property.garage_area }}</p>
+                    <p class="info-features-text">{{ property.garage_area }}m</p>
                 </div>
             </div>
             <ul class="info-cta">

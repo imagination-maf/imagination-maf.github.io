@@ -19,7 +19,7 @@ export default Vue.component('app-header', {
 </script>
 
 <template>
-    <div class="header" v-if="['attractor'].indexOf($route.name) === -1">
+    <div class="header">
         <img class="header-logo" :src='logo' @click="home()" />
         <span class="header-back" @click="goBack()">BACK</span>
     </div>

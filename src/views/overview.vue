@@ -3,9 +3,11 @@
 
     import AlZahia from '../images/overalls/overview-alzahia.svg';
     import config from '../data/config.js';
+    import AppHeader from '../components/header.vue';
 
     export default Vue.component('overview', {
         components: {
+            AppHeader,
             AlZahia
         },
         data() {
@@ -35,16 +37,19 @@
 </script>
 
 <template>
-<div class="container">
-    <img class="image" :src="images[selectedCommunity]" />
+<div class="app">
+    <AppHeader />
+    <div class="container">
+        <img class="image" :src="images[selectedCommunity]" />
 
-    <AlZahia id="svg" ng-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+        <AlZahia id="svg" ng-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
 
-    <div style="position: absolute; left: 0; bottom: 1rem">
-        <button @click="dummyClick('allilac')">Al Lilac</button>
-        <button @click="dummyClick('aljouri')">Al Jouri</button>
-        <button @click="dummyClick('alnarjis')">Al Narjis</button>
-        <button @click="dummyClick('gardenapts')">Garden Apartments</button>
+        <div style="position: absolute; left: 0; bottom: 1rem">
+            <button @click="dummyClick('allilac')">Al Lilac</button>
+            <button @click="dummyClick('aljouri')">Al Jouri</button>
+            <button @click="dummyClick('alnarjis')">Al Narjis</button>
+            <button @click="dummyClick('gardenapts')">Garden Apartments</button>
+        </div>
     </div>
 </div>
 </template>
