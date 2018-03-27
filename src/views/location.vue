@@ -27,7 +27,8 @@
                     'button': 'button',
                     'zoom': 'zoom',
                     'parent': 'parent',
-                    'image': 'image'
+                    'image': 'image',
+                    'marker': 'marker'
                 },
                 scales: {},
                 translations: {},
@@ -42,7 +43,8 @@
                     'png': {},
                     'svg': {}
                 },
-                'direction': 'in'
+                'direction': 'in',
+                'markerSelected': null
             }
         },
         computed : {
@@ -119,6 +121,13 @@
                 let childView = this.findChildSVG(this.selectedView);
                 this.$router.push({ path: 'overview', query: { 'community': config.mappings[childView] } });
             },
+            removeActiveMarker: function() {
+                let svgImage = document.getElementById('svg-container');
+                let markers = svgImage.querySelectorAll('g[id$=--marker]');
+                for(let j = 0; j < markers.length; j++) {
+                    markers[j].classList.remove('marker-active');
+                }
+            },
             mapClick: function($event) {
                 this.direction = 'in';
                 // The path of elements clicked starting from lowest point first
@@ -138,6 +147,13 @@
                             // Sets the new view to the newViewElement
                             this.$router.push({ query: { 'view': newViewElement } });
                             break;
+                        }
+
+                        if(splitId[splitId.length - 1].match(this.definitions.marker)){
+                            let country = splitId[0].split(this.definitions.separator).reverse()[0];
+                            this.removeActiveMarker();
+                            pathElements[i].classList.add('marker-active');
+                            this.markerSelected = country.toLowerCase();
                         }
                     }
                 }
@@ -382,8 +398,6 @@
 <div class="app">
     <AppHeader />
     <div class="container">
-        <!-- TODO Add condition here to check if markers are available -->
-        <MarkerInfo></MarkerInfo>
         <div id="map-container" class="map" @click="mapClick($event)">
             <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
                 <!-- World -->
@@ -486,6 +500,9 @@
             </div>
         </div>
 
+        <!-- TODO Add condition here to check if markers are available -->
+        <MarkerInfo :country="markerSelected"></MarkerInfo>
+
         <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
             <div class="controls-row">
                 <button class="button zoom" type="button" @click="zoomOut()">Zoom Out</button>
@@ -499,6 +516,13 @@
 </div>
 </template>
 
+<style lang="scss">
+    .marker-active {
+        polygon {
+            fill: #b4975a;
+        }
+    }
+</style>
 <style lang="scss">
 .zoom-container {
     visibility: hidden !important;
