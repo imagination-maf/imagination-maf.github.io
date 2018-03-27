@@ -17,6 +17,9 @@ export default Vue.component('property-info-summary', {
         changeView: function(view) {
             this.$emit('changeView', view);
         }
+    },
+    mounted() {
+        console.log('property', this.property);
     }
 });
 </script>
@@ -27,21 +30,25 @@ export default Vue.component('property-info-summary', {
         <div class="info-row">
             <div class="info-features">
                 <h3>FEATURES</h3>
-                <div class="info-features-item">
+                <div class="info-features-item" v-if="property.bedrooms">
                     <img :src="images.iconBed" class="info-features-icon" />
                     <p class="info-features-text">{{ property.bedrooms }}</p>
                 </div>
-                <div class="info-features-item">
+                <div class="info-features-item" v-if="property.bathrooms">
                     <img :src="images.iconBath" class="info-features-icon" />
                     <p class="info-features-text">{{ property.bathrooms }}</p>
                 </div>
-                <div class="info-features-item">
+                <div class="info-features-item" v-if="property.livingrooms">
                     <img :src="images.iconSofa" class="info-features-icon" />
                     <p class="info-features-text">{{ property.livingrooms }}</p>
                 </div>
-                <div class="info-features-item">
+                <div class="info-features-item" v-if="property.garages">
                     <img :src="images.iconGarage" class="info-features-icon" />
                     <p class="info-features-text">{{ property.garages }}</p>
+                </div>
+                <div class="info-features-item" v-if="property.garage_area">
+                    <img :src="images.iconGarage" class="info-features-icon" />
+                    <p class="info-features-text">{{ property.garage_area }}</p>
                 </div>
             </div>
             <ul class="info-cta">

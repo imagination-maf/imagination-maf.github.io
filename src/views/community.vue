@@ -113,7 +113,7 @@
                             plotBoundaries[index].classList.add('type_' + type);
                             this.propertyList = new Set([...this.propertyList, type]);
 
-                            let availability = config.availablityMap.available.indexOf(dataItem.availability) ? 'available' : 'unavailable';
+                            let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
                             plotBoundaries[index].classList.add(availability);
                         }
                     }
@@ -230,7 +230,6 @@ svg:not(:root) {
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            // stroke-width: 2;
             fill: rgba(251,184,49, 0.25) !important;
             stroke: #3C3C3D !important;
         }
