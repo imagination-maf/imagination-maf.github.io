@@ -16,7 +16,7 @@
 
 <template>
     <div class="app">
-        <AppHeader />
+        <AppHeader :logo="'maf'" />
         <div class="menu">
             <LocationMenu />
         </div>

@@ -51,7 +51,7 @@
         <transition name="fade">
             <div v-if="itemNum === 2" class="attractor-item">
                 <div class="app">
-                    <AppHeader />
+                    <AppHeader :logo="'maf'" />
                     <LocationMenu />
                 </div>
             </div>

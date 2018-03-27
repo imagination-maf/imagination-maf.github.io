@@ -2,9 +2,16 @@
 import Vue from 'vue';
 
 export default Vue.component('app-header', {
+    props: ['logo', 'back'],
     data() {
         return {
-            logo: require('../images/logo/logo.png')
+            logos: {
+                'maf': require('../images/logo/logo.png'),
+                'alzahia': require('../images/logo/logo-alzahia.png'),
+                'almouj': require('../images/logo/logo-almouj.png'),
+                'tilalalghaf': require('../images/logo/logo-tilalalghaf.png'),
+                'waterfront': require('../images/logo/logo-waterfront.png')
+            }
         }
     },
     methods: {
@@ -12,7 +19,7 @@ export default Vue.component('app-header', {
             this.$router.push({ path: 'location', query: { view: 'app_x5F_world--parent' }});
         },
         goBack: function() {
-            this.$router.go(-1);
+            this.$emit('back');
         }
     }
 });
@@ -20,8 +27,8 @@ export default Vue.component('app-header', {
 
 <template>
     <div class="header">
-        <img class="header-logo" :src='logo' @click="home()" />
-        <span class="header-back" @click="goBack()">BACK</span>
+        <img class="header-logo" :src='logos[logo]' @click="home()" />
+        <span class="header-back" v-if="back" @click="goBack()">BACK</span>
     </div>
 </template>
 
