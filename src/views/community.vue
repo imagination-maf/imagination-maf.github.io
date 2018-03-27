@@ -4,6 +4,8 @@
     import PropertyInfo from '../components/propertyInfo.vue';
 
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
+    import axios from 'axios';
+    import config from '../data/config.js';
 
     export default Vue.component('community', {
         components: {
@@ -23,28 +25,25 @@
                 pngTransform: null,
                 svgTransform: null,
                 images: {
-                    alZahia: require('../images/masterplans/al_zahia_background.png')
-                },
-                propertyList: ['3V', '4V', '5V', '6V', '2TH', '3TH', '4TH'],
-                availableList: ['unavailable', 'available'],
-                dataPoints: {
-                    alZahia: {
-                        alLilac: {
-                            'plot_boundary': 'AL_ZAHIA_PLOT_BOUNDARIES',
-                            'png': {
-                                'scale': 2.2,
-                                'translate': [-150, 438]
-                            },
-                            'svg': {
-                                'scale': 4.975,
-                                'translate': [761, 331]
-                            }
-                        }
+                    alzahia: {
+                        aljouri: require('../images/masterplans/alzahia-al-jouri.png'),
+                        allilac: require('../images/masterplans/alzahia-al-lilac.png'),
+                        alnarjis: require('../images/masterplans/alzahia-al-narjis.png'),
+                        gardenapts: require('../images/masterplans/alzahia-garden-apts.png')
                     }
-                }
+                },
+                propertyList: [],
+                availableList: [],
+                data: null
             }
         },
         computed: {
+            community: function() {
+                return this.$route.query.community;
+            },
+            neighbourhood: function() {
+                return this.$route.query.neighbourhood;
+            },
             filterPng: function() {
                 return Object.keys(this.propertyTypeFilter).filter( (key) => this.propertyTypeFilter[key] ).length;
             }
@@ -67,66 +66,64 @@
             svgPressed: function($event) {
                 let elementPressed = $event.path[0];
                 if(elementPressed.id){
-                    let dummyData = {
-                        'id': elementPressed.id,
-                        'bedrooms': 3,
-                        'bathrooms': 2,
-                        'livingrooms': 3,
-                        'garages': 1,
-                        'plot_number': 111,
-                        'unit_type': '3V',
-                        'type': 'Villa',
-                        'builtup_area': 2000,
-                        'plot_area': 2500,
-                        'availability': true,
-                        'price': 1300000
-                    }
-                    // id bedrooms bathrooms livingrooms garages plot_number unit_type
-       // type builtup_area plot_area availability price
-
-                    this.openPropertyInfo(dummyData);
+                    let plotNumber = elementPressed.id.split('-').reverse()[0];
+                    let plotInfo = this.data.filter( (item) => plotNumber === item.id)[0];
+                    if(plotInfo) this.openPropertyInfo(plotInfo);
                 }
+            },
+            getData: function(query) {
+                let url = query ? config.url[config.mode] + 'maf_plot?' + query : config.url[config.mode] + 'maf_plot';
+                return axios({
+                    method: 'GET',
+                    url: url,
+                    headers: {
+                        'Authorization': 'Basic ' + btoa('maf:25st0rest')
+                    }
+                })
             }
         },
         mounted() {
-            /********
-                API DATA STRUCTURE
-                id bedrooms bathrooms livingrooms garages plot_number unit_type
-   type builtup_area plot_area availability price
-            ********/
-            window.setTimeout( () => {
-                let area = document.getElementById('area');
+            let pngImage = document.getElementById('png-image');
+            pngImage.addEventListener('load', () => {
+                // add query here
+                // let query = 'api=eq.alzahia';
+                let query = null;
+                this.getData(query).then( (res) => {
+                    this.data = res.data;
+                    this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
-                let pngImage = document.getElementById('png-image');
-                this.pngContainerScale = {'transform': 'scale(' + (area.clientWidth / pngImage.width) + ')' };
+                    let svgImage = document.getElementById('svg-image');
+                    this.svgContainerScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
 
-                let svgImage = document.getElementById('svg-image');
-                this.svgContainerScale = {'transform': 'scale(' + (area.clientWidth / svgImage.width.baseVal.value) + ')' };
+                    let svgTransformData = config.dataPoints[this.community][this.neighbourhood].svg;
+                    this.svgTransform = {
+                        'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
+                    };
 
-                let pngTransformData = this.dataPoints.alZahia.alLilac.png;
-                this.pngTransform = {
-                    'transform': 'scale(' + pngTransformData.scale + ') translate(' + pngTransformData.translate[0] + 'px ,' + pngTransformData.translate[1] + 'px )'
-                };
+                    let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
+                    let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
+                    for(let index = 0; index < plotBoundaries.length; index++) {
+                        let dataItem = this.data.filter( (item) => {
+                            let plotId = plotBoundaries[index].id.split('-');
+                            return plotId[plotId.length - 1] === item.id;
+                        })[0];
 
-                let svgTransformData = this.dataPoints.alZahia.alLilac.svg;
-                this.svgTransform = {
-                    'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
-                };
+                        if(dataItem) {
+                            let type = dataItem.unit_type.split(' ')[0];
+                            plotBoundaries[index].classList.add('type_' + type);
+                            this.propertyList = new Set([...this.propertyList, type]);
 
-                let plotBoundaryContainer = this.dataPoints.alZahia.alLilac.plot_boundary;
-                let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
-                for(let index = 0; index < plotBoundaries.length; index++) {
-                    let dummyType = Math.floor(Math.random() * this.propertyList.length);
-                    let dummyAvailable = Math.floor(Math.random() * this.availableList.length);
-                    // plotBoundaries[index].classList.add(this.data[plotBoundaries[index].available])
-                    plotBoundaries[index].classList.add('type_' + this.propertyList[dummyType]);
-                    // plotBoundaries[index].classList.add(this.data[plotBoundaries[index].unit_type])
-                    plotBoundaries[index].classList.add(this.availableList[dummyAvailable]);
-                }
+                            let availability = config.availablityMap.available.indexOf(dataItem.availability) ? 'available' : 'unavailable';
+                            plotBoundaries[index].classList.add(availability);
+                        }
+                    }
 
-                this.loaded = true;
+                    this.loaded = true;
 
-            }, 2000 );
+                }, (err) => {
+                    console.log('unable to get data', err);
+                } )
+            })
         }
     });
 </script>
@@ -135,17 +132,13 @@
 <div class="container">
     <div id="area" v-bind:class="{ visible: loaded }">
         <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
-            <img :src="images.alZahia" class="png-image" id="png-image" :style="pngTransform" />
+            <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
         </div>
         <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
-            <AlZahia class="svg-image" id="svg-image" :style="svgTransform" />
+            <AlZahia ng-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
         </div>
     </div>
-    <!-- <p>Property Type Filter: {{ propertyTypeFilter }}</p>
-    <p>Amenities Filter: {{ amenitiesFilter }}</p>
-    <button @click="openPropertyInfo()" type="button">Open Property Info</button> -->
-
-    <PropertyFilter :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
+    <PropertyFilter :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
     <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
 </div>
 </template>
@@ -169,7 +162,7 @@
 #svg-container {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,7 +172,7 @@
 #png-container {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -8rem;
     overflow: hidden;
     transform-origin: 0px 0px 0px;
     &.filters {
@@ -200,7 +193,7 @@ svg:not(:root) {
 <style lang="scss">
 .type_3V {
     display: block !important;
-    fill: none;
+    fill: rgba(0,0,0,0);
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
@@ -223,7 +216,7 @@ svg:not(:root) {
 
 .type_4V {
     display: block !important;
-    fill: none;
+    fill: rgba(0,0,0,0);
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
@@ -246,7 +239,7 @@ svg:not(:root) {
 
 .type_5V {
     display: block !important;
-    fill: none;
+    fill: rgba(0,0,0,0);
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
@@ -269,7 +262,7 @@ svg:not(:root) {
 
 .type_6V {
     display: block !important;
-    fill: none;
+    fill: rgba(0,0,0,0);
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
@@ -291,7 +284,7 @@ svg:not(:root) {
 
 .type_2TH {
     display: block !important;
-    fill: none;
+    fill: rgba(0,0,0,0);
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
@@ -314,7 +307,7 @@ svg:not(:root) {
 
 .type_3TH {
     display: block !important;
-    fill: none;
+    fill: rgba(0,0,0,0);
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;
@@ -337,7 +330,7 @@ svg:not(:root) {
 
 .type_4TH {
     display: block !important;
-    fill: none;
+    fill: rgba(0,0,0,0);
     fill-rule: evenodd;
     clip-rule: evenodd;
     stroke: none;

@@ -1,8 +1,17 @@
 <script>
 import Vue from 'vue';
+import config from '../data/config.js';
 
 export default Vue.component('property-filter', {
-    props: ['propertyTypeFilter', 'amenitiesFilter'],
+    props: ['propertyTypeList', 'propertyTypeFilter', 'amenitiesFilter'],
+    computed: {
+        list: function() {
+            return Array.from(this.propertyTypeList);
+        },
+        name: function() {
+            return config.dataPoints[this.$route.query.community][this.$route.query.neighbourhood].fullname;
+        }
+    },
     methods: {
         changeFilter: function(key) {
             // Vue call to bind the new styles to the data object
@@ -12,73 +21,20 @@ export default Vue.component('property-filter', {
             this.$emit('setAmenitiesFilter');
         }
     }
-
 });
 </script>
 
 <template>
     <div class="community">
         <div class="community-icon">
-            <h2 class="community-title">AL LILAC NEIGHBOURHOOD</h2>
+            <h2 class="community-title">{{ name }} NEIGHBOURHOOD</h2>
         </div>
         <div class="community-list">
             <h3 class="community-menu-title">Residential properties</h3>
             <span>Tap to show/hide</span>
-            <div class="community-menu-item">
-                <p @click="changeFilter('active_3TH')">3-Bedroom Townhouse</p>
-                <ul v-show="propertyTypeFilter['active_3TH']">
-                    <li>
-                        <div class="status available" style="background-color: #11c"></div>
-                        <span>Available</span>
-                    </li>
-                    <li>
-                        <div class="status unavailable" style="background-color: #11c"></div>
-                        <span>Unavailable</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <p @click="changeFilter('active_3V')">3-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['active_3V']">
-                    <li>
-                        <div class="status available" style="background-color: #11c"></div>
-                        <span>Available</span>
-                    </li>
-                    <li>
-                        <div class="status unavailable" style="background-color: #11c"></div>
-                        <span>Unavailable</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <p @click="changeFilter('active_4V')">4-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['active_4V']">
-                    <li>
-                        <div class="status available" style="background-color: #11c"></div>
-                        <span>Available</span>
-                    </li>
-                    <li>
-                        <div class="status unavailable" style="background-color: #11c"></div>
-                        <span>Unavailable</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <p @click="changeFilter('active_5V')">5-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['active_5V']">
-                    <li>
-                        <div class="status available" style="background-color: #11c"></div>
-                        <span>Available</span>
-                    </li>
-                    <li>
-                        <div class="status unavailable" style="background-color: #11c"></div>
-                        <span>Unavailable</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <p @click="changeFilter('active_6V')">6-Bedroom Villa</p>
-                <ul v-show="propertyTypeFilter['active_6V']">
+            <div class="community-menu-item" v-for="item in list">
+                <p @click="changeFilter('active_' + item)">{{ item }}</p>
+                <ul v-show="propertyTypeFilter['active_' + item]">
                     <li>
                         <div class="status available" style="background-color: #11c"></div>
                         <span>Available</span>

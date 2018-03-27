@@ -6,6 +6,8 @@
     import SharjahRoadImage from '../images/maps/Sharjah-road.svg';
     import MarkerInfo from '../components/markerInfo.vue';
 
+    import config from '../data/config.js';
+
     export default Vue.component('location', {
         components: {
             WorldImage,
@@ -63,13 +65,10 @@
             },
             rotationStyles: function () {
                 // Gets the list of styles available
-                console.log('rotation styleee');
                 let styleList = {};
                 Object.keys(this.rotations).forEach( (key, index) => {
-                    console.log('rotationssss', key, index);
                     styleList[key] = this.rotations[key][this.selectedView] ? this.rotations[key][this.selectedView] : '';
                 });
-                console.log('styleeee listtt', styleList);
                 return styleList;
             },
             optionsAvailable: function () {
@@ -115,7 +114,8 @@
                 });
             },
             viewMasterplan: function () {
-                this.$router.push({ path: 'community' });
+                let childView = this.findChildSVG(this.selectedView);
+                this.$router.push({ path: 'overview', query: { 'community': config.mappings[childView] } });
             },
             mapClick: function($event) {
                 this.direction = 'in';
@@ -191,6 +191,27 @@
                     }
                 }
                 return parent;
+            },
+            findChildSVG: function(id) {
+                let ele = document.getElementById(id);
+                let child = null;
+                // Loops until a lowest child is found
+                while(child === null){
+                    // Check the element exists and that it has a child
+                    if(ele && ele.children){
+                        let array = Array.from(ele.children);
+                        let matches = array.filter( (child) => child.id.match(this.definitions.modifier + this.definitions.zoom));
+                        if(matches.length) {
+                            // The parent is assigned as the element, tries process again
+                            ele = document.getElementById(matches[0].id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent);
+                        } else {
+                            child = ele.id;
+                        }
+                    } else {
+                        child = ele.id;
+                    }
+                }
+                return child;
             },
             fitToWindow: (id) => {
                 let imageElement = document.getElementById(id);

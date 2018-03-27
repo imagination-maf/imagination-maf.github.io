@@ -7,6 +7,7 @@ import Attractor from './views/attractor.vue';
 import CommunitySelection from './views/communitySelection.vue';
 import Location from './views/location.vue';
 import Community from './views/community.vue';
+import Overview from './views/overview.vue';
 
 import "./components/header.vue";
 
@@ -28,6 +29,11 @@ const router = new VueRouter({
             path: '/location',
             component: Location,
             name: 'location'
+        },
+        {
+            path: '/overview',
+            component: Overview,
+            name: 'overview'
         },
         {
             path: '/community',
