@@ -1,7 +1,5 @@
 <script>
-    import Vue from 'vue';
-
-    export default Vue.component('iframed', {
+    export default {
         name: 'Iframed',
         data() {
             return {}
@@ -11,15 +9,15 @@
                 return this.$route.fullPath;
             }
         }
-    });
+    }
 </script>
 
 <template>
     <div class="container">
-        <iframe id="iframe1" ref="iframe1" :src="fullPath"></iframe>
-        <iframe id="iframe2" ref="iframe2" :src="fullPath"></iframe>
-        <iframe id="iframe3" ref="iframe3" :src="fullPath"></iframe>
-        <iframe id="iframe4" ref="iframe4" :src="fullPath"></iframe>
+        <iframe id="iframe1" ref="iframe1" src="http://localhost:8080"></iframe>
+        <iframe id="iframe2" ref="iframe2" src="http://localhost:8080"></iframe>
+        <iframe id="iframe3" ref="iframe3" src="http://localhost:8080"></iframe>
+        <iframe id="iframe4" ref="iframe4" src="http://localhost:8080"></iframe>
     </div>
 </template>
 

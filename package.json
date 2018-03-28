@@ -10,10 +10,10 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "maf-module-fonts": "git+ssh://git@bitbucket.org:imagination/maf-module-fonts.git",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
-    "vue-svg-loader": "^0.5.0",
-    "maf-module-fonts": "git+ssh://git@bitbucket.org:imagination/maf-module-fonts.git"
+    "vue-svg-loader": "^0.5.0"
   },
   "browserslist": [
     "> 1%",

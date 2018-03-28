@@ -1,7 +1,7 @@
 <template>
 <main>
-    <app-header></app-header>
     <host-mode></host-mode>
+    <app-header></app-header>
     <div class="app">
         <router-view></router-view>
     </div>
@@ -10,7 +10,7 @@
 
 <script>
 import AppHeader from './components/header.vue';
-import HostMode from './components/host-mode.vue';
+import HostMode from './components/hostMode.vue';
 
 export default {
 	name: 'App',
