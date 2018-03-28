@@ -44,7 +44,13 @@ export default {
         }
     },
     availablityMap: {
-        'available': ['Unassigned', 'Available'],
-        'unavailable': ['Sold', 'Sale pending', 'Unavailable', 'Booked', 'Reserved']
+        'available': ['Available'],
+        'unavailable': ['Sold', 'Sale pending', 'Unavailable', 'Booked', 'Reserved', 'Unassigned']
+    },
+    logoMapping: {
+        'app_x5F_world--parent': 'maf',
+        'app_x5F_UAE--parent': 'maf',
+        'app_x5F_Sharjah--parent': 'alzahia',
+        'app_x5F_Sharjah-road--parent': 'alzahia'
     }
 }

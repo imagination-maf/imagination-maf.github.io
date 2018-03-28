@@ -87,10 +87,22 @@
                 } else {
                     return null;
                 }
+            },
+            headerLogo: function () {
+                return config.logoMapping[this.$route.query.view];
+            },
+            backFunctionality: function () {
+                console.log('back functionality');
+                return (this.$route.query.view === 'app_x5F_world--parent') ? this.locationMenu : this.zoomOut;
             }
         },
         methods: {
+            locationMenu: function () {
+                console.log('location menuu');
+                this.$router.push({ path: 'community-selection'});
+            },
             zoomOut: function () {
+                console.log('zoom out');
                 this.direction = 'out';
                 // Converts --parent to --zoom
                 let zoomElement = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom;
@@ -396,7 +408,7 @@
 
 <template>
 <div class="app">
-    <AppHeader />
+    <AppHeader :logo="headerLogo" back="true" v-on:back="backFunctionality" />
     <div class="container">
         <div id="map-container" class="map" @click="mapClick($event)">
             <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
