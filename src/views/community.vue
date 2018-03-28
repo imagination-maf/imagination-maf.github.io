@@ -51,6 +51,9 @@
             }
         },
         methods: {
+            backToOverview: function() {
+                this.$router.push({ path: 'overview', query: {community: this.community} });
+            },
             setPropertyTypeFilter: function(key) {
                 Vue.set(this.propertyTypeFilter, key, !this.propertyTypeFilter[key]);
             },
@@ -68,6 +71,7 @@
             svgPressed: function($event) {
                 let elementPressed = $event.path[0];
                 if(elementPressed.id){
+                    // TODO relook at this logic
                     let plotNumber = elementPressed.id.split('-').reverse()[0];
                     let plotInfo = this.data.filter( (item) => plotNumber === item.id)[0];
                     if(plotInfo) this.openPropertyInfo(plotInfo);
@@ -91,6 +95,7 @@
                 let query = 'api=eq.' + this.community;
                 this.getData(query).then( (res) => {
                     this.data = res.data;
+                    console.log('dataaa', this.data.map( (item) => item.id ));
                     this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
                     let svgImage = document.getElementById('svg-image');
@@ -101,21 +106,30 @@
                         'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
                     };
 
+                    let types = [];
+
                     let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
                     let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
                     for(let index = 0; index < plotBoundaries.length; index++) {
                         let dataItem = this.data.filter( (item) => {
-                            let plotId = plotBoundaries[index].id.split('-');
+                            let plotId = plotBoundaries[index].id.split('_').filter( (part) => part.length);
                             return plotId[plotId.length - 1] === item.id;
                         })[0];
 
                         if(dataItem) {
-                            let type = dataItem.unit_type.split(' ')[0];
+                            if(!dataItem.bedrooms){
+                                console.log(dataItem);
+                            }
+
+                            let type = dataItem.bedrooms;
                             plotBoundaries[index].classList.add('type_' + type);
-                            this.propertyList = new Set([...this.propertyList, type]);
+                            this.propertyList = Array.from(new Set([...this.propertyList, type])).sort();
 
                             let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
                             plotBoundaries[index].classList.add(availability);
+
+                            types = new Set([...types, dataItem.type]);
+                            console.log(types);
                         }
                     }
 
@@ -131,7 +145,7 @@
 
 <template>
 <div class="app">
-    <AppHeader />
+    <AppHeader :logo="community" back="true" v-on:back="backToOverview" />
     <div class="container">
         <div id="area" v-bind:class="{ visible: loaded }">
             <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
@@ -195,6 +209,178 @@ svg:not(:root) {
 </style>
 
 <style lang="scss">
+.type_ {
+    display: block !important;
+    fill: rgba(0,0,0,0);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    transition: fill 0.5s ease;
+}
+.active_ {
+    .type_ {
+        &.available {
+            fill: rgba(255,0,255,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(255,0,255,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.type_Studio {
+    display: block !important;
+    fill: rgba(0,0,0,0);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    transition: fill 0.5s ease;
+}
+.active_Studio {
+    .type_Studio {
+        &.available {
+            fill: rgba(0,0,255,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,0,255,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.type_1 {
+    display: block !important;
+    fill: rgba(0,0,0,0);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    transition: fill 0.5s ease;
+}
+.active_1 {
+    .type_1 {
+        &.available {
+            fill: rgba(255,0,0,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(255,0,0,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.type_2 {
+    display: block !important;
+    fill: rgba(0,0,0,0);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    transition: fill 0.5s ease;
+}
+.active_2 {
+    .type_2 {
+        &.available {
+            fill: rgba(0,255,0,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,255,0,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.type_3 {
+    display: block !important;
+    fill: rgba(0,0,0,0);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    transition: fill 0.5s ease;
+}
+.active_3 {
+    .type_3 {
+        &.available {
+            fill: rgba(246,150,46,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(246,150,46,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.type_4 {
+    display: block !important;
+    fill: rgba(0,0,0,0);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+}
+.active_4 {
+    .type_4 {
+        &.available {
+            fill: rgba(251,184,49, 0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(251,184,49, 0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.type_5 {
+    display: block !important;
+    fill: rgba(0,0,0,0);
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke: none;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+}
+.active_5 {
+    .type_5 {
+        &.available {
+            fill: rgba(27,177,175,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(27,177,175,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_6 {
+    .type_6 {
+        &.available {
+            fill: rgba(27,177,175,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(27,177,175,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+
 .type_3V {
     display: block !important;
     fill: rgba(0,0,0,0);
@@ -352,10 +538,6 @@ svg:not(:root) {
             stroke: #3C3C3D !important;
         }
     }
-}
-
-.st0, .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16 {
-    display: none;
 }
 
 #area.visible {

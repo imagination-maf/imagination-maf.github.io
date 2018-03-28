@@ -24,13 +24,16 @@
             }
         },
         methods: {
+            backToMap: function() {
+                let mapLocation = Object.keys(config.mappings).filter( (key) => config.mappings[key] === this.$route.query.community)[0];
+                this.$router.push({ path: 'location', query: { 'view': mapLocation }});
+            },
             dummyClick: function(id) {
                 this.$router.push({ path: 'community', query: { 'community': this.$route.query.community, 'neighbourhood': id } });
             }
         },
         mounted() {
             let svgImage = document.getElementById('svg');
-            console.log( window.innerWidth, svgImage.width.baseVal.value, (window.innerWidth / svgImage.width.baseVal.value) );
             this.svgScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
         }
     });
@@ -38,7 +41,7 @@
 
 <template>
 <div class="app">
-    <AppHeader />
+    <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <div class="container">
         <img class="image" :src="images[selectedCommunity]" />
 
@@ -59,13 +62,22 @@
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: stretch;
     justify-content: center;
+    align-items: center;
     .image {
         width: 100%;
         height: 100%;
         object-fit: contain;
+        position: absolute;
         object-position: center;
+        left: 0;
+        top: 0;
+    }
+    #svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform-origin: 0 0;
     }
 }
 </style>

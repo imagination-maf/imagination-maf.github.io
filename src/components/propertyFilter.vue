@@ -33,7 +33,7 @@ export default Vue.component('property-filter', {
             <h3 class="community-menu-title">Residential properties</h3>
             <span>Tap to show/hide</span>
             <div class="community-menu-item" v-for="item in list">
-                <p @click="changeFilter('active_' + item)">{{ item }}</p>
+                <p @click="changeFilter('active_' + item)">{{ item }} Bedrooms</p>
                 <ul v-show="propertyTypeFilter['active_' + item]">
                     <li>
                         <div class="status available" style="background-color: #11c"></div>
