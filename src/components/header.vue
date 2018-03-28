@@ -14,14 +14,21 @@ export default Vue.component('app-header', {
         goBack: function() {
             this.$router.go(-1);
         }
+    },
+    computed: {
+        requiresHeader: function () {
+            return !(this.$route.name == 'iframed' || this.$route.name == 'attractor');
+        }
     }
 });
 </script>
 
 <template>
-    <div class="header" v-if="['attractor'].indexOf($route.name) === -1">
+    <div class="header" v-if="requiresHeader">
         <img class="header-logo" :src='logo' @click="home()" />
-        <span class="header-back" @click="goBack()">BACK</span>
+        <div class="header-back">
+            <span @click="goBack()">BACK</span>
+        </div>
     </div>
 </template>
 
