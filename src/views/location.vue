@@ -53,37 +53,70 @@
             },
             scaleStyles: function () {
                 // Gets the list of styles available
-                let styleList = {};
-                Object.keys(this.scales).forEach( (key, index) => {
-                    styleList[key] = this.scales[key][this.selectedView] ? this.scales[key][this.selectedView] : '';
-                });
-                return styleList;
+                if(this.loadingComplete) {
+                    let styleList = {};
+                    Object.keys(this.scales).forEach( (key, index) => {
+                        styleList[key] = this.scales[key][this.selectedView] ? this.scales[key][this.selectedView] : '';
+                    });
+                    return styleList;
+                } else {
+                    return {};
+                }
             },
             translationStyles: function () {
                 // Gets the list of styles available
-                let styleList = {};
-                Object.keys(this.translations).forEach( (key, index) => {
-                    styleList[key] = this.translations[key][this.selectedView] ? this.translations[key][this.selectedView] : '';
-                });
-                return styleList;
+                if(this.loadingComplete) {
+                    let styleList = {};
+                    Object.keys(this.translations).forEach( (key, index) => {
+                        styleList[key] = this.translations[key][this.selectedView] ? this.translations[key][this.selectedView] : '';
+                    });
+                    return styleList;
+                } else {
+                    return {};
+                }
             },
             rotationStyles: function () {
                 // Gets the list of styles available
-                let styleList = {};
-                Object.keys(this.rotations).forEach( (key, index) => {
-                    styleList[key] = this.rotations[key][this.selectedView] ? this.rotations[key][this.selectedView] : '';
-                });
-                return styleList;
+                if(this.loadingComplete) {
+                    let styleList = {};
+                    Object.keys(this.rotations).forEach( (key, index) => {
+                        styleList[key] = this.rotations[key][this.selectedView] ? this.rotations[key][this.selectedView] : '';
+                    });
+                    return styleList;
+                } else {
+                    return {};
+                }
             },
             optionsAvailable: function () {
-                let currentMapElement = document.getElementById(this.selectedView);
-                if(currentMapElement) {
-                    let children = Array.from(currentMapElement.children);
-                    // Loop through each child (we know zoom ids will be the first level)
-                    return children.filter( (child) => {
-                        // Check is the child's id matches '--zoom'
-                        return child.id.match(this.definitions.modifier + this.definitions.zoom);
-                    }).length;
+                if(this.loadingComplete) {
+                    let currentMapElement = document.getElementById(this.selectedView);
+                    if(currentMapElement) {
+                        let children = Array.from(currentMapElement.children);
+                        // Loop through each child (we know zoom ids will be the first level)
+                        return children.filter( (child) => {
+                            // Check is the child's id matches '--zoom'
+                            return child.id.match(this.definitions.modifier + this.definitions.zoom);
+                        }).length;
+                    } else {
+                        return null;
+                    }
+                } else {
+                    return null;
+                }
+            },
+            markersAvailable: function () {
+                if(this.loadingComplete) {
+                    let currentMapElement = document.getElementById(this.selectedView);
+                    if(currentMapElement) {
+                        let children = Array.from(currentMapElement.children);
+                        // Loop through each child (we know zoom ids will be the first level)
+                        return children.filter( (child) => {
+                            // Check is the child's id matches '--zoom'
+                            return child.id.match(this.definitions.modifier + this.definitions.marker);
+                        }).length;
+                    } else {
+                        return null;
+                    }
                 } else {
                     return null;
                 }
@@ -92,7 +125,6 @@
                 return config.logoMapping[this.$route.query.view];
             },
             backFunctionality: function () {
-                console.log('back functionality');
                 return (this.$route.query.view === 'app_x5F_world--parent') ? this.locationMenu : this.zoomOut;
             }
         },
@@ -512,8 +544,7 @@
             </div>
         </div>
 
-        <!-- TODO Add condition here to check if markers are available -->
-        <MarkerInfo :country="markerSelected"></MarkerInfo>
+        <MarkerInfo v-if="markersAvailable" :country="markerSelected"></MarkerInfo>
 
         <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
             <div class="controls-row">
