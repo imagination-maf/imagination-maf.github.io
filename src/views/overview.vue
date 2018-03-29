@@ -34,6 +34,7 @@
         },
         mounted() {
             let svgImage = document.getElementById('svg');
+            console.log('svg image', svgImage, window.innerWidth);
             this.svgScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
         }
     });
@@ -58,6 +59,10 @@
 </template>
 
 <style lang="scss" scoped>
+.app {
+    position: relative;
+    overflow: hidden;
+}
 .container {
     width: 100%;
     height: 100%;
@@ -69,7 +74,7 @@
         height: 100%;
         object-fit: contain;
         position: absolute;
-        object-position: center;
+        object-position: top;
         left: 0;
         top: 0;
     }

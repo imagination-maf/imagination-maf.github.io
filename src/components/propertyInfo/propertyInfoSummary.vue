@@ -1,5 +1,6 @@
 <script>
 import Vue from 'vue';
+import config from '../../data/config.js';
 
 export default Vue.component('property-info-summary', {
     props: ['property'],
@@ -13,20 +14,26 @@ export default Vue.component('property-info-summary', {
             }
         }
     },
+    computed: {
+        name: function () {
+            return this.$route.query.neighbourhood ? config.neighbourhoodNames[this.$route.query.neighbourhood] : ''
+        },
+        type: function () {
+            let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(this.property.type) !== -1)[0];
+            return config.houseTypeNames[type + this.property.bedrooms];
+        }
+    },
     methods: {
         changeView: function(view) {
             this.$emit('changeView', view);
         }
-    },
-    mounted() {
-        console.log('property', this.property);
     }
 });
 </script>
 
 <template>
     <div class="info-summary">
-        <h3 class="info-title">AL LILAC 4-BEDROOM VILLA</h3>
+        <h3 class="info-title">{{ name }} {{ type }}</h3>
         <div class="info-row">
             <div class="info-features">
                 <h3>FEATURES</h3>
@@ -78,6 +85,7 @@ export default Vue.component('property-info-summary', {
     .info-title {
         border-bottom: 0.1rem solid #d7d7d7;
         color: #626263;
+        text-transform: uppercase;
     }
     .info-row {
         width: 100%;

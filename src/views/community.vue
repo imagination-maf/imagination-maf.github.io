@@ -71,8 +71,8 @@
             svgPressed: function($event) {
                 let elementPressed = $event.path[0];
                 if(elementPressed.id){
-                    // TODO relook at this logic
-                    let plotNumber = elementPressed.id.split('-').reverse()[0];
+                    let plotId = elementPressed.id.split('_').filter( (part) => part.length);
+                    let plotNumber = plotId[plotId.length - 1];
                     let plotInfo = this.data.filter( (item) => plotNumber === item.id)[0];
                     if(plotInfo) this.openPropertyInfo(plotInfo);
                 }
@@ -95,7 +95,6 @@
                 let query = 'api=eq.' + this.community;
                 this.getData(query).then( (res) => {
                     this.data = res.data;
-                    console.log('dataaa', this.data.map( (item) => item.id ));
                     this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
                     let svgImage = document.getElementById('svg-image');
@@ -117,19 +116,22 @@
                         })[0];
 
                         if(dataItem) {
-                            if(!dataItem.bedrooms){
-                                console.log(dataItem);
+                            let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
+
+                            // Debug code to find un included types
+                            if(!type) {
+                                console.log('item', dataItem);
                             }
+                            let beds = dataItem.bedrooms;
+                            let propertyType = type + beds;
+                            if(beds && propertyType) {
+                                plotBoundaries[index].classList.add('svg-house-icon');
+                                plotBoundaries[index].classList.add('type_' + propertyType);
+                                this.propertyList = Array.from(new Set([...this.propertyList, propertyType])).sort();
 
-                            let type = dataItem.bedrooms;
-                            plotBoundaries[index].classList.add('type_' + type);
-                            this.propertyList = Array.from(new Set([...this.propertyList, type])).sort();
-
-                            let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
-                            plotBoundaries[index].classList.add(availability);
-
-                            types = new Set([...types, dataItem.type]);
-                            console.log(types);
+                                let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
+                                plotBoundaries[index].classList.add(availability);
+                            }
                         }
                     }
 
@@ -209,7 +211,7 @@ svg:not(:root) {
 </style>
 
 <style lang="scss">
-.type_ {
+.svg-house-icon {
     display: block !important;
     fill: rgba(0,0,0,0);
     fill-rule: evenodd;
@@ -217,102 +219,11 @@ svg:not(:root) {
     stroke: none;
     stroke-width: 1;
     stroke-miterlimit: 10;
-    transition: fill 0.5s ease;
-}
-.active_ {
-    .type_ {
-        &.available {
-            fill: rgba(255,0,255,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(255,0,255,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
+    transition: fill 0.25s ease;
 }
 
-.type_Studio {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-    transition: fill 0.5s ease;
-}
-.active_Studio {
-    .type_Studio {
-        &.available {
-            fill: rgba(0,0,255,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,0,255,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-
-.type_1 {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-    transition: fill 0.5s ease;
-}
-.active_1 {
-    .type_1 {
-        &.available {
-            fill: rgba(255,0,0,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(255,0,0,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-
-.type_2 {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-    transition: fill 0.5s ease;
-}
-.active_2 {
-    .type_2 {
-        &.available {
-            fill: rgba(0,255,0,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,255,0,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-
-.type_3 {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-    transition: fill 0.5s ease;
-}
-.active_3 {
-    .type_3 {
+.active_apartmentStudio {
+    .type_apartmentStudio {
         &.available {
             fill: rgba(246,150,46,0.9) !important;
             stroke: #3C3C3D !important;
@@ -324,75 +235,8 @@ svg:not(:root) {
     }
 }
 
-.type_4 {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-}
-.active_4 {
-    .type_4 {
-        &.available {
-            fill: rgba(251,184,49, 0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(251,184,49, 0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-
-.type_5 {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-}
-.active_5 {
-    .type_5 {
-        &.available {
-            fill: rgba(27,177,175,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(27,177,175,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_6 {
-    .type_6 {
-        &.available {
-            fill: rgba(27,177,175,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(27,177,175,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-
-
-.type_3V {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-    transition: fill 0.5s ease;
-}
-.active_3V {
-    .type_3V {
+.active_villa3 {
+    .type_villa3 {
         &.available {
             fill: rgba(246,150,46,0.9) !important;
             stroke: #3C3C3D !important;
@@ -404,62 +248,60 @@ svg:not(:root) {
     }
 }
 
-.type_4V {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-}
-.active_4V {
-    .type_4V {
+.active_apartment1 {
+    .type_apartment1 {
         &.available {
-            fill: rgba(251,184,49, 0.9) !important;
+            fill: rgba(251,184,49,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(251,184,49, 0.25) !important;
+            fill: rgba(251,184,49,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
 }
 
-.type_5V {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-}
-.active_5V {
-    .type_5V {
+.active_villa4 {
+    .type_villa4 {
         &.available {
-            fill: rgba(27,177,175,0.9) !important;
+            fill: rgba(251,184,49,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            // stroke-width: 2;
-            fill: rgba(27,177,175,0.25) !important;
+            fill: rgba(251,184,49,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
 }
 
-.type_6V {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
+.active_apartment2 {
+    .type_apartment2 {
+        &.available {
+            fill: rgba(28,177,175,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(28,177,175,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
 }
-.active_6V {
-    .type_6V {
+
+.active_villa5 {
+    .type_villa5 {
+        &.available {
+            fill: rgba(28,177,175,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(28,177,175,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.active_apartment3 {
+    .type_apartment3 {
         &.available {
             fill: rgba(95,96,98,0.9) !important;
             stroke: #3C3C3D !important;
@@ -471,69 +313,52 @@ svg:not(:root) {
     }
 }
 
-.type_2TH {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-}
-.active_2TH {
-    .type_2TH {
+.active_villa6 {
+    .type_villa6 {
         &.available {
-            fill: rgba(110,163,64,0.9) !important;
+            fill: rgba(95,96,98,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            // stroke-width: 2;
-            fill: rgba(110,163,64,0.25) !important;
+            fill: rgba(95,96,98,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
 }
 
-.type_3TH {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
-}
-.active_3TH {
-    .type_3TH {
+.active_townhouse2 {
+    .type_townhouse2 {
         &.available {
-            fill: rgba(24,151,210,0.9) !important;
+            fill: rgba(109,163,64,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            // stroke-width: 2;
-            fill: rgba(24,151,210,0.25) !important;
+            fill: rgba(109,163,64,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
 }
 
-.type_4TH {
-    display: block !important;
-    fill: rgba(0,0,0,0);
-    fill-rule: evenodd;
-    clip-rule: evenodd;
-    stroke: none;
-    stroke-width: 1;
-    stroke-miterlimit: 10;
+.active_townhouse3 {
+    .type_townhouse3 {
+        &.available {
+            fill: rgba(24,151,212,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(24,151,212,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
 }
-.active_3TH {
-    .type_3TH {
+
+.active_townhouse4 {
+    .type_townhouse4 {
         &.available {
             fill: rgba(7,71,125,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            // stroke-width: 2;
             fill: rgba(7,71,125,0.25) !important;
             stroke: #3C3C3D !important;
         }

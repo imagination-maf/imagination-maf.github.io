@@ -54,22 +54,28 @@ export default {
         'app_x5F_Sharjah-road--parent': 'alzahia'
     },
     houseTypes: {
-        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa'],
+        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard'],
         'townhouse': ['Town house Plus', 'Town house'],
-        'apartment': ['Apartments'],
+        'apartment': ['Apartments', 'Apartment'],
         'office': ['Offices']
     },
-    colorHierarchy: {
-        'apartmentStudio': '#f6962d',
-        'villa3': '#f6962d',
-        'apartment1': '#fbb831',
-        'villa4': '#fbb831',
-        'apartment2': '#1cb1af',
-        'villa5': '#1cb1af',
-        'apartment3': '#5f6062',
-        'villa6': '#5f6062',
-        'townhouse2': '#6da340',
-        'townhouse3': '#1897d4',
-        'townhouse4': '#07477d'
+    houseTypeNames: {
+        'apartmentStudio': 'Apartment Studio',
+        'villa3': '3-Bedroom Villa',
+        'apartment1': '1-Bedroom Apartment',
+        'villa4': '4-Bedroom Villa',
+        'apartment2': '2-Bedroom Apartment',
+        'villa5': '5-Bedroom Villa',
+        'apartment3': '3-Bedroom Apartment',
+        'villa6': '6-Bedroom Villa',
+        'townhouse2': '2-Bedroom Townhouse',
+        'townhouse3': '3-Bedroom Townhouse',
+        'townhouse4': '4-Bedroom Townhouse'
+    },
+    neighbourhoodNames: {
+        'allilac': 'AL LILAC',
+        'aljouri': 'AL JOURI',
+        'alnarjis': 'AL NARJIS',
+        'gardenapts': 'GARDEN APARTMENTS'
     }
 }

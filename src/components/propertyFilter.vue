@@ -4,6 +4,11 @@ import config from '../data/config.js';
 
 export default Vue.component('property-filter', {
     props: ['propertyTypeList', 'propertyTypeFilter', 'amenitiesFilter'],
+    data() {
+        return {
+            houseTypeNames: config.houseTypeNames
+        }
+    },
     computed: {
         list: function() {
             return Array.from(this.propertyTypeList);
@@ -33,14 +38,14 @@ export default Vue.component('property-filter', {
             <h3 class="community-menu-title">Residential properties</h3>
             <span>Tap to show/hide</span>
             <div class="community-menu-item" v-for="item in list">
-                <p @click="changeFilter('active_' + item)">{{ item }} Bedrooms</p>
-                <ul v-show="propertyTypeFilter['active_' + item]">
-                    <li>
-                        <div class="status available" style="background-color: #11c"></div>
+                <p @click="changeFilter('active_' + item)">{{ houseTypeNames[item] }}</p>
+                <ul class="property-list" v-show="propertyTypeFilter['active_' + item]">
+                    <li class="property-list-item">
+                        <div class="status available" :class="[item]"></div>
                         <span>Available</span>
                     </li>
-                    <li>
-                        <div class="status unavailable" style="background-color: #11c"></div>
+                    <li class="property-list-item">
+                        <div class="status unavailable" :class="[item]"></div>
                         <span>Unavailable</span>
                     </li>
                 </ul>
@@ -66,5 +71,135 @@ export default Vue.component('property-filter', {
     background-color: #ffffff;
     padding: 0 2rem;
     z-index: 1;
+    overflow: auto;
+    padding: 1rem 1rem;
+}
+.property-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    .property-list-item {
+        display: flex;
+        align-items: center;
+        margin: 0.25rem 1rem;
+    }
+}
+
+.status {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    border: 0.1rem solid;
+    margin-right: 1rem;
+    &.apartmentStudio {
+        &.available {
+            background-color: rgb(246,150,46);
+            border-color: rgb(246,150,46);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(246,150,46);
+        }
+    }
+    &.villa3 {
+        &.available {
+            background-color: rgb(246,150,46);
+            border-color: rgb(246,150,46);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(246,150,46);
+        }
+    }
+    &.apartment1 {
+        &.available {
+            background-color: rgb(251,184,49);
+            border-color: rgb(251,184,49);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(251,184,49);
+        }
+    }
+    &.villa4 {
+        &.available {
+            background-color: rgb(251,184,49);
+            border-color: rgb(251,184,49);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgba(251,184,49,0.9);
+        }
+    }
+    &.apartment2 {
+        &.available {
+            background-color: rgb(28,177,175);
+            border-color: rgb(28,177,175);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(28,177,175);
+        }
+    }
+    &.villa5 {
+        &.available {
+            background-color: rgb(28,177,175);
+            border-color: rgb(28,177,175);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(28,177,175);
+        }
+    }
+    &.apartment3 {
+        &.available {
+            background-color: rgb(95,96,98);
+            border-color: rgb(95,96,98);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(95,96,98);
+        }
+    }
+    &.villa6 {
+        &.available {
+            background-color: rgb(95,96,98);
+            border-color: rgb(95,96,98);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(95,96,98);
+        }
+    }
+    &.townhouse2 {
+        &.available {
+            background-color: rgb(109,163,64);
+            border-color: rgb(109,163,64);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(109,163,64);
+        }
+    }
+    &.townhouse3 {
+        &.available {
+            background-color: rgb(24,151,212);
+            border-color: rgb(24,151,212);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(24,151,212);
+        }
+    }
+    &.townhouse4 {
+        &.available {
+            background-color: rgb(7,71,125);
+            border-color: rgb(7,71,125);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(7,71,125);
+        }
+    }
 }
 </style>
