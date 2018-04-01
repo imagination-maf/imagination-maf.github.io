@@ -32,12 +32,13 @@ export default Vue.component('property-info', {
 <template>
     <div class="info">
         <div class="info-content">
-            <div class="info-close" @click="closeInfo()">X</div>
+            <div class="info-close" @click="closeInfo()"></div>
             <PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoFloorplan v-if="currentView === 'floorplan'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoTour v-if="currentView === 'tour'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoGallery v-if="currentView === 'gallery'" :property="property" v-on:changeView="changeView" />
         </div>
+        <div class="design"></div>
     </div>
 </template>
 
@@ -54,22 +55,32 @@ export default Vue.component('property-info', {
     background-color: rgba(200, 200, 200, 0.8);
     z-index: 2;
     .info-content {
-        width: 66.66%;
+        width: 70%;
         background-color: #ffffff;
         position: relative;
-        padding: 5rem 5rem;
+        padding: 5rem 3rem 5rem 6rem;
         box-shadow: 0.1rem 0.1rem 0.25rem #cccccc;
+        margin-top: 4rem;
         .info-close {
             position: absolute;
-            top: 0.25rem;
-            right: 0.25rem;
+            top: 0.65rem;
+            right: 0.3rem;
             width: 2rem;
             height: 2rem;
-            background: #8a1337;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('../images/overlay/close.png');
         }
         .info-title {
             border-bottom: 0.1rem solid #d7d7d7;
             color: #626263;
+            text-transform: uppercase;
+            margin: 0;
+            padding-top: 3.6rem;
+            font-size: 1.25rem;
+            letter-spacing: 0.15rem;
+            line-height: 2rem;
         }
         .info-row {
             width: 100%;
@@ -83,13 +94,15 @@ export default Vue.component('property-info', {
             h3 {
                 display: block;
                 width: 100%;
+                padding-top: 3rem;
+                letter-spacing: 0.1rem;
             }
             .info-features-item {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                margin: 0 2.5rem;
+                margin: 0.5rem 2.5rem 0;
                 &:nth-child(2) {
                     margin-left: 0;
                 }
@@ -124,5 +137,20 @@ export default Vue.component('property-info', {
             }
         }
     }
+}
+
+.design {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('../designs/design-overlay.png');
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 10000000;
 }
 </style>

@@ -14,7 +14,7 @@ export default Vue.component('marker-info', {
 </script>
 
 <template>
-<transition name="slide-right" appear>
+<!-- <transition name="slide-right" appear> -->
     <div class="panel">
         <div class="panel-content">
             <h2 class="panel-title">GROUP FOOTPRINT</h2>
@@ -27,7 +27,7 @@ export default Vue.component('marker-info', {
             </div>
         </div>
     </div>
-</transition>
+<!-- </transition> -->
 </template>
 
 <style lang="scss" scoped>
@@ -39,12 +39,12 @@ export default Vue.component('marker-info', {
     height: 100%;
     background: linear-gradient(to right, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
     .panel-content {
-        padding-top: 5.5rem;
+        padding-top: 4.35rem;
         padding-left: 5.25rem;
         .panel-title {
             margin: 0;
             font-size: 1.75rem;
-            letter-spacing: 0.15rem;
+            letter-spacing: 0.2rem;
             color: #3c3c3d;
         }
         .panel-subtitle {

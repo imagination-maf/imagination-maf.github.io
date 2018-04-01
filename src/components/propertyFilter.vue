@@ -6,7 +6,12 @@ export default Vue.component('property-filter', {
     props: ['propertyTypeList', 'propertyTypeFilter', 'amenitiesFilter'],
     data() {
         return {
-            houseTypeNames: config.houseTypeNames
+            houseTypeNames: config.houseTypeNames,
+            logos: {
+                'allilac': require('../images/neighbourhoods/logo-allilac.png'),
+                'alnarjis': require('../images/neighbourhoods/logo-alnarjis.png'),
+                'aljouri': require('../images/neighbourhoods/logo-aljouri.png')
+            }
         }
     },
     computed: {
@@ -32,32 +37,33 @@ export default Vue.component('property-filter', {
 <template>
     <div class="community">
         <div class="community-icon">
-            <h2 class="community-title">{{ name }} NEIGHBOURHOOD</h2>
+            <img class="community-neighbourhood-icon" :src="logos[$route.query.neighbourhood]" />
+            <h2 class="community-title">{{ name }}<br/>NEIGHBOURHOOD</h2>
         </div>
         <div class="community-list">
             <h3 class="community-menu-title">Residential properties</h3>
-            <span>Tap to show/hide</span>
-            <div class="community-menu-item" v-for="item in list">
-                <p @click="changeFilter('active_' + item)">{{ houseTypeNames[item] }}</p>
+            <span class="community-menu-span">Tap to show/hide</span>
+            <div class="community-menu-item" :class="{ 'first': index === 0 }" v-for="(item, index) in list">
+                <p class="property-list-name" @click="changeFilter('active_' + item)">{{ houseTypeNames[item] }}</p>
                 <ul class="property-list" v-show="propertyTypeFilter['active_' + item]">
                     <li class="property-list-item">
                         <div class="status available" :class="[item]"></div>
-                        <span>Available</span>
+                        <span class="property-list-text">Available</span>
                     </li>
                     <li class="property-list-item">
                         <div class="status unavailable" :class="[item]"></div>
-                        <span>Unavailable</span>
+                        <span class="property-list-text">Unavailable</span>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="community-list">
             <h3 class="community-menu-title">Residential Amenities</h3>
-            <span @click="changeAmenitiesVisiblity()">Tap to show/hide</span>
+            <span class="community-menu-span" @click="changeAmenitiesVisiblity()">Tap to show/hide</span>
         </div>
         <div class="community-list">
             <h3 class="community-menu-title">Commerical Properties</h3>
-            <span>Coming soon</span>
+            <span class="community-menu-span">Coming soon</span>
         </div>
     </div>
 </template>
@@ -66,14 +72,64 @@ export default Vue.component('property-filter', {
 .community {
     width: 25%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     background-color: #ffffff;
-    padding: 0 2rem;
     z-index: 1;
     overflow: auto;
-    padding: 1rem 1rem;
+    padding: 1rem 3.25rem 1rem 4.5rem;
+    .community-menu-item {
+        margin-top: 1.725rem;
+        &.first {
+            margin-top: 0;
+        }
+    }
+    .community-menu-title {
+        width: 100%;
+        border-bottom: 0.1rem solid #000;
+        margin: 0;
+        font-size: 1.35rem;
+        letter-spacing: 0.1rem;
+        font-weight: 200;
+        line-height: 1.75rem;
+    }
+    .community-menu-span {
+        display: block;
+        font-size: 0.8rem;
+        font-weight: 200;
+        margin: 0;
+        color: #9c9c9c;
+        margin-top: 0.4rem;
+    }
 }
+
+.community-list {
+    padding-top: 2.6rem;
+}
+
+.community-icon {
+    width: 100%;
+    padding-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .community-neighbourhood-icon {
+        width: 21.5%;
+    }
+    .community-title {
+        margin: 0.35rem;
+        font-weight: 200;
+        text-align: center;
+        font-size: 1.5rem;
+        letter-spacing: 0.07rem;
+    }
+}
+
+.property-list-name {
+    margin: 0;
+    margin-top: 0.95rem;
+    letter-spacing: 0.075rem;
+}
+
 .property-list {
     list-style-type: none;
     padding: 0;
@@ -81,16 +137,21 @@ export default Vue.component('property-filter', {
     .property-list-item {
         display: flex;
         align-items: center;
-        margin: 0.25rem 1rem;
+        margin: 0.25rem 0rem;
+    }
+    .property-list-text {
+        color: #9c9c9c;
+        letter-spacing: 0.05rem;
+        font-weight: 200;
     }
 }
 
 .status {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 100%;
     border: 0.1rem solid;
-    margin-right: 1rem;
+    margin-right: 0.75rem;
     &.apartmentStudio {
         &.available {
             background-color: rgb(246,150,46);

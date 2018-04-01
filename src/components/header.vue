@@ -16,7 +16,11 @@ export default Vue.component('app-header', {
     },
     methods: {
         home: function() {
-            this.$router.push({ path: 'location', query: { view: 'app_x5F_world--parent' }});
+            if(this.$route.name !== 'community-selection') {
+                this.$router.push({ path: 'community-selection'});
+            } else {
+                this.$router.push({ path: 'location', query: { view: 'app_x5F_world--parent' }});
+            }
         },
         goBack: function() {
             this.$emit('back');

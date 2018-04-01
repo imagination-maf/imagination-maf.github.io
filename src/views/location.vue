@@ -539,12 +539,12 @@
                 </transition>
                 <!-- End of Sharjah Road -->
             </div>
-            <div class="loading" v-if="!loadingComplete">
-                Loading...
-            </div>
+            <div class="loading" v-if="!loadingComplete"></div>
         </div>
 
-        <MarkerInfo v-if="markersAvailable" :country="markerSelected"></MarkerInfo>
+        <transition name="marker-info">
+            <MarkerInfo v-if="markersAvailable" :country="markerSelected"></MarkerInfo>
+        </transition>
 
         <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
             <div class="controls-row">
@@ -599,7 +599,7 @@
     }
     &.out {
         .png-image-container-scale {
-            transition: transform 0.5s linear 0.45s, opacity 0.1s linear 0.45s;
+            transition: transform 0.5s linear 0.45s, opacity 0.1s linear 1s;
             &.active {
                 opacity: 1;
                 transition: transform 0.5s linear 0.45s, opacity 0.1s linear 0s;
@@ -608,7 +608,7 @@
                 transition: transform 0.225s ease-out 0.725s;
             }
             .png-image {
-                transition: transform 0.2s linear 0.25s;
+                transition: transform 0.2s linear 0.7s;
             }
         }
     }
@@ -671,23 +671,24 @@ svg:not(:root) {
 
 .controls {
     position: absolute;
-    bottom: 1rem;
-    left: 42.5%;
+    bottom: 2.5rem;
+    left: 44%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20%;
+    width: 12%;
     .controls-row {
         display: flex;
         width: 100%;
-        margin: 0.25rem 0;
+        margin: 0.35rem 0;
         .button {
-            font-size: 1.5rem;
+            font-size: 1.15rem;
             margin: 0;
             flex: 1;
             padding: 0.5rem 0;
             outline: none;
+            font-weight: 200;
             &.zoom {
                 background-color: #881839;
                 color: #fdfdfb;

@@ -158,7 +158,7 @@ export default Vue.component('location-menu', {
         .location-menu-header {
             position: absolute;
             top: 5.75rem;
-            left: 4.25rem;
+            left: 4.2rem;
             &:after {
                 content: '';
                 position: absolute;
@@ -172,7 +172,8 @@ export default Vue.component('location-menu', {
                 font-size: 2rem;
                 letter-spacing: 0.32rem;
                 color: #ffffff;
-                margin: 0.75rem 0;
+                margin: 0.9rem 0 0.75rem;
+                font-weight: 200;
             }
             .location-menu-subtitle {
                 font-size: 0.95rem;

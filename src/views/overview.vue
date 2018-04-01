@@ -28,13 +28,17 @@
                 let mapLocation = Object.keys(config.mappings).filter( (key) => config.mappings[key] === this.$route.query.community)[0];
                 this.$router.push({ path: 'location', query: { 'view': mapLocation }});
             },
-            dummyClick: function(id) {
-                this.$router.push({ path: 'community', query: { 'community': this.$route.query.community, 'neighbourhood': id } });
+            svgPressed: function($event) {
+                let path = $event.path[0].id;
+                let splitPath = path.split('_x5F_');
+                if(splitPath[splitPath.length - 1] === 'tap'){
+                    let neighbourhood = splitPath[0].replace(/_/g, '').toLowerCase();
+                    this.$router.push({ path: 'community', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
+                }
             }
         },
         mounted() {
             let svgImage = document.getElementById('svg');
-            console.log('svg image', svgImage, window.innerWidth);
             this.svgScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
         }
     });
@@ -43,20 +47,21 @@
 <template>
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
-    <div class="container">
+    <div class="container" @click="svgPressed($event)">
         <img class="image" :src="images[selectedCommunity]" />
-
         <AlZahia id="svg" ng-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
-
-        <div style="position: absolute; left: 0; bottom: 1rem">
-            <button @click="dummyClick('allilac')">Al Lilac</button>
-            <button @click="dummyClick('aljouri')">Al Jouri</button>
-            <button @click="dummyClick('alnarjis')">Al Narjis</button>
-            <button @click="dummyClick('gardenapts')">Garden Apartments</button>
-        </div>
     </div>
 </div>
 </template>
+
+<style lang="scss">
+#Tap_area {
+    path,
+    polygon {
+        fill: rgba(0,0,0,0);
+    }
+}
+</style>
 
 <style lang="scss" scoped>
 .app {

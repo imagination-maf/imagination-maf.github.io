@@ -77,13 +77,17 @@
             align-items: center;
         }
         .attractor-item-image {
-            width: 30%;
+            width: 50%;
         }
         .attractor-item-button {
-            padding: 1rem 2rem;
-            font-size: 2rem;
-            background-color: rgb(138,21,56);
-            color: rgb(255,255,255);
+            padding: 1rem 1.5rem 1rem 1.75rem;
+            font-size: 1.7rem;
+            background-color: #8a1538;
+            color: #ffffff;
+            margin-top: 3.5rem;
+            font-weight: 200;
+            letter-spacing: 0.025rem;
+            margin-left: 0.5rem;
         }
     }
 }

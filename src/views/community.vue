@@ -198,10 +198,11 @@
     &.filters {
         #png-image {
             filter: grayscale(0.9);
+            opacity: 0.6;
         }
     }
     #png-image {
-        transition: filter 0.5s ease-out;
+        transition: filter 0.5s ease-out, opacity 0.5s ease-out;
     }
 }
 
@@ -365,6 +366,7 @@ svg:not(:root) {
     }
 }
 
+// TODO CHANGE THIS
 #area.visible {
     animation-name: fade-in;
     animation-fill-mode: both;
