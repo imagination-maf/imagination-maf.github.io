@@ -36,7 +36,7 @@ export default Vue.component('property-info-summary', {
         <h3 class="info-title">{{ name }} {{ type }}</h3>
         <div class="info-row">
             <div class="info-features">
-                <h3>FEATURES</h3>
+                <h3 class="info-row-title">FEATURES</h3>
                 <div class="info-features-item" v-if="property.bedrooms">
                     <img :src="images.iconBed" class="info-features-icon" />
                     <p class="info-features-text">{{ property.bedrooms }}</p>
@@ -64,7 +64,7 @@ export default Vue.component('property-info-summary', {
                 <li class="info-cta-item" @click="changeView('gallery')">Photo Gallery</li>
             </ul>
         </div>
-        <h3>Details</h3>
+        <h3 class="info-row-title">DETAILS</h3>
         <div class="info-row">
             <div class="info-details">
                 <div class="info-details-item">Lot Number: {{ property.plot_number }}</div>
@@ -86,20 +86,26 @@ export default Vue.component('property-info-summary', {
         border-bottom: 0.1rem solid #d7d7d7;
         color: #626263;
         text-transform: uppercase;
+        letter-spacing: 0.15rem;
+        font-size: 1.25rem;
     }
     .info-row {
         width: 100%;
         display: flex;
         align-items: center;
+        padding: 1rem 0;
+    }
+    .info-row-title {
+        display: block;
+        width: 100%;
+        font-size: 1.2rem;
+        letter-spacing: 0.08rem;
+        margin: 0;
     }
     .info-features {
         display: flex;
         flex-wrap: wrap;
         flex: 1;
-        h3 {
-            display: block;
-            width: 100%;
-        }
         .info-features-item {
             display: flex;
             flex-direction: column;
@@ -125,6 +131,27 @@ export default Vue.component('property-info-summary', {
         flex-direction: column;
         justify-content: center;
         padding: 0 2rem;
+        margin: 1.5rem 0 0;
+        list-style-type: none;
+        .info-cta-item {
+            padding-left: 3.5rem;
+            position: relative;
+            font-size: 1.25rem;
+            line-height: 2rem;
+            margin: 0.5rem 0 1.25rem;
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: calc(50% - 1rem);
+                width: 2.25rem;
+                height: 2.25rem;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url('../../images/overlay/circle.png');
+            }
+        }
     }
     .info-details {
         width: 50%;
@@ -135,7 +162,7 @@ export default Vue.component('property-info-summary', {
             padding-left: 1rem;
         }
         .info-details-item {
-            padding: 2rem 0;
+            padding: 1.25rem 0;
             border-bottom: 0.1rem solid #d7d7d7;
         }
     }

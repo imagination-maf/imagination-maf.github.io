@@ -12,6 +12,7 @@ export default {
             allilac: {
                 'fullname': 'AL LILAC',
                 'plot_boundary': 'AL_LILAC_PLOTS',
+                'amenities': ['AMENITIES_x5F_AL_LILAC'],
                 'svg': {
                     'scale': 3.2,
                     'translate': [598, 280]
@@ -20,6 +21,7 @@ export default {
             aljouri: {
                 'fullname': 'AL JOURI',
                 'plot_boundary': 'AL_JOURI_PLOTS',
+                'amenities': ['AMENITIES_x5F_AL_JOURI'],
                 'svg': {
                     'scale': 2.625,
                     'translate': [50, 316]
@@ -28,6 +30,7 @@ export default {
             alnarjis: {
                 'fullname': 'AL NARJIS',
                 'plot_boundary': 'AL_NARJIS_PLOTS',
+                'amenities': ['AMENITIES_x5F_AL_NARJIS'],
                 'svg': {
                     'scale': 3.3,
                     'translate': [201, -198]
@@ -36,6 +39,7 @@ export default {
             gardenapts: {
                 'fullname': 'Garden Apartments',
                 'plot_boundary': 'AL_ZAHIA_PLOT_BOUNDARIES',
+                'amenities': [],
                 'svg': {
                     'scale': 3.2,
                     'translate': [598, 280]

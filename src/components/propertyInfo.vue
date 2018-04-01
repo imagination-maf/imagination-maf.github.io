@@ -25,6 +25,9 @@ export default Vue.component('property-info', {
         changeView: function(key) {
             this.currentView = key;
         }
+    },
+    mounted() {
+        console.log('property', this.property, this.property.unit_type);
     }
 });
 </script>
@@ -38,7 +41,6 @@ export default Vue.component('property-info', {
             <PropertyInfoTour v-if="currentView === 'tour'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoGallery v-if="currentView === 'gallery'" :property="property" v-on:changeView="changeView" />
         </div>
-        <div class="design"></div>
     </div>
 </template>
 
@@ -64,7 +66,7 @@ export default Vue.component('property-info', {
         .info-close {
             position: absolute;
             top: 0.65rem;
-            right: 0.3rem;
+            right: 0.65rem;
             width: 2rem;
             height: 2rem;
             background-position: center;
@@ -102,7 +104,7 @@ export default Vue.component('property-info', {
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                margin: 0.5rem 2.5rem 0;
+                margin: 0.5rem 2.5rem;
                 &:nth-child(2) {
                     margin-left: 0;
                 }
@@ -137,20 +139,5 @@ export default Vue.component('property-info', {
             }
         }
     }
-}
-
-.design {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url('../designs/design-overlay.png');
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 10000000;
 }
 </style>

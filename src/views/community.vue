@@ -95,6 +95,32 @@
                 let query = 'api=eq.' + this.community;
                 this.getData(query).then( (res) => {
                     this.data = res.data;
+
+                    let typesss = {};
+                    this.data.map( (item) => {
+                        if(item.id.split('-')[1] === '4') {
+                            console.log('aspect', item,  item.aspect);
+                            if(!typesss[item.unit_type]) {
+                                typesss[item.unit_type] = []
+                            }
+
+                            typesss[item.unit_type].push(item.aspect);
+
+                            return true;
+                        }
+                    } )
+                    console.log(typesss);
+
+                    let final = {};
+                    for (var property in typesss) {
+                        if (typesss.hasOwnProperty(property)) {
+                            // do stuff
+                            final[property] = new Set(typesss[property]);
+                        }
+                    }
+
+                    console.log('finallll', final);
+
                     this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
                     let svgImage = document.getElementById('svg-image');
@@ -141,6 +167,19 @@
                     console.log('unable to get data', err);
                 } )
             })
+        },
+        watch: {
+            amenitiesFilter: function(val) {
+                if(val) {
+                    config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
+                        document.getElementById(amenity).classList.add('amenity-active');
+                    });
+                } else {
+                    config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
+                        document.getElementById(amenity).classList.remove('amenity-active');
+                    });
+                }
+            }
         }
     });
 </script>
@@ -221,6 +260,10 @@ svg:not(:root) {
     stroke-width: 1;
     stroke-miterlimit: 10;
     transition: fill 0.25s ease;
+}
+
+.amenity-active {
+    fill: rgba(238, 225, 20, 0.75) !important;
 }
 
 .active_apartmentStudio {
