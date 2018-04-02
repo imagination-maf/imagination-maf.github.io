@@ -96,31 +96,6 @@
                 this.getData(query).then( (res) => {
                     this.data = res.data;
 
-                    let typesss = {};
-                    this.data.map( (item) => {
-                        if(item.id.split('-')[1] === '4') {
-                            console.log('aspect', item,  item.aspect);
-                            if(!typesss[item.unit_type]) {
-                                typesss[item.unit_type] = []
-                            }
-
-                            typesss[item.unit_type].push(item.aspect);
-
-                            return true;
-                        }
-                    } )
-                    console.log(typesss);
-
-                    let final = {};
-                    for (var property in typesss) {
-                        if (typesss.hasOwnProperty(property)) {
-                            // do stuff
-                            final[property] = new Set(typesss[property]);
-                        }
-                    }
-
-                    console.log('finallll', final);
-
                     this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
                     let svgImage = document.getElementById('svg-image');
@@ -130,8 +105,6 @@
                     this.svgTransform = {
                         'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
                     };
-
-                    let types = [];
 
                     let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
                     let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);

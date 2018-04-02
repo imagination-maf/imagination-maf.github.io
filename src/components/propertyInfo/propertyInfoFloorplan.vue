@@ -7,25 +7,13 @@ export default Vue.component('property-info-floorplan', {
     props: ['property'],
     data() {
         return {
-            floorplans: null,
-            baseUrl: GalleryMapping[this.$route.query.community][this.$route.query.neighbourhood][this.property.unit_type] + 'floorplan/'
+            floorplan: GalleryMapping[this.$route.query.community][this.$route.query.neighbourhood][this.property.unit_type][this.property.aspect]
         }
     },
     methods: {
         backToSummary: function() {
             this.$emit('changeView', 'summary');
-        },
-        getPictureInfo: function() {
-            return axios({
-                method: 'GET',
-                url: this.baseUrl + 'data.json'
-            })
         }
-    },
-    mounted() {
-        this.getPictureInfo().then( (response) => {
-            this.floorplans = response.data[this.property.aspect];
-        } )
     }
 });
 </script>
@@ -34,9 +22,9 @@ export default Vue.component('property-info-floorplan', {
     <div class="info-floorplan">
         <h3 class="info-title">FLOORPLAN</h3>
         <div class="info-image-container">
-            <img class="info-image" v-for="image in floorplans" :src="baseUrl + image" />
+            <img class="info-image" :src="floorplan" />
         </div>
-        <button type="button" @click="backToSummary()">Go Back to Summary</button>
+        <button class="info-button" type="button" @click="backToSummary()">Go Back to Summary</button>
     </div>
 </template>
 
@@ -46,20 +34,39 @@ export default Vue.component('property-info-floorplan', {
     display: flex;
     flex-direction: column;
     .info-title {
-        border-bottom: 0.1rem solid #d7d7d7;
         color: #626263;
+        position: absolute;
+        left: 4rem;
+        top: 2rem;
+        letter-spacing: 0.08rem;
+        font-weight: 200;
+        font-size: 1.5rem;
     }
     .info-image-container {
-        width: 80%;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         .info-image {
             display: block;
-            max-width: 33%;
-            max-height: 50vh;
+            max-width: 100%;
+            max-height: 60vh;
+            width: 100%;
+            height: 60vh;
             object-fit: contain;
             object-position: center;
         }
+    }
+    .info-button {
+        position: absolute;
+        bottom: 4rem;
+        left: 4rem;
+        margin-left: 0;
+        background-color: transparent;
+        border: none;
+        color: #626263;
+        letter-spacing: 0.05rem;
+        font-size: 1rem;
+        outline: none;
     }
 }
 </style>

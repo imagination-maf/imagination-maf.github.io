@@ -60,7 +60,7 @@ export default Vue.component('property-info-summary', {
             </div>
             <ul class="info-cta">
                 <li class="info-cta-item" @click="changeView('floorplan')">Floor Plan</li>
-                <li class="info-cta-item" @click="changeView('tour')">360 Tour</li>
+                <!-- <li class="info-cta-item" @click="changeView('tour')">360 Tour</li> -->
                 <li class="info-cta-item" @click="changeView('gallery')">Photo Gallery</li>
             </ul>
         </div>

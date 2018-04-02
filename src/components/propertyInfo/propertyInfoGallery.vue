@@ -14,15 +14,33 @@ export default Vue.component('property-info-gallery', {
 <template>
     <div class="info-gallery">
         <h3 class="info-title">Photo Gallery</h3>
-        <button type="button" @click="backToSummary()">Go Back to Summary</button>
+        <button class="info-button" type="button" @click="backToSummary()">Go Back to Summary</button>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .info-gallery {
     .info-title {
-        border-bottom: 0.1rem solid #d7d7d7;
         color: #626263;
+        position: absolute;
+        left: 4rem;
+        top: 2rem;
+        letter-spacing: 0.08rem;
+        font-weight: 200;
+        font-size: 1.5rem;
+    }
+
+    .info-button {
+        position: absolute;
+        bottom: 4rem;
+        left: 4rem;
+        margin-left: 0;
+        background-color: transparent;
+        border: none;
+        color: #626263;
+        letter-spacing: 0.05rem;
+        font-size: 1rem;
+        outline: none;
     }
 }
 </style>

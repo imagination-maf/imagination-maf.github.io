@@ -25,9 +25,6 @@ export default Vue.component('property-info', {
         changeView: function(key) {
             this.currentView = key;
         }
-    },
-    mounted() {
-        console.log('property', this.property, this.property.unit_type);
     }
 });
 </script>
