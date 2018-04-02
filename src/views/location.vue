@@ -133,6 +133,13 @@
                     return null;
                 }
             },
+            masterplanAvailable: function() {
+                if(config['masterplan-inactive'].indexOf(this.selectedView) !== -1) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
             headerLogo: function () {
                 return config.logoMapping[this.$route.query.view];
             },
@@ -656,7 +663,7 @@
                 <button class="button zoom" type="button" @click="zoomOut()">Zoom Out</button>
                 <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @click="zoomIn()">Zoom In</button>
             </div>
-            <div class="controls-row">
+            <div class="controls-row" v-if="masterplanAvailable">
                 <button class="button masterplan" type="button" @click="viewMasterplan()">View Masterplan</button>
             </div>
         </div>
