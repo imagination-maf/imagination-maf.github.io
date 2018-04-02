@@ -6,6 +6,8 @@
     import SharjahRoadImage from '../images/maps/Sharjah-road.svg';
     import LebanonCityImage from '../images/maps/Lebanon-city.svg';
     import LebanonRoadImage from '../images/maps/Lebanon-road.svg';
+    import MuscatCityImage from '../images/maps/Muscat-city.svg';
+    import MuscatRoadImage from '../images/maps/Muscat-road.svg';
     import MarkerInfo from '../components/markerInfo.vue';
     import AppHeader from '../components/header.vue';
 
@@ -19,6 +21,8 @@
             SharjahRoadImage,
             LebanonCityImage,
             LebanonRoadImage,
+            MuscatCityImage,
+            MuscatRoadImage,
             MarkerInfo,
             AppHeader
         },
@@ -43,7 +47,9 @@
                     'SharjahCity': require('../images/maps/Sharjah-city.png'),
                     'SharjahRoad': require('../images/maps/Sharjah-road.png'),
                     'LebanonCity': require('../images/maps/Lebanon-city.png'),
-                    'LebanonRoad': require('../images/maps/Lebanon-road.png')
+                    'LebanonRoad': require('../images/maps/Lebanon-road.png'),
+                    'MuscatCity': require('../images/maps/Muscat-city.png'),
+                    'MuscatRoad': require('../images/maps/Muscat-road.png')
                 },
                 fullscreenTransform: {
                     'png': {},
@@ -547,6 +553,38 @@
                     </div>
                 </div>
                 <!-- End of Lebanon Road -->
+                <!-- Muscat City -->
+                <div
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Muscat--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Muscat--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Muscat--parent']]">
+                        <img
+                            id="app_x5F_Muscat--image"
+                            class="png-image"
+                            :src="pngImages.MuscatCity"
+                            :style="[rotationStyles['app_x5F_Muscat--parent']]" />
+                    </div>
+                </div>
+                <!-- End of Muscat City -->
+                <!-- Muscat Road -->
+                <div
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Muscat-road--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Muscat-road--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Muscat-road--parent']]">
+                        <img
+                            id="app_x5F_Muscat-road--image"
+                            class="png-image"
+                            :src="pngImages.MuscatRoad"
+                            :style="[rotationStyles['app_x5F_Muscat-road--parent']]" />
+                    </div>
+                </div>
+                <!-- End of Muscat Road -->
             </div>
             <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
                 <!-- World -->
@@ -591,6 +629,20 @@
                         v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
                 </transition>
                 <!-- End of Lebanon Road -->
+                <!-- Muscat City -->
+                <transition name="map-switch">
+                    <MuscatCityImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Muscat--parent'" />
+                </transition>
+                <!-- End of Muscat City -->
+                <!-- Muscat Road -->
+                <transition name="map-switch">
+                    <MuscatRoadImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
+                </transition>
+                <!-- End of Muscat Road -->
             </div>
             <div class="loading" v-if="!loadingComplete"></div>
         </div>

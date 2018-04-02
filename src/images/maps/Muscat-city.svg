@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="app_x5F_Muscat--parent" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;"
+	 xml:space="preserve">
+<rect id="app_x5F_Muscat-road--zoom" x="299" y="261.6" transform="matrix(-0.3074 0.9516 -0.9516 -0.3074 834.679 144.5581)" style="fill:none;stroke:#1D1D1B;stroke-width:0.6224;stroke-miterlimit:10;" width="131.4" height="228.9"/>
+<g id="map_labels">
+	<g>
+		<path style="fill:#676767;" d="M335.3,480.9l-1.6-0.3l-0.7,0.7l2,1.2l1,2.1l0.7-0.7l-0.1-1.6l2.7-2.4l2.3,5l0.9-0.9l-1.1-6.1
+			l2.7-2.4c0.4-0.4,0.4-1,0.1-1.4c-0.4-0.4-1-0.4-1.4-0.1l-2.7,2.4l-6-1.7l-0.9,0.9l4.7,2.8L335.3,480.9z"/>
+		<path style="fill:#676767;" d="M330.3,486.8c4.5,5,12.2,5.4,17.2,0.9s5.4-12.2,0.9-17.2s-12.2-5.4-17.2-0.9
+			C326.2,474.1,325.8,481.8,330.3,486.8z M347.5,471.2c4.1,4.5,3.7,11.5-0.8,15.5c-4.5,4.1-11.5,3.7-15.5-0.8
+			c-4.1-4.5-3.7-11.5,0.8-15.5C336.5,466.4,343.4,466.7,347.5,471.2z"/>
+	</g>
+	
+		<text transform="matrix(0.9935 0.1137 -0.1137 0.9935 506.1924 464.2257)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:7.2181px;">18th November St.</text>
+	
+		<text transform="matrix(0.9796 -0.2011 0.2011 0.9796 501.9363 652.986)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1539px;">Muscat Expressway</text>
+	
+		<text transform="matrix(0.8784 -0.5133 0.5328 0.8463 920.8701 577.0002)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:7.0285px;">Muscat Expressway</text>
+	<text transform="matrix(1 0 0 1 531.0484 513.4002)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:7.2182px;">Sultan Qaboos St.</text>
+	
+		<text transform="matrix(0.9582 -0.286 0.286 0.9582 319.7819 560.8909)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:7.218px;">Sultan Qaboos St.</text>
+	
+		<text transform="matrix(0.9995 -3.029126e-02 3.029126e-02 0.9995 884.8411 495.739)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:7.2162px;">Sultan Qaboos St.</text>
+	<text transform="matrix(1 0 0 1 192.3834 728.8757)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:7.2182px;">Muscat Expressway</text>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="464.1" y1="540.7" x2="464.1" y2="565.1"/>
+	<circle style="fill:#8A1739;" cx="464.1" cy="540.7" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 420.0109 575.6194)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Oman International</text>
+		<text transform="matrix(1 0 0 1 420.0109 587.7834)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Exhibition Centre</text>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="358.7" y1="472.2" x2="376" y2="472.2"/>
+		<circle style="fill:#8A1739;" cx="358.7" cy="472.2" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="199.3" y1="402.4" x2="184.8" y2="393"/>
+		<ellipse style="fill:#8A1739;" cx="199.3" cy="402.4" rx="3.3" ry="3.3"/>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="433.7" y1="611.3" x2="433.7" y2="635.7"/>
+	<circle style="fill:#8A1739;" cx="433.7" cy="611.3" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 401.5569 646.2727)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Muscat Hills</text>
+		<text transform="matrix(1 0 0 1 401.5569 658.4367)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Golf &amp; Country Club</text>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="278.8" y1="347.6" x2="278.8" y2="307.7"/>
+		<circle style="fill:#8A1739;" cx="278.8" cy="347.6" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="283.9" y1="359" x2="296.4" y2="320.6"/>
+		<circle style="fill:#8A1739;" cx="283.9" cy="359" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="303.3" y1="359.6" x2="324.4" y2="335.3"/>
+		<circle style="fill:#8A1739;" cx="303.3" cy="359.6" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="293.5" y1="361.6" x2="275.5" y2="388.2"/>
+		<circle style="fill:#8A1739;" cx="293.5" cy="361.6" r="3.3"/>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="721.7" y1="609" x2="697.4" y2="609"/>
+	<circle style="fill:#8A1739;" cx="721.8" cy="608.8" r="3.3"/>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="207.1" y1="542.6" x2="207.1" y2="567"/>
+	<circle style="fill:#8A1739;" cx="207.1" cy="542.6" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 176.3518 577.9939)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">As Sahwah</text>
+		<text transform="matrix(1 0 0 1 176.3518 590.1575)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Public Garden</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 66.3669 360.8244)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">The International</text>
+		<text transform="matrix(1 0 0 1 66.3669 372.988)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">School of</text>
+		<text transform="matrix(1 0 0 1 66.3669 385.2249)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Choueifat</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 711.2122 684.0969)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Ghala Valley</text>
+		
+			<text transform="matrix(1.0574 0 0 1 711.2111 696.2606)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Golf Club</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="839" y1="587.9" x2="839" y2="612.3"/>
+	<circle style="fill:#8A1739;" cx="838.9" cy="587.9" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 809.4695 622.1115)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Mall of Oman</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1657.2" y1="615.6" x2="1657.2" y2="639.9"/>
+	<circle style="fill:#8A1739;" cx="1657.1" cy="615.5" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 1625.4336 650.801)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Qantab Beach</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1837.3" y1="660.4" x2="1837.3" y2="684.7"/>
+	<circle style="fill:#8A1739;" cx="1837.1" cy="660.3" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 1801.9045 694.6028)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Bandar Khiran</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1753.4" y1="658.1" x2="1753.4" y2="682.4"/>
+	<circle style="fill:#8A1739;" cx="1753.2" cy="658" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 1746.2834 692.2546)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Yiti</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1581" y1="574.7" x2="1581" y2="599.1"/>
+	<circle style="fill:#8A1739;" cx="1580.9" cy="574.7" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 1560.2443 608.9323)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Al Bustan</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="940.6" y1="545.5" x2="940.6" y2="589.2"/>
+	<circle style="fill:#8A1739;" cx="940.4" cy="545.4" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 890.6111 598.7117)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">ABA International school</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1072.3" y1="403.8" x2="1072.3" y2="428.1"/>
+	<circle style="fill:#8A1739;" cx="1072.2" cy="403.7" r="3.3"/>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1391.7" y1="381.8" x2="1391.7" y2="406.1"/>
+		<circle style="fill:#8A1739;" cx="1391.6" cy="381.7" r="3.3"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 1030.3829 438.0148)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Royal Opera House</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 976.4836 486.178)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">British International School</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 1185.2249 395.2102)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Qurum Natural Park</text>
+	</g>
+	<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="751.1" y1="551.4" x2="751.1" y2="575.7"/>
+	<circle style="fill:#8A1739;" cx="751" cy="551.3" r="3.3"/>
+	<g>
+		<text transform="matrix(1 0 0 1 721.5911 585.5836)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Sultan Qaboos </text>
+		<text transform="matrix(1 0 0 1 721.5911 597.7478)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Grand Mosque</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 634.8644 599.9503)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">Taisam</text>
+		<text transform="matrix(1 0 0 1 634.8644 612.114)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">International </text>
+		<text transform="matrix(1 0 0 1 634.8644 624.3507)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:10.1536px;">School</text>
+	</g>
+	<text transform="matrix(1 0 0 1 242.4901 302.9328)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;"> Al Mouj Marina</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="447.5" y1="434.1" x2="447.5" y2="394.1"/>
+		<circle style="fill:#8A1739;" cx="447.5" cy="434.1" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="370.8" y1="410.1" x2="370.8" y2="370.1"/>
+		<circle style="fill:#8A1739;" cx="370.8" cy="410.2" r="3.3"/>
+	</g>
+	<text transform="matrix(1 0 0 1 285.6169 318.1652)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">The Walk</text>
+	<text transform="matrix(1 0 0 1 309.4153 331.6515)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Kempinski Hotel </text>
+	<text transform="matrix(1 0 0 1 242.4903 402.7786)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Mysk by Shaza </text>
+	<text transform="matrix(1 0 0 1 242.4903 414.9425)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Al Mouj Hotel</text>
+	<text transform="matrix(1 0 0 1 379.8322 474.4856)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Muscat International Airport</text>
+	<text transform="matrix(1 0 0 1 146.8258 390.1414)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Markaz Al Bahja</text>
+	<text transform="matrix(1 0 0 1 420.9201 391.8156)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Al Mouj Golf</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="690.4" y1="464.3" x2="690.4" y2="424.3"/>
+		<circle style="fill:#8A1739;" cx="690.4" cy="464.3" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1139.6" y1="392.3" x2="1179.5" y2="392.3"/>
+		<circle style="fill:#8A1739;" cx="1139.6" cy="392.3" r="3.3"/>
+	</g>
+	<text transform="matrix(1 0 0 1 663.7708 421.9855)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Azaiba Beach</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1041.7" y1="388.3" x2="1041.7" y2="348.3"/>
+		<circle style="fill:#8A1739;" cx="1041.7" cy="388.3" r="3.3"/>
+	</g>
+	<text transform="matrix(1 0 0 1 1015.0665 345.9832)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Qurum Beach</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1419.5" y1="380.3" x2="1401.5" y2="359.9"/>
+		<circle style="fill:#8A1739;" cx="1419.5" cy="380.3" r="3.3"/>
+	</g>
+	<text transform="matrix(1 0 0 1 1360.6914 417.0182)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Bait Al Baranda</text>
+	<text transform="matrix(1 0 0 1 1434.4591 443.7135)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Bait Al Zubair </text>
+	<text transform="matrix(1 0 0 1 1434.4591 455.8771)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Museum</text>
+	<text transform="matrix(1 0 0 1 1505.2734 533.7947)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Muscat Gate </text>
+	<text transform="matrix(1 0 0 1 1505.2734 545.9587)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Museum</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1516.9" y1="400.7" x2="1516.9" y2="360.7"/>
+		<circle style="fill:#8A1739;" cx="1516.9" cy="400.7" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1498.6" y1="368.7" x2="1538.6" y2="368.7"/>
+		<circle style="fill:#8A1739;" cx="1498.6" cy="368.7" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1460" y1="415.3" x2="1460" y2="432.2"/>
+		<circle style="fill:#8A1739;" cx="1460" cy="415.3" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1556.1" y1="511.2" x2="1545.9" y2="522.1"/>
+		<circle style="fill:#8A1739;" cx="1556.1" cy="511.2" r="3.3"/>
+	</g>
+	<text transform="matrix(1 0 0 1 1515.2891 440.6183)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">The National Museum</text>
+	<text transform="matrix(1 0 0 1 1515.2891 452.7825)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Of Oman</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1509.9" y1="420.3" x2="1520.7" y2="430.5"/>
+		<circle style="fill:#8A1739;" cx="1509.9" cy="420.3" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="202.5" y1="479.8" x2="202.5" y2="439.8"/>
+		<circle style="fill:#8A1739;" cx="202.5" cy="479.8" r="3.3"/>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="123.5" y1="397.5" x2="106.9" y2="389.7"/>
+		<circle style="fill:#8A1739;" cx="123.5" cy="397.5" r="3.3"/>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_10_" style="fill:#FFFFFF;" d="M166.8,429.4h71.8c2,0,3.6,1.6,3.6,3.6v18.9c0,2-1.6,3.6-3.6,3.6h-71.8
+			c-2,0-3.6-1.6-3.6-3.6V433C163.2,431,164.8,429.4,166.8,429.4z"/>
+		
+			<text transform="matrix(1 0 0 1 184.9367 440.6184)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:10.1501px;">City Cent</text>
+		
+			<text transform="matrix(1 0 0 1 226.0168 440.6184)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:10.1501px;">r</text>
+		
+			<text transform="matrix(1 0 0 1 229.7318 440.6184)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:10.1501px;">e</text>
+		
+			<text transform="matrix(1 0 0 1 184.9367 450.7677)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:10.1501px;">Muscat</text>
+		<g>
+			<path id="Path_6_" style="fill:#8A1538;" d="M174.2,437.4c-3.4,0-5.9,2.1-5.9,4.8v5.3h2c0,0,0-3,0-5.3c0-2.5,2.2-4.4,4.4-4.7
+				c0.1,0,0.1,0,0.1,0L174.2,437.4L174.2,437.4z"/>
+			<path id="Path_3_" style="fill:#8A1538;" d="M174.5,437.5c-0.1,0.1-0.4,0.1-0.7,0.4c-1.2,0.8-1.9,2.5-1.9,3.9c0,0.1,0,0.1,0,0.3
+				l0,0v0.1v5.3h1.6v-5.3c0-0.4,0.1-0.7,0.4-0.8l0.7,0.8l0.7-0.8c0.3,0.1,0.4,0.5,0.4,0.8v5.3h1.6v-5.3c0-1.5-1.2-2.9-2.7-2.9
+				c-0.4,0-0.7,0.1-1,0.1l0,0c0.4-0.4,0.8-0.7,1.5-0.7l0,0c0.1,0,0.4,0,0.5,0.1c1.5,0.3,2.6,1.5,2.6,3.2c0,0.1,0,0.1,0,0.1v5.2h1.6
+				c0,0,0-5.2,0-5.3c0-2.3-1.2-4.2-3.6-4.7c-0.1,0-0.1-0.1-0.4-0.1c-0.1,0-0.4,0-0.5,0C175.1,437.4,174.9,437.4,174.5,437.5z"/>
+		</g>
+	</g>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1131.5" y1="427.1" x2="1131.5" y2="387.1"/>
+		<circle style="fill:#8A1739;" cx="1131.5" cy="427.1" r="3.3"/>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_1_" style="fill:#FFFFFF;" d="M1095.9,360.8h71.8c2,0,3.6,1.6,3.6,3.6v18.9c0,2-1.6,3.6-3.6,3.6h-71.8
+			c-2,0-3.6-1.6-3.6-3.6v-18.9C1092.3,362.5,1093.9,360.8,1095.9,360.8z"/>
+		
+			<text transform="matrix(1 0 0 1 1113.9805 372.0627)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:10.1501px;">City Cent</text>
+		
+			<text transform="matrix(1 0 0 1 1155.0608 372.0627)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:10.1501px;">r</text>
+		
+			<text transform="matrix(1 0 0 1 1158.7754 372.0627)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:10.1501px;">e</text>
+		
+			<text transform="matrix(1 0 0 1 1113.9805 382.2116)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:10.1501px;">Qurum</text>
+		<g>
+			<path id="Path_2_" style="fill:#8A1538;" d="M1103.2,368.8c-3.4,0-5.9,2.1-5.9,4.8v5.3h2c0,0,0-3,0-5.3c0-2.5,2.2-4.4,4.4-4.7
+				c0.1,0,0.1,0,0.1,0L1103.2,368.8L1103.2,368.8z"/>
+			<path id="Path_1_" style="fill:#8A1538;" d="M1103.6,369c-0.1,0.1-0.4,0.1-0.7,0.4c-1.2,0.8-1.9,2.5-1.9,3.9c0,0.1,0,0.1,0,0.3
+				l0,0v0.1v5.3h1.6v-5.3c0-0.4,0.1-0.7,0.4-0.8l0.7,0.8l0.7-0.8c0.3,0.1,0.4,0.5,0.4,0.8v5.3h1.6v-5.3c0-1.5-1.2-2.9-2.7-2.9
+				c-0.4,0-0.7,0.1-1,0.1l0,0c0.4-0.4,0.8-0.7,1.5-0.7l0,0c0.1,0,0.4,0,0.5,0.1c1.5,0.3,2.6,1.5,2.6,3.2c0,0.1,0,0.1,0,0.1v5.2h1.6
+				c0,0,0-5.2,0-5.3c0-2.3-1.2-4.2-3.6-4.7c-0.1,0-0.1-0.1-0.4-0.1c-0.1,0-0.4,0-0.5,0C1104.2,368.8,1103.9,368.9,1103.6,369z"/>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_29_" style="fill:#8A1739;" d="M335.1,344.1h71.8c2,0,3.6,1.6,3.6,3.6v18.9c0,2-1.6,3.6-3.6,3.6h-71.8
+			c-2,0-3.6-1.6-3.6-3.6v-18.9C331.5,345.7,333.1,344.1,335.1,344.1z"/>
+		
+			<text transform="matrix(1 0 0 1 353.1965 355.3244)" style="fill:#FFFFFF; font-family:'MarselisPro-Bold'; font-size:10.1501px;">Al Mouj</text>
+		
+			<text transform="matrix(1 0 0 1 353.1965 365.4733)" style="fill:#FFFFFF; font-family:'MarselisPro-Light'; font-size:10.1501px;">Muscat</text>
+		<g>
+			<path id="Path_10_" style="fill:#FFFFFF;" d="M342.4,352.1c-3.4,0-5.9,2.1-5.9,4.8v5.3h2c0,0,0-3,0-5.3c0-2.5,2.2-4.4,4.4-4.7
+				c0.1,0,0.1,0,0.1,0L342.4,352.1L342.4,352.1z"/>
+			<path id="Path_11_" style="fill:#FFFFFF;" d="M342.8,352.3c-0.1,0.1-0.4,0.1-0.7,0.4c-1.2,0.8-1.9,2.5-1.9,3.9c0,0.1,0,0.1,0,0.3
+				l0,0v0.1v5.3h1.6V357c0-0.4,0.1-0.7,0.4-0.8l0.7,0.8l0.7-0.8c0.3,0.1,0.4,0.5,0.4,0.8v5.3h1.6V357c0-1.5-1.2-2.9-2.7-2.9
+				c-0.4,0-0.7,0.1-1,0.1l0,0c0.4-0.4,0.8-0.7,1.5-0.7l0,0c0.1,0,0.4,0,0.5,0.1c1.5,0.3,2.6,1.5,2.6,3.2c0,0.1,0,0.1,0,0.1v5.2h1.6
+				c0,0,0-5.2,0-5.3c0-2.3-1.2-4.2-3.6-4.7c-0.1,0-0.1-0.1-0.4-0.1c-0.1,0-0.4,0-0.5,0C343.4,352.1,343.1,352.2,342.8,352.3z"/>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 1490.3323 358.3654)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Al Alam Palace</text>
+	<text transform="matrix(1 0 0 1 1540.8323 372.3234)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Jalali Fort</text>
+	<text transform="matrix(1 0 0 1 1410.5042 331.6515)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Corniche Mutrah</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1446.1" y1="374.4" x2="1446.1" y2="334.5"/>
+		<circle style="fill:#8A1739;" cx="1446.1" cy="374.4" r="3.3"/>
+	</g>
+	<text transform="matrix(1 0 0 1 1444.6016 306.5847)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Riyam Park Monument</text>
+	<g>
+		<line style="fill:none;stroke:#8A1739;stroke-miterlimit:10;" x1="1467.3" y1="362.7" x2="1501" y2="310.4"/>
+		<circle style="fill:#8A1739;" cx="1467.3" cy="362.7" r="3.3"/>
+	</g>
+	<text transform="matrix(1 0 0 1 1367.2463 354.484)" style="fill:#8A1739; font-family:'MarselisPro'; font-size:10.1536px;">Mutrah Souq</text>
+	
+		<g id="NorthPoint" transform="translate(1831.070256, 181.453972) rotate(50.000000) translate(-1831.070256, -181.453972) translate(1792.570256, 137.953972)">
+		<path id="Fill-933" style="fill:#8A1538;" d="M-227.8,491.6l4.6,7.7l-7.9-3.6L-227.8,491.6z M-232.5,497.4l14.1,5.7l-8-12.7
+			l-14.1-5.7L-232.5,497.4z M-227.8,491.6l4.6,7.7l-7.9-3.6L-227.8,491.6z M-232.5,497.4l14.1,5.7l-8-12.7l-14.1-5.7L-232.5,497.4z
+			 M-227.8,491.6l4.6,7.7l-7.9-3.6L-227.8,491.6z M-218.5,503.1l-8-12.7l-14.1-5.8l8,12.7L-218.5,503.1z M-235.4,478.3
+			c8.5-3,17.8,1.4,20.8,9.9c3,8.5-1.4,17.8-9.8,20.8c-8.4,3.1-17.8-1.4-20.8-9.8C-248.3,490.7-243.8,481.3-235.4,478.3z
+			 M-223.2,512.5c10.4-3.8,15.8-15.2,12-25.6c-3.7-10.4-15.1-15.7-25.5-11.9c-10.4,3.7-15.7,15-12,25.3
+			C-244.9,510.8-233.5,516.2-223.2,512.5z M-227.8,491.6l4.6,7.7l-7.9-3.6L-227.8,491.6z M-232.5,497.4l14.1,5.7l-8-12.7l-14.1-5.7
+			L-232.5,497.4z M-227.8,491.6l4.6,7.7l-7.9-3.6L-227.8,491.6z M-232.5,497.4l14.1,5.7l-8-12.7l-14.1-5.7L-232.5,497.4z
+			 M-227.8,491.6l4.6,7.7l-7.9-3.6L-227.8,491.6z M-232.5,497.4l14.1,5.7l-8-12.7l-14.1-5.7L-232.5,497.4z M-227.8,491.6l4.6,7.7
+			l-7.9-3.6L-227.8,491.6z M-232.5,497.4l14.1,5.7l-8-12.7l-14.1-5.7L-232.5,497.4z"/>
+		<g id="Back-Copy-5_1_" transform="translate(34.000000, 0.000000)">
+			
+				<text transform="matrix(0.6467 -0.7628 0.7628 0.6467 -283.408 481.4274)" style="fill:#8A1538; font-family:'ArialMT'; font-size:10.1518px;">N</text>
+		</g>
+	</g>
+</g>
+</svg>
