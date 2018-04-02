@@ -3,8 +3,8 @@
 <svg version="1.1" id="app_x5F_world--parent" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 x="0px" y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;"
 	 xml:space="preserve">
-<rect id="app_x5F_UAE--zoom" x="1150.9" y="477.2" style="fill:none;" width="173.4" height="97.5"/>
-<rect id="app_x5F_Lebanon--zoom" x="874.3" y="325.8" style="fill:none;" width="34.9" height="19.6"/>
+<rect id="app_x5F_UAE--zoom" x="1152.9" y="472.7" style="fill:none;" width="173.4" height="97.5"/>
+<rect id="app_x5F_Lebanon--zoom" x="887.1" y="331.5" transform="rotate(-18.0 1305.07 631.807)" style="fill:none;" width="16.0" height="9"/>
 <rect id="app_x5F_Muscat--zoom" x="1298.4" y="602.5" transform="rotate(109.0 1305.07 631.807)" style="fill:none;" width="41" height="23.0625"/>
 <g id="app_x5F_Iraq--marker" transform="translate(978.000000, 334.000000)">
 	<polygon id="Fill-124" style="fill:#8A1538;" points="26.9,5 26.9,28.7 34.9,28.7 38.8,33 42.8,28.7 50.7,28.7 50.7,5 	"/>
