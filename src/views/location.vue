@@ -4,6 +4,8 @@
     import UAERegionImage from '../images/maps/UAE-region.svg';
     import SharjahCityImage from '../images/maps/Sharjah-city.svg';
     import SharjahRoadImage from '../images/maps/Sharjah-road.svg';
+    import LebanonCityImage from '../images/maps/Lebanon-city.svg';
+    import LebanonRoadImage from '../images/maps/Lebanon-road.svg';
     import MarkerInfo from '../components/markerInfo.vue';
     import AppHeader from '../components/header.vue';
 
@@ -15,6 +17,8 @@
             UAERegionImage,
             SharjahCityImage,
             SharjahRoadImage,
+            LebanonCityImage,
+            LebanonRoadImage,
             MarkerInfo,
             AppHeader
         },
@@ -37,7 +41,9 @@
                     'World': require('../images/maps/World.png'),
                     'UAERegion': require('../images/maps/UAE-region.png'),
                     'SharjahCity': require('../images/maps/Sharjah-city.png'),
-                    'SharjahRoad': require('../images/maps/Sharjah-road.png')
+                    'SharjahRoad': require('../images/maps/Sharjah-road.png'),
+                    'LebanonCity': require('../images/maps/Lebanon-city.png'),
+                    'LebanonRoad': require('../images/maps/Lebanon-road.png')
                 },
                 fullscreenTransform: {
                     'png': {},
@@ -203,7 +209,8 @@
                 }
             },
             findSVGPosition: function(element){
-                let rotate = element.transform.baseVal[0] ? element.transform.baseVal[0].angle : 0;
+                let rotateTranforms = element.transform.baseVal[0] ? Array.from(element.transform.baseVal).filter( (transform) => transform.type === 4)[0] : null;
+                let rotate = rotateTranforms ? rotateTranforms.angle : 0;
                 return {
                     'x': element.x.baseVal.value,
                     'y': element.y.baseVal.value,
@@ -508,6 +515,38 @@
                     </div>
                 </div>
                 <!-- End of Sharjah Road -->
+                <!-- Lebanon City -->
+                <div
+                    class="png-image-container-scale"
+                    :class="{ 'active': selectedView === 'app_x5F_Lebanon--parent' }"
+                    :style="[scaleStyles['app_x5F_Lebanon--parent']]">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Lebanon--parent']]">
+                        <img
+                            id="app_x5F_Lebanon--image"
+                            class="png-image"
+                            :src="pngImages.LebanonCity"
+                            :style="[rotationStyles['app_x5F_Lebanon--parent']]" />
+                    </div>
+                </div>
+                <!-- End of Lebanon City -->
+                <!-- Lebanon Road -->
+                <div
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Lebanon-road--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Lebanon-road--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Lebanon-road--parent']]">
+                        <img
+                            id="app_x5F_Lebanon-road--image"
+                            class="png-image"
+                            :src="pngImages.LebanonRoad"
+                            :style="[rotationStyles['app_x5F_Lebanon-road--parent']]" />
+                    </div>
+                </div>
+                <!-- End of Lebanon Road -->
             </div>
             <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
                 <!-- World -->
@@ -538,6 +577,20 @@
                         v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
                 </transition>
                 <!-- End of Sharjah Road -->
+                <!-- Lebanon City -->
+                <transition name="map-switch">
+                    <LebanonCityImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Lebanon--parent'" />
+                </transition>
+                <!-- End of Lebanon City -->
+                <!-- Lebanon Road -->
+                <transition name="map-switch">
+                    <LebanonRoadImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
+                </transition>
+                <!-- End of Lebanon Road -->
             </div>
             <div class="loading" v-if="!loadingComplete"></div>
         </div>
