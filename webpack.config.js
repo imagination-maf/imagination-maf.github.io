@@ -45,6 +45,21 @@ module.exports = {
                 options: {
                     svgo: {
                         plugins: [
+                            {convertPathData: false},
+                            // {convertTransform: {
+                            //     convertToShorts: true,
+                            //     // degPrecision: 3, // transformPrecision (or matrix precision) - 2 by default
+                            //     floatPrecision: 3,
+                            //     transformPrecision: 5,
+                            //     matrixToTransform: true,
+                            //     shortTranslate: true,
+                            //     shortScale: true,
+                            //     shortRotate: true,
+                            //     removeUseless: true,
+                            //     collapseIntoOne: true,
+                            //     leadingZero: true,
+                            //     negativeExtraSpace: false
+                            // } },
                             {convertShapeToPath: false},
                             {removeUnusedNS: false},
                             {cleanupIDs: false},

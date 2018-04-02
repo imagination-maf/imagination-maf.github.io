@@ -55,7 +55,7 @@ export default Vue.component('location-menu', {
 
 <template>
 <div class="location-menu">
-    <div class="location-menu-item disabled" @click="navigateToLocation('app_x5F_UAE--parent')">
+    <div class="location-menu-item" @click="navigateToLocation('app_x5F_UAE--parent')">
         <transition name="fade">
             <img v-show="slideshowStatus.odd === 0" :src="images.tag1" class="location-menu-item-image" />
         </transition>
@@ -97,7 +97,7 @@ export default Vue.component('location-menu', {
             <h3 class="location-menu-subtitle">UNITED ARAB EMIRATES</h3>
         </div>
     </div>
-    <div class="location-menu-item" @click="navigateToLocation('app_x5F_Oman--parent')">
+    <div class="location-menu-item" @click="navigateToLocation('app_x5F_Muscat--parent')">
         <transition name="fade">
             <img v-show="slideshowStatus.odd === 0" :src="images.amm1" class="location-menu-item-image" />
         </transition>
@@ -118,7 +118,7 @@ export default Vue.component('location-menu', {
             <h3 class="location-menu-subtitle">OMAN</h3>
         </div>
     </div>
-    <div class="location-menu-item disabled" @click="navigateToLocation('app_x5F_Lebanon--parent')">
+    <div class="location-menu-item" @click="navigateToLocation('app_x5F_Lebanon--parent')">
         <transition name="fade">
             <img v-show="slideshowStatus.even === 0" :src="images.wfc1" class="location-menu-item-image" />
         </transition>

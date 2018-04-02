@@ -222,6 +222,7 @@
                 }
             },
             findSVGPosition: function(element){
+                console.log('elee', element.id, [element]);
                 let rotateTranforms = element.transform.baseVal[0] ? Array.from(element.transform.baseVal).filter( (transform) => transform.type === 4)[0] : null;
                 let rotate = rotateTranforms ? rotateTranforms.angle : 0;
                 return {
