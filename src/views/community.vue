@@ -36,7 +36,8 @@
                 },
                 propertyList: [],
                 availableList: [],
-                data: null
+                data: null,
+                soldOutDetails: null
             }
         },
         computed: {
@@ -92,53 +93,60 @@
             let pngImage = document.getElementById('png-image');
             pngImage.addEventListener('load', () => {
                 // add query here
-                let query = 'api=eq.' + this.community;
-                this.getData(query).then( (res) => {
-                    this.data = res.data;
+                if(config.soldOut.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
+                    let query = 'api=eq.' + this.community;
+                    this.getData(query).then( (res) => {
+                        this.data = res.data;
 
-                    this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
+                        this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
-                    let svgImage = document.getElementById('svg-image');
-                    this.svgContainerScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
+                        let svgImage = document.getElementById('svg-image');
+                        this.svgContainerScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
 
-                    let svgTransformData = config.dataPoints[this.community][this.neighbourhood].svg;
-                    this.svgTransform = {
-                        'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
-                    };
+                        let svgTransformData = config.dataPoints[this.community][this.neighbourhood].svg;
+                        this.svgTransform = {
+                            'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
+                        };
 
-                    let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
-                    let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
-                    for(let index = 0; index < plotBoundaries.length; index++) {
-                        let dataItem = this.data.filter( (item) => {
-                            let plotId = plotBoundaries[index].id.split('_').filter( (part) => part.length);
-                            return plotId[plotId.length - 1] === item.id;
-                        })[0];
+                        let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
+                        let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
+                        for(let index = 0; index < plotBoundaries.length; index++) {
+                            let dataItem = this.data.filter( (item) => {
+                                let plotId = plotBoundaries[index].id.split('_').filter( (part) => part.length);
+                                return plotId[plotId.length - 1] === item.id;
+                            })[0];
 
-                        if(dataItem) {
-                            let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
+                            if(dataItem) {
+                                let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 
-                            // Debug code to find un included types
-                            if(!type) {
-                                console.log('item', dataItem);
-                            }
-                            let beds = dataItem.bedrooms;
-                            let propertyType = type + beds;
-                            if(beds && propertyType) {
-                                plotBoundaries[index].classList.add('svg-house-icon');
-                                plotBoundaries[index].classList.add('type_' + propertyType);
-                                this.propertyList = Array.from(new Set([...this.propertyList, propertyType])).sort();
+                                // Debug code to find un included types
+                                if(!type) {
+                                    console.log('item', dataItem);
+                                }
+                                let beds = dataItem.bedrooms;
+                                let propertyType = type + beds;
+                                if(beds && propertyType) {
+                                    plotBoundaries[index].classList.add('svg-house-icon');
+                                    plotBoundaries[index].classList.add('type_' + propertyType);
+                                    this.propertyList = Array.from(new Set([...this.propertyList, propertyType])).sort();
 
-                                let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
-                                plotBoundaries[index].classList.add(availability);
+                                    let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
+                                    plotBoundaries[index].classList.add(availability);
+                                }
                             }
                         }
-                    }
 
+                        this.loaded = true;
+
+                    }, (err) => {
+                        console.log('unable to get data', err);
+                    } )
+
+                } else {
                     this.loaded = true;
+                    this.soldOutDetails = config.soldOut.filter( (soldOut) => soldOut.id === this.neighbourhood )[0];
+                }
 
-                }, (err) => {
-                    console.log('unable to get data', err);
-                } )
             })
         },
         watch: {
@@ -160,7 +168,7 @@
 <template>
 <div class="app">
     <AppHeader :logo="community" back="true" v-on:back="backToOverview" />
-    <div class="container">
+    <div class="container" :class="{'blur': soldOutDetails}">
         <div id="area" v-bind:class="{ visible: loaded }">
             <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
                 <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
@@ -169,8 +177,21 @@
                 <AlZahia ng-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
-        <PropertyFilter :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
+        <PropertyFilter v-if="!soldOutDetails" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
         <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
+    </div>
+    <div class="sold-out" v-if="soldOutDetails">
+        <div class="sold-out-content">
+            <h2 class="sold-out-title">{{ soldOutDetails.title }}</h2>
+            <div class="sold-out-row">
+                <p class="sold-out-text">{{ soldOutDetails.text }}</p>
+                <div class="sold-out-image-container">
+                    <img class="sold-out-image" :src="soldOutDetails.image" />
+                    <span class="sold-out-image-text">{{ soldOutDetails['image-text'] }}</span>
+                </div>
+            </div>
+            <button class="sold-out-button" @click="backToOverview()">Back to the Masterplan</button>
+        </div>
     </div>
 </div>
 </template>
@@ -182,6 +203,9 @@
     display: flex;
     align-items: stretch;
     justify-content: center;
+    &.blur {
+        filter: blur(0.5rem);
+    }
 }
 
 #area {
@@ -220,6 +244,77 @@
 
 svg:not(:root) {
     overflow: visible !important;
+}
+
+.sold-out {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sold-out-content {
+        width: 70%;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        padding: 9rem 6rem 7rem;
+        margin-top: 6rem;
+        box-shadow: 0.25rem 0.25rem 1rem #cccccc;
+    }
+    .sold-out-title {
+        font-size: 1.5rem;
+        line-height: 3.5rem;
+        letter-spacing: 0.025rem;
+        border-bottom: 0.1rem solid #4A4A4A;
+        margin: 0;
+        font-weight: 200;
+    }
+    .sold-out-row {
+        width: 100%;
+        display: flex;
+    }
+    .sold-out-text {
+        width: 42%;
+        margin: 0;
+        padding-right: 3rem;
+        margin-top: 4.5rem;
+        font-size: 1.2rem;
+        letter-spacing: 0.025rem;
+        line-height: 2.2rem;
+        font-weight: 200;
+    }
+    .sold-out-image-container {
+        width: 58%;
+        position: relative;
+        .sold-out-image {
+            width: 100%;
+            margin-top: 2rem;
+            filter: brightness(66%);
+        }
+        .sold-out-image-text {
+            position: absolute;
+            line-height: 2rem;
+            top: calc(50% - 1rem);
+            left: 0;
+            right: 0;
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.5rem;
+            letter-spacing: 0.2rem;
+        }
+    }
+    .sold-out-button {
+        background-color: #8a1538;
+        color: #ffffff;
+        padding: 0.75rem 0;
+        margin-top: 1rem;
+        width: 18.1%;
+        font-size: 1.15rem;
+        font-weight: 200;
+    }
 }
 </style>
 
