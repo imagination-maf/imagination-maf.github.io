@@ -8,6 +8,16 @@ export default {
     'mappings': {
         'app_x5F_Sharjah-road--parent': 'alzahia'
     },
+    markerDefault: [
+        {
+            'id': 'app_x5F_world--parent',
+            'marker': null
+        },
+        {
+            'id': 'app_x5F_UAE--parent',
+            'marker': 'uae'
+        }
+    ],
     soldOut: [
         {
             'id': 'aljouri',

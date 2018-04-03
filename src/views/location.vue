@@ -149,7 +149,6 @@
         },
         methods: {
             locationMenu: function () {
-                console.log('location menuu');
                 this.$router.push({ path: 'community-selection'});
             },
             zoomOut: function () {
@@ -455,8 +454,16 @@
             this.setupSvgImages();
             this.setupTransforms();
             this.setupPngImages(callback);
+        },
+        watch: {
+            selectedView: function(val) {
+                let defaultContent = config.markerDefault.filter( (defaults) => defaults.id === val);
+                if(defaultContent.length) {
+                    this.markerSelected = defaultContent[0].marker;
+                }
+            }
         }
-    });
+     });
 </script>
 
 <template>
