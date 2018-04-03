@@ -4,7 +4,7 @@ export default {
         'staging': 'https://staging.imagination-maf.com/api/',
         'live': ''
     },
-    'masterplan-inactive': ['app_x5F_Lebanon--parent', 'app_x5F_Lebanon-road--parent', 'app_x5F_Muscat--parent', 'app_x5F_Muscat-road--parent'],
+    'masterplan-inactive': ['app_x5F_Lebanon-region--parent', 'app_x5F_Lebanon--parent', 'app_x5F_Lebanon-road--parent', 'app_x5F_Oman--parent', 'app_x5F_Muscat--parent', 'app_x5F_Muscat-road--parent'],
     'mappings': {
         'app_x5F_Sharjah-road--parent': 'alzahia'
     },
@@ -16,6 +16,14 @@ export default {
         {
             'id': 'app_x5F_UAE--parent',
             'marker': 'uae'
+        },
+        {
+            'id': 'app_x5F_Oman--parent',
+            'marker': 'oman'
+        },
+        {
+            'id': 'app_x5F_Lebanon-region--parent',
+            'marker': 'lebanon'
         }
     ],
     soldOut: [
@@ -90,10 +98,12 @@ export default {
         'app_x5F_UAE--parent': 'maf',
         'app_x5F_Sharjah--parent': 'alzahia',
         'app_x5F_Sharjah-road--parent': 'alzahia',
+        'app_x5F_Lebanon-region--parent': 'waterfront',
         'app_x5F_Lebanon--parent': 'waterfront',
         'app_x5F_Lebanon-road--parent': 'waterfront',
+        'app_x5F_Oman--parent': 'almouj',
         'app_x5F_Muscat--parent': 'almouj',
-        'app_x5F_Muscat-road--parent': 'almouj'
+        'app_x5F_Muscat-road--parent': 'almouj',
     },
     houseTypes: {
         'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard'],

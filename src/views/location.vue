@@ -2,6 +2,8 @@
     import Vue from 'vue';
     import WorldImage from '../images/maps/World.svg';
     import UAERegionImage from '../images/maps/UAE-region.svg';
+    import OmanRegionImage from '../images/maps/Oman-region.svg';
+    import LebanonRegionImage from '../images/maps/Lebanon-region.svg';
     import SharjahCityImage from '../images/maps/Sharjah-city.svg';
     import SharjahRoadImage from '../images/maps/Sharjah-road.svg';
     import LebanonCityImage from '../images/maps/Lebanon-city.svg';
@@ -17,6 +19,8 @@
         components: {
             WorldImage,
             UAERegionImage,
+            OmanRegionImage,
+            LebanonRegionImage,
             SharjahCityImage,
             SharjahRoadImage,
             LebanonCityImage,
@@ -44,6 +48,8 @@
                 pngImages: {
                     'World': require('../images/maps/World.png'),
                     'UAERegion': require('../images/maps/UAE-region.png'),
+                    'OmanRegion': require('../images/maps/Oman-region.png'),
+                    'LebanonRegion': require('../images/maps/Lebanon-region.png'),
                     'SharjahCity': require('../images/maps/Sharjah-city.png'),
                     'SharjahRoad': require('../images/maps/Sharjah-road.png'),
                     'LebanonCity': require('../images/maps/Lebanon-city.png'),
@@ -386,13 +392,18 @@
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
                         rotations[parentSVG] = {
-                            'transform': `rotate( ${ positionInParent.rotate.angle }deg )`
+                            'transform': `rotate( ${ positionInParent.rotate.angle }deg )`,
                         };
                         translations[parentSVG] = {
                             transform: `translate( ${ -positionInParent.translateX * (positionInParent.scale) }px, ${ -positionInParent.translateY * (positionInParent.scale) }px )`
                         };
                         scales[parentSVG] = {
                             transform: `scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
+                        };
+
+                        rotations[name] = {
+                            'transform-origin': `${ (-positionInParent.translateX * positionInParent.scale) + ((maps[index].width.baseVal / 2) * positionInParent.scale) }px ${ (-positionInParent.translateX * positionInParent.scale) + ((maps[index].width.baseVal / 2) * positionInParent.scale) }px }`,
+                            'transform': 'rotate(0deg)'
                         };
                     }
 
@@ -508,6 +519,38 @@
                     </div>
                 </div>
                 <!-- End of UAE -->
+                <!-- Oman -->
+                <div
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Oman--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Oman--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Oman--parent']]">
+                        <img
+                            id="app_x5F_Oman--image"
+                            class="png-image"
+                            :src="pngImages.OmanRegion"
+                            :style="[rotationStyles['app_x5F_Oman--parent']]"/>
+                    </div>
+                </div>
+                <!-- End of Oman -->
+                <!-- Lebanon Region -->
+                <div
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Lebanon-region--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Lebanon-region--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Lebanon-region--parent']]">
+                        <img
+                            id="app_x5F_Lebanon-region--image"
+                            class="png-image"
+                            :src="pngImages.LebanonRegion"
+                            :style="[rotationStyles['app_x5F_Lebanon-region--parent']]"/>
+                    </div>
+                </div>
+                <!-- End of Lebanon Region -->
                 <!-- Sharjah City -->
                 <div
                     class="png-image-container-scale"
@@ -618,6 +661,20 @@
                     <UAERegionImage
                         class="image"
                         v-show="selectedView === 'app_x5F_UAE--parent'" />
+                </transition>
+                <!-- End of UAE -->
+                <!-- UAE -->
+                <transition name="map-switch">
+                    <OmanRegionImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Oman--parent'" />
+                </transition>
+                <!-- End of UAE -->
+                <!-- UAE -->
+                <transition name="map-switch">
+                    <LebanonRegionImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Lebanon-region--parent'" />
                 </transition>
                 <!-- End of UAE -->
                 <!-- Sharjah City -->

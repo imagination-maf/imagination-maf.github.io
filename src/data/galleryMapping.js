@@ -23,10 +23,10 @@ export default {
                 "Courtyard - End Plus": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/3bedcourtyardvilla/floorplan/end-plus/3BedroomCourtyardHomeEndUnit.jpg"
             },
             "4V": {
-                "Villa Double Row - Middle": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/middle/4BedroomVillaWithoutPool.jpg",
-                "Villa Single Row - Middle": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/middle/4BedroomVillaWithoutPool.jpg",
+                "Villa Double Row - Middle": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/middle/4BedroomVilla_.jpg",
+                "Villa Single Row - Middle": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/middle/4BedroomVilla_.jpg",
                 "Villa Double Row - Corner": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/corner/4BedroomVilla_.jpg",
-                "Villa Single Row - End": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/end/4BedroomVillaWithoutPool.jpg",
+                "Villa Single Row - End": "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/end/4BedroomVilla_.jpg",
                 "Villa Single Row - Corner":  "https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/allilac/4bedvilla/floorplan/corner/4BedroomVilla_.jpg"
             },
             "4SD": {

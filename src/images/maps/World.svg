@@ -4,8 +4,8 @@
 	 x="0px" y="0px" width="1920px" height="1080px" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;"
 	 xml:space="preserve">
 <rect id="app_x5F_UAE--zoom" x="1152.9" y="472.7" style="fill:none;" width="173.4" height="97.5"/>
-<rect id="app_x5F_Lebanon--zoom" x="887.1" y="331.5" transform="rotate(-18.0 1305.07 631.807)" style="fill:none;" width="16.0" height="9"/>
-<rect id="app_x5F_Muscat--zoom" x="1298.4" y="602.5" transform="rotate(109.0 1305.07 631.807)" style="fill:none;" width="41" height="23.0625"/>
+<rect id="app_x5F_Lebanon-region--zoom" x="887.1" y="331.5" transform="rotate(-18.0 1305.07 631.807)" style="fill:none;" width="16.0" height="9"/>
+<rect id="app_x5F_Oman--zoom" x="1053.4" y="408.5" style="fill:none;" width="425" height="239.0625"/>
 <g id="app_x5F_Iraq--marker" transform="translate(978.000000, 334.000000)">
 	<polygon id="Fill-124" style="fill:#8A1538;" points="26.9,5 26.9,28.7 34.9,28.7 38.8,33 42.8,28.7 50.7,28.7 50.7,5 	"/>
 	<g id="Group" transform="translate(5.000000, 5.000000)">
@@ -143,7 +143,7 @@
 			c-0.1,0-0.3-0.1-0.4-0.1c-0.2,0-0.4-0.1-0.7-0.1C35.1-1.9,34.8-1.8,34.4-1.7z"/>
 	</g>
 </g>
-<g id="app_x5F_Lebanon--button">
+<g id="app_x5F_Lebanon-region--button">
 	<polygon id="tap_x5F_area_2_" style="fill:#FFFFFF;fill-opacity:0;" points="821.1,305.7 825.2,353.7 697.7,354.4 697.7,310.3 	"/>
 	<path id="Line-4-Copy-5" style="fill:none;stroke:#8A1538;stroke-width:2;" d="M886.3,337h-52.4"/>
 	<g transform="translate(856.000000, 319.000000)">
@@ -430,7 +430,7 @@
 			l-3.5-8.4h1.9l2.5,6.4l2.2-6.4h1.9l-3.3,8.6C821.4,344.3,820.7,344.9,819.3,344.9"/>
 	</g>
 </g>
-<g id="app_x5F_Muscat--button">
+<g id="app_x5F_Oman--button">
 	<rect id="tap_x5F_area" x="1359.9" y="593.8" style="fill:#FFFFFF;fill-opacity:0;" width="105.7" height="54.3"/>
 	<path id="Line-4-Copy-4" style="fill:none;stroke:#8A1538;stroke-width:2;" d="M1359.9,622.8h-52.4"/>
 	<g transform="translate(1260.000000, 608.000000)">

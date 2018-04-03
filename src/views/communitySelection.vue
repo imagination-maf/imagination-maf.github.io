@@ -17,9 +17,11 @@
 <template>
     <div class="app">
         <AppHeader :logo="'maf'" />
-        <div class="menu">
-            <LocationMenu />
-        </div>
+        <transition name="page" appear>
+            <div class="menu">
+                <LocationMenu />
+            </div>
+        </transition>
     </div>
 </template>
 
