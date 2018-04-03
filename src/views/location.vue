@@ -6,6 +6,8 @@
     import LebanonRegionImage from '../images/maps/Lebanon-region.svg';
     import SharjahCityImage from '../images/maps/Sharjah-city.svg';
     import SharjahRoadImage from '../images/maps/Sharjah-road.svg';
+    import DubaiCityImage from '../images/maps/Dubai-city.svg';
+    import DubaiRoadImage from '../images/maps/Dubai-road.svg';
     import LebanonCityImage from '../images/maps/Lebanon-city.svg';
     import LebanonRoadImage from '../images/maps/Lebanon-road.svg';
     import MuscatCityImage from '../images/maps/Muscat-city.svg';
@@ -23,6 +25,8 @@
             LebanonRegionImage,
             SharjahCityImage,
             SharjahRoadImage,
+            DubaiCityImage,
+            DubaiRoadImage,
             LebanonCityImage,
             LebanonRoadImage,
             MuscatCityImage,
@@ -52,6 +56,8 @@
                     'LebanonRegion': require('../images/maps/Lebanon-region.png'),
                     'SharjahCity': require('../images/maps/Sharjah-city.png'),
                     'SharjahRoad': require('../images/maps/Sharjah-road.png'),
+                    'DubaiCity': require('../images/maps/Dubai-city.png'),
+                    'DubaiRoad': require('../images/maps/Dubai-road.png'),
                     'LebanonCity': require('../images/maps/Lebanon-city.png'),
                     'LebanonRoad': require('../images/maps/Lebanon-road.png'),
                     'MuscatCity': require('../images/maps/Muscat-city.png'),
@@ -583,6 +589,38 @@
                     </div>
                 </div>
                 <!-- End of Sharjah Road -->
+                <!-- Dubai -->
+                <div
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Dubai--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Dubai--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Dubai--parent']]">
+                        <img
+                            id="app_x5F_Dubai--image"
+                            class="png-image"
+                            :src="pngImages.DubaiCity"
+                            :style="[rotationStyles['app_x5F_Dubai--parent']]" />
+                    </div>
+                </div>
+                <!-- End of Dubai -->
+                <!-- Dubai Road -->
+                <div
+                    class="png-image-container-scale"
+                    :style="[scaleStyles['app_x5F_Dubai-road--parent']]"
+                    :class="{ 'active': selectedView === 'app_x5F_Dubai-road--parent' }">
+                    <div
+                        class="png-image-container-translate"
+                        :style="[translationStyles['app_x5F_Dubai-road--parent']]">
+                        <img
+                            id="app_x5F_Dubai-road--image"
+                            class="png-image"
+                            :src="pngImages.DubaiRoad"
+                            :style="[rotationStyles['app_x5F_Dubai-road--parent']]" />
+                    </div>
+                </div>
+                <!-- End of Dubai Road -->
                 <!-- Lebanon City -->
                 <div
                     class="png-image-container-scale"
@@ -691,6 +729,20 @@
                         v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
                 </transition>
                 <!-- End of Sharjah Road -->
+                <!-- Dubai -->
+                <transition name="map-switch">
+                    <DubaiCityImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Dubai--parent'" />
+                </transition>
+                <!-- End of Dubai -->
+                <!-- Dubai Road -->
+                <transition name="map-switch">
+                    <DubaiRoadImage
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
+                </transition>
+                <!-- End of Dubai Road -->
                 <!-- Lebanon City -->
                 <transition name="map-switch">
                     <LebanonCityImage
