@@ -64,10 +64,10 @@
 	</g>
 	<text transform="matrix(1 0 0 1 1250.7041 382.8381)" style="fill:#989898; font-family:'MarselisPro'; font-size:16.9987px;">RAS AL-KHAIMAH</text>
 </g>
-<g id="app_x5F_Dubai">
+<g id="app_x5F_Dubai--button">
 	<polygon style="opacity:0;fill:#FFFFFF;" points="1055.8,558.4 1055.6,587.2 855.7,587.2 855.7,497.2 943.5,497.2 1032,558.4 	"/>
 	<g transform="translate(1032.000000, 577.000000)">
-		<polygon id="Fill-124_1_" style="fill:#989898;" points="0,-18.6 0,5.1 7.9,5.1 11.8,9.4 15.9,5.1 23.8,5.1 23.8,-18.6 		"/>
+		<polygon id="Fill-124_1_" style="fill:#8A1538;" points="0,-18.6 0,5.1 7.9,5.1 11.8,9.4 15.9,5.1 23.8,5.1 23.8,-18.6 		"/>
 		<g id="Group_1_" transform="translate(5.000000, 5.000000)">
 			<path id="Path_2_" style="fill:#FFFFFF;" d="M6.3-18.1c-3.8,0-6.5,2.5-6.5,6v6.7H2c0,0,0-3.7,0-6.7c0-3.1,2.4-5.4,4.8-5.9
 				c0.1,0,0.2,0,0.1,0L6.3-18.1L6.3-18.1z"/>
@@ -77,8 +77,8 @@
 				c-0.1,0-0.2-0.1-0.5-0.1c-0.2,0-0.5,0-0.7,0C7.5-18.1,7.2-18,6.8-17.8z"/>
 		</g>
 	</g>
-	<text transform="matrix(1 0 0 1 1064.0371 575.491)" style="fill:#989898; font-family:'MarselisPro'; font-size:16.9987px;">DUBAI</text>
-	<path id="Line-4-Copy-3" style="fill:none;stroke:#989898;stroke-width:2.2095;" d="M1032,570.6h-73"/>
+	<text transform="matrix(1 0 0 1 1064.0371 575.491)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:16.9987px;">DUBAI</text>
+	<path id="Line-4-Copy-3" style="fill:none;stroke:#8A1538;stroke-width:2.2095;" d="M1032,570.6h-73"/>
 	<g>
 		<g>
 			<path d="M885.1,553.2c0.1,0.3,0.4,0.5,0.9,0.5h3.9l-1.5,2.4h-4.9l-0.1-9.9c0,0,0.1-0.3,0.8-1.2c0.4-0.5,0.7-0.9,0.9-1.1
