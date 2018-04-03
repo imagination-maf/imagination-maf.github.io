@@ -47,10 +47,12 @@
 <template>
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
-    <div class="container" @click="svgPressed($event)">
-        <img class="image" :src="images[selectedCommunity]" />
-        <AlZahia id="svg" ng-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
-    </div>
+    <transition name="page" appear>
+        <div class="container" @click="svgPressed($event)">
+            <img class="image" :src="images[selectedCommunity]" />
+            <AlZahia id="svg" ng-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+        </div>
+    </transition>
 </div>
 </template>
 

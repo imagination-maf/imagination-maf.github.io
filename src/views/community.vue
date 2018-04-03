@@ -177,7 +177,7 @@
                 <AlZahia ng-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
-        <PropertyFilter v-if="!soldOutDetails" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
+        <PropertyFilter v-if="!soldOutDetails && loaded" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
         <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
     </div>
     <div class="sold-out" v-if="soldOutDetails">
@@ -331,7 +331,7 @@ svg:not(:root) {
 }
 
 .amenity-active {
-    fill: rgba(238, 225, 20, 0.75) !important;
+    display: block !important;
 }
 
 .active_apartmentStudio {
