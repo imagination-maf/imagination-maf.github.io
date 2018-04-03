@@ -1,0 +1,7 @@
+{
+    "ports": {
+        "http": 8080,
+        "browsersync": 3000,
+        "websocket": 11099
+    }
+}
