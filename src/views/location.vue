@@ -152,7 +152,6 @@
                 this.$router.push({ path: 'community-selection'});
             },
             zoomOut: function () {
-                console.log('zoom out');
                 this.direction = 'out';
                 // Converts --parent to --zoom
                 let zoomElement = this.selectedView.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom;
@@ -221,7 +220,6 @@
                 }
             },
             findSVGPosition: function(element){
-                console.log('elee', element.id, [element]);
                 let rotateTranforms = element.transform.baseVal[0] ? Array.from(element.transform.baseVal).filter( (transform) => transform.type === 4)[0] : null;
                 let rotate = rotateTranforms ? rotateTranforms.angle : 0;
                 return {
@@ -444,11 +442,20 @@
                     el = el.parentElement;
                 }
                 return path;
+            },
+            getDefaultMarkerContent: function() {
+                let defaultContent = config.markerDefault.filter( (defaults) => defaults.id === this.selectedView);
+                if(defaultContent.length) {
+                    return defaultContent[0].marker;
+                } else {
+                    return null;
+                }
             }
         },
         mounted(){
             let callback = () => {
                 this.loadingComplete = true;
+                this.markerSelected = this.getDefaultMarkerContent();
             }
 
             this.setupSvgImages();
@@ -457,10 +464,7 @@
         },
         watch: {
             selectedView: function(val) {
-                let defaultContent = config.markerDefault.filter( (defaults) => defaults.id === val);
-                if(defaultContent.length) {
-                    this.markerSelected = defaultContent[0].marker;
-                }
+                this.markerSelected = this.getDefaultMarkerContent();
             }
         }
      });
