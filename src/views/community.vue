@@ -98,6 +98,28 @@
                     this.getData(query).then( (res) => {
                         this.data = res.data;
 
+                        let types = {};
+                        let allImages = [];
+
+                        this.data.forEach( (item) => {
+                            if(!types[item.unit_type]) {
+                                types[item.unit_type] = [];
+                            }
+
+                            let images = item.images.split(';');
+                            images.forEach( (img) => {
+                                types[item.unit_type].push(img);
+                                allImages.push(img);
+                            });
+                        })
+
+                        Object.keys(types).forEach( (type) => {
+                            types[type] = Array.from(new Set(types[type]));
+                        } )
+
+                        console.log(Array.from(new Set(allImages)) );
+                        console.log(types);
+
                         this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
                         let svgImage = document.getElementById('svg-image');
@@ -153,10 +175,12 @@
             amenitiesFilter: function(val) {
                 if(val) {
                     config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
+                        console.log('amenity', document.getElementById(amenity));
                         document.getElementById(amenity).classList.add('amenity-active');
                     });
                 } else {
                     config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
+                        console.log('amenity', document.getElementById(amenity));
                         document.getElementById(amenity).classList.remove('amenity-active');
                     });
                 }
@@ -331,7 +355,7 @@ svg:not(:root) {
 }
 
 .amenity-active {
-    display: block !important;
+    opacity: 1 !important;
 }
 
 .active_apartmentStudio {

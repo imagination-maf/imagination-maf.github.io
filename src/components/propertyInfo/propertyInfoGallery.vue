@@ -3,6 +3,11 @@ import Vue from 'vue';
 
 export default Vue.component('property-info-gallery', {
     props: ['property'],
+    data() {
+        return {
+            images: this.property.images.split(';')
+        }
+    },
     methods: {
         backToSummary: function() {
             this.$emit('changeView', 'summary');
