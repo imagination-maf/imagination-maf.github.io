@@ -31,8 +31,8 @@ export default Vue.component('app-header', {
 
 <template>
     <div class="header">
-        <img class="header-logo" :src='logos[logo]' @mousedown="home()" />
-        <span class="header-back" v-if="back" @mousedown="goBack()">BACK</span>
+        <img class="header-logo" :src='logos[logo]' @touchstart="home()" />
+        <span class="header-back" v-if="back" @touchstart="goBack()">BACK</span>
     </div>
 </template>
 

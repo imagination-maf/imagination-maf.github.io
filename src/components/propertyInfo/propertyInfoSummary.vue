@@ -59,9 +59,9 @@ export default Vue.component('property-info-summary', {
                 </div>
             </div>
             <ul class="info-cta">
-                <li class="info-cta-item" mousedown="changeView('floorplan')">Floor Plan</li>
-                <!-- <li class="info-cta-item" mousedown="changeView('tour')">360 Tour</li> -->
-                <li class="info-cta-item" mousedown="changeView('gallery')">Photo Gallery</li>
+                <li class="info-cta-item" touchstart="changeView('floorplan')">Floor Plan</li>
+                <!-- <li class="info-cta-item" touchstart="changeView('tour')">360 Tour</li> -->
+                <li class="info-cta-item" touchstart="changeView('gallery')">Photo Gallery</li>
             </ul>
         </div>
         <h3 class="info-row-title">DETAILS</h3>
