@@ -47,13 +47,10 @@ export default Vue.component('property-info-gallery', {
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .info-content {
     padding: 0 !important;
 }
-</style>
-
-<style lang="scss" scoped>
 .info-gallery-container {
     width: 100%;
     position: relative;
