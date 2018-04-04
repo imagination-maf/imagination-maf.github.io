@@ -98,28 +98,6 @@
                     this.getData(query).then( (res) => {
                         this.data = res.data;
 
-                        let types = {};
-                        let allImages = [];
-
-                        this.data.forEach( (item) => {
-                            if(!types[item.unit_type]) {
-                                types[item.unit_type] = [];
-                            }
-
-                            let images = item.images.split(';');
-                            images.forEach( (img) => {
-                                types[item.unit_type].push(img);
-                                allImages.push(img);
-                            });
-                        })
-
-                        Object.keys(types).forEach( (type) => {
-                            types[type] = Array.from(new Set(types[type]));
-                        } )
-
-                        console.log(Array.from(new Set(allImages)) );
-                        console.log(types);
-
                         this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
                         let svgImage = document.getElementById('svg-image');

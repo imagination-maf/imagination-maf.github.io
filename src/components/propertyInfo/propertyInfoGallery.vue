@@ -16,7 +16,7 @@ export default Vue.component('property-info-gallery', {
                 let url = config.galleryUrl + this.$route.query.community + '/gallery/';
 
                 // due to inconsisency in paths having extension, remove on all and re-add
-                return images.map( (img) => url + img.replace('.jpg', '') + '.jpg' );
+                return images.map( (img) => url + img.replace(/ /g, '_').replace(/.jpg/g, '') + '.jpg' );
             } else {
                 return null;
             }
@@ -35,52 +35,47 @@ export default Vue.component('property-info-gallery', {
 
 <template>
     <div class="info-gallery">
-        <h3 class="info-title">Photo Gallery</h3>
         <div class="info-gallery-container">
-            <img v-for="(image, index) in images" v-if="slide === index" style="width: 100%;" :src="image" />
-            <button class="arrow left" type="button" @click="changeSlide(-1)"><</button>
-            <button class="arrow right" type="button" @click="changeSlide(1)">></button>
+            <img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" />
+            <button class="arrow left" type="button" @click="changeSlide(-1)"></button>
+            <button class="arrow right" type="button" @click="changeSlide(1)"></button>
+            <div class="pagination">
+                <div v-for="(page, index) in images" class="pagination-item" :class="{'active': index === slide}" @click="changeToSlideNum(index)"></div>
+            </div>
         </div>
         <button class="info-button" type="button" @click="backToSummary()">Go Back to Summary</button>
     </div>
 </template>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
 .info-content {
-    padding: 10rem 3rem 10rem 6rem !important;
+    padding: 0 !important;
 }
+</style>
 
+<style lang="scss" scoped>
 .info-gallery-container {
     width: 100%;
-    max-height: 60vh;
+    position: relative;
     .gallery-image {
         width: 100%;
-        object-fit: contain;
-        object-position: center;
     }
 }
 .info-gallery {
-    .info-title {
-        color: #626263;
-        position: absolute;
-        left: 4rem;
-        top: 2rem;
-        letter-spacing: 0.08rem;
-        font-weight: 200;
-        font-size: 1.5rem;
-    }
-
     .arrow {
-        background-color: #8a1337;
-        color: #ffffff;
         width: 3rem;
         height: 3rem;
         position: absolute;
         top: calc(50% - 1.5rem);
         border-radius: 100%;
+        outline: none;
+        background-image: url('../../images/overlay/circle.png');
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
         &.left {
             left: 2rem;
+            transform: scaleX(-1);
         }
         &.right {
             right: 2rem;
@@ -88,16 +83,35 @@ export default Vue.component('property-info-gallery', {
     }
 
     .info-button {
-        position: absolute;
-        bottom: 4rem;
-        left: 4rem;
-        margin-left: 0;
+        padding: 1rem 0 2rem;
+        margin-left: 4rem;
         background-color: transparent;
         border: none;
         color: #626263;
         letter-spacing: 0.05rem;
         font-size: 1rem;
         outline: none;
+    }
+}
+
+.pagination {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    .pagination-item {
+        background-color: #ffffff;
+        border: 0.1rem solid #8A1538;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 100%;
+        margin: 0 0.5rem;
+        &.active {
+            border-color: #ffffff;
+            background-color: #8A1538;
+        }
     }
 }
 </style>
