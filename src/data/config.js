@@ -5,7 +5,7 @@ export default {
         'live': ''
     },
     'server': {
-        'address': '10.83.40.122',
+        'address': '10.83.40.111',
         'browserSyncPort': 3000,
         'httpPort': 8888,
         'wsPort': 11099
