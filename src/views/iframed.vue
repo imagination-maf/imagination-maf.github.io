@@ -33,7 +33,7 @@
                     setTimeout( () => this.showHost = this.hostActive, 500 );
                 } else {
                     this.showHost = false;
-                    setTimeout( () => this.hostActive = false, 500 );                    
+                    setTimeout( () => this.hostActive = false, 500 );
                 }
 
             }
@@ -42,14 +42,14 @@
             var self = this;
 
             this.socket = io( `http://${config.server.address}:${config.server.wsPort}` );
-            
+
             this.socket.on('connect', () => {
                 console.log( 'Connection to websocket server' );
             });
 
             this.socket.on('MESSAGE', (data) => {
                 switch (data.event) {
-                    
+
                     case 'LAUNCH_HOST':
                     console.log( [this] );
                         console.log( '[launching host]' );
@@ -62,7 +62,7 @@
                         break;
                 }
             });
-            
+
             this.socket.on('disconnect', () => {
                 console.log( 'Connection to websocket server' );
             });
@@ -75,8 +75,8 @@
 
     <div class="container">
         <iframe v-if="hostActive" :class="{ show: showHost }" id="host" ref="host" :src="browserSyncServer"></iframe>
-        <button v-if="isTablet()" class="host" :class="{ active: hostActive }" @click="switchMode">{{ hostActive ? "CLOSE HOST MODE" : "LAUNCH HOST MODE" }}</button>
- 
+        <button v-if="isTablet()" class="host" :class="{ active: hostActive }" @mousedown="switchMode">{{ hostActive ? "CLOSE HOST MODE" : "LAUNCH HOST MODE" }}</button>
+
         <div class="iframes" v-if="!hostActive && !isTablet()">
             <iframe id="iframe1" ref="iframe1" :src="httpServer"></iframe>
             <iframe id="iframe2" ref="iframe2" :src="httpServer"></iframe>

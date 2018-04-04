@@ -32,7 +32,7 @@ export default Vue.component('property-info', {
 <template>
     <div class="info">
         <div class="info-content">
-            <div class="info-close" @click="closeInfo()"></div>
+            <div class="info-close" @mousedown="closeInfo()"></div>
             <PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoFloorplan v-if="currentView === 'floorplan'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoTour v-if="currentView === 'tour'" :property="property" v-on:changeView="changeView" />
