@@ -23,7 +23,7 @@ COPY .babelrc ./
 RUN npm run build
 RUN rm package*.json && rm webpack.config.js
 
-COPY index.html frame.html ./
+COPY index.html ./
 RUN rm -rf src node_modules
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
