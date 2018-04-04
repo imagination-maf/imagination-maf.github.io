@@ -83,7 +83,7 @@ async function CreateWebSocketServer() {
 
         });
 
-        server.listen(CONFIG.ports.websocket, null, null,  (err) => {
+        server.listen(CONFIG.ports.websocket, '0.0.0.0', null,  (err) => {
             if (err) {
                 console.log( `WebSocket Server failed to start on port ${CONFIG.ports.websocket}`, err );
 
