@@ -39,12 +39,12 @@
 <template>
     <div class="attractor">
         <transition name="fade">
-            <div v-if="itemNum === 0" class="attractor-item centered" @touchstart="navigateToMenu()">
+            <div v-if="itemNum === 0" class="attractor-item centered" @mousedown="navigateToMenu()">
                 <img class="attractor-item-image" :src="mainLogo" />
             </div>
         </transition>
         <transition name="fade">
-            <div v-if="itemNum === 1" class="attractor-item centered" @touchstart="navigateToMenu()">
+            <div v-if="itemNum === 1" class="attractor-item centered" @mousedown="navigateToMenu()">
                 <button type="button" class="attractor-item-button">Tap here to discover more</button>
             </div>
         </transition>

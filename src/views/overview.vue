@@ -66,7 +66,7 @@
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
-        <div class="container" @touchstart="svgPressed($event)">
+        <div class="container" @mousedown="svgPressed($event)">
             <img class="image" :src="images[selectedCommunity]" />
             <AlZahia id="svg" ng-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
         </div>

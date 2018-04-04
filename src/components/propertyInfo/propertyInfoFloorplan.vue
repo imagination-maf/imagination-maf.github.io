@@ -24,7 +24,7 @@ export default Vue.component('property-info-floorplan', {
         <div class="info-image-container">
             <img class="info-image" :src="floorplan" />
         </div>
-        <button class="info-button" type="button" @touchstart="backToSummary()">Go Back to Summary</button>
+        <button class="info-button" type="button" @mousedown="backToSummary()">Go Back to Summary</button>
     </div>
 </template>
 

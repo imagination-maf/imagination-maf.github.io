@@ -44,7 +44,7 @@ export default Vue.component('property-filter', {
             <h3 class="community-menu-title">Residential properties</h3>
             <span class="community-menu-span">Tap to show/hide</span>
             <div class="community-menu-item" :class="{ 'first': index === 0 }" v-for="(item, index) in list">
-                <p class="property-list-name" @touchstart="changeFilter('active_' + item)">{{ houseTypeNames[item] }}</p>
+                <p class="property-list-name" @mousedown="changeFilter('active_' + item)">{{ houseTypeNames[item] }}</p>
                 <ul class="property-list" v-show="propertyTypeFilter['active_' + item]">
                     <li class="property-list-item">
                         <div class="status available" :class="[item]"></div>
@@ -59,7 +59,7 @@ export default Vue.component('property-filter', {
         </div>
         <div class="community-list">
             <h3 class="community-menu-title">Residential Amenities</h3>
-            <span class="community-menu-span" @touchstart="changeAmenitiesVisiblity()">Tap to show/hide</span>
+            <span class="community-menu-span" @mousedown="changeAmenitiesVisiblity()">Tap to show/hide</span>
         </div>
         <div class="community-list">
             <h3 class="community-menu-title">Commerical Properties</h3>

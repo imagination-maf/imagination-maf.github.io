@@ -14,7 +14,7 @@ export default Vue.component('property-info-tour', {
 <template>
     <div class="info-tour">
         <h3 class="info-title">360 Tour</h3>
-        <button type="button" @touchstart="backToSummary()">Go Back to Summary</button>
+        <button type="button" @mousedown="backToSummary()">Go Back to Summary</button>
     </div>
 </template>
 

@@ -37,13 +37,13 @@ export default Vue.component('property-info-gallery', {
     <div class="info-gallery">
         <div class="info-gallery-container">
             <img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" />
-            <button class="arrow left" type="button" @touchstart="changeSlide(-1)"></button>
-            <button class="arrow right" type="button" @touchstart="changeSlide(1)"></button>
+            <button class="arrow left" type="button" @mousedown="changeSlide(-1)"></button>
+            <button class="arrow right" type="button" @mousedown="changeSlide(1)"></button>
             <div class="pagination">
-                <div v-for="(page, index) in images" class="pagination-item" :class="{'active': index === slide}" @touchstart="changeToSlideNum(index)"></div>
+                <div v-for="(page, index) in images" class="pagination-item" :class="{'active': index === slide}" @mousedown="changeToSlideNum(index)"></div>
             </div>
         </div>
-        <button class="info-button" type="button" @touchstart="backToSummary()">Go Back to Summary</button>
+        <button class="info-button" type="button" @mousedown="backToSummary()">Go Back to Summary</button>
     </div>
 </template>
 

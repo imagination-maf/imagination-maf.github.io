@@ -491,7 +491,7 @@
 <div class="app">
     <AppHeader :logo="headerLogo" back="true" v-on:back="backFunctionality" />
     <div class="container">
-        <div id="map-container" class="map" @touchstart="mapClick($event)">
+        <div id="map-container" class="map" @mousedown="mapClick($event)">
             <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
                 <!-- World -->
                 <div
@@ -781,11 +781,11 @@
 
         <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
             <div class="controls-row">
-                <button class="button zoom" type="button" @touchstart="zoomOut()">Zoom Out</button>
-                <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @touchstart="zoomIn()">Zoom In</button>
+                <button class="button zoom" type="button" @mousedown="zoomOut()">Zoom Out</button>
+                <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @mousedown="zoomIn()">Zoom In</button>
             </div>
             <div class="controls-row" v-if="masterplanAvailable">
-                <button class="button masterplan" type="button" @touchstart="viewMasterplan()">View Masterplan</button>
+                <button class="button masterplan" type="button" @mousedown="viewMasterplan()">View Masterplan</button>
             </div>
         </div>
     </div>
