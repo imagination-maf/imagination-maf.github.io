@@ -5,13 +5,12 @@
 </template>
 
 <script>
-import AppHeader from './components/header.vue';
 
 export default {
 	name: 'App',
-	components: {
-		appHeader: AppHeader
-	}
+    mounted() {
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    }
 };
 </script>
 
