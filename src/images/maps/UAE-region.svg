@@ -65,7 +65,6 @@
 	<text transform="matrix(1 0 0 1 1250.7041 382.8381)" style="fill:#989898; font-family:'MarselisPro'; font-size:16.9987px;">RAS AL-KHAIMAH</text>
 </g>
 <g id="app_x5F_Dubai--button">
-	<polygon style="opacity:0;fill:#FFFFFF;" points="1055.8,558.4 1055.6,587.2 855.7,587.2 855.7,497.2 943.5,497.2 1032,558.4 	"/>
 	<g transform="translate(1032.000000, 577.000000)">
 		<polygon id="Fill-124_1_" style="fill:#8A1538;" points="0,-18.6 0,5.1 7.9,5.1 11.8,9.4 15.9,5.1 23.8,5.1 23.8,-18.6 		"/>
 		<g id="Group_1_" transform="translate(5.000000, 5.000000)">
@@ -161,10 +160,9 @@
 				C914.9,508.1,915.6,509.1,916.1,510.3z"/>
 		</g>
 	</g>
+	<polygon style="fill-opacity:0;fill:#FFFFFF;" points="1055.8,558.4 1055.6,587.2 855.7,587.2 855.7,497.2 943.5,497.2 1032,558.4 	"/>
 </g>
 <g id="app_x5F_Sharjah--button">
-	<polygon id="tap_x5F_area" style="opacity:0;fill:#FFFFFF;" points="1036.8,349.3 1115.3,349.3 1115.3,449.5 1087.7,534.8
-		1063.9,534.8 1035.5,449.5 	"/>
 	<g transform="translate(1066.000000, 527.000000)">
 		<polygon id="Fill-124_3_" style="fill:#8A1538;" points="-2.1,-15.9 -2.1,7.8 5.9,7.8 9.8,12.1 13.7,7.8 21.7,7.8 21.7,-15.9
 			"/>
@@ -468,6 +466,8 @@
 				L1063,355.4c0.1,0,0.2,0.1,0.3,0.1c-0.1-0.1-0.2-0.1-0.2-0.2C1063.1,355.3,1063.1,355.4,1063,355.4"/>
 		</g>
 	</g>
+	<polygon id="tap_x5F_area" style="fill-opacity:0;fill:#FFFFFF;" points="1036.8,349.3 1115.3,349.3 1115.3,449.5 1087.7,534.8
+		1063.9,534.8 1035.5,449.5 	"/>
 </g>
 <rect id="app_x5F_Sharjah--zoom" x="1041.5" y="503.3" transform="rotate(-56deg 0 0)" style="fill:none;" width="68.4" height="38.4"/>
 <rect id="app_x5F_Dubai--zoom" x="1036.2" y="526.0" transform="rotate(-9deg 0 0)" style="fill:none;" width="75.6" height="42.525"/>
