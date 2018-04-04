@@ -52,6 +52,21 @@
             }
         },
         methods: {
+            getComposedPath: function(el) {
+                // Chrome is the only browser that has click event path
+                // Polyfill for Chrome's path or rather the composedPath standard
+                var path = [];
+                while (el) {
+                    path.push(el);
+                    if (el.tagName === 'HTML') {
+                        path.push(document);
+                        path.push(window);
+                        return path;
+                    }
+                    el = el.parentElement;
+                }
+                return path;
+            },
             backToOverview: function() {
                 this.$router.push({ path: 'overview', query: {community: this.community} });
             },
@@ -70,7 +85,10 @@
                 this.propertyInfoActive = false;
             },
             svgPressed: function($event) {
-                let elementPressed = $event.path[0];
+                // Polyfill path if not on Chrome
+                let pathElements = $event.path;
+                if (!pathElements) pathElements = this.getComposedPath($event.target);                
+                let elementPressed = pathElements[0];
                 if(elementPressed.id){
                     let plotId = elementPressed.id.split('_').filter( (part) => part.length);
                     let plotNumber = plotId[plotId.length - 1];
