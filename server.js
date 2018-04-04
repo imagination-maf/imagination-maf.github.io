@@ -30,16 +30,16 @@ async function CreateHttpServer() {
 async function CreateBrowserSyncServer() {
     return new Promise( async (resolve, reject) => {
         
-        const bs = require("browser-sync").create();
+        const bs = require("browser-sync");
 
         // .init starts the server
         bs.init({
             server: "./",
             port: CONFIG.ports.browsersync,
             open: false
-        }, () => {
-            resolve( bs );
-        });
+        }, ()=>{
+			resolve();
+		});
     });
 }
 
