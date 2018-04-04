@@ -1,6 +1,6 @@
 {
     "ports": {
-        "http": 8080,
+        "http": 8888,
         "browsersync": 3000,
         "websocket": 11099
     }

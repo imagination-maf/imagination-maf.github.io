@@ -1,5 +1,6 @@
 <script>
 
+    import config from '../data/config.js';
     let io = require( 'socket.io-client' );
 
     export default {
@@ -7,7 +8,9 @@
         data() {
             return {
                 hostActive: false,
-                showHost: false
+                showHost: false,
+                browserSyncServer: `http://${config.server.address}:${config.server.browserSyncPort}`,
+                httpServer: `http://${config.server.address}:${config.server.httpPort}`
             }
         },
         methods: {
@@ -38,7 +41,7 @@
         mounted() {
             var self = this;
 
-            this.socket = io('http://localhost:11099');
+            this.socket = io( `http://${config.server.address}:${config.server.wsPort}` );
             
             this.socket.on('connect', () => {
                 console.log( 'Connection to websocket server' );
@@ -71,14 +74,14 @@
 <template>
 
     <div class="container">
-        <iframe v-if="hostActive" :class="{ show: showHost }" id="host" ref="host" src="http://localhost:3000"></iframe>
+        <iframe v-if="hostActive" :class="{ show: showHost }" id="host" ref="host" :src="browserSyncServer"></iframe>
         <button v-if="isTablet()" class="host" :class="{ active: hostActive }" @click="switchMode">{{ hostActive ? "CLOSE HOST MODE" : "LAUNCH HOST MODE" }}</button>
  
         <div class="iframes" v-if="!hostActive && !isTablet()">
-            <iframe id="iframe1" ref="iframe1" src="http://localhost:8080"></iframe>
-            <iframe id="iframe2" ref="iframe2" src="http://localhost:8080"></iframe>
-            <iframe id="iframe3" ref="iframe3" src="http://localhost:8080"></iframe>
-            <iframe id="iframe4" ref="iframe4" src="http://localhost:8080"></iframe>
+            <iframe id="iframe1" ref="iframe1" :src="httpServer"></iframe>
+            <iframe id="iframe2" ref="iframe2" :src="httpServer"></iframe>
+            <iframe id="iframe3" ref="iframe3" :src="httpServer"></iframe>
+            <iframe id="iframe4" ref="iframe4" :src="httpServer"></iframe>
         </div>
     </div>
 

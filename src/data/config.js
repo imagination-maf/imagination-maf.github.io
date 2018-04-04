@@ -4,6 +4,12 @@ export default {
         'staging': 'https://staging.imagination-maf.com/api/',
         'live': ''
     },
+    'server': {
+        'address': 'localhost',
+        'browserSyncPort': 3000,
+        'httpPort': 8888,
+        'wsPort': 11099
+    },
     'galleryUrl': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/',
     'masterplan-inactive': ['app_x5F_Lebanon-region--parent', 'app_x5F_Lebanon--parent', 'app_x5F_Lebanon-road--parent', 'app_x5F_Oman--parent', 'app_x5F_Muscat--parent', 'app_x5F_Muscat-road--parent', 'app_x5F_Dubai--parent', 'app_x5F_Dubai-road--parent'],
     'mappings': {
