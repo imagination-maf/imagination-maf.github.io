@@ -13,7 +13,8 @@ export default Vue.component('property-info-gallery', {
         images: function() {
             let images = this.property.images.split(';');
             if(images.length > 0) {
-                let url = config.galleryUrl + this.$route.query.community + '/gallery/';
+                let locationUrl = process.env.NODE_ENV === 'table' ? config.localUrl : config.galleryUrl;
+                let url = locationUrl + this.$route.query.community + '/gallery/';
 
                 // due to inconsisency in paths having extension, remove on all and re-add
                 return images.map( (img) => url + img.replace(/ /g, '_').replace(/.jpg/g, '') + '.jpg' );
@@ -54,6 +55,7 @@ export default Vue.component('property-info-gallery', {
 .info-gallery-container {
     width: 100%;
     position: relative;
+    min-height: 64vh;
     .gallery-image {
         width: 100%;
     }
@@ -93,7 +95,7 @@ export default Vue.component('property-info-gallery', {
 
 .pagination {
     position: absolute;
-    bottom: 2rem;
+    bottom: 3rem;
     left: 0;
     right: 0;
     display: flex;

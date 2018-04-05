@@ -22,7 +22,9 @@ export default {
 
         let setupTimer = () => {
             timer = window.setTimeout( () => {
-                this.$router.push({ path: '/' })
+                if(this.$route.path !== '/iframed') {
+                    this.$router.push({ path: '/' });
+                }
                 resetTimer();
             }, 60000 );
         }

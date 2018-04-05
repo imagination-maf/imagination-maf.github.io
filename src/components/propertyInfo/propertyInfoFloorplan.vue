@@ -2,11 +2,13 @@
 import Vue from 'vue';
 import GalleryMapping from '../../data/galleryMapping.js';
 import axios from 'axios';
+import config from '../../data/config.js';
 
 export default Vue.component('property-info-floorplan', {
     props: ['property'],
     data() {
         return {
+            url: process.env.NODE_ENV === 'table' ? config.localUrl : config.galleryUrl,
             floorplan: GalleryMapping[this.$route.query.community][this.$route.query.neighbourhood][this.property.unit_type][this.property.aspect]
         }
     },
@@ -22,7 +24,7 @@ export default Vue.component('property-info-floorplan', {
     <div class="info-floorplan">
         <h3 class="info-title">FLOORPLAN</h3>
         <div class="info-image-container">
-            <img class="info-image" :src="floorplan" />
+            <img class="info-image" :src="url + floorplan" />
         </div>
         <button class="info-button" type="button" @click="backToSummary()">Go Back to Summary</button>
     </div>
