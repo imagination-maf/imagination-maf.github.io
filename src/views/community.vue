@@ -37,7 +37,8 @@
                 propertyList: [],
                 availableList: [],
                 data: null,
-                soldOutDetails: null
+                soldOutDetails: null,
+                table: process.env.NODE_ENV === 'table'
             }
         },
         computed: {
@@ -194,7 +195,7 @@
                 <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
             </div>
             <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
-                <AlZahia ng-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
+                <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
         <PropertyFilter v-if="!soldOutDetails && loaded" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
@@ -206,7 +207,8 @@
             <div class="sold-out-row">
                 <p class="sold-out-text">{{ soldOutDetails.text }}</p>
                 <div class="sold-out-image-container">
-                    <img class="sold-out-image" :src="soldOutDetails.image" />
+                    <img v-if="!table" class="sold-out-image" :src="soldOutDetails.image" />
+                    <img v-if="table" class="sold-out-image" :src="soldOutDetails['image-local']" />
                     <span class="sold-out-image-text">{{ soldOutDetails['image-text'] }}</span>
                 </div>
             </div>

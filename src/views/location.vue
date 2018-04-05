@@ -927,22 +927,22 @@ svg:not(:root) {
 
 .controls {
     position: absolute;
-    bottom: 2.5rem;
-    left: 44%;
+    bottom: 1.5rem;
+    left: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 12%;
+    width: 20%;
     .controls-row {
         display: flex;
         width: 100%;
-        margin: 0.35rem 0;
+        margin: 0.5rem 0;
         .button {
-            font-size: 1.15rem;
+            font-size: 1.35rem;
             margin: 0;
             flex: 1;
-            padding: 0.5rem 0;
+            padding: 0.75rem 0;
             outline: none;
             font-weight: 200;
             &.zoom {

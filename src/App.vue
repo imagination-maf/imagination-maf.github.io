@@ -9,7 +9,33 @@
 export default {
 	name: 'App',
     mounted() {
+        let timer = null;
+
         document.addEventListener('contextmenu', event => event.preventDefault());
+
+        let addListeners = (element, eventNames, listener) => {
+            let events = eventNames.split(' ');
+            for (let i = 0; i < events.length; i++) {
+                element.addEventListener(events[i], listener, false);
+            }
+        }
+
+        let setupTimer = () => {
+            timer = window.setTimeout( () => {
+                if(this.$route.path !== '/iframed') {
+                    this.$router.push({ path: '/' });
+                }
+                resetTimer();
+            }, 60000 );
+        }
+
+        let resetTimer = () => {
+            window.clearTimeout(timer);
+            setupTimer();
+        }
+
+        addListeners(window, 'ontouchstart mousedown', resetTimer);
+        setupTimer();
     }
 };
 </script>
