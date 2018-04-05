@@ -339,6 +339,8 @@
                     return Array.from(child.children)[0]
                 }).map( (child) => {
                     return Array.from(child.children)[0];
+                }).map( (child) => {
+                    return Array.from(child.children)[0];
                 });
                 let pngsLoaded = 0;
 
@@ -524,11 +526,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_world--parent']]">
-                        <img
-                            id="app_x5F_world--image"
-                            class="png-image"
-                            :src="pngImages.World"
-                            :style="[rotationStyles['app_x5F_world--parent']]"/>
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_world--parent']]">
+                            <img
+                                id="app_x5F_world--image"
+                                class="png-image"
+                                :src="pngImages.World" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of World -->
@@ -540,11 +545,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_UAE--parent']]">
-                        <img
-                            id="app_x5F_UAE--image"
-                            class="png-image"
-                            :src="pngImages.UAERegion"
-                            :style="[rotationStyles['app_x5F_UAE--parent']]"/>
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_UAE--parent']]">
+                            <img
+                                id="app_x5F_UAE--image"
+                                class="png-image"
+                                :src="pngImages.UAERegion"/>
+                        </div>
                     </div>
                 </div>
                 <!-- End of UAE -->
@@ -556,11 +564,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Oman--parent']]">
-                        <img
-                            id="app_x5F_Oman--image"
-                            class="png-image"
-                            :src="pngImages.OmanRegion"
-                            :style="[rotationStyles['app_x5F_Oman--parent']]"/>
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Oman--parent']]">
+                            <img
+                                id="app_x5F_Oman--image"
+                                class="png-image"
+                                :src="pngImages.OmanRegion" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Oman -->
@@ -572,11 +583,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Lebanon-region--parent']]">
-                        <img
-                            id="app_x5F_Lebanon-region--image"
-                            class="png-image"
-                            :src="pngImages.LebanonRegion"
-                            :style="[rotationStyles['app_x5F_Lebanon-region--parent']]"/>
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Lebanon-region--parent']]">
+                            <img
+                                id="app_x5F_Lebanon-region--image"
+                                class="png-image"
+                                :src="pngImages.LebanonRegion"/>
+                        </div>
                     </div>
                 </div>
                 <!-- End of Lebanon Region -->
@@ -588,11 +602,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Sharjah--parent']]">
-                        <img
-                            id="app_x5F_Sharjah--image"
-                            class="png-image"
-                            :src="pngImages.SharjahCity"
-                            :style="[rotationStyles['app_x5F_Sharjah--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Sharjah--parent']]">
+                            <img
+                                id="app_x5F_Sharjah--image"
+                                class="png-image"
+                                :src="pngImages.SharjahCity" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Sharjah City -->
@@ -604,11 +621,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Sharjah-road--parent']]">
-                        <img
-                            id="app_x5F_Sharjah-road--image"
-                            class="png-image"
-                            :src="pngImages.SharjahRoad"
-                            :style="[rotationStyles['app_x5F_Sharjah-road--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Sharjah-road--parent']]">
+                            <img
+                                id="app_x5F_Sharjah-road--image"
+                                class="png-image"
+                                :src="pngImages.SharjahRoad" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Sharjah Road -->
@@ -620,11 +640,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Dubai--parent']]">
-                        <img
-                            id="app_x5F_Dubai--image"
-                            class="png-image"
-                            :src="pngImages.DubaiCity"
-                            :style="[rotationStyles['app_x5F_Dubai--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Dubai--parent']]">
+                            <img
+                                id="app_x5F_Dubai--image"
+                                class="png-image"
+                                :src="pngImages.DubaiCity" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Dubai -->
@@ -636,11 +659,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Dubai-road--parent']]">
-                        <img
-                            id="app_x5F_Dubai-road--image"
-                            class="png-image"
-                            :src="pngImages.DubaiRoad"
-                            :style="[rotationStyles['app_x5F_Dubai-road--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Dubai-road--parent']]">
+                            <img
+                                id="app_x5F_Dubai-road--image"
+                                class="png-image"
+                                :src="pngImages.DubaiRoad" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Dubai Road -->
@@ -652,11 +678,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Lebanon--parent']]">
-                        <img
-                            id="app_x5F_Lebanon--image"
-                            class="png-image"
-                            :src="pngImages.LebanonCity"
-                            :style="[rotationStyles['app_x5F_Lebanon--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Lebanon--parent']]">
+                            <img
+                                id="app_x5F_Lebanon--image"
+                                class="png-image"
+                                :src="pngImages.LebanonCity" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Lebanon City -->
@@ -668,11 +697,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Lebanon-road--parent']]">
-                        <img
-                            id="app_x5F_Lebanon-road--image"
-                            class="png-image"
-                            :src="pngImages.LebanonRoad"
-                            :style="[rotationStyles['app_x5F_Lebanon-road--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Lebanon-road--parent']]">
+                            <img
+                                id="app_x5F_Lebanon-road--image"
+                                class="png-image"
+                                :src="pngImages.LebanonRoad" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Lebanon Road -->
@@ -684,11 +716,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Muscat--parent']]">
-                        <img
-                            id="app_x5F_Muscat--image"
-                            class="png-image"
-                            :src="pngImages.MuscatCity"
-                            :style="[rotationStyles['app_x5F_Muscat--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Muscat--parent']]">
+                            <img
+                                id="app_x5F_Muscat--image"
+                                class="png-image"
+                                :src="pngImages.MuscatCity" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Muscat City -->
@@ -700,11 +735,14 @@
                     <div
                         class="png-image-container-translate"
                         :style="[translationStyles['app_x5F_Muscat-road--parent']]">
-                        <img
-                            id="app_x5F_Muscat-road--image"
-                            class="png-image"
-                            :src="pngImages.MuscatRoad"
-                            :style="[rotationStyles['app_x5F_Muscat-road--parent']]" />
+                        <div
+                            class="png-image-container-rotation"
+                            :style="[rotationStyles['app_x5F_Muscat-road--parent']]">
+                            <img
+                                id="app_x5F_Muscat-road--image"
+                                class="png-image"
+                                :src="pngImages.MuscatRoad" />
+                        </div>
                     </div>
                 </div>
                 <!-- End of Muscat Road -->
@@ -798,9 +836,9 @@
             <div class="loading" v-if="!loadingComplete"></div>
         </div>
 
-        <transition name="marker-info">
+        <!-- <transition name="marker-info"> -->
             <MarkerInfo v-if="markersAvailable" :country="markerSelected"></MarkerInfo>
-        </transition>
+        <!-- </transition> -->
 
         <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
             <div class="controls-row">
@@ -840,31 +878,45 @@
     }
     &.in {
         .png-image-container-scale {
-            transition: transform 0.5s linear 0.25s, opacity 0.1s linear 1s;
+            transition: transform 1s linear 0.25s, opacity 0.1s linear 1.25s;
             &.active {
                 opacity: 1;
-                transition: transform 0.5s linear 0.25s, opacity 0.1s linear 0s;
+                transition: transform 1s linear 0.25s, opacity 0.1s linear 0s;
             }
             .png-image-container-translate {
-                transition: transform 0.225s ease-out 0.25s;
+                transition: transform 0.45s ease-out 0.25s;
             }
-            .png-image {
-                transition: transform 0.2s linear 0.75s;
+            .png-image-container-rotation {
+                transition: transform 0.25s linear 0.75s;
             }
         }
+
     }
     &.out {
+        // .png-image-container-scale {
+        //     transition: transform 0.5s linear 0.45s, opacity 0.1s linear 1s;
+        //     &.active {
+        //         opacity: 1;
+        //         transition: transform 0.5s linear 0.45s, opacity 0.1s linear 0s;
+        //     }
+        //     .png-image-container-translate {
+        //         transition: transform 0.225s ease-out 0.725s;
+        //     }
+        //     .png-image-container-rotate {
+        //         transition: transform 0.2s linear 0.7s;
+        //     }
+        // }
         .png-image-container-scale {
-            transition: transform 0.5s linear 0.45s, opacity 0.1s linear 1s;
+            transition: transform 1s linear 0.25s, opacity 0.1s linear 1s;
             &.active {
                 opacity: 1;
-                transition: transform 0.5s linear 0.45s, opacity 0.1s linear 0s;
+                transition: transform 1s linear 0.25s, opacity 0.1s linear 0s;
             }
             .png-image-container-translate {
-                transition: transform 0.225s ease-out 0.725s;
+                transition: transform 0.445s ease-out 0.805s;
             }
-            .png-image {
-                transition: transform 0.2s linear 0.7s;
+            .png-image-container-rotation {
+                transition: transform 0.25s linear 0.5s;
             }
         }
     }

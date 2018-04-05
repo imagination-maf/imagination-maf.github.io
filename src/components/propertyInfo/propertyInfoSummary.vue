@@ -37,25 +37,21 @@ export default Vue.component('property-info-summary', {
         <div class="info-row">
             <div class="info-features">
                 <h3 class="info-row-title">FEATURES</h3>
-                <div class="info-features-item" v-if="property.bedrooms">
+                <div class="info-features-item" v-if="property.bedrooms > -1 && property.bedrooms !== undefined && property.bedrooms !== null">
                     <img :src="images.iconBed" class="info-features-icon" />
                     <p class="info-features-text">{{ property.bedrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="property.bathrooms">
+                <div class="info-features-item" v-if="property.bathrooms > -1 && property.bathrooms !== undefined && property.bathrooms !== null">
                     <img :src="images.iconBath" class="info-features-icon" />
                     <p class="info-features-text">{{ property.bathrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="property.livingrooms">
+                <div class="info-features-item" v-if="property.livingrooms > -1 && property.livingrooms !== undefined && property.livingrooms !== null">
                     <img :src="images.iconSofa" class="info-features-icon" />
                     <p class="info-features-text">{{ property.livingrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="property.garages">
+                <div class="info-features-item" v-if="property.garages > -1 && property.garages !== undefined && property.garages !== null">
                     <img :src="images.iconGarage" class="info-features-icon" />
                     <p class="info-features-text">{{ property.garages }}</p>
-                </div>
-                <div class="info-features-item" v-if="property.garage_area">
-                    <img :src="images.iconGarage" class="info-features-icon" />
-                    <p class="info-features-text">{{ property.garage_area }}m</p>
                 </div>
             </div>
             <ul class="info-cta">

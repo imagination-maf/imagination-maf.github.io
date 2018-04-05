@@ -172,12 +172,10 @@
             amenitiesFilter: function(val) {
                 if(val) {
                     config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
-                        console.log('amenity', document.getElementById(amenity));
                         document.getElementById(amenity).classList.add('amenity-active');
                     });
                 } else {
                     config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
-                        console.log('amenity', document.getElementById(amenity));
                         document.getElementById(amenity).classList.remove('amenity-active');
                     });
                 }
