@@ -193,7 +193,7 @@
             <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
                 <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
             </div>
-            <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @mousedown="svgPressed($event)">
+            <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                 <AlZahia ng-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
@@ -210,7 +210,7 @@
                     <span class="sold-out-image-text">{{ soldOutDetails['image-text'] }}</span>
                 </div>
             </div>
-            <button class="sold-out-button" @mousedown="backToOverview()">Back to the Masterplan</button>
+            <button class="sold-out-button" @click="backToOverview()">Back to the Masterplan</button>
         </div>
     </div>
 </div>
