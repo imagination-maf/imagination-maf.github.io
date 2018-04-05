@@ -75,7 +75,7 @@
 
     <div class="container">
         <iframe v-if="hostActive" :class="{ show: showHost }" id="host" ref="host" :src="browserSyncServer"></iframe>
-        <button v-if="isTablet()" class="host" :class="{ active: hostActive }" @mousedown="switchMode">{{ hostActive ? "CLOSE HOST MODE" : "LAUNCH HOST MODE" }}</button>
+        <button v-if="isTablet()" class="host" :class="{ active: hostActive }" @click="switchMode">{{ hostActive ? "CLOSE HOST MODE" : "LAUNCH HOST MODE" }}</button>
 
         <div class="iframes" v-if="!hostActive && !isTablet()">
             <iframe id="iframe1" ref="iframe1" :src="httpServer"></iframe>
