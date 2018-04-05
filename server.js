@@ -44,56 +44,9 @@ async function CreateBrowserSyncServer() {
 }
 
 async function CreateWebSocketServer() {
-    return new Promise( (resolve, reject) => {
-
-        const http = require( 'http' );
-        
-        // Loading the index file . html displayed to the client
-        const server = http.createServer(function(req, res) {
-            fs.readFile('./index.html', 'utf-8', function(error, content) {
-                res.writeHead(200, {"Content-Type": "text/html"});
-                res.end(content);
-            });
-        });
-
-        // Loading socket.io
-        var io = require('socket.io').listen(server);
-        var connections = [];
-
-        // When a client connects, we note it in the console
-        io.sockets.on('connection', function (socket) {
-            connections.push( socket ); 
-            console.log( 'Connections [+]', connections.length );
-
-            socket.on( 'MESSAGE', (data) => {
-                connections.forEach( client => {
-                    if (data.toAll === true || client !== socket) {
-                        client.emit( 'MESSAGE', data );
-                    }
-                })
-            });
-
-            socket.on('disconnect', () => {
-                const ix = connections.findIndex( item => item === socket );
-                if (ix>=0) {
-                    connections.splice( ix );
-                }
-                console.log( 'Connections [-]', connections.length );
-            });
-
-        });
-
-        server.listen(CONFIG.ports.websocket, '0.0.0.0', null,  (err) => {
-            if (err) {
-                console.log( `WebSocket Server failed to start on port ${CONFIG.ports.websocket}`, err );
-
-                reject(err);
-            } else {
-                console.log( `[WS Server] Running on port ${CONFIG.ports.websocket}` );
-                resolve( server );
-            }
-        });
-
+    const websocket = require( 'maf-websocket-node' );
+    return websocket.create({
+        port:CONFIG.ports.websocket
     });
 }
 
@@ -104,6 +57,5 @@ async function CreateWebSocketServer() {
     let httpServer = await CreateHttpServer();
     let ws = await CreateWebSocketServer();
     let bs = await CreateBrowserSyncServer();
-    
 
 })();
