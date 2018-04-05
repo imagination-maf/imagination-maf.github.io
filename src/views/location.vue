@@ -467,6 +467,28 @@
                 } else {
                     return null;
                 }
+            },
+            pulsateMarkers: function() {
+                let element = document.getElementById(this.selectedView);
+                console.log(element);
+
+                let markers = element.querySelectorAll('g[id$=--marker]');
+                console.log('markersss', markers);
+
+                markers.forEach( marker => {
+                    console.log(marker.transform);
+                    let position = marker.transform.baseVal.filter( (transform) => {
+                        transform.type === 2;
+                    } )[0];
+
+                    if(position) {
+                        let x = position[0].e;
+                        let y = position[0].f;
+
+                        console.log('x', x, 'y', y);
+                    }
+                } )
+
             }
         },
         mounted(){
@@ -482,6 +504,7 @@
         watch: {
             selectedView: function(val) {
                 this.markerSelected = this.getDefaultMarkerContent();
+                this.pulsateMarkers();
             }
         }
      });
