@@ -836,9 +836,9 @@
             <div class="loading" v-if="!loadingComplete"></div>
         </div>
 
-        <!-- <transition name="marker-info"> -->
+        <transition name="marker-info">
             <MarkerInfo v-if="markersAvailable" :country="markerSelected"></MarkerInfo>
-        <!-- </transition> -->
+        </transition>
 
         <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
             <div class="controls-row">
@@ -907,7 +907,7 @@
         //     }
         // }
         .png-image-container-scale {
-            transition: transform 1s linear 0.25s, opacity 0.1s linear 1s;
+            transition: transform 1s linear 0.25s, opacity 0.1s linear 1.25s;
             &.active {
                 opacity: 1;
                 transition: transform 1s linear 0.25s, opacity 0.1s linear 0s;
