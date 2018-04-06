@@ -3,8 +3,8 @@ export default {
         allilac: {
             "3TH": {
                 "TH Double Row - Corner": "alzahia/allilac/3bedtownhouse/floorplan/corner/3BedroomTownhouseEndUnit.jpg",
-                "TH Double Row - Middle": "alzahia/allilac/3bedtownhouse/floorplan/end/3BedroomTownhouse.jpg",
-                "TH Double Row - End Of Terrace": "alzahia/allilac/3bedtownhouse/floorplan/middle/3BedroomTownhouseEndUnit.jpg"
+                "TH Double Row - Middle": "alzahia/allilac/3bedtownhouse/floorplan/middle/3BedroomTownhouse.jpg",
+                "TH Double Row - End Of Terrace": "alzahia/allilac/3bedtownhouse/floorplan/end/3BedroomTownhouseEndUnit.jpg"
             },
             "3TH (S)": {
                 "Th Double Row - Middle": "alzahia/allilac/3bedtownhousestandard/floorplan/middle/3BTS-MIDDLE-UNIT.jpg",

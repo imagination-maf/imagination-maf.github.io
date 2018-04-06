@@ -1,6 +1,9 @@
 <script>
 import Vue from 'vue';
 import config from '../../data/config.js';
+import propertyDetails from '../../data/propertyRooms.js';
+
+console.log('property details', propertyDetails);
 
 export default Vue.component('property-info-summary', {
     props: ['property'],
@@ -11,16 +14,29 @@ export default Vue.component('property-info-summary', {
                 "iconBath": require('../../images/details/bath.png'),
                 "iconSofa": require('../../images/details/sofa.png'),
                 "iconGarage": require('../../images/details/garage.png')
-            }
+            },
+            details: propertyDetails
         }
     },
     computed: {
+        community: function() {
+            return this.$route.query.community;
+        },
+        neighbourhood: function() {
+            return this.$route.query.neighbourhood;
+        },
         name: function () {
             return this.$route.query.neighbourhood ? config.neighbourhoodNames[this.$route.query.neighbourhood] : ''
         },
         type: function () {
             let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(this.property.type) !== -1)[0];
             return config.houseTypeNames[type + this.property.bedrooms];
+        },
+        unitType: function () {
+            return this.property.unit_type;
+        },
+        aspect: function () {
+            return this.property.aspect;
         }
     },
     methods: {
@@ -37,21 +53,21 @@ export default Vue.component('property-info-summary', {
         <div class="info-row">
             <div class="info-features">
                 <h3 class="info-row-title">FEATURES</h3>
-                <div class="info-features-item" v-if="property.bedrooms > -1 && property.bedrooms !== undefined && property.bedrooms !== null">
+                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].bedrooms > -1 && details[community][neighbourhood][unitType][aspect].bedrooms !== undefined && details[community][neighbourhood][unitType][aspect].bedrooms !== null">
                     <img :src="images.iconBed" class="info-features-icon" />
-                    <p class="info-features-text">{{ property.bedrooms }}</p>
+                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].bedrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="property.bathrooms > -1 && property.bathrooms !== undefined && property.bathrooms !== null">
+                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].bathrooms > -1 && details[community][neighbourhood][unitType][aspect].bathrooms !== undefined && details[community][neighbourhood][unitType][aspect].bathrooms !== null">
                     <img :src="images.iconBath" class="info-features-icon" />
-                    <p class="info-features-text">{{ property.bathrooms }}</p>
+                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].bathrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="property.livingrooms > -1 && property.livingrooms !== undefined && property.livingrooms !== null">
+                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].livingrooms > -1 && details[community][neighbourhood][unitType][aspect].livingrooms !== undefined && details[community][neighbourhood][unitType][aspect].livingrooms !== null">
                     <img :src="images.iconSofa" class="info-features-icon" />
-                    <p class="info-features-text">{{ property.livingrooms }}</p>
+                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].livingrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="property.garages > -1 && property.garages !== undefined && property.garages !== null">
+                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].garages > -1 && details[community][neighbourhood][unitType][aspect].garages !== undefined && details[community][neighbourhood][unitType][aspect].garages !== null">
                     <img :src="images.iconGarage" class="info-features-icon" />
-                    <p class="info-features-text">{{ property.garages }}</p>
+                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].garages }}</p>
                 </div>
             </div>
             <ul class="info-cta">
