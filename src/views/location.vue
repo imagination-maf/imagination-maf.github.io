@@ -386,7 +386,7 @@
                     let rotations = {};
                     let translations = {};
 
-                    translations[name] = {transform: 'translate(0px, 0px)'};
+                    translations[name] = {transform: 'translate3d(0px, 0px, 0px)'};
                     scales[name] = {transform: 'scale(1)'};
                     rotations[name] = {transform: 'rotate(0deg)'};
 
@@ -403,7 +403,7 @@
                             'transform': `rotate( ${ positionInParent.rotate.angle }deg )`,
                         };
                         translations[parentSVG] = {
-                            transform: `translate( ${ -positionInParent.translateX * (positionInParent.scale) }px, ${ -positionInParent.translateY * (positionInParent.scale) }px )`
+                            transform: `translate3d( ${ -positionInParent.translateX * (positionInParent.scale) }px, ${ -positionInParent.translateY * (positionInParent.scale) }px, 0px )`
                         };
                         scales[parentSVG] = {
                             transform: `scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
@@ -433,7 +433,7 @@
                                 'transform-origin': `${ positionInImage.rotate.origin[0] }px ${ positionInImage.rotate.origin[1] }px`
                             };
                             translations[childParent] = {
-                                'transform': `translate( ${ positionInImage.translateX }px, ${ positionInImage.translateY }px )`
+                                'transform': `translate3d( ${ positionInImage.translateX }px, ${ positionInImage.translateY }px, 0px)`
                             };
                             scales[childParent] = {
                                 transform: `scale( ${ positionInImage.scale }, ${ positionInImage.scale } )`
@@ -878,15 +878,19 @@
     }
     &.in {
         .png-image-container-scale {
+            -webkit-backface-visibility: hidden;
             transition: transform 1s linear 0.25s, opacity 0.1s linear 1.25s;
             &.active {
                 opacity: 1;
+                -webkit-backface-visibility: hidden;
                 transition: transform 1s linear 0.25s, opacity 0.1s linear 0s;
             }
             .png-image-container-translate {
+                -webkit-backface-visibility: hidden;
                 transition: transform 0.45s ease-out 0.25s;
             }
             .png-image-container-rotation {
+                -webkit-backface-visibility: hidden;
                 transition: transform 0.25s linear 0.75s;
             }
         }
@@ -907,15 +911,19 @@
         //     }
         // }
         .png-image-container-scale {
+            -webkit-backface-visibility: hidden;
             transition: transform 1s linear 0.25s, opacity 0.1s linear 1.25s;
             &.active {
                 opacity: 1;
+                -webkit-backface-visibility: hidden;
                 transition: transform 1s linear 0.25s, opacity 0.1s linear 0s;
             }
             .png-image-container-translate {
+                -webkit-backface-visibility: hidden;
                 transition: transform 0.445s ease-out 0.805s;
             }
             .png-image-container-rotation {
+                -webkit-backface-visibility: hidden;
                 transition: transform 0.25s linear 0.5s;
             }
         }
