@@ -469,34 +469,43 @@
                 } else {
                     return null;
                 }
-            }//,
-            // pulsateMarkers: function() {
-            //     let element = document.getElementById(this.selectedView);
-            //     console.log(element);
-            //
-            //     let markers = element.querySelectorAll('g[id$=--marker]');
-            //     console.log('markersss', markers);
-            //
-            //     markers.forEach( marker => {
-            //         console.log(marker.transform);
-            //         let position = marker.transform.baseVal.filter( (transform) => {
-            //             transform.type === 2;
-            //         } )[0];
-            //
-            //         if(position) {
-            //             let x = position[0].e;
-            //             let y = position[0].f;
-            //
-            //             console.log('x', x, 'y', y);
-            //         }
-            //     } )
-            //
-            // }
+            },
+            pulsateMarkers: function() {
+                let element = document.getElementById(this.selectedView);
+                console.log(element);
+
+                let animationContainer = document.getElementById('marker-animations');
+                let markers = element.querySelectorAll('g[id$=--marker]');
+                console.log('markersss', markers);
+
+                markers.forEach( marker => {
+                    let position = Array.from(marker.transform.baseVal).filter( (transform) => {
+                        return transform.type === 2;
+                    } )[0];
+
+                    if(position) {
+                        console.log(position.matrix);
+                        let x = position.matrix.e;
+                        let y = position.matrix.f;
+
+                        console.log('x', x, 'y', y);
+                        let div = document.createElement('div');
+                        div.id = marker.id.split('--')[0] + '--pulse';
+                        div.classList.add('pulse');
+                        div.style.left = x + 'px';
+                        div.style.top = y + 'px';
+
+                        animationContainer.appendChild(div);
+                    }
+                } )
+
+            }
         },
         mounted(){
             let callback = () => {
                 this.loadingComplete = true;
                 this.markerSelected = this.getDefaultMarkerContent();
+                this.pulsateMarkers();
             }
 
             this.setupSvgImages();
@@ -506,7 +515,7 @@
         watch: {
             selectedView: function(val) {
                 this.markerSelected = this.getDefaultMarkerContent();
-                // this.pulsateMarkers();
+                this.pulsateMarkers();
             }
         }
      });
@@ -515,7 +524,7 @@
 <template>
 <div class="app">
     <AppHeader :logo="headerLogo" back="true" v-on:back="backFunctionality" />
-    <div class="container">
+    <div class="container" :class="{'loaded': loadingComplete}">
         <div id="map-container" class="map" @click="mapClick($event)">
             <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
                 <!-- World -->
@@ -850,13 +859,51 @@
             </div>
         </div>
     </div>
+    <div id="marker-animations"></div>
 </div>
 </template>
 
 <style lang="scss">
+    #marker-animations {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
     .marker-active {
         polygon {
             fill: #b4975a;
+        }
+    }
+
+    .pulse {
+        width: 5rem;
+        height: 5rem;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:after {
+            content: '';
+            border-radius: 100%;
+            border: 0.1rem solid red;
+            animation: pulse 2s infinite;
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            width: 0;
+            height: 0;
+            opacity: 1;
+        }
+        100% {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
         }
     }
 </style>
@@ -956,6 +1003,12 @@
     display: flex;
     align-items: center;
     position: relative;
+    opacity: 0;
+    pointer-events: none;
+    &.loaded {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 .map {

@@ -2,19 +2,22 @@
     import Vue from 'vue';
 
     import AlZahia from '../images/overalls/overview-alzahia.svg';
+    import AlMouj from '../images/overalls/overview-almouj.svg';
     import config from '../data/config.js';
     import AppHeader from '../components/header.vue';
 
     export default Vue.component('overview', {
         components: {
             AppHeader,
-            AlZahia
+            AlZahia,
+            AlMouj
         },
         data() {
             return {
                 svgScale: null,
                 images: {
-                    'alzahia': require('../images/overalls/overview-alzahia.png')
+                    'alzahia': require('../images/overalls/overview-alzahia.png'),
+                    'almouj': require('../images/overalls/overview-almouj.png')
                 }
             }
         },
@@ -68,7 +71,8 @@
     <transition name="page" appear>
         <div class="container" @click="svgPressed($event)">
             <img class="image" :src="images[selectedCommunity]" />
-            <AlZahia id="svg" ng-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+            <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+            <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
         </div>
     </transition>
 </div>

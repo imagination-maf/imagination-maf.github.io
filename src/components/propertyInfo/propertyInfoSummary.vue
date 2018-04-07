@@ -3,8 +3,6 @@ import Vue from 'vue';
 import config from '../../data/config.js';
 import propertyDetails from '../../data/propertyRooms.js';
 
-console.log('property details', propertyDetails);
-
 export default Vue.component('property-info-summary', {
     props: ['property'],
     data() {

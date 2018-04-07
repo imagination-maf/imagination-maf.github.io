@@ -5,6 +5,7 @@
     import PropertyInfo from '../components/propertyInfo.vue';
 
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
+    import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
 
@@ -13,7 +14,8 @@
             AppHeader,
             PropertyFilter,
             PropertyInfo,
-            AlZahia
+            AlZahia,
+            AlMouj
         },
         data() {
             return {
@@ -32,6 +34,9 @@
                         allilac: require('../images/masterplans/alzahia-al-lilac.png'),
                         alnarjis: require('../images/masterplans/alzahia-al-narjis.png'),
                         gardenapts: require('../images/masterplans/alzahia-garden-apts.png')
+                    },
+                    almouj: {
+                        almouj: require('../images/masterplans/almouj-almouj.png')
                     }
                 },
                 propertyList: [],
@@ -72,7 +77,16 @@
                 this.$router.push({ path: 'overview', query: {community: this.community} });
             },
             setPropertyTypeFilter: function(key) {
-                Vue.set(this.propertyTypeFilter, key, !this.propertyTypeFilter[key]);
+                if(config.oneFilterCommunities.indexOf(this.community) !== -1) {
+                    Object.keys(this.propertyTypeFilter).forEach( (type) => {
+                        if(type !== key) {
+                            Vue.set(this.propertyTypeFilter, type, false);
+                        }
+                    } );
+                    Vue.set(this.propertyTypeFilter, key, !this.propertyTypeFilter[key]);
+                } else {
+                    Vue.set(this.propertyTypeFilter, key, !this.propertyTypeFilter[key]);
+                }
             },
             setAmenitiesFilter: function() {
                 this.amenitiesFilter = !this.amenitiesFilter;
@@ -116,6 +130,7 @@
                     let query = 'api=eq.' + this.community;
                     this.getData(query).then( (res) => {
                         this.data = res.data;
+                        console.log('data', this.data);
 
                         this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
@@ -129,28 +144,49 @@
 
                         let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
                         let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
+
+                        console.log(plotBoundaries.filter(boundary => {
+                            return boundary.id
+                        } ));
+
+
                         for(let index = 0; index < plotBoundaries.length; index++) {
                             let dataItem = this.data.filter( (item) => {
-                                let plotId = plotBoundaries[index].id.split('_').filter( (part) => part.length);
-                                return plotId[plotId.length - 1] === item.id;
+                                if(this.community === 'almouj') {
+                                    plotBoundaries[index].id = plotBoundaries[index].id.split('_')[0];
+                                }
+                                return plotBoundaries[index].id === item.id;
                             })[0];
 
+                            if(plotBoundaries[index].id && !dataItem){
+                                console.log('heereree', plotBoundaries[index]);
+                            }
+
                             if(dataItem) {
+
+                                // if(dataItem.id.match('GH')){
+                                //     console.log('heree', dataItem)
+                                // }
+
                                 let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 
-                                // Debug code to find un included types
-                                if(!type) {
-                                    console.log('item', dataItem);
-                                }
-                                let beds = dataItem.bedrooms;
+                                let beds = dataItem.bedrooms.replace(/\D/g, '');
                                 let propertyType = type + beds;
                                 if(beds && propertyType) {
                                     plotBoundaries[index].classList.add('svg-house-icon');
                                     plotBoundaries[index].classList.add('type_' + propertyType);
                                     this.propertyList = Array.from(new Set([...this.propertyList, propertyType])).sort();
 
+                                    console.log('listtt', this.propertyList, propertyType);
+
                                     let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
                                     plotBoundaries[index].classList.add(availability);
+
+                                    if(dataItem.id.match('GH')){
+                                        console.log('elementttt', [plotBoundaries[index]]);
+                                    }
+
+
                                 }
                             }
                         }
@@ -194,6 +230,7 @@
             </div>
             <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                 <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
+                <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
         <PropertyFilter v-if="!soldOutDetails && loaded" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
@@ -380,6 +417,19 @@ svg:not(:root) {
     }
 }
 
+.active_villa31 {
+    .type_villa31 {
+        &.available {
+            fill: rgba(246,150,46,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(246,150,46,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
 .active_apartment1 {
     .type_apartment1 {
         &.available {
@@ -480,6 +530,7 @@ svg:not(:root) {
         &.unavailable {
             fill: rgba(24,151,212,0.25) !important;
             stroke: #3C3C3D !important;
+            z-index: -1;
         }
     }
 }
@@ -493,6 +544,7 @@ svg:not(:root) {
         &.unavailable {
             fill: rgba(7,71,125,0.25) !important;
             stroke: #3C3C3D !important;
+            z-index: -1;
         }
     }
 }

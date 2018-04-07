@@ -12,9 +12,10 @@ export default {
     },
     'galleryUrl': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/',
     'localUrl': '/gallery/',
-    'masterplan-inactive': ['app_x5F_Lebanon-region--parent', 'app_x5F_Lebanon--parent', 'app_x5F_Lebanon-road--parent', 'app_x5F_Oman--parent', 'app_x5F_Muscat--parent', 'app_x5F_Muscat-road--parent', 'app_x5F_Dubai--parent', 'app_x5F_Dubai-road--parent'],
+    'masterplan-inactive': ['app_x5F_Lebanon-region--parent', 'app_x5F_Lebanon--parent', 'app_x5F_Lebanon-road--parent', 'app_x5F_Dubai--parent', 'app_x5F_Dubai-road--parent'],
     'mappings': {
-        'app_x5F_Sharjah-road--parent': 'alzahia'
+        'app_x5F_Sharjah-road--parent': 'alzahia',
+        'app_x5F_Muscat-road--parent': 'almouj'
     },
     markerDefault: [
         {
@@ -98,6 +99,17 @@ export default {
                     'translate': [598, 280]
                 }
             }
+        },
+        almouj: {
+            almouj: {
+                'fullname': 'AL MOUJ',
+                'plot_boundary': 'PLOT_BOUNDARIES',
+                'amenities': [],
+                'svg': {
+                    'scale': 0.95,
+                    'translate': [-255, -250]
+                }
+            }
         }
     },
     availablityMap: {
@@ -135,12 +147,15 @@ export default {
         'villa6': '6-Bedroom Villa',
         'townhouse2': '2-Bedroom Townhouse',
         'townhouse3': '3-Bedroom Townhouse',
-        'townhouse4': '4-Bedroom Townhouse'
+        'townhouse4': '4-Bedroom Townhouse',
+        'villa31': '3+1 Bedroom Villa'
     },
     neighbourhoodNames: {
         'allilac': 'AL LILAC',
         'aljouri': 'AL JOURI',
         'alnarjis': 'AL NARJIS',
-        'gardenapts': 'GARDEN APARTMENTS'
-    }
+        'gardenapts': 'GARDEN APARTMENTS',
+        'almouj': 'AL MOUJ'
+    },
+    oneFilterCommunities: ['almouj']
 }
