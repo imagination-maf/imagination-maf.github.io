@@ -13,7 +13,7 @@ export default {
 
         document.addEventListener('contextmenu', event => {
             event.preventDefault();
-            console.log('event', event);
+            event.target.click();
         });
 
         let addListeners = (element, eventNames, listener) => {
