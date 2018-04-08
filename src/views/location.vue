@@ -493,12 +493,25 @@
                     div.id = marker.id.split('--')[0] + '--pulse';
                     div.classList.add('pulse');
 
+                    console.log('fullscreen transform', this.fullscreenTransform);
+                    console.log('fullscreen transform svg', this.fullscreenTransform.svg);
+                    console.log('selected View', this.selectedView);
+                    console.log('transform', this.fullscreenTransform.svg[this.selectedView].transform);
+
                     let scale = parseInt( this.fullscreenTransform.svg[this.selectedView].transform.replace( /^\D+/g, ''));
+
+                    console.log('scaleee', scale);
+
 
                     div.style.left = (x * scale) + 'px';
                     div.style.top = (y * scale) + 'px';
                     div.style.width = (width * scale) + 'px';
                     div.style.height = (height * scale) + 'px';
+
+                    console.log((x * scale) + 'px');
+                    console.log((y * scale) + 'px');
+                    console.log((width * scale) + 'px');
+                    console.log((height * scale) + 'px');
 
                     animationContainer.appendChild(div);
                 } )
