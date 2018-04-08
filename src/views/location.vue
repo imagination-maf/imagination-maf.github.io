@@ -472,31 +472,34 @@
             },
             pulsateMarkers: function() {
                 let element = document.getElementById(this.selectedView);
-                console.log(element);
-
                 let animationContainer = document.getElementById('marker-animations');
-                let markers = element.querySelectorAll('g[id$=--marker]');
-                console.log('markersss', markers);
+                while (animationContainer.firstChild) {
+                    animationContainer.removeChild(animationContainer.firstChild);
+                }
 
+                let markers = element.querySelectorAll('rect[id$=--tap]');
                 markers.forEach( marker => {
-                    let position = Array.from(marker.transform.baseVal).filter( (transform) => {
-                        return transform.type === 2;
-                    } )[0];
+                    console.log('heree', [marker]);
 
-                    if(position) {
-                        console.log(position.matrix);
-                        let x = position.matrix.e;
-                        let y = position.matrix.f;
+                    let x = marker.x.baseVal.value;
+                    let y = marker.y.baseVal.value;
+                    let width = marker.width.baseVal.value;
+                    let height = marker.height.baseVal.value;
 
-                        console.log('x', x, 'y', y);
-                        let div = document.createElement('div');
-                        div.id = marker.id.split('--')[0] + '--pulse';
-                        div.classList.add('pulse');
-                        div.style.left = x + 'px';
-                        div.style.top = y + 'px';
+                    let div = document.createElement('div');
+                    div.id = marker.id.split('--')[0] + '--pulse';
+                    div.classList.add('pulse');
 
-                        animationContainer.appendChild(div);
-                    }
+                    console.log(this.fullscreenTransform.svg[this.selectedView]);
+
+                    let scale = parseInt( this.fullscreenTransform.svg[this.selectedView].transform.replace( /^\D+/g, ''));
+
+                    div.style.left = (x * scale) + 'px';
+                    div.style.top = (y * scale) + 'px';
+                    div.style.width = (width * scale) + 'px';
+                    div.style.height = (height * scale) + 'px';
+
+                    animationContainer.appendChild(div);
                 } )
 
             }
@@ -756,6 +759,10 @@
                 </div>
                 <!-- End of Muscat Road -->
             </div>
+
+            <!-- Marker Pulses -->
+            <div id="marker-animations"></div>
+
             <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
                 <!-- World -->
                 <transition name="map-switch">
@@ -859,7 +866,6 @@
             </div>
         </div>
     </div>
-    <div id="marker-animations"></div>
 </div>
 </template>
 
@@ -880,8 +886,6 @@
     }
 
     .pulse {
-        width: 5rem;
-        height: 5rem;
         position: absolute;
         display: flex;
         justify-content: center;
@@ -889,18 +893,21 @@
         &:after {
             content: '';
             border-radius: 100%;
-            border: 0.1rem solid red;
-            animation: pulse 2s infinite;
+            border: 0 solid #8A1538;
+            animation: pulse 2s infinite 2s;
+            transform: scale(2);
         }
     }
 
     @keyframes pulse {
         0% {
-            width: 0;
-            height: 0;
+            border-width: 0.075rem;
+            width: 0px;
+            height: 0px;
             opacity: 1;
         }
         100% {
+            border-width: 0.075rem;
             width: 100%;
             height: 100%;
             opacity: 0;
@@ -944,19 +951,6 @@
 
     }
     &.out {
-        // .png-image-container-scale {
-        //     transition: transform 0.5s linear 0.45s, opacity 0.1s linear 1s;
-        //     &.active {
-        //         opacity: 1;
-        //         transition: transform 0.5s linear 0.45s, opacity 0.1s linear 0s;
-        //     }
-        //     .png-image-container-translate {
-        //         transition: transform 0.225s ease-out 0.725s;
-        //     }
-        //     .png-image-container-rotate {
-        //         transition: transform 0.2s linear 0.7s;
-        //     }
-        // }
         .png-image-container-scale {
             -webkit-backface-visibility: hidden;
             transition: transform 1s linear 0.25s, opacity 0.1s linear 1.25s;
