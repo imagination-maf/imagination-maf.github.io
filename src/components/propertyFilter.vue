@@ -154,112 +154,142 @@ export default Vue.component('property-filter', {
     margin-right: 0.75rem;
     &.apartmentStudio {
         &.available {
-            background-color: rgb(246,150,46);
-            border-color: rgb(246,150,46);
+            background-color: rgb(248,151,21);
+            border-color: rgb(248,151,21);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(246,150,46);
-        }
-    }
-    &.villa3 {
-        &.available {
-            background-color: rgb(246,150,46);
-            border-color: rgb(246,150,46);
-        }
-        &.unavailable {
-            background-color: transparent;
-            border-color: rgb(246,150,46);
+            border-color: rgb(248,151,21);
         }
     }
     &.apartment1 {
         &.available {
-            background-color: rgb(251,184,49);
-            border-color: rgb(251,184,49);
+            background-color: rgb(0,177,176);
+            border-color: rgb(0,177,176);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(251,184,49);
-        }
-    }
-    &.villa4 {
-        &.available {
-            background-color: rgb(251,184,49);
-            border-color: rgb(251,184,49);
-        }
-        &.unavailable {
-            background-color: transparent;
-            border-color: rgba(251,184,49,0.9);
+            border-color: rgb(0,177,176);
         }
     }
     &.apartment2 {
         &.available {
-            background-color: rgb(28,177,175);
-            border-color: rgb(28,177,175);
+            background-color: rgb(0,150,214);
+            border-color: rgb(0,150,214);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(28,177,175);
-        }
-    }
-    &.villa5 {
-        &.available {
-            background-color: rgb(28,177,175);
-            border-color: rgb(28,177,175);
-        }
-        &.unavailable {
-            background-color: transparent;
-            border-color: rgb(28,177,175);
+            border-color: rgb(0,150,214);
         }
     }
     &.apartment3 {
         &.available {
-            background-color: rgb(95,96,98);
-            border-color: rgb(95,96,98);
+            background-color: rgb(95,86,98);
+            border-color: rgb(95,86,98);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(95,96,98);
+            border-color: rgb(95,86,98);
         }
     }
-    &.villa6 {
+    &.apartment4 {
         &.available {
-            background-color: rgb(95,96,98);
-            border-color: rgb(95,96,98);
+            background-color: rgb(0,70,127);
+            border-color: rgb(0,70,127);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(95,96,98);
+            border-color: rgb(0,70,127);
+        }
+    }
+    &.apartment5 {
+        &.available {
+            background-color: rgb(253,185,19);
+            border-color: rgb(253,185,19);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(253,185,19);
         }
     }
     &.townhouse2 {
         &.available {
-            background-color: rgb(109,163,64);
-            border-color: rgb(109,163,64);
+            background-color: rgb(253,185,19);
+            border-color: rgb(253,185,19);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(109,163,64);
+            border-color: rgb(253,185,19);
         }
     }
     &.townhouse3 {
         &.available {
-            background-color: rgb(24,151,212);
-            border-color: rgb(24,151,212);
+            background-color: rgb(108,164,57);
+            border-color: rgb(108,164,57);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(24,151,212);
+            border-color: rgb(108,164,57);
         }
     }
     &.townhouse4 {
         &.available {
-            background-color: rgb(7,71,125);
-            border-color: rgb(7,71,125);
+            background-color: rgb(0,70,127);
+            border-color: rgb(0,70,127);
         }
         &.unavailable {
             background-color: transparent;
-            border-color: rgb(7,71,125);
+            border-color: rgb(0,70,127);
+        }
+    }
+    &.villa3 {
+        &.available {
+            background-color: rgb(248,151,21);
+            border-color: rgb(248,151,21);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(248,151,21);
+        }
+    }
+    &.villa31 {
+        &.available {
+            background-color: rgb(248,151,21);
+            border-color: rgb(248,151,21);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(248,151,21);
+        }
+    }
+    &.villa4 {
+        &.available {
+            background-color: rgb(0,177,176);
+            border-color: rgb(0,177,176);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(0,177,176);
+        }
+    }
+    &.villa5 {
+        &.available {
+            background-color: rgb(0,150,214);
+            border-color: rgb(0,150,214);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(0,150,214);
+        }
+    }
+    &.villa6 {
+        &.available {
+            background-color: rgb(95,86,98);
+            border-color: rgb(95,86,98);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(95,86,98);
         }
     }
 }

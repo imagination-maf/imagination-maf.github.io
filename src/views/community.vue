@@ -130,7 +130,6 @@
                     let query = 'api=eq.' + this.community;
                     this.getData(query).then( (res) => {
                         this.data = res.data;
-                        console.log('data', this.data);
 
                         this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
@@ -145,11 +144,6 @@
                         let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
                         let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
 
-                        console.log(plotBoundaries.filter(boundary => {
-                            return boundary.id
-                        } ));
-
-
                         for(let index = 0; index < plotBoundaries.length; index++) {
                             let dataItem = this.data.filter( (item) => {
                                 if(this.community === 'almouj') {
@@ -158,16 +152,11 @@
                                 return plotBoundaries[index].id === item.id;
                             })[0];
 
-                            if(plotBoundaries[index].id && !dataItem){
-                                console.log('heereree', plotBoundaries[index]);
-                            }
+                            // if(plotBoundaries[index].id && !dataItem){
+                            //     console.log('heereree', plotBoundaries[index]);
+                            // }
 
                             if(dataItem) {
-
-                                // if(dataItem.id.match('GH')){
-                                //     console.log('heree', dataItem)
-                                // }
-
                                 let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 
                                 let beds = dataItem.bedrooms.replace(/\D/g, '');
@@ -177,16 +166,8 @@
                                     plotBoundaries[index].classList.add('type_' + propertyType);
                                     this.propertyList = Array.from(new Set([...this.propertyList, propertyType])).sort();
 
-                                    console.log('listtt', this.propertyList, propertyType);
-
                                     let availability = config.availablityMap.available.indexOf(dataItem.availability) !== -1 ? 'available' : 'unavailable';
                                     plotBoundaries[index].classList.add(availability);
-
-                                    if(dataItem.id.match('GH')){
-                                        console.log('elementttt', [plotBoundaries[index]]);
-                                    }
-
-
                                 }
                             }
                         }
@@ -394,11 +375,11 @@ svg:not(:root) {
 .active_apartmentStudio {
     .type_apartmentStudio {
         &.available {
-            fill: rgba(246,150,46,0.9) !important;
+            fill: rgba(248,151,21,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(246,150,46,0.25) !important;
+            fill: rgba(248,151,21,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -407,11 +388,11 @@ svg:not(:root) {
 .active_apartment1 {
     .type_apartment1 {
         &.available {
-            fill: rgba(251,184,49,0.9) !important;
+            fill: rgba(0,177,176,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(251,184,49,0.25) !important;
+            fill: rgba(0,177,176,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -420,11 +401,11 @@ svg:not(:root) {
 .active_apartment2 {
     .type_apartment2 {
         &.available {
-            fill: rgba(28,177,175,0.9) !important;
+            fill: rgba(0,150,214,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(28,177,175,0.25) !important;
+            fill: rgba(0,150,214,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -433,11 +414,11 @@ svg:not(:root) {
 .active_apartment3 {
     .type_apartment3 {
         &.available {
-            fill: rgba(95,96,98,0.9) !important;
+            fill: rgba(95,86,98,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(95,96,98,0.25) !important;
+            fill: rgba(95,86,98,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -446,11 +427,11 @@ svg:not(:root) {
 .active_apartment4 {
     .type_apartment4 {
         &.available {
-            fill: rgba(95,96,98,0.9) !important;
+            fill: rgba(0,70,127,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(95,96,98,0.25) !important;
+            fill: rgba(0,70,127,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -459,11 +440,11 @@ svg:not(:root) {
 .active_apartment5 {
     .type_apartment5 {
         &.available {
-            fill: rgba(95,96,98,0.9) !important;
+            fill: rgba(253,185,19,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(95,96,98,0.25) !important;
+            fill: rgba(253,185,19,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -472,11 +453,11 @@ svg:not(:root) {
 .active_townhouse2 {
     .type_townhouse2 {
         &.available {
-            fill: rgba(109,163,64,0.9) !important;
+            fill: rgba(253,185,19,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(109,163,64,0.25) !important;
+            fill: rgba(253,185,19,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -485,13 +466,12 @@ svg:not(:root) {
 .active_townhouse3 {
     .type_townhouse3 {
         &.available {
-            fill: rgba(24,151,212,0.9) !important;
+            fill: rgba(108,164,57,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(24,151,212,0.25) !important;
+            fill: rgba(108,164,57,0.25) !important;
             stroke: #3C3C3D !important;
-            z-index: -1;
         }
     }
 }
@@ -499,11 +479,11 @@ svg:not(:root) {
 .active_townhouse4 {
     .type_townhouse4 {
         &.available {
-            fill: rgba(7,71,125,0.9) !important;
+            fill: rgba(0,70,127,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(7,71,125,0.25) !important;
+            fill: rgba(0,70,127,0.25) !important;
             stroke: #3C3C3D !important;
             z-index: -1;
         }
@@ -513,11 +493,11 @@ svg:not(:root) {
 .active_villa3 {
     .type_villa3 {
         &.available {
-            fill: rgba(246,150,46,0.9) !important;
+            fill: rgba(248,151,21,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(246,150,46,0.25) !important;
+            fill: rgba(248,151,21,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -526,11 +506,11 @@ svg:not(:root) {
 .active_villa31 {
     .type_villa31 {
         &.available {
-            fill: rgba(246,150,46,0.9) !important;
+            fill: rgba(248,151,21,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(246,150,46,0.25) !important;
+            fill: rgba(248,151,21,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -539,11 +519,11 @@ svg:not(:root) {
 .active_villa4 {
     .type_villa4 {
         &.available {
-            fill: rgba(251,184,49,0.9) !important;
+            fill: rgba(0,177,176,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(251,184,49,0.25) !important;
+            fill: rgba(0,177,176,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -552,11 +532,11 @@ svg:not(:root) {
 .active_villa5 {
     .type_villa5 {
         &.available {
-            fill: rgba(28,177,175,0.9) !important;
+            fill: rgba(0,150,214,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(28,177,175,0.25) !important;
+            fill: rgba(0,150,214,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
@@ -565,11 +545,11 @@ svg:not(:root) {
 .active_villa6 {
     .type_villa6 {
         &.available {
-            fill: rgba(95,96,98,0.9) !important;
+            fill: rgba(95,86,98,0.9) !important;
             stroke: #3C3C3D !important;
         }
         &.unavailable {
-            fill: rgba(95,96,98,0.25) !important;
+            fill: rgba(95,86,98,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }
