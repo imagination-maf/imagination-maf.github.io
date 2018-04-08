@@ -152,10 +152,6 @@
                                 return plotBoundaries[index].id === item.id;
                             })[0];
 
-                            // if(plotBoundaries[index].id && !dataItem){
-                            //     console.log('heereree', plotBoundaries[index]);
-                            // }
-
                             if(dataItem) {
                                 let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 

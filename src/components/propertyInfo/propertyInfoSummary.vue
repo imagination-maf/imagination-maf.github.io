@@ -34,7 +34,7 @@ export default Vue.component('property-info-summary', {
             return this.property.unit_type;
         },
         aspect: function () {
-            return this.property.aspect;
+            return this.property.aspect ? this.property.aspect : 'general';
         }
     },
     methods: {
