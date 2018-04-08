@@ -479,8 +479,6 @@
 
                 let markers = element.querySelectorAll('rect[id$=--tap]');
                 markers.forEach( marker => {
-                    console.log('heree', [marker]);
-
                     let x = marker.x.baseVal.value;
                     let y = marker.y.baseVal.value;
                     let width = marker.width.baseVal.value;
@@ -489,8 +487,6 @@
                     let div = document.createElement('div');
                     div.id = marker.id.split('--')[0] + '--pulse';
                     div.classList.add('pulse');
-
-                    console.log(this.fullscreenTransform.svg[this.selectedView]);
 
                     let scale = parseInt( this.fullscreenTransform.svg[this.selectedView].transform.replace( /^\D+/g, ''));
 

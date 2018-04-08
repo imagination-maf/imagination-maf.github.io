@@ -138,17 +138,19 @@ export default {
     },
     houseTypeNames: {
         'apartmentStudio': 'Apartment Studio',
-        'villa3': '3-Bedroom Villa',
         'apartment1': '1-Bedroom Apartment',
-        'villa4': '4-Bedroom Villa',
         'apartment2': '2-Bedroom Apartment',
-        'villa5': '5-Bedroom Villa',
         'apartment3': '3-Bedroom Apartment',
-        'villa6': '6-Bedroom Villa',
+        'apartment4': '4-Bedroom Apartment',
+        'apartment5': '5-Bedroom Apartment',
         'townhouse2': '2-Bedroom Townhouse',
         'townhouse3': '3-Bedroom Townhouse',
         'townhouse4': '4-Bedroom Townhouse',
-        'villa31': '3+1 Bedroom Villa'
+        'villa3': '3-Bedroom Villa',
+        'villa4': '4-Bedroom Villa',
+        'villa5': '5-Bedroom Villa',
+        'villa6': '6-Bedroom Villa',
+        'villa31': '3+1-Bedroom Villa'
     },
     neighbourhoodNames: {
         'allilac': 'AL LILAC',
