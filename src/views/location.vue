@@ -488,7 +488,7 @@
                     div.id = marker.id.split('--')[0] + '--pulse';
                     div.classList.add('pulse');
 
-                    let scale = parseFloat( this.fullscreenTransform.svg[this.selectedView].transform.replace( /^\D+/g, ''));
+                    let scale = parseFloat(this.fullscreenTransform.svg[this.selectedView].transform.replace( /^\D+/g, ''));
 
                     div.style.left = (x * scale) + 'px';
                     div.style.top = (y * scale) + 'px';

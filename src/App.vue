@@ -11,7 +11,10 @@ export default {
     mounted() {
         let timer = null;
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('contextmenu', event => {
+            event.preventDefault();
+            console.log('event', event);
+        });
 
         let addListeners = (element, eventNames, listener) => {
             let events = eventNames.split(' ');
