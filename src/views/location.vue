@@ -484,6 +484,11 @@
                     let width = marker.width.baseVal.value;
                     let height = marker.height.baseVal.value;
 
+                    console.log('marker', marker);
+                    console.log('marker x', marker.x);
+                    console.log('marker x base', marker.x.baseVal);
+                    console.log('marker x base value', marker.x.baseVal.value);
+
                     let div = document.createElement('div');
                     div.id = marker.id.split('--')[0] + '--pulse';
                     div.classList.add('pulse');
