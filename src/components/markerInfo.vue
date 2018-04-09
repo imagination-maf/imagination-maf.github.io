@@ -14,20 +14,18 @@ export default Vue.component('marker-info', {
 </script>
 
 <template>
-<!-- <transition name="slide-right" appear> -->
-    <div class="panel">
-        <div class="panel-content">
-            <h2 class="panel-title">GROUP FOOTPRINT</h2>
-            <p class="panel-subtitle">Select a location on the map.</p>
-            <div v-if="panelData" class="panel-data">
-                <h2 class="panel-data-title">{{ panelData.title }}</h2>
-                <transition-group name="slide-info" tag="ul" appear>
-                    <li v-for="(item, index) in panelData.items" class="panel-data-item" :key="item" :style="{ 'transition-delay': (index * 0.1) + 's' }">{{ item }}</li>
-                </transition-group>
-            </div>
+<div class="panel">
+    <div class="panel-content">
+        <h2 class="panel-title">GROUP FOOTPRINT</h2>
+        <p class="panel-subtitle">Select a location on the map.</p>
+        <div v-if="panelData" class="panel-data">
+            <h2 class="panel-data-title">{{ panelData.title }}</h2>
+            <transition-group name="slide-info" tag="ul" appear>
+                <li v-for="(item, index) in panelData.items" class="panel-data-item" :key="item" :style="{ 'transition-delay': (index * 0.1) + 's' }">{{ item }}</li>
+            </transition-group>
         </div>
     </div>
-<!-- </transition> -->
+</div>
 </template>
 
 <style lang="scss" scoped>

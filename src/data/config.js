@@ -42,7 +42,7 @@ export default {
             'text': 'Al Jouri is Al Zahia\'s first neighbourhood, comprising a range of villa and town houses. This neighbourhood is fully handed over and occupied. Regular community events take place at the Tree Park, the neighbourhood park, which includes a variety of fitness and kids facilities.',
             'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/soldout/aljouri/hero.jpg',
             'image-local': '../gallery/alzahia/soldout/aljouri/hero.jpg',
-            'image-text': 'FULLY OCCUPIED',
+            'image-text': 'FULLY OCCUPIED'
         },
         {
             'id': 'alnarjis',
@@ -50,7 +50,7 @@ export default {
             'text': 'Al Narjis is the second neighbourhood in Al Zahia, featuring a range of villas and town houses in various sizes. Al Narjis is over 90% sold and is currently in its construction phase with handover scheduled for mid-2018',
             'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/soldout/alnarjis/hero.jpg',
             'image-local': '../gallery/alzahia/soldout/alnarjis/hero.jpg',
-            'image-text': 'HANDOVER IN 2018',
+            'image-text': 'HANDOVER IN 2018'
         },
         {
             'id': 'gardenapts',
@@ -58,7 +58,7 @@ export default {
             'text': 'The Garden Apartments feature a wide range of apartments in various sizes. These are sold out and in their final construction phase with handover scheduled for mid-2018.',
             'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/soldout/gardenapts/hero.jpg',
             'image-local': '../gallery/alzahia/soldout/gardenapts/hero.jpg',
-            'image-text': 'HANDOVER IN 2018',
+            'image-text': 'HANDOVER IN 2018'
         }
     ],
     dataPoints: {

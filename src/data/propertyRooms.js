@@ -24,25 +24,25 @@ export default {
             "3TH (S)": {
                 "Th Double Row - Middle": {
                     bedrooms: 3,
-                    bathrooms: 4,
+                    bathrooms: 3.5,
                     livingrooms: 1,
                     garages: 2
                 },
                 "Th Single Row - End Of Terrace": {
                     bedrooms: 3,
-                    bathrooms: 4,
+                    bathrooms: 3.5,
                     livingrooms: 1,
                     garages: 2
                 },
                 "Th Single Row - Middle": {
                     bedrooms: 3,
-                    bathrooms: 4,
+                    bathrooms: 3.5,
                     livingrooms: 1,
                     garages: 2
                 },
                 "Th Double Row - End Of Terrace": {
                     bedrooms: 3,
-                    bathrooms: 4,
+                    bathrooms: 3.5,
                     livingrooms: 1,
                     garages: 2
                 },
@@ -70,19 +70,19 @@ export default {
             "3CY": {
                 "Courtyard - End": {
                     bedrooms: 3,
-                    bathrooms: 4,
+                    bathrooms: 3.5,
                     livingrooms: 2,
                     garages: 2
                 },
                 "Courtyard - Middle": {
                     bedrooms: 3,
-                    bathrooms: 4,
+                    bathrooms: 3.5,
                     livingrooms: 2,
                     garages: 2
                 },
                 "Courtyard - End Plus": {
                     bedrooms: 3,
-                    bathrooms: 4,
+                    bathrooms: 3.5,
                     livingrooms: 2,
                     garages: 2
                 }
@@ -174,8 +174,8 @@ export default {
             "6V": {
                 "Villa Single Row - Middle": {
                     bedrooms: 6,
-                    bathrooms: 8,
-                    livingrooms: 2,
+                    bathrooms: 7.5,
+                    livingrooms: 3,
                     garages: 3
                 }
             }
