@@ -565,7 +565,7 @@
 <div class="app">
     <AppHeader :logo="headerLogo" back="true" v-on:back="backFunctionality" />
     <div class="container" :class="{'loaded': loadingComplete}">
-        <div id="map-container" class="map" @click="mapClick($event)">
+        <div id="map-container" class="map" :class="{'ipad': ipad}" @click="mapClick($event)">
             <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
                 <!-- World -->
                 <div
@@ -1186,6 +1186,19 @@
     align-items: center;
     overflow: hidden;
     background-color: #ffffff;
+    &.ipad {
+        width: 100%;
+        height: 75%;
+        display: flex;
+        position: fixed;
+        left: 0;
+        top: calc(12.5% + 4rem);
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: #ffffff;
+        box-shadow: 0.1rem 0.1rem 1rem #cccccc;
+    }
 }
 
 .image {
