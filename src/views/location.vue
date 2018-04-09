@@ -12,6 +12,18 @@
     import LebanonRoadImage from '../images/maps/Lebanon-road.svg';
     import MuscatCityImage from '../images/maps/Muscat-city.svg';
     import MuscatRoadImage from '../images/maps/Muscat-road.svg';
+    import WorldIpadImage from '../images/maps-ipad/World-ipad.svg';
+    import UAERegionIpadImage from '../images/maps-ipad/UAE-region-ipad.svg';
+    import OmanRegionIpadImage from '../images/maps-ipad/Oman-region-ipad.svg';
+    import LebanonRegionIpadImage from '../images/maps-ipad/Lebanon-region-ipad.svg';
+    import SharjahCityIpadImage from '../images/maps-ipad/Sharjah-city-ipad.svg';
+    import SharjahRoadIpadImage from '../images/maps-ipad/Sharjah-road-ipad.svg';
+    import DubaiCityIpadImage from '../images/maps-ipad/Dubai-city-ipad.svg';
+    import DubaiRoadIpadImage from '../images/maps-ipad/Dubai-road-ipad.svg';
+    import LebanonCityIpadImage from '../images/maps-ipad/Lebanon-city-ipad.svg';
+    import LebanonRoadIpadImage from '../images/maps-ipad/Lebanon-road-ipad.svg';
+    import MuscatCityIpadImage from '../images/maps-ipad/Muscat-city-ipad.svg';
+    import MuscatRoadIpadImage from '../images/maps-ipad/Muscat-road-ipad.svg';
     import MarkerInfo from '../components/markerInfo.vue';
     import AppHeader from '../components/header.vue';
 
@@ -31,12 +43,25 @@
             LebanonRoadImage,
             MuscatCityImage,
             MuscatRoadImage,
+            WorldIpadImage,
+            UAERegionIpadImage,
+            OmanRegionIpadImage,
+            LebanonRegionIpadImage,
+            SharjahCityIpadImage,
+            SharjahRoadIpadImage,
+            DubaiCityIpadImage,
+            DubaiRoadIpadImage,
+            LebanonCityIpadImage,
+            LebanonRoadIpadImage,
+            MuscatCityIpadImage,
+            MuscatRoadIpadImage,
             MarkerInfo,
             AppHeader
         },
         data() {
             return {
                 loadingComplete: false,
+                ipad: navigator.userAgent.match(/iPad/i) != null,
                 definitions : {
                     'separator': '_',
                     'modifier': '--',
@@ -50,18 +75,34 @@
                 translations: {},
                 rotations: {},
                 pngImages: {
-                    'World': require('../images/maps/World.png'),
-                    'UAERegion': require('../images/maps/UAE-region.png'),
-                    'OmanRegion': require('../images/maps/Oman-region.png'),
-                    'LebanonRegion': require('../images/maps/Lebanon-region.png'),
-                    'SharjahCity': require('../images/maps/Sharjah-city.png'),
-                    'SharjahRoad': require('../images/maps/Sharjah-road.png'),
-                    'DubaiCity': require('../images/maps/Dubai-city.png'),
-                    'DubaiRoad': require('../images/maps/Dubai-road.png'),
-                    'LebanonCity': require('../images/maps/Lebanon-city.png'),
-                    'LebanonRoad': require('../images/maps/Lebanon-road.png'),
-                    'MuscatCity': require('../images/maps/Muscat-city.png'),
-                    'MuscatRoad': require('../images/maps/Muscat-road.png')
+                    ipad: {
+                        'World': require('../images/maps-ipad/World-ipad.png'),
+                        'UAERegion': require('../images/maps-ipad/UAE-region-ipad.png'),
+                        'OmanRegion': require('../images/maps-ipad/Oman-region-ipad.png'),
+                        'LebanonRegion': require('../images/maps-ipad/Lebanon-region-ipad.png'),
+                        'SharjahCity': require('../images/maps-ipad/Sharjah-city-ipad.png'),
+                        'SharjahRoad': require('../images/maps-ipad/Sharjah-road-ipad.png'),
+                        'DubaiCity': require('../images/maps-ipad/Dubai-city-ipad.png'),
+                        'DubaiRoad': require('../images/maps-ipad/Dubai-road-ipad.png'),
+                        'LebanonCity': require('../images/maps-ipad/Lebanon-city-ipad.png'),
+                        'LebanonRoad': require('../images/maps-ipad/Lebanon-road-ipad.png'),
+                        'MuscatCity': require('../images/maps-ipad/Muscat-city-ipad.png'),
+                        'MuscatRoad': require('../images/maps-ipad/Muscat-road-ipad.png')
+                    },
+                    table: {
+                        'World': require('../images/maps/World.png'),
+                        'UAERegion': require('../images/maps/UAE-region.png'),
+                        'OmanRegion': require('../images/maps/Oman-region.png'),
+                        'LebanonRegion': require('../images/maps/Lebanon-region.png'),
+                        'SharjahCity': require('../images/maps/Sharjah-city.png'),
+                        'SharjahRoad': require('../images/maps/Sharjah-road.png'),
+                        'DubaiCity': require('../images/maps/Dubai-city.png'),
+                        'DubaiRoad': require('../images/maps/Dubai-road.png'),
+                        'LebanonCity': require('../images/maps/Lebanon-city.png'),
+                        'LebanonRoad': require('../images/maps/Lebanon-road.png'),
+                        'MuscatCity': require('../images/maps/Muscat-city.png'),
+                        'MuscatRoad': require('../images/maps/Muscat-road.png')
+                    }
                 },
                 fullscreenTransform: {
                     'png': {},
@@ -538,9 +579,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_world--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_world--image"
                                 class="png-image"
-                                :src="pngImages.World" />
+                                :src="pngImages.ipad.World" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_world--image"
+                                class="png-image"
+                                :src="pngImages.table.World" />
                         </div>
                     </div>
                 </div>
@@ -557,9 +604,16 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_UAE--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_UAE--image"
                                 class="png-image"
-                                :src="pngImages.UAERegion"/>
+                                :src="pngImages.ipad.UAERegion" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_UAE--image"
+                                class="png-image"
+                                :src="pngImages.table.UAERegion" />
+
                         </div>
                     </div>
                 </div>
@@ -576,9 +630,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Oman--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Oman--image"
                                 class="png-image"
-                                :src="pngImages.OmanRegion" />
+                                :src="pngImages.ipad.OmanRegion" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Oman--image"
+                                class="png-image"
+                                :src="pngImages.table.OmanRegion" />
                         </div>
                     </div>
                 </div>
@@ -595,9 +655,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Lebanon-region--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Lebanon-region--image"
                                 class="png-image"
-                                :src="pngImages.LebanonRegion"/>
+                                :src="pngImages.ipad.LebanonRegion" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Lebanon-region--image"
+                                class="png-image"
+                                :src="pngImages.table.LebanonRegion" />
                         </div>
                     </div>
                 </div>
@@ -614,9 +680,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Sharjah--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Sharjah--image"
                                 class="png-image"
-                                :src="pngImages.SharjahCity" />
+                                :src="pngImages.ipad.SharjahCity" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Sharjah--image"
+                                class="png-image"
+                                :src="pngImages.table.SharjahCity" />
                         </div>
                     </div>
                 </div>
@@ -633,9 +705,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Sharjah-road--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Sharjah-road--image"
                                 class="png-image"
-                                :src="pngImages.SharjahRoad" />
+                                :src="pngImages.ipad.SharjahRoad" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Sharjah-road--image"
+                                class="png-image"
+                                :src="pngImages.table.SharjahRoad" />
                         </div>
                     </div>
                 </div>
@@ -652,9 +730,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Dubai--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Dubai--image"
                                 class="png-image"
-                                :src="pngImages.DubaiCity" />
+                                :src="pngImages.ipad.DubaiCity" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Dubai--image"
+                                class="png-image"
+                                :src="pngImages.table.DubaiCity" />
                         </div>
                     </div>
                 </div>
@@ -671,9 +755,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Dubai-road--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Dubai-road--image"
                                 class="png-image"
-                                :src="pngImages.DubaiRoad" />
+                                :src="pngImages.ipad.DubaiRoad" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Dubai-road--image"
+                                class="png-image"
+                                :src="pngImages.table.DubaiRoad" />
                         </div>
                     </div>
                 </div>
@@ -690,9 +780,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Lebanon--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Lebanon--image"
                                 class="png-image"
-                                :src="pngImages.LebanonCity" />
+                                :src="pngImages.ipad.LebanonCity" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Lebanon--image"
+                                class="png-image"
+                                :src="pngImages.table.LebanonCity" />
                         </div>
                     </div>
                 </div>
@@ -709,9 +805,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Lebanon-road--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Lebanon-road--image"
                                 class="png-image"
-                                :src="pngImages.LebanonRoad" />
+                                :src="pngImages.ipad.LebanonRoad" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Lebanon-road--image"
+                                class="png-image"
+                                :src="pngImages.table.LebanonRoad" />
                         </div>
                     </div>
                 </div>
@@ -728,9 +830,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Muscat--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Muscat--image"
                                 class="png-image"
-                                :src="pngImages.MuscatCity" />
+                                :src="pngImages.ipad.MuscatCity" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Muscat--image"
+                                class="png-image"
+                                :src="pngImages.table.MuscatCity" />
                         </div>
                     </div>
                 </div>
@@ -747,9 +855,15 @@
                             class="png-image-container-rotation"
                             :style="[rotationStyles['app_x5F_Muscat-road--parent']]">
                             <img
+                                v-if="ipad"
                                 id="app_x5F_Muscat-road--image"
                                 class="png-image"
-                                :src="pngImages.MuscatRoad" />
+                                :src="pngImages.ipad.MuscatRoad" />
+                            <img
+                                v-if="!ipad"
+                                id="app_x5F_Muscat-road--image"
+                                class="png-image"
+                                :src="pngImages.table.MuscatRoad" />
                         </div>
                     </div>
                 </div>
@@ -763,6 +877,11 @@
                 <!-- World -->
                 <transition name="map-switch">
                     <WorldImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_world--parent'" />
+                    <WorldIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_world--parent'" />
                 </transition>
@@ -770,6 +889,11 @@
                 <!-- UAE -->
                 <transition name="map-switch">
                     <UAERegionImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_UAE--parent'" />
+                    <UAERegionIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_UAE--parent'" />
                 </transition>
@@ -777,6 +901,11 @@
                 <!-- UAE -->
                 <transition name="map-switch">
                     <OmanRegionImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Oman--parent'" />
+                    <OmanRegionIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Oman--parent'" />
                 </transition>
@@ -784,6 +913,11 @@
                 <!-- UAE -->
                 <transition name="map-switch">
                     <LebanonRegionImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Lebanon-region--parent'" />
+                    <LebanonRegionIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Lebanon-region--parent'" />
                 </transition>
@@ -791,6 +925,11 @@
                 <!-- Sharjah City -->
                 <transition name="map-switch">
                     <SharjahCityImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Sharjah--parent'" />
+                    <SharjahCityIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Sharjah--parent'" />
                 </transition>
@@ -798,6 +937,11 @@
                 <!-- Sharjah Road -->
                 <transition name="map-switch">
                     <SharjahRoadImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
+                    <SharjahRoadIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
                 </transition>
@@ -805,6 +949,11 @@
                 <!-- Dubai -->
                 <transition name="map-switch">
                     <DubaiCityImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Dubai--parent'" />
+                    <DubaiCityIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Dubai--parent'" />
                 </transition>
@@ -812,6 +961,11 @@
                 <!-- Dubai Road -->
                 <transition name="map-switch">
                     <DubaiRoadImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
+                    <DubaiRoadIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
                 </transition>
@@ -819,6 +973,11 @@
                 <!-- Lebanon City -->
                 <transition name="map-switch">
                     <LebanonCityImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Lebanon--parent'" />
+                    <LebanonCityIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Lebanon--parent'" />
                 </transition>
@@ -826,6 +985,11 @@
                 <!-- Lebanon Road -->
                 <transition name="map-switch">
                     <LebanonRoadImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
+                    <LebanonRoadIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
                 </transition>
@@ -833,6 +997,11 @@
                 <!-- Muscat City -->
                 <transition name="map-switch">
                     <MuscatCityImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Muscat--parent'" />
+                    <MuscatCityIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Muscat--parent'" />
                 </transition>
@@ -840,6 +1009,11 @@
                 <!-- Muscat Road -->
                 <transition name="map-switch">
                     <MuscatRoadImage
+                        v-if="!ipad"
+                        class="image"
+                        v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
+                    <MuscatRoadIpadImage
+                        v-if="ipad"
                         class="image"
                         v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
                 </transition>
