@@ -1062,6 +1062,7 @@
         align-items: center;
         &:after {
             content: '';
+            opacity: 0;
             border-radius: 100%;
             border: 0 solid #8A1538;
             animation: pulse 2s infinite 2s;
