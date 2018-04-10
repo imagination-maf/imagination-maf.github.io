@@ -36,7 +36,7 @@ export default {
             setupTimer();
         }
 
-        addListeners(window, 'ontouchstart mousedown', resetTimer);
+        addListeners(window, 'touchstart touchmove mousedown', resetTimer);
         setupTimer();
     }
 };
