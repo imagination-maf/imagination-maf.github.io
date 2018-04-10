@@ -1060,6 +1060,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        -webkit-transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
         &:after {
             content: '';
             opacity: 0;
@@ -1067,6 +1069,8 @@
             border: 0 solid #8A1538;
             animation: pulse 2s infinite 2s;
             transform: scale(2);
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden;
         }
     }
 
