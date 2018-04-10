@@ -23,9 +23,6 @@ export default [
         'image-local': '../gallery/alzahia/soldout/gardenapts/hero.jpg',
         'image-text': 'HANDOVER IN 2018'
     },
-
-
-
     {
         'id': 'acacia',
         'title': 'Acacia',
@@ -53,9 +50,7 @@ export default [
     {
         'id': 'almeriasouth',
         'title': 'Almeria South',
-        'text': 'Placed strategically these apartments are in walking distance to Mysk hotel and The Walk, with convenient access to everyday necessities like supermarket, clinic, bank, wellness center and much more. Besides these you have cozy coffee shops to haute cuisine to be spoiled for choice of dining.
-
-        Located within Al Mouj Muscat, these apartments provide you convenient access to the destination amenities, such as the Al Mouj Marina, Al Mouj Golf and The Walk with all the retail and dining choices.',
+        'text': 'Placed strategically these apartments are in walking distance to Mysk hotel and The Walk, with convenient access to everyday necessities like supermarket, clinic, bank, wellness center and much more. Besides these you have cozy coffee shops to haute cuisine to be spoiled for choice of dining.<br/><br/>Located within Al Mouj Muscat, these apartments provide you convenient access to the destination amenities, such as the Al Mouj Marina, Al Mouj Golf and The Walk with all the retail and dining choices.',
         'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/almeriasouth/hero.jpg',
         'image-local': '../gallery/almouj/soldout/almeriasouth/hero.jpg',
         'image-text': ''
@@ -119,8 +114,7 @@ export default [
     {
         'id': 'sector1',
         'title': 'Buhaira Parks 01 (Sector 1)',
-        'text': 'The Buhaira District takes its Arabic name from the lakes. Surrounded by the river of the Al Mouj community, you feel a sense of peace and discovery. The Buhaira district has views of the lakes and not one, but two islands. Bordering both the Shatti and Marsa districts, you can you can enjoy the beach by the day and the restaurants by night.
-        Each villa is designed with a distinctive design, superior quality, state-of-the-art technology systems and handcrafted construction details, combining both traditional and modern styles.',
+        'text': 'The Buhaira District takes its Arabic name from the lakes. Surrounded by the river of the Al Mouj community, you feel a sense of peace and discovery. The Buhaira district has views of the lakes and not one, but two islands. Bordering both the Shatti and Marsa districts, you can you can enjoy the beach by the day and the restaurants by night.<br/>Each villa is designed with a distinctive design, superior quality, state-of-the-art technology systems and handcrafted construction details, combining both traditional and modern styles.',
         'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/sector1/hero.jpg',
         'image-local': '../gallery/almouj/soldout/sector1/hero.jpg',
         'image-text': ''
@@ -128,9 +122,7 @@ export default [
     {
         'id': 'sector2',
         'title': 'Buhaira Parks 02 (Sector 2)',
-        'text': 'The Buhaira District takes its Arabic name from the lakes. Surrounded by the river of the Al Mouj community, you feel a sense of peace and discovery. The Buhaira district has views of the lakes and not one, but two islands. Bordering both the Shatti and Marsa districts, you can you can enjoy the beach by the day and the restaurants by night.
-
-        Each villa is designed with a distinctive design, superior quality, state-of-the-art technology systems and handcrafted construction details, combining both traditional and modern styles.',
+        'text': 'The Buhaira District takes its Arabic name from the lakes. Surrounded by the river of the Al Mouj community, you feel a sense of peace and discovery. The Buhaira district has views of the lakes and not one, but two islands. Bordering both the Shatti and Marsa districts, you can you can enjoy the beach by the day and the restaurants by night.<br/><br/>Each villa is designed with a distinctive design, superior quality, state-of-the-art technology systems and handcrafted construction details, combining both traditional and modern styles.',
         'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/sector2/hero.jpg',
         'image-local': '../gallery/almouj/soldout/sector2/hero.jpg',
         'image-text': ''
