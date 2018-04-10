@@ -1070,6 +1070,7 @@
                     width: 100%;
                     height: 100%;
                     transition: all 1.25s ease-out;
+                    border-width: 0.075rem;
                 }
             }
         }
@@ -1091,7 +1092,7 @@
         &:after {
             content: '';
             border-radius: 100%;
-            border: 0.075rem solid #8A1538;
+            border: 0rem solid #8A1538;
             transform: scale(2);
             width: 0px;
             height: 0px;
