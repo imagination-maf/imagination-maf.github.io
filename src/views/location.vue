@@ -109,7 +109,9 @@
                     'svg': {}
                 },
                 'direction': 'in',
-                'markerSelected': null
+                'markerSelected': null,
+                'pulseTimer': null,
+                'pulseInterval': null
             }
         },
         computed : {
@@ -512,6 +514,9 @@
                 }
             },
             pulsateMarkers: function() {
+                window.clearTimeout(this.pulseTimer);
+                window.clearInterval(this.pulseInterval);
+
                 let element = document.getElementById(this.selectedView);
                 let animationContainer = document.getElementById('marker-animations');
                 while (animationContainer.firstChild) {
@@ -539,6 +544,13 @@
                     animationContainer.appendChild(div);
                 } )
 
+                this.pulseInterval = window.setInterval( () => {
+                    animationContainer.classList.remove('active');
+                    this.pulseTimer = window.setTimeout( () => {
+                        animationContainer.classList.add('active');
+                    }, 750)
+                }, 2000);
+
             }
         },
         mounted(){
@@ -557,6 +569,10 @@
                 this.markerSelected = this.getDefaultMarkerContent();
                 this.pulsateMarkers();
             }
+        },
+        beforeDestroy() {
+            window.clearTimeout(this.pulseTimer);
+            window.clearInterval(this.pulseInterval);
         }
      });
 </script>
@@ -1047,6 +1063,16 @@
         width: 100%;
         height: 100%;
         pointer-events: none;
+        &.active {
+            .pulse {
+                &:after {
+                    opacity: 0;
+                    width: 100%;
+                    height: 100%;
+                    transition: all 1.25s ease-out;
+                }
+            }
+        }
     }
 
     .marker-active {
@@ -1064,28 +1090,14 @@
         -webkit-backface-visibility: hidden;
         &:after {
             content: '';
-            opacity: 0;
             border-radius: 100%;
-            border: 0 solid #8A1538;
-            animation: pulse 2s infinite 2s;
+            border: 0.075rem solid #8A1538;
             transform: scale(2);
-            -webkit-transform-style: preserve-3d;
-            -webkit-backface-visibility: hidden;
-        }
-    }
-
-    @keyframes pulse {
-        0% {
-            border-width: 0.075rem;
             width: 0px;
             height: 0px;
             opacity: 1;
-        }
-        100% {
-            border-width: 0.075rem;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden;
         }
     }
 </style>
