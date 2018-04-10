@@ -8,6 +8,7 @@
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
+    import soldOutCommunities from '../data/soldOutCommunities.js';
 
     export default Vue.component('community', {
         components: {
@@ -36,7 +37,30 @@
                         gardenapts: require('../images/masterplans/alzahia-garden-apts.png')
                     },
                     almouj: {
-                        almouj: require('../images/masterplans/almouj-almouj.png')
+                        acacia: require('../images/masterplans/almouj-acacia.png'),
+                        almeriaeast: require('../images/masterplans/almouj-almeria-east.png'),
+                        almerianorth: require('../images/masterplans/almouj-almeria-north.png'),
+                        almeriasouth: require('../images/masterplans/almouj-almeria-south.png'),
+                        beachlink: require('../images/masterplans/almouj-beach-link.png'),
+                        ghadeerparks: require('../images/masterplans/almouj-ghadeer-parks.png'),
+                        jumanone: require('../images/masterplans/almouj-juman-one.png'),
+                        jumantwo: require('../images/masterplans/almouj-juman-two.png'),
+                        liwan: require('../images/masterplans/almouj-liwan.png'),
+                        luban: require('../images/masterplans/almouj-luban.png'),
+                        marsagardens: require('../images/masterplans/almouj-marsa-gardens.png'),
+                        marsaone: require('../images/masterplans/almouj-marsa-one.png'),
+                        marsathree: require('../images/masterplans/almouj-marsa-three.png'),
+                        marsatwo: require('../images/masterplans/almouj-marsa-two.png'),
+                        neem: require('../images/masterplans/almouj-neem.png'),
+                        reehangardens: require('../images/masterplans/almouj-reehan-gardens.png'),
+                        reehanresidence: require('../images/masterplans/almouj-reehan-residence.png'),
+                        sector1: require('../images/masterplans/almouj-sector-1.png'),
+                        sector2: require('../images/masterplans/almouj-sector-2.png'),
+                        sector3: require('../images/masterplans/almouj-sector-3.png'),
+                        sector4: require('../images/masterplans/almouj-sector-4.png'),
+                        siraj: require('../images/masterplans/almouj-siraj.png'),
+                        thegardens: require('../images/masterplans/almouj-the-gardens.png'),
+                        zunairah: require('../images/masterplans/almouj-zunairah.png')
                     }
                 },
                 propertyList: [],
@@ -126,7 +150,7 @@
             let pngImage = document.getElementById('png-image');
             pngImage.addEventListener('load', () => {
                 // add query here
-                if(config.soldOut.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
+                if(soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
                     let query = 'api=eq.' + this.community;
                     this.getData(query).then( (res) => {
                         this.data = res.data;
@@ -176,7 +200,7 @@
 
                 } else {
                     this.loaded = true;
-                    this.soldOutDetails = config.soldOut.filter( (soldOut) => soldOut.id === this.neighbourhood )[0];
+                    this.soldOutDetails = soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood )[0];
                 }
 
             })
