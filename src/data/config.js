@@ -35,66 +35,6 @@ export default {
             'marker': 'lebanon'
         }
     ],
-    dataPoints: {
-        alzahia: {
-            allilac: {
-                'fullname': 'AL LILAC',
-                'plot_boundary': 'AL_LILAC_PLOTS',
-                'amenities': ['AMENITIES_x5F_AL_LILAC'],
-                'svg': {
-                    'scale': 3.2,
-                    'translate': [598, 280]
-                }
-            },
-            aljouri: {
-                'fullname': 'AL JOURI',
-                'plot_boundary': 'AL_JOURI_PLOTS',
-                'amenities': ['AMENITIES_x5F_AL_JOURI'],
-                'svg': {
-                    'scale': 2.625,
-                    'translate': [50, 316]
-                }
-            },
-            alnarjis: {
-                'fullname': 'AL NARJIS',
-                'plot_boundary': 'AL_NARJIS_PLOTS',
-                'amenities': ['AMENITIES_x5F_AL_NARJIS'],
-                'svg': {
-                    'scale': 3.3,
-                    'translate': [201, -198]
-                }
-            },
-            gardenapts: {
-                'fullname': 'Garden Apartments',
-                'plot_boundary': 'AL_ZAHIA_PLOT_BOUNDARIES',
-                'amenities': [],
-                'svg': {
-                    'scale': 3.2,
-                    'translate': [598, 280]
-                }
-            }
-        },
-        almouj: {
-            almouj: {
-                'fullname': 'AL MOUJ',
-                'plot_boundary': 'PLOT_BOUNDARIES',
-                'amenities': [],
-                'svg': {
-                    'scale': 0.95,
-                    'translate': [-255, -250]
-                }
-            },
-            neighbourhood1: {
-                'fullname': 'Neighbourhood 1',
-                'plot_boundary': 'PLOT_BOUNDARIES',
-                'amenities': [],
-                'svg': {
-                    'scale': 0.95,
-                    'translate': [-255, -250]
-                }
-            }
-        }
-    },
     availablityMap: {
         'available': ['Available'],
         'unavailable': ['Sold', 'Sale pending', 'Unavailable', 'Booked', 'Reserved', 'Unassigned']

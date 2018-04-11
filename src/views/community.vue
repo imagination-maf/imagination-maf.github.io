@@ -22,6 +22,7 @@
         data() {
             return {
                 loaded: false,
+                oneFilterCommunity: config.oneFilterCommunities.indexOf(this.$route.query.community) !== -1,
                 propertyTypeFilter: {},
                 amenitiesFilter: false,
                 propertyInfoActive: false,
@@ -102,7 +103,7 @@
                 this.$router.push({ path: 'overview', query: {community: this.community} });
             },
             setPropertyTypeFilter: function(key) {
-                if(config.oneFilterCommunities.indexOf(this.community) !== -1) {
+                if(this.oneFilterCommunity) {
                     Object.keys(this.propertyTypeFilter).forEach( (type) => {
                         if(type !== key) {
                             Vue.set(this.propertyTypeFilter, type, false);
@@ -231,7 +232,7 @@
 <div class="app">
     <AppHeader :logo="community" back="true" v-on:back="backToOverview" />
     <div class="container" :class="{'blur': soldOutDetails}">
-        <div id="area" v-bind:class="{ visible: loaded }">
+        <div id="area" :class="{ 'visible': loaded, 'one-community': this.oneFilterCommunity }">
             <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
                 <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
             </div>
@@ -383,6 +384,22 @@ svg:not(:root) {
 </style>
 
 <style lang="scss">
+#area {
+    opacity: 0;
+    transition: opacity 0.75s ease;
+    &.visible {
+        opacity: 1;
+    }
+    &.one-community {
+        .svg-house-icon {
+            fill: none;
+            &.unavailable {
+                pointer-events: none;
+            }
+        }
+    }
+}
+
 .svg-house-icon {
     display: block !important;
     fill: rgba(0,0,0,0);
@@ -580,18 +597,4 @@ svg:not(:root) {
         }
     }
 }
-
-// TODO CHANGE THIS
-#area.visible {
-    animation-name: fade-in;
-    animation-fill-mode: both;
-    animation-duration: .5s;
-    animation-duration: 1s
-}
-
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
 </style>
