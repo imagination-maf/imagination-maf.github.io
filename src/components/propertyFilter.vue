@@ -21,6 +21,9 @@ export default Vue.component('property-filter', {
         },
         name: function() {
             return communityPositions[this.$route.query.community][this.$route.query.neighbourhood].fullname;
+        },
+        amenitiesAvailable: function() {
+            return communityPositions[this.$route.query.community][this.$route.query.neighbourhood].amenities.length > 0;
         }
     },
     methods: {
@@ -59,7 +62,7 @@ export default Vue.component('property-filter', {
                     </ul>
                 </div>
             </div>
-            <div class="community-list">
+            <div class="community-list" v-if="amenitiesAvailable">
                 <h3 class="community-menu-title">Residential Amenities</h3>
                 <span class="community-menu-span" @click="changeAmenitiesVisiblity()">Tap to show/hide</span>
             </div>
