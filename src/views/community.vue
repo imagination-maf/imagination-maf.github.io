@@ -154,7 +154,7 @@
                 // add query here
                 if(soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
                     let query = 'api=eq.' + this.community;
-                    if(this.neighbourhood) {
+                    if(this.community === 'almouj') {
                         query += '&property_name=eq.' + communityPositions[this.community][this.neighbourhood]['api_name']
                     }
                     this.getData(query).then( (res) => {

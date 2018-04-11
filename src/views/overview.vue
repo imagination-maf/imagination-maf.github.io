@@ -52,9 +52,6 @@
                 if (!pathElements) pathElements = this.getComposedPath($event.target);
                 let path = pathElements[0].id;
                 let splitPath = path.split('_x5F_');
-                console.log(pathElements);
-                console.log(path);
-                console.log(splitPath[splitPath.length - 1]);
                 if(splitPath[splitPath.length - 1] === 'tap'){
                     let neighbourhood = splitPath[0].replace(/_/g, '').toLowerCase();
                     this.$router.push({ path: 'community', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });

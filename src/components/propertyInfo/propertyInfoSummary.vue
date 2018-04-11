@@ -47,6 +47,9 @@ export default Vue.component('property-info-summary', {
         changeView: function(view) {
             this.$emit('changeView', view);
         }
+    },
+    mounted() {
+        console.log('property beds', this.property.unit_type, this.property.bedrooms);
     }
 });
 </script>

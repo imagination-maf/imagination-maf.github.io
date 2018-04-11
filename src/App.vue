@@ -28,7 +28,7 @@ export default {
                     this.$router.push({ path: '/' });
                 }
                 resetTimer();
-            }, 600000000 );
+            }, 60000 );
         }
 
         let resetTimer = () => {

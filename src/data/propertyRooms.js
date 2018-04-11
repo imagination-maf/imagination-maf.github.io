@@ -185,7 +185,7 @@ export default {
         almouj: {
             "CT4": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 4,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -193,7 +193,7 @@ export default {
             },
             "Z2": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 6,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -201,7 +201,7 @@ export default {
             },
             "Z1": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 6,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -209,7 +209,7 @@ export default {
             },
             "B21": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 2,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -217,7 +217,7 @@ export default {
             },
             "B20": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 2,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -225,7 +225,7 @@ export default {
             },
             "B24-A": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 2,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -233,7 +233,7 @@ export default {
             },
             "A09": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 1,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -241,7 +241,7 @@ export default {
             },
             "B04": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 2,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -249,7 +249,7 @@ export default {
             },
             "D01": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 4,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -257,7 +257,7 @@ export default {
             },
             "C05": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 3,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -265,7 +265,7 @@ export default {
             },
             "B27": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 2,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -273,7 +273,7 @@ export default {
             },
             "B25": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 2,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -281,7 +281,7 @@ export default {
             },
             "B29": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '2+',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -289,7 +289,7 @@ export default {
             },
             "GH-C": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '3+1',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -297,7 +297,7 @@ export default {
             },
             "GH-CH": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '3+1',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -305,7 +305,7 @@ export default {
             },
             "GH-AH": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '3+1',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -313,7 +313,7 @@ export default {
             },
             "GH-A": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '3+1',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -321,7 +321,7 @@ export default {
             },
             "GH-BH": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '3+1',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -329,7 +329,7 @@ export default {
             },
             "GH-B": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '3+1',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -337,7 +337,7 @@ export default {
             },
             "E01": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 5,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -345,7 +345,7 @@ export default {
             },
             "B33": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '2 + Store',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -353,7 +353,7 @@ export default {
             },
             "E02": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: 5,
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -361,7 +361,7 @@ export default {
             },
             "C03": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '3 + Store',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -369,7 +369,7 @@ export default {
             },
             "B32": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '2 + Store',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1
@@ -377,7 +377,7 @@ export default {
             },
             "B35": {
                 general: {
-                    bedrooms: 0,
+                    bedrooms: '2 + Store',
                     bathrooms: -1,
                     livingrooms: -1,
                     garages: -1

@@ -53,8 +53,9 @@ export default Vue.component('app-header', {
     }
     .header-back {
         display: block;
-        margin-right: 8rem;
-        font-size: 1.2rem;
+        margin-right: 6rem;
+        font-size: 1.4rem;
+        padding: 2.5rem 2rem;
     }
 }
 </style>
