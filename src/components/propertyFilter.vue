@@ -1,6 +1,7 @@
 <script>
 import Vue from 'vue';
 import config from '../data/config.js';
+import communityPositions from '../data/communityPositions.js'
 
 export default Vue.component('property-filter', {
     props: ['propertyTypeList', 'propertyTypeFilter', 'amenitiesFilter'],
@@ -19,7 +20,7 @@ export default Vue.component('property-filter', {
             return Array.from(this.propertyTypeList);
         },
         name: function() {
-            return config.dataPoints[this.$route.query.community][this.$route.query.neighbourhood].fullname;
+            return communityPositions[this.$route.query.community][this.$route.query.neighbourhood].fullname;
         }
     },
     methods: {

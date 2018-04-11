@@ -88,11 +88,11 @@ export default [
         'image-text': ''
     },
     {
-        'id': 'reehanresidences',
+        'id': 'reehanresidence',
         'title': 'Reehan Residences',
         'text': 'The Reehan District takes its Arabic name from a type of flowers. Named for the abundance of greenery and colour, Reehan is one of the greenest areas of Al Mouj Muscat, full of plants and flowers. Designed for family living, it has integrated indoor and outdoor entertainment spaces and offers a unique mix of traditional and contemporary premium villas and courtyard homes crafted to provide the lifestyle that you and your family deserve.',
-        'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/reehanresidences/hero.jpg',
-        'image-local': '../gallery/almouj/soldout/reehanresidences/hero.jpg',
+        'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/reehanresidences/hero.png',
+        'image-local': '../gallery/almouj/soldout/reehanresidences/hero.png',
         'image-text': ''
     },
     {
@@ -107,8 +107,8 @@ export default [
         'id': 'siraj',
         'title': 'Siraj',
         'text': 'Located at the heart of Al Mouj Muscat these apartments are in walking distance to Mysk hotel and The Walk, with convenient access to everyday necessities like supermarket, clinic, bank, wellness center and much more. Besides these you have cozy coffee shops to haute cuisine to be spoiled for choice of dining. Located within Al Mouj Muscat, these apartments provide you convenient access to the destination amenities, such as the Marsa Plaza, Al Mouj Marina and the Al Mouj Golf.',
-        'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/siraj/hero.jpg',
-        'image-local': '../gallery/almouj/soldout/siraj/hero.jpg',
+        'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/siraj/hero.png',
+        'image-local': '../gallery/almouj/soldout/siraj/hero.png',
         'image-text': ''
     },
     {

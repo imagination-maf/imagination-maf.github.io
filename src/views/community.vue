@@ -9,6 +9,7 @@
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
+    import communityPositions from '../data/communityPositions.js';
 
     export default Vue.component('community', {
         components: {
@@ -152,6 +153,9 @@
                 // add query here
                 if(soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
                     let query = 'api=eq.' + this.community;
+                    if(this.neighbourhood) {
+                        query += '&property_name=eq.' + communityPositions[this.community][this.neighbourhood]['api_name']
+                    }
                     this.getData(query).then( (res) => {
                         this.data = res.data;
 
@@ -160,12 +164,12 @@
                         let svgImage = document.getElementById('svg-image');
                         this.svgContainerScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
 
-                        let svgTransformData = config.dataPoints[this.community][this.neighbourhood].svg;
+                        let svgTransformData = communityPositions[this.community][this.neighbourhood].svg;
                         this.svgTransform = {
                             'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
                         };
 
-                        let plotBoundaryContainer = config.dataPoints[this.community][this.neighbourhood].plot_boundary;
+                        let plotBoundaryContainer = communityPositions[this.community][this.neighbourhood].plot_boundary;
                         let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
 
                         for(let index = 0; index < plotBoundaries.length; index++) {
@@ -177,6 +181,8 @@
                             })[0];
 
                             if(dataItem) {
+                                // console.log(dataItem);
+
                                 let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 
                                 let beds = dataItem.bedrooms.replace(/\D/g, '');
@@ -208,11 +214,11 @@
         watch: {
             amenitiesFilter: function(val) {
                 if(val) {
-                    config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
+                    communityPositions[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
                         document.getElementById(amenity).classList.add('amenity-active');
                     });
                 } else {
-                    config.dataPoints[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
+                    communityPositions[this.community][this.neighbourhood].amenities.forEach( (amenity) => {
                         document.getElementById(amenity).classList.remove('amenity-active');
                     });
                 }
@@ -241,7 +247,7 @@
         <div class="sold-out-content">
             <h2 class="sold-out-title">{{ soldOutDetails.title }}</h2>
             <div class="sold-out-row">
-                <p class="sold-out-text">{{ soldOutDetails.text }}</p>
+                <p class="sold-out-text" v-html="soldOutDetails.text"></p>
                 <div class="sold-out-image-container">
                     <img v-if="!table" class="sold-out-image" :src="soldOutDetails.image" />
                     <img v-if="table" class="sold-out-image" :src="soldOutDetails['image-local']" />

@@ -82,7 +82,7 @@ export default Vue.component('property-info-summary', {
                 <div class="info-details-item">Built up Area: {{ property.builtup_area }}m</div>
             </div>
             <div class="info-details">
-                <div class="info-details-item">Avaliability: {{ property.availability }}</div>
+                <div class="info-details-item">Availability: {{ property.availability }}</div>
                 <div class="info-details-item">Plot Area: {{ property.plot_area }}m</div>
                 <div class="info-details-item">Price: {{ property.price }}AED</div>
             </div>
