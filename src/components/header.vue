@@ -38,7 +38,7 @@ export default Vue.component('app-header', {
 
 <style lang="scss" scoped>
 .header {
-    z-index: 2;
+    z-index: 5;
     width: 100%;
     height: 8rem;
     display: flex;

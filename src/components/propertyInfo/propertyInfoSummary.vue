@@ -47,9 +47,6 @@ export default Vue.component('property-info-summary', {
         changeView: function(view) {
             this.$emit('changeView', view);
         }
-    },
-    mounted() {
-        console.log('property beds', this.property.unit_type, this.property.bedrooms);
     }
 });
 </script>
@@ -110,7 +107,6 @@ export default Vue.component('property-info-summary', {
     .info-row {
         width: 100%;
         display: flex;
-        // align-items: center;
         padding: 1rem 0;
     }
     .info-row-title {

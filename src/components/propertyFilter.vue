@@ -37,34 +37,36 @@ export default Vue.component('property-filter', {
 
 <template>
     <div class="community">
-        <div class="community-icon">
-            <img class="community-neighbourhood-icon" :src="logos[$route.query.neighbourhood]" />
-            <h2 class="community-title">{{ name }}<br/>NEIGHBOURHOOD</h2>
-        </div>
-        <div class="community-list">
-            <h3 class="community-menu-title">Residential properties</h3>
-            <span class="community-menu-span">Tap to show/hide</span>
-            <div class="community-menu-item" :class="{ 'first': index === 0 }" v-for="(item, index) in list">
-                <p class="property-list-name" @click="changeFilter('active_' + item)">{{ houseTypeNames[item] }}</p>
-                <ul class="property-list" v-show="propertyTypeFilter['active_' + item]">
-                    <li class="property-list-item">
-                        <div class="status available" :class="[item]"></div>
-                        <span class="property-list-text">Available</span>
-                    </li>
-                    <li class="property-list-item">
-                        <div class="status unavailable" :class="[item]"></div>
-                        <span class="property-list-text">Unavailable</span>
-                    </li>
-                </ul>
+        <div class="community-panel">
+            <div class="community-icon">
+                <img class="community-neighbourhood-icon" :src="logos[$route.query.neighbourhood]" />
+                <h2 class="community-title">{{ name }}<br/>NEIGHBOURHOOD</h2>
             </div>
-        </div>
-        <div class="community-list">
-            <h3 class="community-menu-title">Residential Amenities</h3>
-            <span class="community-menu-span" @click="changeAmenitiesVisiblity()">Tap to show/hide</span>
-        </div>
-        <div class="community-list">
-            <h3 class="community-menu-title">Commerical Properties</h3>
-            <span class="community-menu-span">Coming soon</span>
+            <div class="community-list">
+                <h3 class="community-menu-title">Residential properties</h3>
+                <span class="community-menu-span">Tap to show/hide</span>
+                <div class="community-menu-item" :class="{ 'first': index === 0 }" v-for="(item, index) in list">
+                    <p class="property-list-name" @click="changeFilter('active_' + item)">{{ houseTypeNames[item] }}</p>
+                    <ul class="property-list" v-show="propertyTypeFilter['active_' + item]">
+                        <li class="property-list-item">
+                            <div class="status available" :class="[item]"></div>
+                            <span class="property-list-text">Available</span>
+                        </li>
+                        <li class="property-list-item">
+                            <div class="status unavailable" :class="[item]"></div>
+                            <span class="property-list-text">Unavailable</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="community-list">
+                <h3 class="community-menu-title">Residential Amenities</h3>
+                <span class="community-menu-span" @click="changeAmenitiesVisiblity()">Tap to show/hide</span>
+            </div>
+            <div class="community-list">
+                <h3 class="community-menu-title">Commerical Properties</h3>
+                <span class="community-menu-span">Coming soon</span>
+            </div>
         </div>
     </div>
 </template>
@@ -76,7 +78,16 @@ export default Vue.component('property-filter', {
     background-color: #ffffff;
     z-index: 1;
     overflow: auto;
-    padding: 1rem 3.25rem 1rem 4.5rem;
+    position: relative;
+    .community-panel {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        padding: 1rem 3.25rem 1rem 4.5rem;
+    }
     .community-menu-item {
         margin-top: 1.725rem;
         &.first {
