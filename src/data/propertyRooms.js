@@ -186,201 +186,201 @@ export default {
             "CT4": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "Z2": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "Z1": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B21": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B20": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B24-A": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "A09": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B04": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "D01": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "C05": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B27": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B25": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B29": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "GH-C": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "GH-CH": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "GH-AH": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "GH-A": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "GH-BH": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "GH-B": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "E01": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B33": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "E02": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "C03": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B32": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             },
             "B35": {
                 general: {
                     bedrooms: 0,
-                    bathrooms: 0,
-                    livingrooms: 0,
-                    garages: 0
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
                 }
             }
         }

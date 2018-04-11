@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import config from '../../data/config.js';
 import propertyDetails from '../../data/propertyRooms.js';
+import GalleryMapping from '../../data/galleryMapping.js';
 
 export default Vue.component('property-info-summary', {
     props: ['property'],
@@ -13,7 +14,8 @@ export default Vue.component('property-info-summary', {
                 "iconSofa": require('../../images/details/sofa.png'),
                 "iconGarage": require('../../images/details/garage.png')
             },
-            details: propertyDetails
+            details: propertyDetails,
+            floorplanAvailable: GalleryMapping[this.$route.query.community]
         }
     },
     computed: {
@@ -21,7 +23,11 @@ export default Vue.component('property-info-summary', {
             return this.$route.query.community;
         },
         neighbourhood: function() {
-            return this.$route.query.neighbourhood;
+            if(this.community === 'almouj') {
+                return 'almouj';
+            } else {
+                return this.$route.query.neighbourhood;
+            }
         },
         name: function () {
             return this.$route.query.neighbourhood ? config.neighbourhoodNames[this.$route.query.neighbourhood] : ''
@@ -69,22 +75,21 @@ export default Vue.component('property-info-summary', {
                 </div>
             </div>
             <ul class="info-cta">
-                <li class="info-cta-item" @click="changeView('floorplan')">Floor Plan</li>
-                <!-- <li class="info-cta-item" click="changeView('tour')">360 Tour</li> -->
-                <li class="info-cta-item" @click="changeView('gallery')">Photo Gallery</li>
+                <li class="info-cta-item" @click="changeView('floorplan')" v-if="floorplanAvailable">Floor Plan</li>
+                <li class="info-cta-item" v-if="property.images && property.images !== ''" @click="changeView('gallery')">Photo Gallery</li>
             </ul>
         </div>
         <h3 class="info-row-title">DETAILS</h3>
         <div class="info-row">
             <div class="info-details">
-                <div class="info-details-item">Lot Number: {{ property.plot_number }}</div>
-                <div class="info-details-item">Type: {{ property.type }}</div>
-                <div class="info-details-item">Built up Area: {{ property.builtup_area }}m</div>
+                <div class="info-details-item" v-if="property.plot_number">Lot Number: {{ property.plot_number }}</div>
+                <div class="info-details-item" v-if="property.type">Type: {{ property.type }}</div>
+                <div class="info-details-item" v-if="property.builtup_area">Built up Area: {{ property.builtup_area }}m</div>
             </div>
             <div class="info-details">
-                <div class="info-details-item">Availability: {{ property.availability }}</div>
-                <div class="info-details-item">Plot Area: {{ property.plot_area }}m</div>
-                <div class="info-details-item">Price: {{ property.price }}AED</div>
+                <div class="info-details-item" v-if="property.availability">Availability: {{ property.availability }}</div>
+                <div class="info-details-item" v-if="property.plot_area">Plot Area: {{ property.plot_area }}m</div>
+                <div class="info-details-item" v-if="property.price">Price: AED{{ property.price }}</div>
             </div>
         </div>
     </div>
@@ -102,7 +107,7 @@ export default Vue.component('property-info-summary', {
     .info-row {
         width: 100%;
         display: flex;
-        align-items: center;
+        // align-items: center;
         padding: 1rem 0;
     }
     .info-row-title {
