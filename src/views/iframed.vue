@@ -1,7 +1,7 @@
 <script>
 
+    import { Socket } from '../classes/socket.js';
     import config from '../data/config.js';
-    let io = require( 'socket.io-client' );
 
     export default {
         name: 'Iframed',
@@ -21,50 +21,32 @@
 			  return !!(navigator.userAgent.match(/iPad/i));
             },
             switchMode: function() {
-                if (this.socket) {
-                    console.log( 'switch mode', this.hostActive );
-                    this.socket.emit( 'MESSAGE', { event: this.hostActive ? 'CLOSE_HOST' : 'LAUNCH_HOST', toAll:true });
-                }
+                let msg = this.hostActive ? 'CLOSE_HOST' : 'LAUNCH_HOST';
+                console.log( 'switch mode', msg );
+                Socket.instance.emit( 'MESSAGE', { event: msg, toAll:true });
             },
-            toggleHostMode: function( flag ) {
-               console.log( '>>> toggleHostMode', flag );
-               if ( flag ) {
-                    this.hostActive = true;
-                    setTimeout( () => this.showHost = this.hostActive, 500 );
-                } else {
-                    this.showHost = false;
-                    setTimeout( () => this.hostActive = false, 500 );
-                }
-
+            resetSync: function() {
+                Socket.instance.emit( 'MESSAGE', { event: 'resetSync', toAll:true } );  
             }
         },
         mounted() {
             var self = this;
 
-            this.socket = io( `http://${config.server.address}:${config.server.wsPort}` );
-
-            this.socket.on('connect', () => {
-                console.log( 'Connection to websocket server' );
-            });
-
-            this.socket.on('MESSAGE', (data) => {
+            Socket.instance.on('MESSAGE', (data) => {
                 switch (data.event) {
 
                     case 'LAUNCH_HOST':
-                    console.log( [this] );
-                        console.log( '[launching host]' );
-                        self.toggleHostMode(true);
+                        console.log( '[launch host...]' );
+                        this.hostActive = true;
+                        setTimeout( () => this.showHost = this.hostActive, 500 );
                         break;
 
                     case 'CLOSE_HOST':
-                        console.log( '[closing host]' );
-                        self.toggleHostMode(false);
+                        console.log( '[close host]' );
+                        this.hostActive = false;
+                        setTimeout( () => this.showHost = this.hostActive, 500 );
                         break;
                 }
-            });
-
-            this.socket.on('disconnect', () => {
-                console.log( 'Connection to websocket server' );
             });
 
         }
@@ -76,6 +58,7 @@
     <div class="container">
         <iframe v-if="hostActive" :class="{ show: showHost }" id="host" ref="host" :src="browserSyncServer"></iframe>
         <button v-if="isTablet()" class="host" :class="{ active: hostActive }" @click="switchMode">{{ hostActive ? "CLOSE HOST MODE" : "LAUNCH HOST MODE" }}</button>
+        <button v-if="isTablet()" class="reset" :class="{ active: hostActive }" @click="resetSync">RESET</button>
 
         <div class="iframes" v-if="!hostActive && !isTablet()">
             <iframe id="iframe1" ref="iframe1" :src="httpServer"></iframe>
@@ -142,15 +125,36 @@ button {
         color: rgb(255,255,255);
         outline: none;
         transition: all 1s ease;
+
+        &.active {
+            right: 0;
+            bottom:0;
+            transform: translate(0%, 0%);
+            padding: 1rem 1.5rem;
+            opacity:0.5;
+        }
+    }
+   
+
+    &.reset {
+        position: absolute;
+        left:0;
+        bottom:0;
+        z-index:999999;
+        padding: 1rem 1.5rem;
+        font-size: 2rem;
+        background-color: rgb(138,21,56);
+        color: rgb(255,255,255);
+        outline: none;
+        transition: all 1s ease;
+        opacity:0;
+    
+        &.active {
+            opacity:0.5;
+        }
     }
 
-    &.active {
-        right: 0;
-        bottom:0;
-        transform: translate(0%, 0%);
-        padding: 1rem 1.5rem;
-        opacity:0.5;
-    }
+    
 
 }
 </style>
