@@ -6,6 +6,7 @@
 
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
+    import Waterfront from '../images/masterplans/al_mouj_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
@@ -17,7 +18,8 @@
             PropertyFilter,
             PropertyInfo,
             AlZahia,
-            AlMouj
+            AlMouj,
+            Waterfront
         },
         data() {
             return {
@@ -63,6 +65,9 @@
                         siraj: require('../images/masterplans/almouj-siraj.png'),
                         thegardens: require('../images/masterplans/almouj-the-gardens.png'),
                         zunairah: require('../images/masterplans/almouj-zunairah.png')
+                    },
+                    waterfront: {
+                        waterfront: require('../images/overalls/overview-waterfront.jpg')
                     }
                 },
                 propertyList: [],
@@ -206,6 +211,7 @@
                     } )
 
                 } else {
+                    this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
                     this.loaded = true;
                     this.soldOutDetails = soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood )[0];
                 }
@@ -241,7 +247,7 @@
                 <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
-        <PropertyFilter v-if="!soldOutDetails && loaded" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
+        <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
         <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
     </div>
     <div class="sold-out" v-if="soldOutDetails">
@@ -270,6 +276,13 @@
     justify-content: center;
     &.blur {
         filter: blur(0.5rem);
+    }
+}
+
+.prop-filter {
+    opacity: 0;
+    &.visible {
+        opacity: 1;
     }
 }
 

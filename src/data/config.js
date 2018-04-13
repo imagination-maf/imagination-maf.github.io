@@ -15,10 +15,11 @@ export default {
     },
     'galleryUrl': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/',
     'localUrl': '/gallery/',
-    'masterplan-inactive': ['app_x5F_Lebanon-region--parent', 'app_x5F_Lebanon--parent', 'app_x5F_Lebanon-road--parent', 'app_x5F_Dubai--parent', 'app_x5F_Dubai-road--parent'],
+    'masterplan-inactive': ['app_x5F_Dubai--parent', 'app_x5F_Dubai-road--parent'],
     'mappings': {
         'app_x5F_Sharjah-road--parent': 'alzahia',
-        'app_x5F_Muscat-road--parent': 'almouj'
+        'app_x5F_Muscat-road--parent': 'almouj',
+        'app_x5F_Lebanon-road--parent': 'waterfront'
     },
     markerDefault: [
         {
@@ -106,7 +107,8 @@ export default {
         'sector4': 'SECTOR 4',
         'siraj': 'SIRAJ',
         'thegardens': 'THE GARDENS',
-        'zunairah': 'ZUNAIRAH'
+        'zunairah': 'ZUNAIRAH',
+        'waterfront': 'WATERFRONT'
     },
     oneFilterCommunities: ['almouj']
 }
