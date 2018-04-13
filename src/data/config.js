@@ -5,10 +5,13 @@ export default {
         'live': ''
     },
     'server': {
-        'address': '10.83.40.111',
+        'DEV_address': '10.100.196.157',
+        'address': '10.83.40.111', 
         'browserSyncPort': 11100,
-        'httpPort': 8888,
-        'wsPort': 11099
+        'DEV_httpPort': 8888,
+        'httpPort': 8080,
+        'wsPort': 11099,
+        'wsNS': 'MAF_PORTFOLIO'
     },
     'galleryUrl': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/',
     'localUrl': '/gallery/',

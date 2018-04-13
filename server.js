@@ -20,7 +20,7 @@ async function CreateHttpServer() {
                 reject(err);
             } else {
                 console.log( `[HTTP Server] Running on port ${CONFIG.ports.http}` );
-                resolve( httpServer )
+                resolve( httpServer );
             }
         });
 
@@ -36,8 +36,9 @@ async function CreateBrowserSyncServer() {
         bs.init({
             server: "./",
             port: CONFIG.ports.browsersync,
-            open: false
-        }, ()=>{
+            open: false,
+            notify: false
+        }, ()=>{  
 			resolve();
 		});
     });
@@ -46,7 +47,8 @@ async function CreateBrowserSyncServer() {
 async function CreateWebSocketServer() {
     const websocket = require( 'maf-websocket-node' );
     return websocket.create({
-        port:CONFIG.ports.websocket
+        port:CONFIG.ports.websocket,
+        ns:CONFIG.ports.websocketNS
     });
 }
 
