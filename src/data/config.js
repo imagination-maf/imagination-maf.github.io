@@ -8,8 +8,8 @@ export default {
         'DEV_address': '10.100.196.157',
         'address': '10.83.40.111', 
         'browserSyncPort': 11100,
-        'DEV_httpPort': 8888,
-        'httpPort': 8080,
+        'httpPort': 8888,
+        'DEV_httpPort': 8080,
         'wsPort': 11099,
         'wsNS': 'MAF_PORTFOLIO'
     },
