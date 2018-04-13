@@ -155,5 +155,10 @@ export default [
         'id': 'juman2',
         'title': 'Juman 2',
         'text': 'Coming soon!'
+    },
+    {
+        'id': 'waterfront',
+        'title': 'Waterfront City',
+        'text': 'Waterfront City is coming soon!'
     }
 ]

@@ -278,5 +278,16 @@ export default {
                 'translate': [-1014, -400]
             }
         }
+    },
+    waterfront: {
+        waterfront: {
+            'fullname': 'WATERFRONT',
+            'plot_boundary': '',
+            'amenities': [],
+            'svg': {
+                'scale': 1,
+                'translate': [0, 0]
+            }
+        }
     }
 }

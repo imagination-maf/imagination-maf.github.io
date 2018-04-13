@@ -3,6 +3,7 @@
 
     import AlZahia from '../images/overalls/overview-alzahia.svg';
     import AlMouj from '../images/overalls/overview-almouj.svg';
+    import Waterfront from '../images/overalls/overview-waterfront.svg';
     import config from '../data/config.js';
     import AppHeader from '../components/header.vue';
 
@@ -10,14 +11,16 @@
         components: {
             AppHeader,
             AlZahia,
-            AlMouj
+            AlMouj,
+            Waterfront
         },
         data() {
             return {
                 svgScale: null,
                 images: {
                     'alzahia': require('../images/overalls/overview-alzahia.png'),
-                    'almouj': require('../images/overalls/overview-almouj.png')
+                    'almouj': require('../images/overalls/overview-almouj.png'),
+                    'waterfront': require('../images/overalls/overview-waterfront.jpg')
                 }
             }
         },
@@ -73,6 +76,7 @@
             <img class="image" :src="images[selectedCommunity]" />
             <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
             <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
+            <Waterfront id="svg" v-if="selectedCommunity === 'waterfront'" :style="[svgScale]" />
         </div>
     </transition>
 </div>
