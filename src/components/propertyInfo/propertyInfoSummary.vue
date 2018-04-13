@@ -89,7 +89,7 @@ export default Vue.component('property-info-summary', {
             <div class="info-details">
                 <div class="info-details-item" v-if="property.availability">Availability: {{ property.availability }}</div>
                 <div class="info-details-item" v-if="property.plot_area">Plot Area: {{ property.plot_area }}m</div>
-                <div class="info-details-item" v-if="property.price">Price: AED{{ property.price }}</div>
+                <div class="info-details-item" v-if="property.price">Price: AED{{ property.price.toLocaleString() }}.00</div>
             </div>
         </div>
     </div>

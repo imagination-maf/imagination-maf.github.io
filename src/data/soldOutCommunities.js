@@ -142,5 +142,18 @@ export default [
         'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/sector4/hero.jpg',
         'image-local': '../gallery/almouj/soldout/sector4/hero.jpg',
         'image-text': 'FULLY OCCUPIED'
+    },
+    {
+        'id': 'beachlink',
+        'title': 'Reehan Residence Beach Link Villas',
+        'text': 'Reehan Residences are designed for family living and feature large plot areas within Al Mouj Muscat. Set within walking distance to the beach and with access to the Al Mouj Marina, Al Mouj Golf, luxury hotels, dining and retail options, these spacious contemporary homes redefine your lifestyle.',
+        'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/almouj/soldout/beachlink/hero.jpg',
+        'image-local': '../gallery/almouj/soldout/beachlink/hero.jpg',
+        'image-text': 'FULLY OCCUPIED'
+    },
+    {
+        'id': 'juman2',
+        'title': 'Juman 2',
+        'text': 'Coming soon!'
     }
 ]
