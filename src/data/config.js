@@ -6,7 +6,7 @@ export default {
     },
     'server': {
         'DEV_address': '10.100.196.157',
-        'address': '10.83.40.111', 
+        'address': '10.83.40.111',
         'browserSyncPort': 11100,
         'httpPort': 8888,
         'DEV_httpPort': 8080,
@@ -15,11 +15,12 @@ export default {
     },
     'galleryUrl': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/',
     'localUrl': '/gallery/',
-    'masterplan-inactive': ['app_x5F_Dubai--parent', 'app_x5F_Dubai-road--parent'],
+    'masterplan-inactive': [],
     'mappings': {
         'app_x5F_Sharjah-road--parent': 'alzahia',
         'app_x5F_Muscat-road--parent': 'almouj',
-        'app_x5F_Lebanon-road--parent': 'waterfront'
+        'app_x5F_Lebanon-road--parent': 'waterfront',
+        'app_x5F_Dubai-road--parent': 'tilalalghaf'
     },
     markerDefault: [
         {
@@ -108,7 +109,8 @@ export default {
         'siraj': 'SIRAJ',
         'thegardens': 'THE GARDENS',
         'zunairah': 'ZUNAIRAH',
-        'waterfront': 'WATERFRONT'
+        'waterfront': 'WATERFRONT',
+        'tilalalghaf': 'TILAL AL GHAF'
     },
     oneFilterCommunities: ['almouj']
 }
