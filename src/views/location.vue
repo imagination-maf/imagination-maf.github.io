@@ -61,7 +61,7 @@
         data() {
             return {
                 loadingComplete: false,
-                ipad: navigator.userAgent.match(/iPad/i) != null,
+                ipad: navigator.userAgent.match(/iPad/i) != null || navigator.userAgent.match(/iPhone/i)) != null,
                 definitions : {
                     'separator': '_',
                     'modifier': '--',
