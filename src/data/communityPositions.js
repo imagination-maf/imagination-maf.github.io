@@ -6,7 +6,8 @@ export default {
             'amenities': ['AMENITIES_x5F_AL_LILAC'],
             'svg': {
                 'scale': 3.2,
-                'translate': [598, 280]
+                'translate': [598, 280],
+                'rotate': 0
             }
         },
         aljouri: {
@@ -15,7 +16,8 @@ export default {
             'amenities': ['AMENITIES_x5F_AL_JOURI'],
             'svg': {
                 'scale': 2.625,
-                'translate': [50, 316]
+                'translate': [50, 316],
+                'rotate': 0
             }
         },
         alnarjis: {
@@ -24,7 +26,8 @@ export default {
             'amenities': ['AMENITIES_x5F_AL_NARJIS'],
             'svg': {
                 'scale': 3.3,
-                'translate': [201, -198]
+                'translate': [201, -198],
+                'rotate': 0
             }
         },
         gardenapts: {
@@ -33,7 +36,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 3.2,
-                'translate': [598, 280]
+                'translate': [598, 280],
+                'rotate': 0
             }
         }
     },
@@ -45,7 +49,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         almeriaeast: {
@@ -55,7 +60,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         almerianorth: {
@@ -65,7 +71,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         almeriasouth: {
@@ -75,7 +82,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         beachlink: {
@@ -85,7 +93,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 2.3,
-                'translate': [-1037, -497]
+                'translate': [-1037, -497],
+                'rotate': 0
             }
         },
         ghadeerparks: {
@@ -94,8 +103,9 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 3.15,
-                'translate': [959, -445]
+                'scale': 1.5,
+                'translate': [591, -294],
+                'rotate': 3
             }
         },
         juman1: {
@@ -104,8 +114,9 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 5.65,
-                'translate': [349, 418]
+                'scale': 2.65,
+                'translate': [178, 379],
+                'rotate': 1
             }
         },
         juman2: {
@@ -115,7 +126,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 4.65,
-                'translate': [186, 377]
+                'translate': [186, 377],
+                'rotate': 0
             }
         },
         liwan: {
@@ -125,7 +137,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         luban: {
@@ -135,7 +148,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         marsa1: {
@@ -144,8 +158,9 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 4.45,
-                'translate': [654, 64]
+                'scale': 2.475,
+                'translate': [435, 72],
+                'rotate': 2.4
             }
         },
         marsa2: {
@@ -154,8 +169,9 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 4.05,
-                'translate': [510, 155]
+                'scale': 2.15,
+                'translate': [311, 99.7],
+                'rotate': 2.3
             }
         },
         marsa3: {
@@ -165,7 +181,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         marsagardens: {
@@ -174,8 +191,9 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 4.55,
-                'translate': [265, 296]
+                'scale': 2.4,
+                'translate': [54, 275],
+                'rotate': 2
             }
         },
         neem: {
@@ -185,7 +203,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         reehangardens: {
@@ -195,7 +214,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         reehanresidence: {
@@ -205,7 +225,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         sector1: {
@@ -215,7 +236,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         sector2: {
@@ -225,7 +247,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         sector3: {
@@ -235,7 +258,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         sector4: {
@@ -245,7 +269,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         siraj: {
@@ -255,7 +280,8 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 0.95,
-                'translate': [-255, -250]
+                'translate': [-255, -250],
+                'rotate': 0
             }
         },
         thegardens: {
@@ -264,8 +290,9 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 4,
-                'translate': [283, 143]
+                'scale': 2.6,
+                'translate': [156, 105],
+                'rotate': 2.3
             }
         },
         zunairah: {
@@ -274,8 +301,9 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 1.95,
-                'translate': [-1014, -400]
+                'scale': 1.475,
+                'translate': [-1012, -485],
+                'rotate': 3.5
             }
         }
     },
@@ -286,7 +314,20 @@ export default {
             'amenities': [],
             'svg': {
                 'scale': 1,
-                'translate': [0, 0]
+                'translate': [0, 0],
+                'rotate': 0
+            }
+        }
+    },
+    tilalalghaf: {
+        tilalalghaf: {
+            'fullname': 'TILAL AL GHAF',
+            'plot_boundary': '',
+            'amenities': [],
+            'svg': {
+                'scale': 1,
+                'translate': [0, 0],
+                'rotate': 0
             }
         }
     }

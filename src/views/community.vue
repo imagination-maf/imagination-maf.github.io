@@ -7,6 +7,7 @@
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
     import Waterfront from '../images/masterplans/al_mouj_masterplan.svg';
+    import TilalAlGhaf from '../images/masterplans/al_mouj_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
@@ -19,7 +20,8 @@
             PropertyInfo,
             AlZahia,
             AlMouj,
-            Waterfront
+            Waterfront,
+            TilalAlGhaf
         },
         data() {
             return {
@@ -68,6 +70,9 @@
                     },
                     waterfront: {
                         waterfront: require('../images/overalls/overview-waterfront.jpg')
+                    },
+                    tilalalghaf: {
+                        tilalalghaf: require('../images/overalls/overview-tilalalghaf.png')
                     }
                 },
                 propertyList: [],
@@ -172,7 +177,7 @@
 
                         let svgTransformData = communityPositions[this.community][this.neighbourhood].svg;
                         this.svgTransform = {
-                            'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px )'
+                            'transform': 'scale(' + svgTransformData.scale + ') translate(' + svgTransformData.translate[0] + 'px ,' + svgTransformData.translate[1] + 'px ) rotate(' + svgTransformData.rotate + 'deg)'
                         };
 
                         let plotBoundaryContainer = communityPositions[this.community][this.neighbourhood].plot_boundary;
@@ -245,6 +250,8 @@
             <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                 <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                 <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
+                <Waterfront v-if="community === 'waterfront'" class="svg-image" id="svg-image" :style="svgTransform" />
+                <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
         <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />

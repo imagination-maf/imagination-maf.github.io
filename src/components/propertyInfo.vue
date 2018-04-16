@@ -52,7 +52,7 @@ export default Vue.component('property-info', {
     align-items: center;
     justify-content: center;
     background-color: rgba(200, 200, 200, 0.8);
-    z-index: 2;
+    z-index: 6;
     .info-content {
         width: 70%;
         background-color: #ffffff;
