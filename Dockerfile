@@ -24,6 +24,8 @@ RUN npm run build
 RUN rm package*.json && rm webpack.config.js
 
 COPY index.html ./
+COPY manifest.json ./
+COPY apple-touch-icon.png ./
 RUN rm -rf src node_modules
 
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
