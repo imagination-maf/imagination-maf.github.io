@@ -98,8 +98,9 @@
             <h2 class="tilal-title">{{ propertyName }}</h2>
             <div class="tilal-gallery">
                 <div class="image-container" v-if="slide === index" v-for="(image, index) in data[neighbourhood].images[property][filter]">
-                    <img v-if="table" class="image" :src="image.local">
-                    <img v-if="!table" class="image" :src="image.cloud">
+                    <h3 class="image-text" v-if="image.text">{{ image.text }}</h3>
+                    <img v-if="table" class="image" :src="image.image.local">
+                    <img v-if="!table" class="image" :src="image.image.cloud">
                 </div>
                 <button v-show="data[neighbourhood].images[property][filter].length > 1" class="arrow left" type="button" @click="changeSlide(-1)"></button>
                 <button v-show="data[neighbourhood].images[property][filter].length > 1" class="arrow right" type="button" @click="changeSlide(1)"></button>
@@ -255,22 +256,23 @@ svg:not(:root) {
         width: 100%;
         position: relative;
         .arrow {
-            width: 3rem;
-            height: 3rem;
+            width: 9rem;
+            height: 9rem;
             position: absolute;
-            top: calc(50% - 1.5rem);
+            top: calc(50% - 4.5rem);
+            background-color: transparent;
             border-radius: 100%;
             outline: none;
             background-image: url('../images/overlay/circle.png');
             background-position: center;
-            background-size: contain;
+            background-size: 33.33%;
             background-repeat: no-repeat;
             &.left {
-                left: 2rem;
+                left: 0rem;
                 transform: scaleX(-1);
             }
             &.right {
-                right: 2rem;
+                right: 0rem;
             }
         }
         .image-container {
@@ -297,6 +299,15 @@ svg:not(:root) {
                 color: #8A1538;
             }
         }
+    }
+
+    .image-text {
+        position: absolute;
+        left: 7.5rem;
+        top: 5rem;
+        margin: 0;
+        font-weight: lighter;
+        font-size: 1.75rem;
     }
 
     .pagination {
