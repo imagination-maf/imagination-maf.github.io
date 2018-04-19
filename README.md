@@ -4,9 +4,13 @@ MAF Portfolio Vue
 Communities Portfolio is a sales tool for Majil Al Futtaim to show properties available for purchase. The properties are split into 4 communities (Tilal Al Ghaf, Al Zahia, Al Mouj Muscat and Waterfront City).
 
 Tools used:
+
 Javascript: VueJS,
+
 CSS: SASS
+
 Task Runner: Webpack
+
 The project also makes heavy use of SVGs
 
 
