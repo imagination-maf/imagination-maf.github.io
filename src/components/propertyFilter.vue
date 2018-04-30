@@ -67,7 +67,7 @@ export default Vue.component('property-filter', {
                 <span class="community-menu-span" @click="changeAmenitiesVisiblity()">Tap to show/hide</span>
             </div>
             <div class="community-list">
-                <h3 class="community-menu-title">Commerical Properties</h3>
+                <h3 class="community-menu-title">Commercial Properties</h3>
                 <span class="community-menu-span">Coming soon</span>
             </div>
         </div>
