@@ -174,7 +174,7 @@ On the root of the C Drive, create a directory called ***Imagination***
  mkdir /C/Imagination
  cd /C/Imagination
  git clone git@bitbucket.org:imagination/maf-portfolio-vue.git
- ```
+```
 
 After cloning the main application repository, you also need to clone the image dependencies in the project...
 
