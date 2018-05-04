@@ -9,8 +9,8 @@
             return {
                 hostActive: false,
                 showHost: false,
-                browserSyncServer: `http://${config.server.address}:${config.server.browserSyncPort}`,
-                httpServer: `http://${config.server.address}:${config.server.httpPort}`
+                browserSyncServer: `http://${window.location.hostname}:${config.server.browserSyncPort}`,
+                httpServer: `http://${window.location.hostname}:${config.server.httpPort}`
             }
         },
         methods: {

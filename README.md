@@ -131,3 +131,166 @@ Once the above process has completed automatically on the staging stack, a live 
 ### Docker image
 
 The Docker image created as part of the auto-build (or manually with `make build`) contains an Nginx web server configured to serve the HTML files in the root directory, plus the `dist` directory created as part of `npm run build` on port 80.
+
+
+# Windows 10 Installation Guide
+
+## Install prerequisites
+
+Download and install the following...
+
+* Git [https://git-scm.com/download/win](https://git-scm.com/download/win) (Accept All Defaults when installing)
+* Node (and NPM) [https://nodejs.org/dist/v8.11.0/node-v8.11.0-x64.msi](https://nodejs.org/dist/v8.11.0/node-v8.11.0-x64.msi)
+* Chrome [https://git-scm.com/download/win](https://git-scm.com/download/win)
+
+## Add Machine to Bitbucket
+
+Before you can use git, you need to create an ssh key and add to the relevant bitbukcet accounts...
+
+In Windows File Explorer, right click on a folder and select ***"Git Bash Here"***
+
+From the terminal window, enter the following commands...
+
+```
+ssh-keygen
+cat ~/.ssh/id_rsa.pub > /dev/clipboard
+```
+
+The ssh public key should now be in the clipboard.
+
+Log into Bitbucket and add the ssh key (in clipboard) to the following repos...
+
+* [https://bitbucket.org/imagination/maf-portfolio-vue](https://bitbucket.org/imagination/maf-portfolio-vue)
+* [https://bitbucket.org/imagination/maf-gallery-images](https://bitbucket.org/imagination/maf-gallery-images)
+* [https://bitbucket.org/imagination/maf-websocket-node](https://bitbucket.org/imagination/maf-websocket-node)
+
+## Clone Repositories
+
+On the root of the C Drive, create a directory called ***Imagination***
+
+(Still in the git bash terminal), clone the repositories...
+
+```
+ mkdir /C/Imagination
+ cd /C/Imagination
+ git clone git@bitbucket.org:imagination/maf-portfolio-vue.git
+```
+
+After cloning the main application repository, you also need to clone the image dependencies in the project...
+
+```
+cd /C/Imagination/maf-portfolio-vue
+git clone git@bitbucket.org:imagination/maf-gallery-images.git gallery
+```
+
+(This should clone the repo into a sub directory called gallery)
+
+## Building the Project
+
+The application runs within 2 target environments...
+
+* The 2x2 Touch Table (Windows 10)
+* Web Based Version (Safari or Chrome)
+
+### Building for the Touch Table
+
+```
+cd /C/Imagination/maf-portfolio-vue
+npm i
+npm run build:table
+```
+
+### Building for the Web
+
+```
+cd /C/Imagination/maf-portfolio-vue
+npm i
+npm run build
+```
+
+## Running with PM2
+
+The node module PM2 is used to keep the application "alive".
+
+Make sure PM2 is installed...
+
+```
+npm i -g pm2
+```
+
+We need to tell PM2 about our app so that it can monitor and restart it (if needed)...
+
+```
+cd /C/Imagination/maf-portfolio-vue
+pm2 start ecosystem.config.js
+pm2 save
+```
+
+At this stage the application should be running. You can confirm this by issuing the following command...
+
+```
+pm2 list
+```
+
+The app **CP_APP** should be showing as online
+
+You should also be able to load the app in chrome...
+
+[http://localhost:8888/#/iframed](http://localhost:8888/#/iframed)
+
+Note, you can stop PM2 by issuing the following command...
+
+```
+pm2 kill
+```
+
+and then use the following to start it again...
+
+```
+pm2 resurrect
+```
+
+To restart the application, use the command...
+
+```
+pm2 restart CP_APP
+```
+
+
+## Running the App in Chrome
+
+The application runs in full screen chrome using the kiosk mode.
+
+To setup chrome, we first need to create a new profile...
+
+1. Open Chrome
+1. Select Manage people (from the profile icon in the title bar)
+1. Select ADD PERSON
+1. Enter kiosk as the person name
+1. Click ADD
+
+We need to update this kiosk profile's startup page to be the application...
+
+1. Click on Settings from the options menu (3 dots in the top right)
+1. In On startup, choose Open a specific page or set of pages
+1. Click Add a new page
+1. Enter http://localhost:8888/#/iframed
+1. Click ADD
+
+This will create a shortcut on the desktop for the kiosk profile.
+
+To make the link run in full screen kiosk mode, right click the shortcut and choose Properties.
+
+Edit the Target value and add in the following argument...
+
+```
+--kiosk
+```
+
+The final target should look something like this...
+
+```
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --kiosk --profile-directory="Profile 1"
+```
+
+To ecit chrome when running in kiosk mode, hold down the alt+tab keys and click on the close button when the running apps windows show.
