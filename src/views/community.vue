@@ -429,6 +429,9 @@ svg:not(:root) {
     stroke-width: 1;
     stroke-miterlimit: 10;
     transition: fill 0.25s ease;
+    &.unavailable {
+        pointer-events: none;
+    }
 }
 
 .amenity-active {
