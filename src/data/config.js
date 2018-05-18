@@ -38,8 +38,8 @@ export default {
         }
     ],
     availablityMap: {
-        'available': ['Available'],
-        'unavailable': ['Sold', 'Sale pending', 'Booked', 'Reserved', 'Unavailable', 'Unassigned']
+        'available': ['Available', 'Unassigned'],
+        'unavailable': ['Sold', 'Sale pending', 'Booked', 'Reserved', 'Unavailable']
     },
     logoMapping: {
         'app_x5F_world--parent': 'maf',
