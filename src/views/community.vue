@@ -7,11 +7,12 @@
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
     import Waterfront from '../images/masterplans/al_mouj_masterplan.svg';
-    import TilalAlGhaf from '../images/masterplans/al_mouj_masterplan.svg';
+    import TilalAlGhaf from '../images/masterplans/tilal_al_ghaf_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
     import communityPositions from '../data/communityPositions.js';
+    import galleryMapping from '../data/galleryMapping.js';
 
     export default Vue.component('community', {
         components: {
@@ -72,7 +73,7 @@
                         waterfront: require('../images/overalls/overview-waterfront.jpg')
                     },
                     tilalalghaf: {
-                        tilalalghaf: require('../images/overalls/overview-tilalalghaf.png')
+                        phasea: require('../images/masterplans/tilalalghaf-phasea.png')
                     }
                 },
                 propertyList: [],
@@ -169,6 +170,14 @@
                     }
                     this.getData(query).then( (res) => {
                         this.data = res.data;
+                        if(this.community === 'tilalalghaf') {
+                            this.data = this.data.map( (item) => {
+                                item.id = item.id.replace(/\-/g, '.');
+                                item.aspect = item.aspect ? item.aspect : 'general';
+                                item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type]
+                                return item;
+                            });
+                        }
 
                         this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
@@ -192,8 +201,6 @@
                             })[0];
 
                             if(dataItem) {
-                                // console.log(dataItem);
-
                                 let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 
                                 let beds = dataItem.bedrooms.replace(/\D/g, '');

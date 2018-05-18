@@ -320,9 +320,9 @@ export default {
         }
     },
     tilalalghaf: {
-        tilalalghaf: {
-            'fullname': 'TILAL AL GHAF',
-            'plot_boundary': '',
+        phasea: {
+            'fullname': 'SERENITY & HARMONY',
+            'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
                 'scale': 1,

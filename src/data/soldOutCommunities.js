@@ -160,10 +160,5 @@ export default [
         'id': 'waterfront',
         'title': 'Waterfront City',
         'text': 'Individual property information coming soon'
-    },
-    {
-        'id': 'tilalalghaf',
-        'title': 'Tilal Al Ghaf',
-        'text': 'Individual property information coming soon'
     }
 ]

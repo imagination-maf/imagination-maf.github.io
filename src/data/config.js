@@ -39,7 +39,7 @@ export default {
     ],
     availablityMap: {
         'available': ['Available'],
-        'unavailable': ['Sold', 'Sale pending', 'Unavailable', 'Booked', 'Reserved', 'Unassigned']
+        'unavailable': ['Sold', 'Sale pending', 'Booked', 'Reserved', 'Unavailable', 'Unassigned']
     },
     logoMapping: {
         'app_x5F_world--parent': 'maf',
@@ -56,7 +56,7 @@ export default {
         'app_x5F_Muscat-road--parent': 'almouj',
     },
     houseTypes: {
-        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard'],
+        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard', 'Harmony Villas', 'Serenity Luxury Villa', 'Harmony Bungalows', 'Upper Luxury Villa', 'Villa '],
         'townhouse': ['Town house Plus', 'Town house'],
         'apartment': ['Apartments', 'Apartment'],
         'office': ['Offices']
@@ -107,7 +107,7 @@ export default {
         'thegardens': 'THE GARDENS',
         'zunairah': 'ZUNAIRAH',
         'waterfront': 'WATERFRONT',
-        'tilalalghaf': 'TILAL AL GHAF'
+        'phasea': 'SERENITY & HARMONY'
     },
     oneFilterCommunities: ['almouj']
 }

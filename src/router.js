@@ -7,7 +7,6 @@ import Location from './views/location.vue';
 import Overview from './views/overview.vue';
 import Community from './views/community.vue';
 import Iframed from './views/iframed.vue';
-import TilalAlGhaf from './views/tilalalghaf.vue';
 
 Vue.use(VueRouter);
 
@@ -42,11 +41,6 @@ export default new VueRouter({
             path: '/community',
             component: Community,
             name: 'community'
-        },
-        {
-            path: '/tilalalghaf',
-            component: TilalAlGhaf,
-            name: 'tilalalghaf'
         }
     ]
 });

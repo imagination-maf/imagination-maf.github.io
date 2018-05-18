@@ -1,6 +1,6 @@
 <script>
 import Vue from 'vue';
-import GalleryMapping from '../../data/galleryMapping.js';
+import FloorplanMapping from '../../data/floorplanMapping.js';
 import axios from 'axios';
 import config from '../../data/config.js';
 
@@ -9,13 +9,20 @@ export default Vue.component('property-info-floorplan', {
     data() {
         return {
             url: process.env.NODE_ENV === 'table' ? config.localUrl : config.galleryUrl,
-            floorplan: GalleryMapping[this.$route.query.community][this.$route.query.neighbourhood][this.property.unit_type][this.property.aspect]
+            floorplan: FloorplanMapping[this.$route.query.community][this.$route.query.neighbourhood][this.property.unit_type][this.property.aspect],
+            slide: 0
         }
     },
     methods: {
+        changeSlide: function(dir) {
+            this.slide = ((this.slide + dir) + this.floorplan.length) % this.floorplan.length;
+        },
         backToSummary: function() {
             this.$emit('changeView', 'summary');
         }
+    },
+    mounted() {
+        console.log('aspect', this.property.aspect);
     }
 });
 </script>
@@ -24,7 +31,12 @@ export default Vue.component('property-info-floorplan', {
     <div class="info-floorplan">
         <h3 class="info-title">FLOORPLAN</h3>
         <div class="info-image-container">
-            <img class="info-image" :src="url + floorplan" />
+            <img v-for="(plan, i) in floorplan" v-if="i === slide" class="info-image" :src="url + plan" />
+            <button v-if="floorplan.length > 1" class="arrow left" type="button" @click="changeSlide(-1)"></button>
+            <button v-if="floorplan.length > 1" class="arrow right" type="button" @click="changeSlide(1)"></button>
+        </div>
+        <div class="pagination" v-if="floorplan.length > 1">
+            <div v-for="(page, index) in floorplan" class="pagination-item" :class="{'active': index === slide}" @click="changeToSlideNum(index)"></div>
         </div>
         <button class="info-button" type="button" @click="backToSummary()">Go Back to Summary</button>
     </div>
@@ -48,6 +60,7 @@ export default Vue.component('property-info-floorplan', {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        position: relative;
         .info-image {
             display: block;
             max-width: 100%;
@@ -57,7 +70,48 @@ export default Vue.component('property-info-floorplan', {
             object-fit: contain;
             object-position: center;
         }
+        .arrow {
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            top: calc(50% - 1.5rem);
+            border-radius: 100%;
+            outline: none;
+            background-image: url('../../images/overlay/circle.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            &.left {
+                left: 2rem;
+                transform: scaleX(-1);
+            }
+            &.right {
+                right: 2rem;
+            }
+        }
     }
+
+    .pagination {
+        position: absolute;
+        bottom: 3rem;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        .pagination-item {
+            background-color: #ffffff;
+            border: 0.1rem solid #8A1538;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 100%;
+            margin: 0 0.5rem;
+            &.active {
+                border-color: #ffffff;
+                background-color: #8A1538;
+            }
+        }
+    }
+
     .info-button {
         position: absolute;
         bottom: 4rem;

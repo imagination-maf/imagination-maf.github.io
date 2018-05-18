@@ -111,7 +111,9 @@
                 'direction': 'in',
                 'markerSelected': null,
                 'pulseTimer': null,
-                'pulseInterval': null
+                'pulseInterval': null,
+                'animationTimer': null,
+                'disableAnimation': true
             }
         },
         computed : {
@@ -558,6 +560,9 @@
                 this.loadingComplete = true;
                 this.markerSelected = this.getDefaultMarkerContent();
                 this.pulsateMarkers();
+                this.animationTimer = window.setTimeout( () => {
+                    this.disableAnimation = false;
+                }, 100 )
             }
 
             this.setupSvgImages();
@@ -571,6 +576,7 @@
             }
         },
         beforeDestroy() {
+            window.clearTimeout(this.animationTimer);
             window.clearTimeout(this.pulseTimer);
             window.clearInterval(this.pulseInterval);
         }
@@ -582,7 +588,7 @@
     <AppHeader :logo="headerLogo" back="true" v-on:back="backFunctionality" />
     <div class="container" :class="{'loaded': loadingComplete}">
         <div id="map-container" class="map" :class="{'ipad': ipad}" @click="mapClick($event)">
-            <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out' }">
+            <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out', 'disable-animation': disableAnimation }">
                 <!-- World -->
                 <div
                     class="png-image-container-scale"
@@ -1111,6 +1117,17 @@
     position: absolute;
     left: 0;
     top: 0;
+    &.disable-animation {
+        .png-image-container-scale {
+            transition: none !important;
+        }
+        .png-image-container-translate {
+            transition: none !important;
+        }
+        .png-image-container-rotation {
+            transition: none !important;
+        }
+    }
     .png-image-container-scale {
         position: absolute;
         left: 0;
