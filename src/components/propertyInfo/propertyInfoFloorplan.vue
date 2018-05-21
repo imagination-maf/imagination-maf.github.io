@@ -20,9 +20,6 @@ export default Vue.component('property-info-floorplan', {
         backToSummary: function() {
             this.$emit('changeView', 'summary');
         }
-    },
-    mounted() {
-        console.log('aspect', this.property.aspect);
     }
 });
 </script>

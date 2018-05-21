@@ -6454,6 +6454,12 @@
 				<text transform="matrix(0.3736 0.9276 -0.9276 0.3736 1590.4644 1444.7253)" style="fill:#34373A; font-family:'MarselisPro-Bold'; font-size:20.861px;">Al Fay Road</text>
 		</g>
 	</g>
+	<g>
+		<g>
+
+				<text transform="matrix(0.6343 -0.773 0.773 0.6343 1107.1508 2124.5)" style="fill:#34373A; font-family:'MarselisPro-Bold'; font-size:20.861px;">Sheikh Mohammed Bin Zayed Road</text>
+		</g>
+	</g>
 	<path id="Rectangle-Copy-2_8_" style="fill:#FFFFFF;" d="M1666,1398.8h264.2c7.5,0,13.5,6,13.5,13.5v69.3c0,7.5-6,13.5-13.5,13.5
 		H1666c-7.5,0-13.5-6-13.5-13.5v-69.3C1652.9,1404.8,1658.9,1398.8,1666,1398.8z"/>
 

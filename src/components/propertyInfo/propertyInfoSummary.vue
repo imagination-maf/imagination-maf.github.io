@@ -51,9 +51,6 @@ export default Vue.component('property-info-summary', {
         changeView: function(view) {
             this.$emit('changeView', view);
         }
-    },
-    mounted() {
-        console.log('this property', this.property);
     }
 });
 </script>
