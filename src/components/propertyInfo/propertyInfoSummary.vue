@@ -2,7 +2,7 @@
 import Vue from 'vue';
 import config from '../../data/config.js';
 import propertyDetails from '../../data/propertyRooms.js';
-import GalleryMapping from '../../data/galleryMapping.js';
+import FloorplanMapping from '../../data/floorplanMapping.js';
 
 export default Vue.component('property-info-summary', {
     props: ['property'],
@@ -15,7 +15,7 @@ export default Vue.component('property-info-summary', {
                 "iconGarage": require('../../images/details/garage.png')
             },
             details: propertyDetails,
-            floorplanAvailable: GalleryMapping[this.$route.query.community]
+            floorplanAvailable: FloorplanMapping[this.$route.query.community]
         }
     },
     computed: {
