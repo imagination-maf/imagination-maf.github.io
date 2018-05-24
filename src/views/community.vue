@@ -6,12 +6,14 @@
 
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
-    import Waterfront from '../images/masterplans/al_mouj_masterplan.svg';
+    import WaterfrontCity from '../images/masterplans/waterfront_city_masterplan.svg';
     import TilalAlGhaf from '../images/masterplans/al_mouj_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
     import communityPositions from '../data/communityPositions.js';
+
+    import galleryMapping from '../data/galleryMapping.js';
 
     export default Vue.component('community', {
         components: {
@@ -20,7 +22,7 @@
             PropertyInfo,
             AlZahia,
             AlMouj,
-            Waterfront,
+            WaterfrontCity,
             TilalAlGhaf
         },
         data() {
@@ -68,8 +70,8 @@
                         thegardens: require('../images/masterplans/almouj-the-gardens.png'),
                         zunairah: require('../images/masterplans/almouj-zunairah.png')
                     },
-                    waterfront: {
-                        waterfront: require('../images/overalls/overview-waterfront.jpg')
+                    waterfrontcity: {
+                        waterfrontcity: require('../images/masterplans/waterfront-waterfront.jpg')
                     },
                     tilalalghaf: {
                         tilalalghaf: require('../images/overalls/overview-tilalalghaf.png')
@@ -169,6 +171,19 @@
                     }
                     this.getData(query).then( (res) => {
                         this.data = res.data;
+                        if(this.community === 'waterfrontcity') {
+                            this.data = this.data.map( (item) => {
+                                item.id = item.id.replace(/\s/g, '');
+                                item.aspect = item.plot_number;
+                                item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type] && galleryMapping[this.community][this.neighbourhood][item.unit_type][item.aspect] ? galleryMapping[this.community][this.neighbourhood][item.unit_type][item.aspect] : '';
+                                return item;
+                            });
+                        }
+
+                        this.data = this.data.map( (item) => {
+                            item.aspect = item.aspect ? item.aspect : 'general';
+                            return item;
+                        });
 
                         this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
 
@@ -250,7 +265,7 @@
             <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                 <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                 <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
-                <Waterfront v-if="community === 'waterfront'" class="svg-image" id="svg-image" :style="svgTransform" />
+                <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image" id="svg-image" :style="svgTransform" />
                 <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>

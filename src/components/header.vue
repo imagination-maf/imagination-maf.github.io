@@ -10,7 +10,7 @@ export default Vue.component('app-header', {
                 'alzahia': require('../images/logo/logo-alzahia.png'),
                 'almouj': require('../images/logo/logo-almouj.png'),
                 'tilalalghaf': require('../images/logo/logo-tilalalghaf.png'),
-                'waterfront': require('../images/logo/logo-waterfront.png')
+                'waterfrontcity': require('../images/logo/logo-waterfront.png')
             }
         }
     },

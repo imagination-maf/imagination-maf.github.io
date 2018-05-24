@@ -16,7 +16,7 @@ export default {
     'mappings': {
         'app_x5F_Sharjah-road--parent': 'alzahia',
         'app_x5F_Muscat-road--parent': 'almouj',
-        'app_x5F_Lebanon-road--parent': 'waterfront',
+        'app_x5F_Lebanon-road--parent': 'waterfrontcity',
         'app_x5F_Dubai-road--parent': 'tilalalghaf'
     },
     markerDefault: [
@@ -48,9 +48,9 @@ export default {
         'app_x5F_Sharjah-road--parent': 'alzahia',
         'app_x5F_Dubai--parent': 'tilalalghaf',
         'app_x5F_Dubai-road--parent': 'tilalalghaf',
-        'app_x5F_Lebanon-region--parent': 'waterfront',
-        'app_x5F_Lebanon--parent': 'waterfront',
-        'app_x5F_Lebanon-road--parent': 'waterfront',
+        'app_x5F_Lebanon-region--parent': 'waterfrontcity',
+        'app_x5F_Lebanon--parent': 'waterfrontcity',
+        'app_x5F_Lebanon-road--parent': 'waterfrontcity',
         'app_x5F_Oman--parent': 'almouj',
         'app_x5F_Muscat--parent': 'almouj',
         'app_x5F_Muscat-road--parent': 'almouj',
@@ -106,8 +106,8 @@ export default {
         'siraj': 'SIRAJ',
         'thegardens': 'THE GARDENS',
         'zunairah': 'ZUNAIRAH',
-        'waterfront': 'WATERFRONT',
+        'waterfrontcity': 'WATERFRONT',
         'tilalalghaf': 'TILAL AL GHAF'
     },
-    oneFilterCommunities: ['almouj']
+    oneFilterCommunities: ['almouj', 'waterfrontcity']
 }

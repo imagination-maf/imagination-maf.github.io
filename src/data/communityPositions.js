@@ -307,14 +307,14 @@ export default {
             }
         }
     },
-    waterfront: {
-        waterfront: {
+    waterfrontcity: {
+        waterfrontcity: {
             'fullname': 'WATERFRONT',
-            'plot_boundary': '',
+            'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 1,
-                'translate': [0, 0],
+                'scale': 1.925,
+                'translate': [-151, 102],
                 'rotate': 0
             }
         }

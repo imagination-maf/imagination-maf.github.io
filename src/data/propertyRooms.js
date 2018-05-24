@@ -384,5 +384,105 @@ export default {
                 }
             }
         }
+    },
+    waterfrontcity: {
+        waterfrontcity: {
+            "Type 1": {
+                "768": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "769": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "781": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "782": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "783": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "784": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "785": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "786": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "793": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            },
+            "Type 2": {
+                "756": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "758": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "769": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "797": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                },
+                "800": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            },
+            "Type 3": {
+                "787": {
+                    bedrooms: -1,
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            }
+        }
     }
 }

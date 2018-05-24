@@ -14,8 +14,8 @@ export default Vue.component('property-info-summary', {
                 "iconSofa": require('../../images/details/sofa.png'),
                 "iconGarage": require('../../images/details/garage.png')
             },
-            details: propertyDetails,
-            floorplanAvailable: FloorplanMapping[this.$route.query.community]
+            details: propertyDetails//,
+            // floorplanAvailable: FloorplanMapping[this.$route.query.community]
         }
     },
     computed: {
@@ -41,6 +41,21 @@ export default Vue.component('property-info-summary', {
         },
         aspect: function () {
             return this.property.aspect ? this.property.aspect : 'general';
+        },
+        floorplanAvailable: function () {
+            return FloorplanMapping[this.community] && FloorplanMapping[this.community][this.neighbourhood] && FloorplanMapping[this.community][this.neighbourhood][this.property.unit_type] && FloorplanMapping[this.community][this.neighbourhood][this.property.unit_type][this.property.aspect];
+        },
+        bedrooms: function () {
+            return (this.details[this.community][this.neighbourhood][this.unitType][this.aspect].bedrooms > -1) ? this.details[this.community][this.neighbourhood][this.unitType][this.aspect].bedrooms : this.property.bedrooms;
+        },
+        bathrooms: function () {
+            return this.details[this.community][this.neighbourhood][this.unitType][this.aspect].bathrooms;
+        },
+        livingrooms: function () {
+            return this.details[this.community][this.neighbourhood][this.unitType][this.aspect].livingrooms;
+        },
+        garages: function () {
+            return this.details[this.community][this.neighbourhood][this.unitType][this.aspect].garages;
         }
     },
     methods: {
@@ -57,21 +72,21 @@ export default Vue.component('property-info-summary', {
         <div class="info-row">
             <div class="info-features">
                 <h3 class="info-row-title">FEATURES</h3>
-                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].bedrooms > -1 && details[community][neighbourhood][unitType][aspect].bedrooms !== undefined && details[community][neighbourhood][unitType][aspect].bedrooms !== null">
+                <div class="info-features-item" v-if="bedrooms > -1 && bedrooms !== undefined && bedrooms !== null">
                     <img :src="images.iconBed" class="info-features-icon" />
-                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].bedrooms }}</p>
+                    <p class="info-features-text">{{ bedrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].bathrooms > -1 && details[community][neighbourhood][unitType][aspect].bathrooms !== undefined && details[community][neighbourhood][unitType][aspect].bathrooms !== null">
+                <div class="info-features-item" v-if="bathrooms > -1 && bathrooms !== undefined && bathrooms !== null">
                     <img :src="images.iconBath" class="info-features-icon" />
-                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].bathrooms }}</p>
+                    <p class="info-features-text">{{ bathrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].livingrooms > -1 && details[community][neighbourhood][unitType][aspect].livingrooms !== undefined && details[community][neighbourhood][unitType][aspect].livingrooms !== null">
+                <div class="info-features-item" v-if="livingrooms > -1 && livingrooms !== undefined && livingrooms !== null">
                     <img :src="images.iconSofa" class="info-features-icon" />
-                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].livingrooms }}</p>
+                    <p class="info-features-text">{{ livingrooms }}</p>
                 </div>
-                <div class="info-features-item" v-if="details[community][neighbourhood][unitType][aspect].garages > -1 && details[community][neighbourhood][unitType][aspect].garages !== undefined && details[community][neighbourhood][unitType][aspect].garages !== null">
+                <div class="info-features-item" v-if="garages > -1 && garages !== undefined && garages !== null">
                     <img :src="images.iconGarage" class="info-features-icon" />
-                    <p class="info-features-text">{{ details[community][neighbourhood][unitType][aspect].garages }}</p>
+                    <p class="info-features-text">{{ garages }}</p>
                 </div>
             </div>
             <ul class="info-cta">
