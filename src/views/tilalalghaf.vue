@@ -203,6 +203,7 @@ svg:not(:root) {
         .tilal-image {
             width: 100%;
             margin-top: 2rem;
+
         }
         .tilal-image-text {
             position: absolute;
@@ -280,6 +281,9 @@ svg:not(:root) {
             min-height: 42rem;
             .image {
                 width: 100%;
+                max-height: 62vh;
+                object-fit: contain;
+                object-position: center;
             }
         }
     }
