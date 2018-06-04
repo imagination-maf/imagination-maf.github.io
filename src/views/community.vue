@@ -265,7 +265,7 @@
             <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                 <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                 <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
-                <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image" id="svg-image" :style="svgTransform" />
+                <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image thinner-outlines" id="svg-image" :style="svgTransform" />
                 <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
@@ -446,6 +446,11 @@ svg:not(:root) {
     transition: fill 0.25s ease;
     &.unavailable {
         pointer-events: none;
+    }
+}
+.thinner-outlines {
+    .svg-house-icon {
+        stroke-width: .25;
     }
 }
 
