@@ -42,7 +42,8 @@
                         aljouri: require('../images/masterplans/alzahia-al-jouri.png'),
                         allilac: require('../images/masterplans/alzahia-al-lilac.png'),
                         alnarjis: require('../images/masterplans/alzahia-al-narjis.png'),
-                        gardenapts: require('../images/masterplans/alzahia-garden-apts.png')
+                        gardenapts: require('../images/masterplans/alzahia-garden-apts.png'),
+                        uptown: require('../images/masterplans/alzahia-uptown.png')
                     },
                     almouj: {
                         acacia: require('../images/masterplans/almouj-acacia.png'),
