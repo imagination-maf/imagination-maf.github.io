@@ -63,11 +63,8 @@
                     if(this.selectedCommunity === 'tilalalghaf') {
                         this.$router.push({ path: 'tilalalghaf', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
                     }
-                    else if(this.selectedCommunity === 'alzahia' && neighbourhood === "woroud1"){
-                        this.$router.push({ path: 'woroud1', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
-                    }
-                    else if(this.selectedCommunity === 'alzahia' && neighbourhood === "zohour"){
-                        this.$router.push({ path: 'zohour', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
+                    else if(this.selectedCommunity === 'alzahia' && neighbourhood === "uptown"){
+                        this.$router.push({ path: 'uptown', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
                     }
                     else {
                         this.$router.push({ path: 'community', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
