@@ -8,6 +8,8 @@ import Overview from './views/overview.vue';
 import Community from './views/community.vue';
 import Iframed from './views/iframed.vue';
 import TilalAlGhaf from './views/tilalalghaf.vue';
+import Woroud1 from './views/woroud1.vue';
+import Zohour from './views/zohour.vue';
 
 Vue.use(VueRouter);
 
@@ -47,6 +49,16 @@ export default new VueRouter({
             path: '/tilalalghaf',
             component: TilalAlGhaf,
             name: 'tilalalghaf'
+        },
+        {
+            path: '/woroud1',
+            component: Woroud1,
+            name: 'woroud1'
+        },
+        {
+            path: '/zohour',
+            component: Zohour,
+            name: 'zohour'
         }
     ]
 });
