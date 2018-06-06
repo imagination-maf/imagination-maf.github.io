@@ -85,8 +85,38 @@ export default {
                 'interior': [
                     {
                         image: {
-                            local: '../gallery/tilalalghaf/serenity/5bedvilla/gallery/6BD_Kettle_Bedroom_180324.jpg',
-                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/tilalalghaf/serenity/5bedvilla/gallery/6BD_Kettle_Bedroom_180324.jpg'
+                            local: '../gallery/alzahia/uptown/zohour/beige/2-BR-Livingroom-View-04-(Zohour).jpg',
+                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/zohour/beige/2-BR-Livingroom-View-04-(Zohour).jpg'
+                        }
+                    },
+                    {
+                        image: {
+                            local: '../gallery/alzahia/uptown/zohour/grey/2BR-Livingroom-View-04_Grey-(Zohour).jpg',
+                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/zohour/grey/2BR-Livingroom-View-04_Grey-(Zohour).jpg'
+                        }
+                    },
+                    {
+                        image: {
+                            local: '../gallery/alzahia/uptown/zohour/beige/2-BR-Kitchen-View-02-(Zohour).jpg',
+                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/zohour/beige/2-BR-Kitchen-View-02-(Zohour).jpg'
+                        }
+                    },
+                    {
+                        image: {
+                            local: '../gallery/alzahia/uptown/zohour/grey/2-BR-Kitchen-View-02_Grey-(Zohour).jpg',
+                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/zohour/grey/2-BR-Kitchen-View-02_Grey-(Zohour).jpg'
+                        }
+                    },
+                    {
+                        image: {
+                            local: '../gallery/alzahia/uptown/zohour/beige/2-BR-Bathroom-View-04-(Zohour).jpg',
+                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/zohour/beige/2-BR-Bathroom-View-04-(Zohour).jpg'
+                        }
+                    },
+                    {
+                        image: {
+                            local: '../gallery/alzahia/uptown/zohour/grey/Bathroom-2BR._Grey-(Zohour).jpg',
+                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/zohour/grey/Bathroom-2BR._Grey-(Zohour).jpg'
                         }
                     }
                 ],
