@@ -15,7 +15,7 @@
                 backgroundImg: require('../images/overalls/overview-alzahia.png'),
                 table: process.env.NODE_ENV === 'table',
                 property: null,
-                filter: 'gallery',
+                filter: 'interior',
                 slide: 0
             }
         },
@@ -41,7 +41,7 @@
             backToProperties: function() {
                 this.property = null;
                 this.slide = 0;
-                this.filter = 'gallery';
+                this.filter = 'interior';
             },
             showProperty: function(propertyId) {
                 this.property = propertyId;
@@ -111,7 +111,8 @@
             <div class="tilal-row">
                 <button class="tilal-button" @click="backToProperties()">Back to Properties</button>
                 <div class="buttons">
-                    <button @click="changeFilter('gallery')" class="tilal-button" :class="{'active': filter === 'gallery'}">Gallery</button>
+                    <button @click="changeFilter('interior')" class="tilal-button wider" :class="{'active': filter === 'interior'}">Interior Gallery</button>
+                    <button @click="changeFilter('exterior')" class="tilal-button wider" :class="{'active': filter === 'exterior'}">Exterior Gallery</button>
                     <button @click="changeFilter('floorplan')" class="tilal-button" :class="{'active': filter === 'floorplan'}">Floor Plan</button>
                 </div>
             </div>
@@ -225,6 +226,9 @@ svg:not(:root) {
         width: 18.1%;
         font-size: 1.15rem;
         font-weight: 200;
+        &.wider {
+            width:25%;
+        }
     }
     .tilal-cta {
         display: flex;
@@ -289,7 +293,7 @@ svg:not(:root) {
     }
 
     .buttons {
-        width: 40%;
+        width: 80%;
         margin-left: 11.9%;
         display: flex;
         justify-content: center;
