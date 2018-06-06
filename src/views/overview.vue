@@ -62,7 +62,11 @@
                     let neighbourhood = splitPath[0].replace(/_/g, '').toLowerCase();
                     if(this.selectedCommunity === 'tilalalghaf') {
                         this.$router.push({ path: 'tilalalghaf', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
-                    } else {
+                    }
+                    else if(this.selectedCommunity === 'alzahia' && neighbourhood === "uptown"){
+                        this.$router.push({ path: 'uptown', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
+                    }
+                    else {
                         this.$router.push({ path: 'community', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
                     }
 

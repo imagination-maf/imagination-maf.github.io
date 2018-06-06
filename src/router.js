@@ -8,6 +8,7 @@ import Overview from './views/overview.vue';
 import Community from './views/community.vue';
 import Iframed from './views/iframed.vue';
 import TilalAlGhaf from './views/tilalalghaf.vue';
+import Uptown from './views/uptown.vue';
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,11 @@ export default new VueRouter({
             path: '/tilalalghaf',
             component: TilalAlGhaf,
             name: 'tilalalghaf'
+        },
+        {
+            path: '/uptown',
+            component: Uptown,
+            name: 'uptown'
         }
     ]
 });
