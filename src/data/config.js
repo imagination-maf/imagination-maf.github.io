@@ -106,7 +106,7 @@ export default {
         'siraj': 'SIRAJ',
         'thegardens': 'THE GARDENS',
         'zunairah': 'ZUNAIRAH',
-        'waterfrontcity': 'WATERFRONT',
+        'waterfrontcity': 'WATERFRONT CITY',
         'tilalalghaf': 'TILAL AL GHAF'
     },
     oneFilterCommunities: ['almouj', 'waterfrontcity']
