@@ -8,6 +8,7 @@ export default Vue.component('app-header', {
             logos: {
                 'maf': require('../images/logo/logo.png'),
                 'alzahia': require('../images/logo/logo-alzahia.png'),
+                'uptown': require('../images/logo/logo-alzahia.png'),
                 'almouj': require('../images/logo/logo-almouj.png'),
                 'tilalalghaf': require('../images/logo/logo-tilalalghaf.png'),
                 'waterfrontcity': require('../images/logo/logo-waterfront.png')

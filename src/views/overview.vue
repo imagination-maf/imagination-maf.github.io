@@ -5,6 +5,7 @@
     import AlMouj from '../images/overalls/overview-almouj.svg';
     import WaterfrontCity from '../images/overalls/overview-waterfront.svg';
     import TilalAlGhaf from '../images/overalls/overview-tilalalghaf.svg';
+    import Uptown from '../images/overalls/overview-uptown.svg';
     import config from '../data/config.js';
     import AppHeader from '../components/header.vue';
 
@@ -14,7 +15,8 @@
             AlZahia,
             AlMouj,
             WaterfrontCity,
-            TilalAlGhaf
+            TilalAlGhaf,
+            Uptown
         },
         data() {
             return {
@@ -23,7 +25,8 @@
                     'alzahia': require('../images/overalls/overview-alzahia.png'),
                     'almouj': require('../images/overalls/overview-almouj.png'),
                     'waterfrontcity': require('../images/overalls/overview-waterfront.jpg'),
-                    'tilalalghaf': require('../images/overalls/overview-tilalalghaf.png')
+                    'tilalalghaf': require('../images/overalls/overview-tilalalghaf.png'),
+                    'uptown': require('../images/overalls/overview-uptown.png')
                 }
             }
         },
@@ -35,7 +38,11 @@
         methods: {
             backToMap: function() {
                 let mapLocation = Object.keys(config.mappings).filter( (key) => config.mappings[key] === this.$route.query.community)[0];
-                this.$router.push({ path: 'location', query: { 'view': mapLocation }});
+                if(this.selectedCommunity === "uptown"){
+                    this.$router.push({ path: 'overview', query: { 'community': 'alzahia' }});
+                } else {
+                    this.$router.push({ path: 'location', query: { 'view': mapLocation }});
+                }
             },
             getComposedPath: function(el) {
                 // Chrome is the only browser that has click event path
@@ -64,6 +71,12 @@
                         this.$router.push({ path: 'tilalalghaf', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
                     }
                     else if(this.selectedCommunity === 'alzahia' && neighbourhood === "uptown"){
+                        this.$router.push({ path: 'overview', query: { 'community': 'uptown' } });
+                    }
+                    else if(this.selectedCommunity === 'uptown' && neighbourhood === "woroud"){
+                        this.$router.push({ path: 'uptown', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
+                    }
+                    else if(this.selectedCommunity === 'uptown' && neighbourhood === "zohour"){
                         this.$router.push({ path: 'uptown', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
                     }
                     else {
@@ -90,6 +103,7 @@
             <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
             <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
             <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]" />
+            <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
         </div>
     </transition>
 </div>
