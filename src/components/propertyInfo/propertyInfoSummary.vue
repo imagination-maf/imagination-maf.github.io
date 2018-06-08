@@ -104,7 +104,7 @@ export default Vue.component('property-info-summary', {
             <div class="info-details">
                 <div class="info-details-item" v-if="property.availability">Availability: {{ property.availability }}</div>
                 <div class="info-details-item" v-if="property.plot_area">Plot Area: {{ property.plot_area }}m</div>
-                <div class="info-details-item" v-if="property.price">Price: <span v-if="community !== 'almouj' && community !== 'waterfrontcity'">AED</span><span v-if="community === 'almouj'">OMR</span><span v-if="community === 'waterfrontcity'">USD</span>{{ property.price.toLocaleString() }}.00</div>
+                <div class="info-details-item" v-if="property.price">Price: <span v-if="community !== 'almouj' && community !== 'waterfrontcity'">AED</span><span v-if="community === 'almouj'">OMR</span><span v-if="community === 'waterfrontcity'">USD</span>{{ property.price.toLocaleString('en-US', { minimumFractionDigits: 2 }) }}</div>
             </div>
         </div>
     </div>
