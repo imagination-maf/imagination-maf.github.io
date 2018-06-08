@@ -294,3 +294,34 @@ The final target should look something like this...
 ```
 
 To ecit chrome when running in kiosk mode, hold down the alt+tab keys and click on the close button when the running apps windows show.
+
+## Updates by freelancer: Pete Morton (pete.morton@bigbangcreative.co.uk); 04-08/06/2018
+
+Uptown Al Zahia
+
+Work was mainly focussed around adding the Uptown region in Al Zahia which had 2 districts Woroud and Zohour.
+Data is hard-coded; referenced in ./src/data/uptown.js
+No plot data was available; structure loosely followed that of tilal Al Ghaf
+
+User journey:
+1. Uptown was added as a clickable area to the alzahia svg: /overview?community=alzahia
+2. Uptown is treated as a separate community rather than a neighbourhood of Alzahia  - this was the simplest way to allow a second clickable svg to be served: overview?community=uptown
+   An exception was added to the backToMap function to reload /overview?community=alzahia when clicking back - ln 39 ./src/views/overvue.vue
+3. Zohour and Woroud are then treated as neighbourhoods of Uptown and follow the same structure as tilal Al Ghaf
+4. Data for both neighbourhoods is hard-coded; referenced in ./src/data/uptown.js
+5. New route added to ./src/router.js
+6. Most changes added to ./src/views/overvue.vue 
+7. Gallery updated at git repo: https://bitbucket.org/imagination/maf-gallery-images
+
+Waterfront City
+
+Currency changes were required for the pricing.
+1. Text change to show US as currency
+2. Correct error in formatting where '.00' had been hard-coded to the end the price string. Some api data already had .xx or .x in the string.
+   Fixed this by adding a US locale for all pricing (have assumed the format is the same for all areas here) and then requiring 2 decimal places
+   'property.price.toLocaleString('en-US', { minimumFractionDigits: 2 })' - ln 107 ./src/components/propertyInfoSummary.vue
+
+GIT Repos
+
+Have tried to make git commit comments logical and commit in small chunks.
+Separate branch was created to work from: Imagination  > MAF > maf-portfolio-vue > Branches > dev-jun-18 
