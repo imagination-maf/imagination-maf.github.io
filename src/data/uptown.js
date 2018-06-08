@@ -19,12 +19,6 @@ let sharedExteriors = [
     },
     {
         image: {
-            local: '../gallery/alzahia/uptown/woroud1/exterior/180409_cam_7_no_balcony.jpg',
-            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/exterior/180409_cam_7_no_balcony.jpg'
-        }
-    },
-    {
-        image: {
             local: '../gallery/alzahia/uptown/woroud1/exterior/180410_cam_2.jpg',
             cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/exterior/180410_cam_2.jpg'
         }
@@ -63,7 +57,7 @@ export default {
         'items': []
     },
     'zohour': {
-        'title': 'ZOHOUR',
+        'title': 'ZOHOUR 1',
         'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/exterior/180410_aerial.jpg',
         'image-local': '../gallery/alzahia/uptown/woroud1/exterior/180410_aerial.jpg',
         'items': [
@@ -208,7 +202,7 @@ export default {
         }
     },
     'woroud': {
-        'title': 'WOROUD',
+        'title': 'WOROUD 1',
         'image': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/exterior/180410_aerial.jpg',
         'image-local': '../gallery/alzahia/uptown/woroud1/exterior/180410_aerial.jpg',
         'items': [
@@ -225,7 +219,7 @@ export default {
                 'id': 'woroud1bedapartmentpremium'
             },
             {
-                'text': 'Woroud 1 - 1-Bedroom +Study',
+                'text': 'Woroud 1 - 1-Bedroom + Study',
                 'id': 'woroud1bedapartmentstudy'
             }
         ],
@@ -405,30 +399,6 @@ export default {
                         image: {
                             local: '../gallery/alzahia/uptown/woroud1/interior/1bedroomstudy/beige/180406_1BRL_BATHROOM_(BEIGE-180406).jpg',
                             cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/interior/1bedroomstudy/beige/180406_1BRL_BATHROOM_(BEIGE-180406).jpg'
-                        }
-                    },
-                    {
-                        image: {
-                            local: '../gallery/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/180406_1BRL_LIVINGROOM_(GREY-180406_1BRL_Study).jpg',
-                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/180406_1BRL_LIVINGROOM_(GREY-180406_1BRL_Study).jpg'
-                        }
-                    },
-                    {
-                        image: {
-                            local: '../gallery/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/180406_1BRL_KITCHEN_(GREY_Updated1-180409-(1BRL_Study).jpg',
-                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/180406_1BRL_KITCHEN_(GREY_Updated1-180409-(1BRL_Study).jpg'
-                        }
-                    },
-                    {
-                        image: {
-                            local: '../gallery/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/1804006_1BRL_BEDROOM_(GREY-180406-(1BRL_Study).jpg',
-                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/1804006_1BRL_BEDROOM_(GREY-180406-(1BRL_Study).jpg'
-                        }
-                    },
-                    {
-                        image: {
-                            local: '../gallery/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/180406_1BRL_BATHROOM_(GREY-180406_1BRL_Study).jpg',
-                            cloud: 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/alzahia/uptown/woroud1/interior/1bedroomstudy/grey/180406_1BRL_BATHROOM_(GREY-180406_1BRL_Study).jpg'
                         }
                     }
                 ],
