@@ -242,7 +242,7 @@ svg:not(:root) {
             position: relative;
             font-size: 1.25rem;
             line-height: 2rem;
-            margin: 0.5rem 0 1.25rem;
+            margin: 1.2rem 0 1.5rem;
             &:before {
                 content: '';
                 position: absolute;
