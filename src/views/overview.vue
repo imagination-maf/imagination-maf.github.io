@@ -67,10 +67,11 @@
                 let splitPath = path.split('_x5F_');
                 if(splitPath[splitPath.length - 1] === 'tap'){
                     let neighbourhood = splitPath[0].replace(/_/g, '').toLowerCase();
-                    if(this.selectedCommunity === 'tilalalghaf') {
+                    /* if(this.selectedCommunity === 'tilalalghaf') {
                         this.$router.push({ path: 'tilalalghaf', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
                     }
-                    else if(this.selectedCommunity === 'alzahia' && neighbourhood === "uptown"){
+                    else */
+                    if(this.selectedCommunity === 'alzahia' && neighbourhood === "uptown"){
                         this.$router.push({ path: 'overview', query: { 'community': 'uptown' } });
                     }
                     else if(this.selectedCommunity === 'uptown' && neighbourhood === "woroud"){
