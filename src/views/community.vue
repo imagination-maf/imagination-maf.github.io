@@ -74,7 +74,8 @@
                         waterfrontcity: require('../images/masterplans/waterfront-waterfront.jpg')
                     },
                     tilalalghaf: {
-                        tilalalghaf: require('../images/overalls/overview-tilalalghaf.png')
+                        serenity: require('../images/overalls/overview-tilalalghaf.png'),
+                        harmony: require('../images/overalls/overview-tilalalghaf.png')
                     }
                 },
                 propertyList: [],
@@ -176,6 +177,14 @@
                                 item.id = item.id.replace(/\s/g, '');
                                 item.aspect = item.plot_number;
                                 item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type] && galleryMapping[this.community][this.neighbourhood][item.unit_type][item.aspect] ? galleryMapping[this.community][this.neighbourhood][item.unit_type][item.aspect] : '';
+                                return item;
+                            });
+                        }
+                        if(this.community === 'tilalalghaf') {
+                            this.data = this.data.map( (item) => {
+                                item.id = item.id.replace(/\-/g, '.');
+                                item.aspect = item.aspect ? item.aspect : 'general';
+                                item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type]
                                 return item;
                             });
                         }
