@@ -7,7 +7,7 @@
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
     import WaterfrontCity from '../images/masterplans/waterfront_city_masterplan.svg';
-    import TilalAlGhaf from '../images/masterplans/al_mouj_masterplan.svg';
+    import TilalAlGhaf from '../images/masterplans/tilal_al_ghaf_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
@@ -74,8 +74,7 @@
                         waterfrontcity: require('../images/masterplans/waterfront-waterfront.jpg')
                     },
                     tilalalghaf: {
-                        serenity: require('../images/overalls/overview-tilalalghaf.png'),
-                        harmony: require('../images/overalls/overview-tilalalghaf.png')
+                        phasea: require('../images/masterplans/tilalalghaf-phasea.png')
                     }
                 },
                 propertyList: [],
@@ -145,8 +144,11 @@
                 let elementPressed = pathElements[0];
                 if(elementPressed.id){
                     let plotId = elementPressed.id.split('_').filter( (part) => part.length);
+                    console.log(plotId);
                     let plotNumber = plotId[plotId.length - 1];
+                    console.log(plotNumber);
                     let plotInfo = this.data.filter( (item) => plotNumber === item.id)[0];
+                    console.log(plotInfo);
                     if(plotInfo) this.openPropertyInfo(plotInfo);
                 }
             },

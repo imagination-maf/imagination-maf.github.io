@@ -484,5 +484,205 @@ export default {
                 }
             }
         }
+    },
+    "tilalalghaf": {
+        "harmony": {
+            "6B ULV": {
+                general: {
+                    bedrooms: '6',
+                	bathrooms: '8.5',
+                	livingrooms: '3',
+                	garages: '4'
+                }
+            },
+            "4B BGL": {
+                general: {
+                    bedrooms: '4',
+                	bathrooms: '3.5',
+                	livingrooms: '2',
+                	garages: '3'
+                }
+            },
+            "4B LV": {
+                general: {
+                    bedrooms: '4',
+                	bathrooms: '4',
+                	livingrooms: '2',
+                	garages: '3'
+                }
+            },
+            "5B LV": {
+                general: {
+                    bedrooms: '5',
+                    bathrooms: '5.5',
+                    livingrooms: '2',
+                    garages: '4'
+                }
+            },
+            "5B BGL": {
+                general: {
+                    bedrooms: '5',
+                    bathrooms: '3.5',
+                    livingrooms: '2',
+                    garages: '3'
+                }
+            },
+            "6B LV": {
+                general: {
+                    bedrooms: '6',
+                    bathrooms: '6.5',
+                    livingrooms: '3',
+                    garages: '4'
+                }
+            },
+            "3B TYP": {
+                general: {
+                    bedrooms: '3',
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            },
+            "4B TH": {
+                general: {
+                    bedrooms: '4',
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            }
+        },
+        "serenity": {
+            "6B ULV": {
+                general: {
+                    bedrooms: '6',
+                	bathrooms: '8.5',
+                	livingrooms: '3',
+                	garages: '4'
+                }
+            },
+            "4B BGL": {
+                general: {
+                    bedrooms: '4',
+                	bathrooms: '3.5',
+                	livingrooms: '2',
+                	garages: '3'
+                }
+            },
+            "4B LV": {
+                general: {
+                    bedrooms: '4',
+                	bathrooms: '4',
+                	livingrooms: '2',
+                	garages: '3'
+                }
+            },
+            "5B LV": {
+                general: {
+                    bedrooms: '5',
+                    bathrooms: '5.5',
+                    livingrooms: '2',
+                    garages: '4'
+                }
+            },
+            "5B BGL": {
+                general: {
+                    bedrooms: '5',
+                    bathrooms: '3.5',
+                    livingrooms: '2',
+                    garages: '3'
+                }
+            },
+            "6B LV": {
+                general: {
+                    bedrooms: '6',
+                    bathrooms: '6.5',
+                    livingrooms: '3',
+                    garages: '4'
+                }
+            },
+            "3B TYP": {
+                general: {
+                    bedrooms: '3',
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            },
+            "4B TH": {
+                general: {
+                    bedrooms: '4',
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            }
+        },
+        "phasea": {
+            "6B ULV": {
+                general: {
+                    bedrooms: '6',
+                	bathrooms: '8.5',
+                	livingrooms: '3',
+                	garages: '4'
+                }
+            },
+            "4B BGL": {
+                general: {
+                    bedrooms: '4',
+                	bathrooms: '3.5',
+                	livingrooms: '2',
+                	garages: '3'
+                }
+            },
+            "4B LV": {
+                general: {
+                    bedrooms: '4',
+                	bathrooms: '4',
+                	livingrooms: '2',
+                	garages: '3'
+                }
+            },
+            "5B LV": {
+                general: {
+                    bedrooms: '5',
+                    bathrooms: '5.5',
+                    livingrooms: '2',
+                    garages: '4'
+                }
+            },
+            "5B BGL": {
+                general: {
+                    bedrooms: '5',
+                    bathrooms: '3.5',
+                    livingrooms: '2',
+                    garages: '3'
+                }
+            },
+            "6B LV": {
+                general: {
+                    bedrooms: '6',
+                    bathrooms: '6.5',
+                    livingrooms: '3',
+                    garages: '4'
+                }
+            },
+            "3B TYP": {
+                general: {
+                    bedrooms: '3',
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            },
+            "4B TH": {
+                general: {
+                    bedrooms: '4',
+                    bathrooms: -1,
+                    livingrooms: -1,
+                    garages: -1
+                }
+            }
+        }
     }
 }
