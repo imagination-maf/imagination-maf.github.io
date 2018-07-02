@@ -56,9 +56,9 @@ export default {
         'app_x5F_Muscat-road--parent': 'almouj',
     },
     houseTypes: {
-        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard'],
-        'townhouse': ['Town house Plus', 'Town house'],
-        'apartment': ['Apartments', 'Apartment'],
+        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard', 'Harmony Villas', 'Harmony villas', 'harmony villas', 'Serenity Luxury Villa', 'Upper Luxury Villa'],
+        'townhouse': ['Town house Plus', 'Town house', 'Townhouse'],
+        'apartment': ['Apartments', 'Apartment', 'Harmony Bungalows'],
         'office': ['Offices']
     },
     houseTypeNames: {
@@ -106,7 +106,7 @@ export default {
         'siraj': 'SIRAJ',
         'thegardens': 'THE GARDENS',
         'zunairah': 'ZUNAIRAH',
-        'waterfrontcity': 'WATERFRONT',
+        'waterfrontcity': 'WATERFRONT CITY',
         'tilalalghaf': 'TILAL AL GHAF'
     },
     oneFilterCommunities: ['almouj', 'waterfrontcity']

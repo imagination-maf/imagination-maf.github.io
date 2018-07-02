@@ -7,7 +7,7 @@
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
     import WaterfrontCity from '../images/masterplans/waterfront_city_masterplan.svg';
-    import TilalAlGhaf from '../images/masterplans/al_mouj_masterplan.svg';
+    import TilalAlGhaf from '../images/masterplans/tilal_al_ghaf_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
@@ -74,7 +74,7 @@
                         waterfrontcity: require('../images/masterplans/waterfront-waterfront.jpg')
                     },
                     tilalalghaf: {
-                        tilalalghaf: require('../images/overalls/overview-tilalalghaf.png')
+                        phasea: require('../images/masterplans/tilalalghaf-phasea.png')
                     }
                 },
                 propertyList: [],
@@ -179,7 +179,15 @@
                                 return item;
                             });
                         }
-
+                        if(this.community === 'tilalalghaf') {
+                            this.data = this.data.map( (item) => {
+                                //item.id = item.id.replace(/\-/g, '.');
+                                console.log("item_id: ", item.id)
+                                item.aspect = item.aspect ? item.aspect : 'general';
+                                item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type]
+                                return item;
+                            });
+                        }
                         this.data = this.data.map( (item) => {
                             item.aspect = item.aspect ? item.aspect : 'general';
                             return item;
@@ -265,7 +273,7 @@
             <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                 <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                 <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
-                <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image" id="svg-image" :style="svgTransform" />
+                <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image thinner-outlines" id="svg-image" :style="svgTransform" />
                 <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
             </div>
         </div>
@@ -448,191 +456,181 @@ svg:not(:root) {
         pointer-events: none;
     }
 }
+.thinner-outlines {
+    .svg-house-icon {
+        stroke-width: .25;
+    }
+}
 
 .amenity-active {
     opacity: 1 !important;
 }
 
-.active_apartmentStudio {
-    .type_apartmentStudio {
-        &.available {
-            fill: rgba(248,151,21,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(248,151,21,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+.type_apartmentStudio {
+    &.available {
+        fill: rgba(248,151,21,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(248,151,21,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_apartment1 {
-    .type_apartment1 {
-        &.available {
-            fill: rgba(0,177,176,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,177,176,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_apartment1 {
+    &.available {
+        fill: rgba(0,177,176,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(0,177,176,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_apartment2 {
-    .type_apartment2 {
-        &.available {
-            fill: rgba(0,150,214,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,150,214,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+.type_apartment2 {
+    &.available {
+        fill: rgba(0,150,214,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(0,150,214,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_apartment3 {
-    .type_apartment3 {
-        &.available {
-            fill: rgba(95,86,98,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(95,86,98,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_apartment3 {
+    &.available {
+        fill: rgba(95,86,98,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(95,86,98,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_apartment4 {
-    .type_apartment4 {
-        &.available {
-            fill: rgba(0,70,127,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,70,127,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_apartment4 {
+    &.available {
+        fill: rgba(0,70,127,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(0,70,127,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_apartment5 {
-    .type_apartment5 {
-        &.available {
-            fill: rgba(253,185,19,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(253,185,19,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_apartment5 {
+    &.available {
+        fill: rgba(253,185,19,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(253,185,19,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_townhouse2 {
-    .type_townhouse2 {
-        &.available {
-            fill: rgba(253,185,19,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(253,185,19,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_townhouse2 {
+    &.available {
+        fill: rgba(253,185,19,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(253,185,19,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_townhouse3 {
-    .type_townhouse3 {
-        &.available {
-            fill: rgba(108,164,57,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(108,164,57,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_townhouse3 {
+    &.available {
+        fill: rgba(108,164,57,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(108,164,57,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_townhouse4 {
-    .type_townhouse4 {
-        &.available {
-            fill: rgba(0,70,127,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,70,127,0.25) !important;
-            stroke: #3C3C3D !important;
-            z-index: -1;
-        }
+
+.type_townhouse4 {
+    &.available {
+        fill: rgba(0,70,127,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(0,70,127,0.25) !important;
+        stroke: #3C3C3D !important;
+        z-index: -1;
     }
 }
 
-.active_villa3 {
-    .type_villa3 {
-        &.available {
-            fill: rgba(248,151,21,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(248,151,21,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_villa3 {
+    &.available {
+        fill: rgba(248,151,21,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(248,151,21,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_villa31 {
-    .type_villa31 {
-        &.available {
-            fill: rgba(248,151,21,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(248,151,21,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_villa31 {
+    &.available {
+        fill: rgba(248,151,21,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(248,151,21,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_villa4 {
-    .type_villa4 {
-        &.available {
-            fill: rgba(0,177,176,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,177,176,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_villa4 {
+    &.available {
+        fill: rgba(0,177,176,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(0,177,176,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_villa5 {
-    .type_villa5 {
-        &.available {
-            fill: rgba(0,150,214,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0,150,214,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_villa5 {
+    &.available {
+        fill: rgba(0,150,214,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(0,150,214,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
 
-.active_villa6 {
-    .type_villa6 {
-        &.available {
-            fill: rgba(95,86,98,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(95,86,98,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
+
+.type_villa6 {
+    &.available {
+        fill: rgba(95,86,98,0.9) !important;
+        stroke: #3C3C3D !important;
+    }
+    &.unavailable {
+        fill: rgba(95,86,98,0.25) !important;
+        stroke: #3C3C3D !important;
     }
 }
+
 </style>
