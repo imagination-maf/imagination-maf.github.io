@@ -355,8 +355,8 @@ export default {
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
-                'scale': 1,
-                'translate': [0, 0],
+                'scale': .770,
+                'translate': [-58, 12],
                 'rotate': 0
             }
         }

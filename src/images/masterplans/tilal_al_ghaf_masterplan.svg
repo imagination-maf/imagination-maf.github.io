@@ -13695,11 +13695,11 @@
 			M230.5,127c-3-0.2-5.9-0.9-8.7-2l-3.7,9.5c3.7,1.4,7.6,2.3,11.6,2.7L230.5,127z"/>
 	</g>
 	<g id="TG-A03-007">
-		<path style="fill:#f0f0f0;stroke:#333333;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
+		<path style="fill:none;stroke:#333333;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
 			M221.8,125c-2.7-1.1-5.3-2.5-7.6-4.3l-6.2,8.1c3.1,2.4,6.5,4.3,10.1,5.7L221.8,125z"/>
 	</g>
 	<g id="TG-A03-008">
-		<path style="fill:#ff0000;stroke:#333333;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
+		<path style="fill:none;stroke:#333333;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
 			M214.2,120.8c-2.3-1.8-4.4-3.9-6.1-6.3c0,0,0,0,0-0.1l-7.4,7.2c2.1,2.7,4.6,5.1,7.3,7.2L214.2,120.8z"/>
 	</g>
 	<g id="TG-B02-011">
@@ -13708,7 +13708,7 @@
 			c1.7,0.2,3.5,0.1,5.2-0.1L232.2,145.1z"/>
 	</g>
 	<g id="TG-B02-012">
-		<path style="fill:#00ff00;stroke:#333333;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
+		<path style="fill:none;stroke:#333333;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
 			M225.6,145.1l-6.4-1.6l-3.4,9.7c0.3,0.1,0.6,0.2,0.9,0.3c2.3,0.8,4.7,1.3,7.2,1.7L225.6,145.1z"/>
 	</g>
 	<g id="TG-B04-001">
