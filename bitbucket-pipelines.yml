@@ -20,3 +20,8 @@ pipelines:
           image: flyte/rancher-tools:v0.0.2
           script:
             - python deploy/deploy.py 1a5 maf-live --https-port 10443
+
+definitions:
+  services:
+    docker:
+      memory: 2048
