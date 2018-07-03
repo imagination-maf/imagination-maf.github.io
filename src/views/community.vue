@@ -466,171 +466,186 @@ svg:not(:root) {
     opacity: 1 !important;
 }
 
-.type_apartmentStudio {
-    &.available {
-        fill: rgba(248,151,21,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(248,151,21,0.25) !important;
-        stroke: #3C3C3D !important;
-    }
-}
-
-
-.type_apartment1 {
-    &.available {
-        fill: rgba(0,177,176,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(0,177,176,0.25) !important;
-        stroke: #3C3C3D !important;
+.active_apartmentStudio {
+    .type_apartmentStudio {
+        &.available {
+            fill: rgba(248,151,21,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(248,151,21,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
     }
 }
 
-.type_apartment2 {
-    &.available {
-        fill: rgba(0,150,214,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(0,150,214,0.25) !important;
-        stroke: #3C3C3D !important;
-    }
-}
-
-
-.type_apartment3 {
-    &.available {
-        fill: rgba(95,86,98,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(95,86,98,0.25) !important;
-        stroke: #3C3C3D !important;
+.active_apartment1 {
+    .type_apartment1 {
+        &.available {
+            fill: rgba(0,177,176,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,177,176,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
     }
 }
 
-
-.type_apartment4 {
-    &.available {
-        fill: rgba(0,70,127,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(0,70,127,0.25) !important;
-        stroke: #3C3C3D !important;
-    }
-}
-
-
-.type_apartment5 {
-    &.available {
-        fill: rgba(253,185,19,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(253,185,19,0.25) !important;
-        stroke: #3C3C3D !important;
+.active_apartment2 {
+    .type_apartment2 {
+        &.available {
+            fill: rgba(0,150,214,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,150,214,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
     }
 }
 
-
-.type_townhouse2 {
-    &.available {
-        fill: rgba(253,185,19,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(253,185,19,0.25) !important;
-        stroke: #3C3C3D !important;
-    }
-}
-
-
-.type_townhouse3 {
-    &.available {
-        fill: rgba(108,164,57,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(108,164,57,0.25) !important;
-        stroke: #3C3C3D !important;
+.active_apartment3 {
+    .type_apartment3 {
+        &.available {
+            fill: rgba(95,86,98,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(95,86,98,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
     }
 }
 
-
-.type_townhouse4 {
-    &.available {
-        fill: rgba(0,70,127,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(0,70,127,0.25) !important;
-        stroke: #3C3C3D !important;
-        z-index: -1;
-    }
-}
-
-
-.type_villa3 {
-    &.available {
-        fill: rgba(248,151,21,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(248,151,21,0.25) !important;
-        stroke: #3C3C3D !important;
+.active_apartment4 {
+    .type_apartment4 {
+        &.available {
+            fill: rgba(0,70,127,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,70,127,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
     }
 }
 
-
-.type_villa31 {
-    &.available {
-        fill: rgba(248,151,21,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(248,151,21,0.25) !important;
-        stroke: #3C3C3D !important;
-    }
-}
-
-
-.type_villa4 {
-    &.available {
-        fill: rgba(0,177,176,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(0,177,176,0.25) !important;
-        stroke: #3C3C3D !important;
+.active_apartment5 {
+    .type_apartment5 {
+        &.available {
+            fill: rgba(253,185,19,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(253,185,19,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
     }
 }
 
-
-.type_villa5 {
-    &.available {
-        fill: rgba(0,150,214,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(0,150,214,0.25) !important;
-        stroke: #3C3C3D !important;
-    }
-}
-
-
-.type_villa6 {
-    &.available {
-        fill: rgba(95,86,98,0.9) !important;
-        stroke: #3C3C3D !important;
-    }
-    &.unavailable {
-        fill: rgba(95,86,98,0.25) !important;
-        stroke: #3C3C3D !important;
+.active_townhouse2 {
+    .type_townhouse2 {
+        &.available {
+            fill: rgba(253,185,19,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(253,185,19,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
     }
 }
 
+.active_townhouse3 {
+    .type_townhouse3 {
+        &.available {
+            fill: rgba(108,164,57,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(108,164,57,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.active_townhouse4 {
+    .type_townhouse4 {
+        &.available {
+            fill: rgba(0,70,127,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,70,127,0.25) !important;
+            stroke: #3C3C3D !important;
+            z-index: -1;
+        }
+    }
+}
+
+.active_villa3 {
+    .type_villa3 {
+        &.available {
+            fill: rgba(248,151,21,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(248,151,21,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.active_villa31 {
+    .type_villa31 {
+        &.available {
+            fill: rgba(248,151,21,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(248,151,21,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.active_villa4 {
+    .type_villa4 {
+        &.available {
+            fill: rgba(0,177,176,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,177,176,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.active_villa5 {
+    .type_villa5 {
+        &.available {
+            fill: rgba(0,150,214,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0,150,214,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.active_villa6 {
+    .type_villa6 {
+        &.available {
+            fill: rgba(95,86,98,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(95,86,98,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
 </style>
