@@ -182,7 +182,7 @@
                         if(this.community === 'tilalalghaf') {
                             this.data = this.data.map( (item) => {
                                 //item.id = item.id.replace(/\-/g, '.');
-                                console.log("item_id: ", item.id)
+                                console.log("item_type: ", item.type)
                                 item.aspect = item.aspect ? item.aspect : 'general';
                                 item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type]
                                 return item;
@@ -644,6 +644,43 @@ svg:not(:root) {
         }
         &.unavailable {
             fill: rgba(95,86,98,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
+.active_bungalow4 {
+    .type_bungalow4 {
+        &.available {
+            fill: rgba(135,43,192,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(135,43,192,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_bungalow5 {
+    .type_bungalow5 {
+        &.available {
+            fill: rgba(255,166,0,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(255,166,0,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_bungalow6 {
+    .type_bungalow6 {
+        &.available {
+            fill: rgba(180,180,160,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(180,180,160,0.25) !important;
             stroke: #3C3C3D !important;
         }
     }

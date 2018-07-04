@@ -58,8 +58,9 @@ export default {
     houseTypes: {
         'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard', 'Harmony Villas', 'Harmony villas', 'harmony villas', 'Serenity Luxury Villa', 'Upper Luxury Villa'],
         'townhouse': ['Town house Plus', 'Town house', 'Townhouse'],
-        'apartment': ['Apartments', 'Apartment', 'Harmony Bungalows'],
-        'office': ['Offices']
+        'apartment': ['Apartments', 'Apartment'],
+        'office': ['Offices'],
+        'bungalow': ['Harmony Bungalows']
     },
     houseTypeNames: {
         'apartmentStudio': 'Apartment Studio',
@@ -68,6 +69,12 @@ export default {
         'apartment3': '3-Bedroom Apartment',
         'apartment4': '4-Bedroom Apartment',
         'apartment5': '5-Bedroom Apartment',
+        'bungalow1' : '1-Bedroom Bungalow',
+        'bungalow2' : '2-Bedroom Bungalow',
+        'bungalow3' : '3-Bedroom Bungalow',
+        'bungalow4' : '4-Bedroom Bungalow',
+        'bungalow5' : '5-Bedroom Bungalow',
+        'bungalow6' : '6-Bedroom Bungalow',
         'townhouse2': '2-Bedroom Townhouse',
         'townhouse3': '3-Bedroom Townhouse',
         'townhouse4': '4-Bedroom Townhouse',
