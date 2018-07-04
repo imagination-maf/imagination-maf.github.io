@@ -307,5 +307,26 @@ export default Vue.component('property-filter', {
             border-color: rgb(95,86,98);
         }
     }
+    &.bungalow4 {
+        &.available {
+            background-color: rgb(135,43,192);
+            border-color: rgb(135,43,192);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(200,120,250);
+        }
+    }
+    
+    &.bungalow5 {
+        &.available {
+            background-color: rgb(255, 166, 0);
+            border-color: rgb(255, 166, 0);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(255, 166, 0);
+        }
+    }
 }
 </style>
