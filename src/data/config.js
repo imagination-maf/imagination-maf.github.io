@@ -56,11 +56,13 @@ export default {
         'app_x5F_Muscat-road--parent': 'almouj',
     },
     houseTypes: {
-        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard', 'Harmony Villas', 'Harmony villas', 'harmony villas', 'Serenity Luxury Villa', 'Upper Luxury Villa'],
+        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard'],
+        'harmony_villa': ['Harmony Villas', 'Harmony villas', 'harmony villas'],
+        'serenity_villa': [ 'Serenity Luxury Villa', 'Upper Luxury Villa' ],
         'townhouse': ['Town house Plus', 'Town house', 'Townhouse'],
         'apartment': ['Apartments', 'Apartment'],
         'office': ['Offices'],
-        'bungalow': ['Harmony Bungalows']
+        'harmony_bungalow': ['Harmony Bungalows']
     },
     houseTypeNames: {
         'apartmentStudio': 'Apartment Studio',
@@ -82,7 +84,15 @@ export default {
         'villa4': '4-Bedroom Villa',
         'villa5': '5-Bedroom Villa',
         'villa6': '6-Bedroom Villa',
-        'villa31': '3+1-Bedroom Villa'
+        'villa31': '3+1-Bedroom Villa',
+        'harmony_bungalow4': 'Harmony Bungalow 4-Bedrooms',
+        'harmony_bungalow5': 'Harmony Bungalow 5-Bedrooms',
+        'harmony_villa4': 'Harmony Villa 4-Bedrooms',
+        'harmony_villa5': 'Harmony Villa 5-Bedrooms',
+        'harmony_villa6': 'Harmony Villa 6-Bedrooms',
+        'serenity_villa5': 'Serenity Luxury Villa 5-Bedrooms',
+        'serenity_villa6': 'Serenity Luxury Villa 6-Bedrooms',
+
     },
     neighbourhoodNames: {
         'allilac': 'AL LILAC',

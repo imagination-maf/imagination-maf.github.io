@@ -151,6 +151,7 @@
             },
             getData: function(query) {
                 let url = query ? config.url[config.mode] + 'maf_plot?' + query : config.url[config.mode] + 'maf_plot';
+                console.log(url);
                 return axios({
                     method: 'GET',
                     url: url,
@@ -182,11 +183,11 @@
                         if(this.community === 'tilalalghaf') {
                             this.data = this.data.map( (item) => {
                                 //item.id = item.id.replace(/\-/g, '.');
-                                console.log("item_type: ", item.type)
                                 item.aspect = item.aspect ? item.aspect : 'general';
                                 item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type]
                                 return item;
                             });
+
                         }
                         this.data = this.data.map( (item) => {
                             item.aspect = item.aspect ? item.aspect : 'general';
@@ -205,7 +206,6 @@
 
                         let plotBoundaryContainer = communityPositions[this.community][this.neighbourhood].plot_boundary;
                         let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
-
                         for(let index = 0; index < plotBoundaries.length; index++) {
                             let dataItem = this.data.filter( (item) => {
                                 if(this.community === 'almouj') {
@@ -215,12 +215,19 @@
                             })[0];
 
                             if(dataItem) {
-                                // console.log(dataItem);
+                                
 
                                 let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 
                                 let beds = dataItem.bedrooms.replace(/\D/g, '');
                                 let propertyType = type + beds;
+
+                                //Townhouse 4 bedroom from tilalalghaf removed here
+                                if(this.community === 'tilalalghaf' && beds == 4 && dataItem.type === "Town house"){
+                                    console.log("Here");
+                                    continue;
+                                }
+
                                 if(beds && propertyType) {
                                     plotBoundaries[index].classList.add('svg-house-icon');
                                     plotBoundaries[index].classList.add('type_' + propertyType);
@@ -231,7 +238,6 @@
                                 }
                             }
                         }
-
                         this.loaded = true;
 
                     }, (err) => {
@@ -685,4 +691,90 @@ svg:not(:root) {
         }
     }
 }
+
+.active_harmony_bungalow4 {
+    .type_harmony_bungalow4 {
+        &.available {
+            fill: rgba(248, 151, 21, 0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(248, 151, 21, 0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_harmony_bungalow5 {
+    .type_harmony_bungalow5 {
+        &.available {
+            fill: rgba(108, 164, 57, 0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(108, 164, 57, 0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_harmony_villa4 {
+    .type_harmony_villa4 {
+        &.available {
+            fill: rgba(0, 177, 176, 0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0, 177, 176,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_harmony_villa5 {
+    .type_harmony_villa5 {
+        &.available {
+            fill: rgba(0, 150, 214, 0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0, 150, 214, 0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_harmony_villa6 {
+    .type_harmony_villa6 {
+        &.available {
+            fill: rgba(95, 96, 98, 0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(95, 96, 98,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_serenity_villa5 {
+    .type_serenity_villa5 {
+        &.available {
+            fill: rgba(0, 150, 214,0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(0, 150, 214,0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+.active_serenity_villa6 {
+    .type_serenity_villa6 {
+        &.available {
+            fill: rgba(253, 185, 19, 0.9) !important;
+            stroke: #3C3C3D !important;
+        }
+        &.unavailable {
+            fill: rgba(253, 185, 19, 0.25) !important;
+            stroke: #3C3C3D !important;
+        }
+    }
+}
+
 </style>

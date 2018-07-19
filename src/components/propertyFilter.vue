@@ -328,5 +328,85 @@ export default Vue.component('property-filter', {
             border-color: rgb(255, 166, 0);
         }
     }
+
+
+
+    &.harmony_villa4 {
+        &.available {
+            background-color: rgb(0, 177, 176);
+            border-color: rgb(0, 177, 176);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(0, 177, 176);
+        }
+    }
+
+    &.harmony_bungalow4 {
+        &.available {
+            background-color: rgb(248, 151, 21);
+            border-color: rgb(248, 151, 21);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(248, 151, 21);
+        }
+    }
+
+    &.harmony_bungalow5 {
+        &.available {
+            background-color: rgb(108, 164, 57);
+            border-color: rgb(108, 164, 57);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(108, 164, 57);
+        }
+    }
+
+    &.harmony_villa5 {
+        &.available {
+            background-color: rgb(0, 150, 214);
+            border-color: rgb(0, 150, 214);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(0, 150, 214);
+        }
+    }
+
+    &.harmony_villa6 {
+        &.available {
+            background-color: rgb(95, 96, 98);
+            border-color: rgb(95, 96, 98);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(95, 96, 98);
+        }
+    }
+
+    &.serenity_villa5 {
+        &.available {
+            background-color: rgb(0, 150, 214);
+            border-color: rgb(0, 150, 214);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(0, 150, 214);
+        }
+    }
+
+    &.serenity_villa6 {
+        &.available {
+            background-color: rgb(253, 185, 19);
+            border-color: rgb(253, 185, 19);
+        }
+        &.unavailable {
+            background-color: transparent;
+            border-color: rgb(253, 185, 19);
+        }
+    }
+
 }
 </style>

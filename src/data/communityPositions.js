@@ -351,7 +351,7 @@ export default {
             }
         },
         phasea: {
-            'fullname': 'SERENITY & HARMONY',
+            'fullname': 'HARMONY & SERENITY',
             'plot_boundary': 'PLOT_BOUNDARIES',
             'amenities': [],
             'svg': {
