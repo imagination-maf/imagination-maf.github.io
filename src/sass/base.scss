@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html,
+body,
+main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.app {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea,
+li {
+    font-family: "MarselisPro";
+    color: #4A4A4A;
+}
+
+button {
+    border: none;
+    outline: none;
+}

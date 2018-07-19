@@ -1,0 +1,130 @@
+export default {
+    'mode': 'staging',
+    'url': {
+        'staging': 'https://staging.imagination-maf.com/api/',
+        'live': ''
+    },
+    'server': {
+        'browserSyncPort': 11100,
+        'httpPort': 8888,
+        'wsPort': 11099,
+        'wsNS': 'MAF_PORTFOLIO'
+    },
+    'galleryUrl': 'https://s3-eu-west-1.amazonaws.com/maf-gallery-images/',
+    'localUrl': '/gallery/',
+    'masterplan-inactive': [],
+    'mappings': {
+        'app_x5F_Sharjah-road--parent': 'alzahia',
+        'app_x5F_Muscat-road--parent': 'almouj',
+        'app_x5F_Lebanon-road--parent': 'waterfrontcity',
+        'app_x5F_Dubai-road--parent': 'tilalalghaf'
+    },
+    markerDefault: [
+        {
+            'id': 'app_x5F_world--parent',
+            'marker': null
+        },
+        {
+            'id': 'app_x5F_UAE--parent',
+            'marker': 'uae'
+        },
+        {
+            'id': 'app_x5F_Oman--parent',
+            'marker': 'oman'
+        },
+        {
+            'id': 'app_x5F_Lebanon-region--parent',
+            'marker': 'lebanon'
+        }
+    ],
+    availablityMap: {
+        'available': ['Available'],
+        'unavailable': ['Sold', 'Sale pending', 'Unavailable', 'Booked', 'Reserved', 'Unassigned']
+    },
+    logoMapping: {
+        'app_x5F_world--parent': 'maf',
+        'app_x5F_UAE--parent': 'maf',
+        'app_x5F_Sharjah--parent': 'alzahia',
+        'app_x5F_Sharjah-road--parent': 'alzahia',
+        'app_x5F_Dubai--parent': 'tilalalghaf',
+        'app_x5F_Dubai-road--parent': 'tilalalghaf',
+        'app_x5F_Lebanon-region--parent': 'waterfrontcity',
+        'app_x5F_Lebanon--parent': 'waterfrontcity',
+        'app_x5F_Lebanon-road--parent': 'waterfrontcity',
+        'app_x5F_Oman--parent': 'almouj',
+        'app_x5F_Muscat--parent': 'almouj',
+        'app_x5F_Muscat-road--parent': 'almouj',
+    },
+    houseTypes: {
+        'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard'],
+        'harmony_villa': ['Harmony Villas', 'Harmony villas', 'harmony villas'],
+        'serenity_villa': [ 'Serenity Luxury Villa', 'Upper Luxury Villa' ],
+        'townhouse': ['Town house Plus', 'Town house', 'Townhouse'],
+        'apartment': ['Apartments', 'Apartment'],
+        'office': ['Offices'],
+        'harmony_bungalow': ['Harmony Bungalows']
+    },
+    houseTypeNames: {
+        'apartmentStudio': 'Apartment Studio',
+        'apartment1': '1-Bedroom Apartment',
+        'apartment2': '2-Bedroom Apartment',
+        'apartment3': '3-Bedroom Apartment',
+        'apartment4': '4-Bedroom Apartment',
+        'apartment5': '5-Bedroom Apartment',
+        'bungalow1' : '1-Bedroom Bungalow',
+        'bungalow2' : '2-Bedroom Bungalow',
+        'bungalow3' : '3-Bedroom Bungalow',
+        'bungalow4' : '4-Bedroom Bungalow',
+        'bungalow5' : '5-Bedroom Bungalow',
+        'bungalow6' : '6-Bedroom Bungalow',
+        'townhouse2': '2-Bedroom Townhouse',
+        'townhouse3': '3-Bedroom Townhouse',
+        'townhouse4': '4-Bedroom Townhouse',
+        'villa3': '3-Bedroom Villa',
+        'villa4': '4-Bedroom Villa',
+        'villa5': '5-Bedroom Villa',
+        'villa6': '6-Bedroom Villa',
+        'villa31': '3+1-Bedroom Villa',
+        'harmony_bungalow4': 'Harmony Bungalow 4-Bedrooms',
+        'harmony_bungalow5': 'Harmony Bungalow 5-Bedrooms',
+        'harmony_villa4': 'Harmony Villa 4-Bedrooms',
+        'harmony_villa5': 'Harmony Villa 5-Bedrooms',
+        'harmony_villa6': 'Harmony Villa 6-Bedrooms',
+        'serenity_villa5': 'Serenity Luxury Villa 5-Bedrooms',
+        'serenity_villa6': 'Serenity Luxury Villa 6-Bedrooms',
+
+    },
+    neighbourhoodNames: {
+        'allilac': 'AL LILAC',
+        'aljouri': 'AL JOURI',
+        'alnarjis': 'AL NARJIS',
+        'gardenapts': 'GARDEN APARTMENTS',
+        'acacia': 'ACACIA',
+        'almeriaeast': 'ALMERIA EAST',
+        'almerianorth': 'ALMERIA NORTH',
+        'almeriasouth': 'ALMERIA SOUTH',
+        'beachlink': 'BEACH LINK',
+        'ghadeerparks': 'GHADEER PARKS',
+        'juman1': 'JUMAN 1',
+        'juman2': 'JUMAN 2',
+        'liwan': 'LIWAN',
+        'luban': 'LUBAN',
+        'marsa1': 'MARSA 1',
+        'marsa2': 'MARSA 2',
+        'marsa3': 'MARSA 3',
+        'marsagardens': 'MARSA GARDENS',
+        'neem': 'NEEM',
+        'reehangardens': 'REEHAN GARDENS',
+        'reehanresidence': 'REEHAN RESIDENCE',
+        'sector1': 'SECTOR 1',
+        'sector2': 'SECTOR 2',
+        'sector3': 'SECTOR 3',
+        'sector4': 'SECTOR 4',
+        'siraj': 'SIRAJ',
+        'thegardens': 'THE GARDENS',
+        'zunairah': 'ZUNAIRAH',
+        'waterfrontcity': 'WATERFRONT CITY',
+        'tilalalghaf': 'TILAL AL GHAF'
+    },
+    oneFilterCommunities: ['almouj', 'waterfrontcity']
+}

@@ -1,0 +1,7 @@
+{
+    "short_name": "MAF Communities",
+    "name": "MAF Communities",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "landscape"
+}
