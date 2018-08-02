@@ -19,6 +19,7 @@
             Uptown
         },
         data() {
+            this.zoomed = false;
             return {
                 svgScale: null,
                 images: {
@@ -85,7 +86,35 @@
                     }
 
                 }
-            }
+            },
+
+            locationImageContainerZoomIn: function() {
+                let soldOutContainer = document.getElementById("community_image");
+
+                soldOutContainer.setAttribute("style","transform:scale(2, 2)");
+                this.zoomed = true;
+            },
+            locationImageContainerZoomOut: function() {
+                let soldOutContainer = document.getElementById("community_image");
+                soldOutContainer.setAttribute("style","transform:scale(1)");
+                this.zoomed = false;
+            },
+            locationImageContainerMoveRight: function() {
+                console.log(this.zoomed);
+                if (this.zoomed){
+                    let soldOutContainer = document.getElementById("community_image");
+                    soldOutContainer.setAttribute("style","transform:scale(2, 2)");
+                    soldOutContainer.setAttribute("style","transform:translateX(100px)");
+                }
+            },
+            locationImageContainerMoveLeft: function() {
+                console.log(this.zoomed);
+                if (this.zoomed){
+                    let soldOutContainer = document.getElementById("community_image");
+                    soldOutContainer.setAttribute("style","transform:scale(2, 2)");
+                    soldOutContainer.setAttribute("style","transform:translateX(100px)");
+                }
+            },
         },
         mounted() {
             let svgImage = document.getElementById('svg');
@@ -98,14 +127,16 @@
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
-        <div class="container" @click="svgPressed($event)">
-            <img class="image" :src="images[selectedCommunity]" />
-            <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
-            <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
-            <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
-            <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]" />
-            <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
-        </div>
+        <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut">
+            <div class="container" @click="svgPressed($event)" id="container-zoom">
+                <img class="image" :src="images[selectedCommunity]" id="community_image"/>
+                <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+                <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
+                <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
+                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]" />
+                <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
+            </div>
+        </v-touch>
     </transition>
 </div>
 </template>

@@ -22,7 +22,15 @@ export default Vue.component('property-info-floorplan', {
         },
         backToSummary: function() {
             this.$emit('changeView', 'summary');
-        }
+        },
+        imageContainerZoomIn: function() {
+            let imageContainer = document.getElementById("image-container");
+            imageContainer.setAttribute("style","transform:scale(2)");
+        },
+        imageContainerZoomOut: function() {
+            let imageContainer = document.getElementById("image-container");
+            imageContainer.setAttribute("style","transform:scale(1)");
+        },
     }
 });
 </script>
@@ -30,11 +38,13 @@ export default Vue.component('property-info-floorplan', {
 <template>
     <div class="info-floorplan">
         <h3 class="info-title">FLOORPLAN</h3>
-        <div class="info-image-container">
-            <img v-for="(plan, i) in floorplan" v-if="i === slide" class="info-image" :src="url + plan" />
-            <button v-if="floorplan.length > 1" class="arrow left" type="button" @click="changeSlide(-1)"></button>
-            <button v-if="floorplan.length > 1" class="arrow right" type="button" @click="changeSlide(1)"></button>
-        </div>
+        <v-touch v-on:pinchout="imageContainerZoomIn" v-on:pinchin="imageContainerZoomOut">
+            <div class="info-image-container" id="image-container">
+                <img v-for="(plan, i) in floorplan" v-if="i === slide" class="info-image" :src="url + plan" />
+                <button v-if="floorplan.length > 1" class="arrow left" type="button" @click="changeSlide(-1)"></button>
+                <button v-if="floorplan.length > 1" class="arrow right" type="button" @click="changeSlide(1)"></button>
+            </div>
+        </v-touch>
         <div class="pagination" v-if="floorplan.length > 1">
             <div v-for="(page, index) in floorplan" class="pagination-item" :class="{'active': index === slide}" @click="changeToSlideNum(index)"></div>
         </div>

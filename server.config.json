@@ -1,6 +1,6 @@
 {
     "ports": {
-        "http": 3000,
+        "http": 8888,
         "browsersync": 11100,
         "websocket": 11099,
         "websocketNS": "MAF_PORTFOLIO"

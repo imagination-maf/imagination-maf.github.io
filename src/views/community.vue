@@ -1,5 +1,7 @@
 <script>
     import Vue from 'vue';
+    var VueTouch = require('vue-touch');
+    Vue.use(VueTouch, {name: 'v-touch'});
     import AppHeader from '../components/header.vue';
     import PropertyFilter from '../components/propertyFilter.vue';
     import PropertyInfo from '../components/propertyInfo.vue';
@@ -27,6 +29,8 @@
         },
         data() {
             return {
+                soldOutContainerWidth: 0,
+                soldOutContainerHeight: 0,
                 loaded: false,
                 oneFilterCommunity: config.oneFilterCommunities.indexOf(this.$route.query.community) !== -1,
                 propertyTypeFilter: {},
@@ -159,10 +163,39 @@
                         'Authorization': 'Basic ' + btoa('maf:25st0rest')
                     }
                 })
-            }
+            },
+            soldOutContainerZoomIn: function() {
+                let soldOutContainer = document.getElementById("sold-out");
+                let soldOutContainerCurrentWidth = soldOutContainer.clientWidth;
+                let soldOutContainerNewWidth = soldOutContainerCurrentWidth + 25;
+                soldOutContainer.setAttribute("style","width:" + soldOutContainerNewWidth + "px");
+
+            },
+            soldOutContainerZoomOut: function() {
+                let soldOutContainer = document.getElementById("sold-out");
+                let soldOutContainerCurrentWidth = soldOutContainer.clientWidth;
+                let soldOutContainerNewWidth = soldOutContainerCurrentWidth - 10;
+                if ((soldOutContainerNewWidth / window.innerWidth) * 100 < 70)
+                    soldOutContainer.setAttribute("style","width:70%");
+                else
+                    soldOutContainer.setAttribute("style","width:" + soldOutContainerNewWidth + "px");
+            },
+            locationImageContainerZoomIn: function() {
+                let soldOutContainer = document.getElementById("png-image");
+
+                soldOutContainer.setAttribute("style","transform:scale(2, 2)");
+                this.zoomed = true;
+            },
+            locationImageContainerZoomOut: function() {
+                let soldOutContainer = document.getElementById("png-image");
+                soldOutContainer.setAttribute("style","transform:scale(1)");
+                this.zoomed = false;
+            },
         },
         mounted() {
             let pngImage = document.getElementById('png-image');
+             
+            
             pngImage.addEventListener('load', () => {
                 // add query here
                 if(soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
@@ -269,38 +302,52 @@
 </script>
 
 <template>
+
 <div class="app">
     <AppHeader :logo="community" back="true" v-on:back="backToOverview" />
-    <div class="container" :class="{'blur': soldOutDetails}">
-        <div id="area" :class="{ 'visible': loaded, 'one-community': this.oneFilterCommunity }">
-            <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
-                <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
+    
+        <div class="container" :class="{'blur': soldOutDetails}" id="container_zoom">
+            <div id="area" :class="{ 'visible': loaded, 'one-community': this.oneFilterCommunity }">
+                
+                    <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
+                        <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
+                    </div>
+
+                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut">
+                    <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
+                        <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
+                        <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
+                        <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image thinner-outlines" id="svg-image" :style="svgTransform" />
+                        <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
+                    </div>
+                    </v-touch>
+                
             </div>
-            <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
-                <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
-                <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
-                <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image thinner-outlines" id="svg-image" :style="svgTransform" />
-                <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
-            </div>
+            <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
+            <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
         </div>
-        <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
-        <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
-    </div>
+    
     <div class="sold-out" v-if="soldOutDetails">
-        <div class="sold-out-content">
+        <div class="sold-out-content" id="sold-out">
             <h2 class="sold-out-title">{{ soldOutDetails.title }}</h2>
             <div class="sold-out-row">
                 <p class="sold-out-text" v-html="soldOutDetails.text"></p>
+                
                 <div class="sold-out-image-container">
-                    <img v-if="!table" class="sold-out-image" :src="soldOutDetails.image" />
-                    <img v-if="table" class="sold-out-image" :src="soldOutDetails['image-local']" />
-                    <span class="sold-out-image-text">{{ soldOutDetails['image-text'] }}</span>
+                    <v-touch v-on:pinchout="soldOutContainerZoomIn" v-on:pinchin="soldOutContainerZoomOut">
+                        <img v-if="!table" class="sold-out-image" :src="soldOutDetails.image" />
+                        <img v-if="table" class="sold-out-image" :src="soldOutDetails['image-local']" />
+                        <span class="sold-out-image-text">{{ soldOutDetails['image-text'] }}</span>
+                    </v-touch>
                 </div>
+                
             </div>
-            <button class="sold-out-button" @click="backToOverview()">Back to the Masterplan</button>
+             <button class="sold-out-button">Back to the Masterplan</button>
+
         </div>
     </div>
 </div>
+
 </template>
 
 <style lang="scss" scoped>
