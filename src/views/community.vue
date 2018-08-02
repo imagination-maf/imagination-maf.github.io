@@ -183,13 +183,30 @@
             locationImageContainerZoomIn: function() {
                 let soldOutContainer = document.getElementById("png-image");
 
-                soldOutContainer.setAttribute("style","transform:scale(2, 2)");
+                soldOutContainer.setAttribute("style","transform:scale(1.75, 1.75)");
+                
                 this.zoomed = true;
             },
             locationImageContainerZoomOut: function() {
                 let soldOutContainer = document.getElementById("png-image");
                 soldOutContainer.setAttribute("style","transform:scale(1)");
                 this.zoomed = false;
+            },
+            locationImageContainerPanLeft: function() {
+                if (this.zoomed){
+                    let soldOutContainer = document.getElementById("png-image");
+                    console.log("Zoomed and trying to pan left");
+                    soldOutContainer.setAttribute("style","transform:translateX(700px) scale(1.75, 1.75)");
+                }
+                
+            },
+            locationImageContainerPanRight: function() {
+                if (this.zoomed){
+                    let soldOutContainer = document.getElementById("png-image");
+                    console.log("Zoomed and trying to pan right");
+                    soldOutContainer.setAttribute("style","transform:translateX(-700px) scale(2, 2)");
+                }
+                
             },
         },
         mounted() {
@@ -313,7 +330,7 @@
                         <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
                     </div>
 
-                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut">
+                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:panleft="locationImageContainerPanLeft" v-on:panright="locationImageContainerPanRight" >
                     <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                         <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                         <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
