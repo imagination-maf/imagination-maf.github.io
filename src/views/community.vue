@@ -181,6 +181,7 @@
                     soldOutContainer.setAttribute("style","width:" + soldOutContainerNewWidth + "px");
             },
             locationImageContainerZoomIn: function() {
+                console.log("Works");
                 let soldOutContainer = document.getElementById("png-image");
 
                 soldOutContainer.setAttribute("style","transform:scale(1.75, 1.75)");
@@ -193,6 +194,7 @@
                 this.zoomed = false;
             },
             locationImageContainerPanLeft: function() {
+                console.log("boolean");
                 if (this.zoomed){
                     let soldOutContainer = document.getElementById("png-image");
                     console.log("Zoomed and trying to pan left");
