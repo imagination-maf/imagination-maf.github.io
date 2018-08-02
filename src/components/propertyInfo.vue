@@ -1,5 +1,7 @@
 <script>
-import Vue from 'vue';
+import Vue from 'vue';    
+var VueTouch = require('vue-touch');
+Vue.use(VueTouch, {name: 'v-touch'});
 import PropertyInfoSummary from './propertyInfo/propertyInfoSummary.vue';
 import PropertyInfoFloorplan from './propertyInfo/propertyInfoFloorplan.vue';
 import PropertyInfoTour from './propertyInfo/propertyInfoTour.vue';
@@ -24,7 +26,7 @@ export default Vue.component('property-info', {
         },
         changeView: function(key) {
             this.currentView = key;
-        }
+        },
     }
 });
 </script>

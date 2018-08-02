@@ -1,6 +1,7 @@
 <script>
     import Vue from 'vue';
-
+    var VueTouch = require('vue-touch');
+    Vue.use(VueTouch, {name: 'v-touch'});
     import AlZahia from '../images/overalls/overview-alzahia.svg';
     import AlMouj from '../images/overalls/overview-almouj.svg';
     import WaterfrontCity from '../images/overalls/overview-waterfront.svg';
@@ -19,6 +20,7 @@
             Uptown
         },
         data() {
+            this.zoomed = false;
             return {
                 svgScale: null,
                 images: {
@@ -85,7 +87,47 @@
                     }
 
                 }
-            }
+            },
+
+            locationImageContainerZoomIn: function() {
+                let locationImageContainer = document.getElementById("community_image");
+
+                locationImageContainer.setAttribute("style","transform:scale(2, 2)");
+                this.zoomed = true;
+            },
+            locationImageContainerZoomOut: function() {
+                let locationImageContainer = document.getElementById("community_image");
+                locationImageContainer.setAttribute("style","transform:scale(1)");
+                this.zoomed = false;
+            },
+            locationImageContainerMoveRight: function() {
+                if (this.zoomed){
+                    let locationImageContainer = document.getElementById("community_image");
+                    locationImageContainer.setAttribute("style","transform:translateX(700px) scale(2, 2)");
+                }
+
+            },
+            locationImageContainerMoveLeft: function() {
+                if (this.zoomed){
+                    let locationImageContainer = document.getElementById("community_image");
+                    locationImageContainer.setAttribute("style","transform:translateX(-700px) scale(2, 2)");
+                }
+            },
+            locationImageContainerMoveUp: function() {
+                if (this.zoomed){
+                    console.log("Pan up");
+                    let locationImageContainer = document.getElementById("community_image");
+                    locationImageContainer.setAttribute("style","transform:translateY(300px) scale(2, 2)");
+                }
+
+            },
+            locationImageContainerMoveDown: function() {
+                if (this.zoomed){
+                    console.log("Pan up");
+                    let locationImageContainer = document.getElementById("community_image");
+                    locationImageContainer.setAttribute("style","transform:translateY(-300px) scale(2, 2)");
+                }
+            },
         },
         mounted() {
             let svgImage = document.getElementById('svg');
@@ -98,14 +140,16 @@
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
-        <div class="container" @click="svgPressed($event)">
-            <img class="image" :src="images[selectedCommunity]" />
-            <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
-            <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
-            <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
-            <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]" />
-            <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
-        </div>
+        <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:panleft="locationImageContainerMoveLeft" v-on:panright="locationImageContainerMoveRight"  v-on:panup="locationImageContainerMoveUp" v-on:pandown="locationImageContainerMoveDown">
+            <div class="container" @click="svgPressed($event)" id="container-zoom">
+                <img class="image" :src="images[selectedCommunity]" id="community_image"/>
+                <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+                <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
+                <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
+                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]" />
+                <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
+            </div>
+        </v-touch>
     </transition>
 </div>
 </template>
