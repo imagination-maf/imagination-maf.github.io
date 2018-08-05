@@ -181,32 +181,29 @@
                     soldOutContainer.setAttribute("style","width:" + soldOutContainerNewWidth + "px");
             },
             locationImageContainerZoomIn: function() {
-                console.log("Works");
-                let soldOutContainer = document.getElementById("png-image");
-
-                soldOutContainer.setAttribute("style","transform:scale(1.75, 1.75)");
-                
+                let zoomableArea = document.getElementById("area");
+                zoomableArea.setAttribute("style","transform:scale(1.75, 1.75)");
                 this.zoomed = true;
             },
             locationImageContainerZoomOut: function() {
-                let soldOutContainer = document.getElementById("png-image");
-                soldOutContainer.setAttribute("style","transform:scale(1)");
+                let zoomableArea = document.getElementById("area");
+                zoomableArea.setAttribute("style","transform:scale(1)");
+
                 this.zoomed = false;
             },
             locationImageContainerPanLeft: function() {
-                console.log("boolean");
                 if (this.zoomed){
-                    let soldOutContainer = document.getElementById("png-image");
-                    console.log("Zoomed and trying to pan left");
-                    soldOutContainer.setAttribute("style","transform:translateX(700px) scale(1.75, 1.75)");
+                    let zoomableArea = document.getElementById("area");
+                    zoomableArea.setAttribute("style","transform:translateX(700px) scale(1.75, 1.75)");
+
+
                 }
                 
             },
             locationImageContainerPanRight: function() {
                 if (this.zoomed){
-                    let soldOutContainer = document.getElementById("png-image");
-                    console.log("Zoomed and trying to pan right");
-                    soldOutContainer.setAttribute("style","transform:translateX(-700px) scale(2, 2)");
+                    let zoomableArea = document.getElementById("area");
+                    zoomableArea.setAttribute("style","transform:translateX(-700px) scale(1.75, 1.75)");
                 }
                 
             },
@@ -361,7 +358,7 @@
                 </div>
                 
             </div>
-             <button class="sold-out-button">Back to the Masterplan</button>
+             <button class="sold-out-button" @click="backToOverview()">Back to the Masterplan</button>
 
         </div>
     </div>
