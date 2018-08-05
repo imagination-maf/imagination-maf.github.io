@@ -89,49 +89,86 @@
                 }
             },
 
-            locationImageContainerZoomIn: function() {
-                let locationImageContainer = document.getElementById("community_image");
+            locationImageContainerZoomIn: function(args) {
+                if ( args === 'alzahia'){
 
-                locationImageContainer.setAttribute("style","transform:scale(2, 2)");
-                this.zoomed = true;
-            },
-            locationImageContainerZoomOut: function() {
-                let locationImageContainer = document.getElementById("community_image");
-                locationImageContainer.setAttribute("style","transform:scale(1)");
-                this.zoomed = false;
-            },
-            locationImageContainerMoveRight: function() {
-                if (this.zoomed){
+                }
+                else{
                     let locationImageContainer = document.getElementById("community_image");
-                    locationImageContainer.setAttribute("style","transform:translateX(700px) scale(2, 2)");
+                    locationImageContainer.setAttribute("style","transform:scale(2, 2)");
+                    let locationSVGContainer = document.getElementById("svg");
+                    locationImageContainer.setAttribute("style","transform:scale(2, 2)");
+                    this.zoomed = true;
+
+                }
+                
+            },
+            locationImageContainerZoomOut: function(args) {
+                if ( args === 'alzahia'){
+
+                }
+                else{
+                    let locationImageContainer = document.getElementById("community_image");
+                    locationImageContainer.setAttribute("style","transform:scale(1)");
+                    this.zoomed = false;
+                }
+            },
+            locationImageContainerMoveRight: function(args) {
+                if ( args === 'alzahia'){
+
+                }
+                else{
+                    if (this.zoomed){
+                        let locationImageContainer = document.getElementById("community_image");
+                        locationImageContainer.setAttribute("style","transform:translateX(700px) scale(2, 2)");
+                    }
                 }
 
             },
-            locationImageContainerMoveLeft: function() {
-                if (this.zoomed){
+            locationImageContainerMoveLeft: function(args) {
+                if ( args === 'alzahia'){
+
+                }
+                else{
+                    if (this.zoomed){
                     let locationImageContainer = document.getElementById("community_image");
                     locationImageContainer.setAttribute("style","transform:translateX(-700px) scale(2, 2)");
+                    }
                 }
             },
-            locationImageContainerMoveUp: function() {
-                if (this.zoomed){
-                    console.log("Pan up");
-                    let locationImageContainer = document.getElementById("community_image");
-                    locationImageContainer.setAttribute("style","transform:translateY(300px) scale(2, 2)");
+            locationImageContainerMoveUp: function(args) {
+                if ( args === 'alzahia'){
+
+                }
+                else{
+                    if (this.zoomed){
+                        console.log("Pan up");
+                        let locationImageContainer = document.getElementById("community_image");
+                        locationImageContainer.setAttribute("style","transform:translateY(300px) scale(2, 2)");
+                    }
                 }
 
             },
             locationImageContainerMoveDown: function() {
-                if (this.zoomed){
-                    console.log("Pan up");
-                    let locationImageContainer = document.getElementById("community_image");
-                    locationImageContainer.setAttribute("style","transform:translateY(-300px) scale(2, 2)");
+                if ( args === 'alzahia'){
+
+                }
+                else{
+                    if (this.zoomed){
+                        console.log("Pan up");
+                        let locationImageContainer = document.getElementById("community_image");
+                        locationImageContainer.setAttribute("style","transform:translateY(-300px) scale(2, 2)");
+                    }
                 }
             },
         },
         mounted() {
             let svgImage = document.getElementById('svg');
             this.svgScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
+            if(this.selectedCommunity === 'tilalalghaf'){
+                svgImage.setAttribute("style", "opacity:0");
+            }
+    
         }
     });
 </script>
@@ -140,13 +177,13 @@
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
-        <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:panleft="locationImageContainerMoveLeft" v-on:panright="locationImageContainerMoveRight"  v-on:panup="locationImageContainerMoveUp" v-on:pandown="locationImageContainerMoveDown">
+        <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:panleft="locationImageContainerMoveLeft(selectedCommunity)" v-on:panright="locationImageContainerMoveRight(selectedCommunity)"  v-on:panup="locationImageContainerMoveUp(selectedCommunity)" v-on:pandown="locationImageContainerMoveDown(selectedCommunity)">
             <div class="container" @click="svgPressed($event)" id="container-zoom">
                 <img class="image" :src="images[selectedCommunity]" id="community_image"/>
                 <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
                 <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
                 <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
-                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]" />
+                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]"/>
                 <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
             </div>
         </v-touch>
