@@ -266,7 +266,7 @@
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
-        <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:swipeleft="locationImageContainerMoveLeft(selectedCommunity)" v-on:swiperight="locationImageContainerMoveRight(selectedCommunity)"  v-on:swipeup="locationImageContainerMoveUp(selectedCommunity)" v-on:swipedown="locationImageContainerMoveDown(selectedCommunity)">
+        <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:swiperight="locationImageContainerMoveLeft(selectedCommunity)" v-on:swipeleft="locationImageContainerMoveRight(selectedCommunity)"  v-on:swipeup="locationImageContainerMoveUp(selectedCommunity)" v-on:swipedown="locationImageContainerMoveDown(selectedCommunity)">
             <div class="container" @click="svgPressed($event)" id="container-zoom">
                 <img class="image" :src="images[selectedCommunity]" id="community_image"/>
                 <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
