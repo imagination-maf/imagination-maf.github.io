@@ -95,9 +95,26 @@
                 }
                 else{
                     let locationImageContainer = document.getElementById("community_image");
-                    locationImageContainer.setAttribute("style","transform:scale(2, 2)");
-                    let locationSVGContainer = document.getElementById("svg");
-                    locationImageContainer.setAttribute("style","transform:scale(2, 2)");
+                    let transformStyleText = locationImageContainer.style.transform;
+                    if (transformStyleText.indexOf('scale(') != -1){
+                        let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
+                        let currentScale = parseFloat(scaleText);
+                        if (currentScale < 5.0)
+                        {
+                          let newScale = currentScale * 1.1;
+                          locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
+                          let locationSVGContainer = document.getElementById("svg");
+                          locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");  
+                        }
+                        
+                    }
+                    else{
+                        let newScale = 1 * 1.1;
+                        locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
+                        let locationSVGContainer = document.getElementById("svg");
+                        locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
+                    }
+                    
                     this.zoomed = true;
 
                 }
@@ -109,8 +126,21 @@
                 }
                 else{
                     let locationImageContainer = document.getElementById("community_image");
-                    locationImageContainer.setAttribute("style","transform:scale(1)");
-                    this.zoomed = false;
+                    let transformStyleText = locationImageContainer.style.transform;
+                    let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
+                    let currentScale = parseFloat(scaleText);
+                    if (currentScale > 1.0)
+                    {
+                      let newScale = currentScale / 1.1;
+                      locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
+                      let locationSVGContainer = document.getElementById("svg");
+                      locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")"); 
+
+                    }
+                    else{
+                        this.zoomed = false;
+                    }
+                    
                 }
             },
             locationImageContainerMoveRight: function(args) {
@@ -119,8 +149,25 @@
                 }
                 else{
                     if (this.zoomed){
+
                         let locationImageContainer = document.getElementById("community_image");
-                        locationImageContainer.setAttribute("style","transform:translateX(700px) scale(2, 2)");
+                        let transformStyleText = locationImageContainer.style.transform;
+                        let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
+                        if (transformStyleText.indexOf('translateX(') != -1){
+                            let translateXText = (transformStyleText.split('translateX(')[1]).split('px)')[0];
+                            console.log(translateXText);
+                            let currentScale = parseFloat(scaleText);
+                            let currentXPosition = parseFloat(translateXText);
+                            let NewXPosition = currentXPosition + 50;
+                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +")");
+                        }
+                        else{
+
+                            let currentScale = parseFloat(scaleText);
+                            let NewXPosition = 50;
+                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +")");
+
+                        }
                     }
                 }
 
@@ -132,7 +179,22 @@
                 else{
                     if (this.zoomed){
                     let locationImageContainer = document.getElementById("community_image");
-                    locationImageContainer.setAttribute("style","transform:translateX(-700px) scale(2, 2)");
+                    let transformStyleText = locationImageContainer.style.transform;
+                    let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
+                    if (transformStyleText.indexOf('translateX(') != -1){
+                            let translateXText = (transformStyleText.split('translateX(')[1]).split('px)')[0];
+                            console.log(translateXText);
+                            let currentScale = parseFloat(scaleText);
+                            let currentXPosition = parseFloat(translateXText);
+                            let NewXPosition = currentXPosition - 50;
+                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition + "px) scale("+ currentScale +")");
+                        }
+                        else{
+                            
+                            let currentScale = parseFloat(scaleText);
+                            let NewXPosition = -50;
+                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition + "px) scale("+ currentScale +")");
+                        }
                     }
                 }
             },
@@ -142,22 +204,49 @@
                 }
                 else{
                     if (this.zoomed){
-                        console.log("Pan up");
                         let locationImageContainer = document.getElementById("community_image");
-                        locationImageContainer.setAttribute("style","transform:translateY(300px) scale(2, 2)");
+                        let transformStyleText = locationImageContainer.style.transform;
+                        let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
+                        if (transformStyleText.indexOf('translateY(') != -1){
+                            let translateYText = (transformStyleText.split('translateY(')[1]).split('px)')[0];
+                            console.log(translateYText);
+                            let currentScale = parseFloat(scaleText);
+                            let currentYPosition = parseFloat(translateYText);
+                            let NewYPosition = currentYPosition + 25;
+                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
+                        }
+                        else{
+                            let currentScale = parseFloat(scaleText);
+                            let NewYPosition = 25;
+                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
+                        }
                     }
                 }
 
             },
-            locationImageContainerMoveDown: function() {
+            locationImageContainerMoveDown: function(args) {
                 if ( args === 'alzahia'){
 
                 }
                 else{
                     if (this.zoomed){
-                        console.log("Pan up");
+                        
                         let locationImageContainer = document.getElementById("community_image");
-                        locationImageContainer.setAttribute("style","transform:translateY(-300px) scale(2, 2)");
+                        let transformStyleText = locationImageContainer.style.transform;
+                        let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
+                        if (transformStyleText.indexOf('translateY(') != -1){
+                            let translateYText = (transformStyleText.split('translateY(')[1]).split('px)')[0];
+                            console.log(translateYText);
+                            let currentScale = parseFloat(scaleText);
+                            let currentYPosition = parseFloat(translateYText);
+                            let NewYPosition = currentYPosition - 25;
+                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
+                        }
+                        else{
+                            let currentScale = parseFloat(scaleText);
+                            let NewYPosition = -25;
+                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
+                        }
                     }
                 }
             },
@@ -177,7 +266,7 @@
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
-        <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:panleft="locationImageContainerMoveLeft(selectedCommunity)" v-on:panright="locationImageContainerMoveRight(selectedCommunity)"  v-on:panup="locationImageContainerMoveUp(selectedCommunity)" v-on:pandown="locationImageContainerMoveDown(selectedCommunity)">
+        <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:swipeleft="locationImageContainerMoveLeft(selectedCommunity)" v-on:swiperight="locationImageContainerMoveRight(selectedCommunity)"  v-on:swipeup="locationImageContainerMoveUp(selectedCommunity)" v-on:swipedown="locationImageContainerMoveDown(selectedCommunity)">
             <div class="container" @click="svgPressed($event)" id="container-zoom">
                 <img class="image" :src="images[selectedCommunity]" id="community_image"/>
                 <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
