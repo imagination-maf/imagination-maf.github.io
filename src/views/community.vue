@@ -194,16 +194,37 @@
             locationImageContainerPanLeft: function() {
                 if (this.zoomed){
                     let zoomableArea = document.getElementById("area");
-                    zoomableArea.setAttribute("style","transform:translateX(700px) scale(1.75, 1.75)");
+                    zoomableAreaTranslateStyleText = zoomableArea.style.transform;
+                    if (zoomableAreaTranslateStyleText.indexOf('translateX(') != -1){
+                        
+                        let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
+                        let currentXPosition = parseFloat(translateXText); 
+                        let newXPosition = currentXPosition - 50;
+                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
 
-
+                    }
+                    else{
+                        let newXPosition = -50;
+                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
+                    }
                 }
                 
             },
             locationImageContainerPanRight: function() {
                 if (this.zoomed){
-                    let zoomableArea = document.getElementById("area");
-                    zoomableArea.setAttribute("style","transform:translateX(-700px) scale(1.75, 1.75)");
+                    let zoomableAreaTranslateStyleText = zoomableArea.style.transform;
+                    if (zoomableAreaTranslateStyleText.indexOf('translateX(') != -1){
+                        
+                        let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
+                        let currentXPosition = parseFloat(translateXText); 
+                        let newXPosition = currentXPosition + 50;
+                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
+
+                    }
+                    else{
+                        let newXPosition = 50;
+                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
+                    }
                 }
                 
             },
