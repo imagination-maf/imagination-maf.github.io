@@ -199,12 +199,12 @@
                         
                         let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
                         let currentXPosition = parseFloat(translateXText); 
-                        let newXPosition = currentXPosition - 50;
+                        let newXPosition = currentXPosition - 75;
                         zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
 
                     }
                     else{
-                        let newXPosition = -50;
+                        let newXPosition = -75;
                         zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
                     }
                 }
@@ -217,12 +217,12 @@
                         
                         let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
                         let currentXPosition = parseFloat(translateXText); 
-                        let newXPosition = currentXPosition + 50;
+                        let newXPosition = currentXPosition + 75;
                         zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
 
                     }
                     else{
-                        let newXPosition = 50;
+                        let newXPosition = 75;
                         zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
                     }
                 }
