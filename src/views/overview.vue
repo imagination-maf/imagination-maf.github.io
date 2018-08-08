@@ -101,7 +101,7 @@
                         let currentScale = parseFloat(scaleText);
                         if (currentScale < 5.0)
                         {
-                          let newScale = currentScale * 1.1;
+                          let newScale = currentScale * 1.05;
                           locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
                           let locationSVGContainer = document.getElementById("svg");
                           locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");  
@@ -109,7 +109,7 @@
                         
                     }
                     else{
-                        let newScale = 1 * 1.1;
+                        let newScale = 1 * 1.05;
                         locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
                         let locationSVGContainer = document.getElementById("svg");
                         locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
@@ -131,7 +131,7 @@
                     let currentScale = parseFloat(scaleText);
                     if (currentScale > 1.0)
                     {
-                      let newScale = currentScale / 1.1;
+                      let newScale = currentScale / 1.05;
                       locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
                       let locationSVGContainer = document.getElementById("svg");
                       locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")"); 
@@ -158,13 +158,13 @@
                             console.log(translateXText);
                             let currentScale = parseFloat(scaleText);
                             let currentXPosition = parseFloat(translateXText);
-                            let NewXPosition = currentXPosition + 50;
+                            let NewXPosition = currentXPosition + 70;
                             locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +")");
                         }
                         else{
 
                             let currentScale = parseFloat(scaleText);
-                            let NewXPosition = 50;
+                            let NewXPosition = 70;
                             locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +")");
 
                         }
@@ -186,13 +186,13 @@
                             console.log(translateXText);
                             let currentScale = parseFloat(scaleText);
                             let currentXPosition = parseFloat(translateXText);
-                            let NewXPosition = currentXPosition - 50;
+                            let NewXPosition = currentXPosition - 70;
                             locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition + "px) scale("+ currentScale +")");
                         }
                         else{
                             
                             let currentScale = parseFloat(scaleText);
-                            let NewXPosition = -50;
+                            let NewXPosition = -70;
                             locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition + "px) scale("+ currentScale +")");
                         }
                     }
@@ -212,12 +212,12 @@
                             console.log(translateYText);
                             let currentScale = parseFloat(scaleText);
                             let currentYPosition = parseFloat(translateYText);
-                            let NewYPosition = currentYPosition + 25;
+                            let NewYPosition = currentYPosition + 35;
                             locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
                         }
                         else{
                             let currentScale = parseFloat(scaleText);
-                            let NewYPosition = 25;
+                            let NewYPosition = 35;
                             locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
                         }
                     }
@@ -236,15 +236,14 @@
                         let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
                         if (transformStyleText.indexOf('translateY(') != -1){
                             let translateYText = (transformStyleText.split('translateY(')[1]).split('px)')[0];
-                            console.log(translateYText);
                             let currentScale = parseFloat(scaleText);
                             let currentYPosition = parseFloat(translateYText);
-                            let NewYPosition = currentYPosition - 25;
+                            let NewYPosition = currentYPosition - 35;
                             locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
                         }
                         else{
                             let currentScale = parseFloat(scaleText);
-                            let NewYPosition = -25;
+                            let NewYPosition = -35;
                             locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
                         }
                     }
