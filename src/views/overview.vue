@@ -21,6 +21,8 @@
         },
         data() {
             this.zoomed = false;
+            this.scaleXDivider = 150;
+            this.scaleYDivider = 75;
             return {
                 svgScale: null,
                 images: {
@@ -143,109 +145,49 @@
                     
                 }
             },
-            locationImageContainerMoveRight: function(args) {
+           locationImageContainerPan: function(args, event) {
+                let scaleOfSwipeInX = Math.round((event.deltaX) / this.scaleXDivider);
+                let scaleOfSwipeInY = Math.round((event.deltaY) / this.scaleYDivider);
+                
+                console.log(scaleOfSwipeInX, scaleOfSwipeInY);
+                
                 if ( args === 'alzahia'){
 
-                }
+                    }
                 else{
                     if (this.zoomed){
-
+                        let currentYPosition = 0;
+                        let currentXPosition = 0;
                         let locationImageContainer = document.getElementById("community_image");
                         let transformStyleText = locationImageContainer.style.transform;
-                        let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
+                        if (transformStyleText.indexOf('translateY(') != -1){
+                            let translateYText = (transformStyleText.split('translateY(')[1]).split('px)')[0];
+                            currentYPosition = parseFloat(translateYText);
+                        }
                         if (transformStyleText.indexOf('translateX(') != -1){
                             let translateXText = (transformStyleText.split('translateX(')[1]).split('px)')[0];
-                            console.log(translateXText);
-                            let currentScale = parseFloat(scaleText);
-                            let currentXPosition = parseFloat(translateXText);
-                            let NewXPosition = currentXPosition + 70;
-                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +")");
+                            currentXPosition = parseFloat(translateXText);
                         }
-                        else{
-
-                            let currentScale = parseFloat(scaleText);
-                            let NewXPosition = 70;
-                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +")");
-
-                        }
-                    }
-                }
-
-            },
-            locationImageContainerMoveLeft: function(args) {
-                if ( args === 'alzahia'){
-
-                }
-                else{
-                    if (this.zoomed){
-                    let locationImageContainer = document.getElementById("community_image");
-                    let transformStyleText = locationImageContainer.style.transform;
-                    let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
-                    if (transformStyleText.indexOf('translateX(') != -1){
-                            let translateXText = (transformStyleText.split('translateX(')[1]).split('px)')[0];
-                            console.log(translateXText);
-                            let currentScale = parseFloat(scaleText);
-                            let currentXPosition = parseFloat(translateXText);
-                            let NewXPosition = currentXPosition - 70;
-                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition + "px) scale("+ currentScale +")");
-                        }
-                        else{
-                            
-                            let currentScale = parseFloat(scaleText);
-                            let NewXPosition = -70;
-                            locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition + "px) scale("+ currentScale +")");
-                        }
-                    }
-                }
-            },
-            locationImageContainerMoveUp: function(args) {
-                if ( args === 'alzahia'){
-
-                }
-                else{
-                    if (this.zoomed){
-                        let locationImageContainer = document.getElementById("community_image");
-                        let transformStyleText = locationImageContainer.style.transform;
+                        console.log(currentXPosition, currentYPosition);
                         let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
-                        if (transformStyleText.indexOf('translateY(') != -1){
-                            let translateYText = (transformStyleText.split('translateY(')[1]).split('px)')[0];
-                            console.log(translateYText);
-                            let currentScale = parseFloat(scaleText);
-                            let currentYPosition = parseFloat(translateYText);
-                            let NewYPosition = currentYPosition + 35;
-                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
-                        }
-                        else{
-                            let currentScale = parseFloat(scaleText);
-                            let NewYPosition = 35;
-                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
-                        }
-                    }
-                }
+                        let currentScale = parseFloat(scaleText);
 
-            },
-            locationImageContainerMoveDown: function(args) {
-                if ( args === 'alzahia'){
+                        let NewXPosition = currentXPosition + (70 * scaleOfSwipeInX);
+                        let NewYPosition = currentYPosition + (35 * scaleOfSwipeInY);
 
-                }
-                else{
-                    if (this.zoomed){
-                        
-                        let locationImageContainer = document.getElementById("community_image");
-                        let transformStyleText = locationImageContainer.style.transform;
-                        let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
-                        if (transformStyleText.indexOf('translateY(') != -1){
-                            let translateYText = (transformStyleText.split('translateY(')[1]).split('px)')[0];
-                            let currentScale = parseFloat(scaleText);
-                            let currentYPosition = parseFloat(translateYText);
-                            let NewYPosition = currentYPosition - 35;
-                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
-                        }
-                        else{
-                            let currentScale = parseFloat(scaleText);
-                            let NewYPosition = -35;
-                            locationImageContainer.setAttribute("style","transform:translateY("+ NewYPosition +"px) scale("+ currentScale +")");
-                        }
+                        if (NewXPosition > (240 * currentScale))
+                            NewXPosition = (240 * currentScale)
+                        else if (NewXPosition < -(240 * currentScale))
+                            NewXPosition = -(240 * currentScale)
+
+                        if (NewYPosition > (100 * currentScale))
+                            NewYPosition = (100 * currentScale)
+                        else if (NewYPosition < -(100 * currentScale))
+                            NewYPosition = -(100 * currentScale)
+
+
+
+                        locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +") translateY(" + NewYPosition +"px)");
                     }
                 }
             },
@@ -265,7 +207,7 @@
 <div class="app">
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
-        <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:swiperight="locationImageContainerMoveLeft(selectedCommunity)" v-on:swipeleft="locationImageContainerMoveRight(selectedCommunity)"  v-on:swipeup="locationImageContainerMoveUp(selectedCommunity)" v-on:swipedown="locationImageContainerMoveDown(selectedCommunity)">
+        <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:pan="locationImageContainerPan(selectedCommunity, $event)" v-bind:pan-options="{ direction: 'all', threshold: 0 }">
             <div class="container" @click="svgPressed($event)" id="container-zoom">
                 <img class="image" :src="images[selectedCommunity]" id="community_image"/>
                 <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
