@@ -188,43 +188,43 @@
             locationImageContainerZoomOut: function() {
                 let zoomableArea = document.getElementById("area");
                 zoomableArea.setAttribute("style","transform:scale(1)");
-
                 this.zoomed = false;
             },
-            locationImageContainerPanLeft: function() {
+            locationImageContainerPan: function(event) {
+                let scaleOfSwipeInX = Math.round((event.deltaX) / 150);
+                let scaleOfSwipeInY = Math.round((event.deltaY) / 75);
                 if (this.zoomed){
                     let zoomableArea = document.getElementById("area");
-                    zoomableAreaTranslateStyleText = zoomableArea.style.transform;
-                    if (zoomableAreaTranslateStyleText.indexOf('translateX(') != -1){
-                        
-                        let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
-                        let currentXPosition = parseFloat(translateXText); 
-                        let newXPosition = currentXPosition - 75;
-                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
-
-                    }
-                    else{
-                        let newXPosition = -75;
-                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
-                    }
-                }
-                
-            },
-            locationImageContainerPanRight: function() {
-                if (this.zoomed){
                     let zoomableAreaTranslateStyleText = zoomableArea.style.transform;
-                    if (zoomableAreaTranslateStyleText.indexOf('translateX(') != -1){
-                        
-                        let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
-                        let currentXPosition = parseFloat(translateXText); 
-                        let newXPosition = currentXPosition + 75;
-                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
 
+                    let currentYPosition = 0;
+                    let currentXPosition = 0;
+                    if (zoomableAreaTranslateStyleText.indexOf('translateY(') != -1){
+                        let translateYText = (zoomableAreaTranslateStyleText.split('translateY(')[1]).split('px)')[0];
+                        currentYPosition = parseFloat(translateYText);
                     }
-                    else{
-                        let newXPosition = 75;
-                        zoomableArea.setAttribute("style","transform:translateX("+ newXPosition +"px) scale(1.75, 1.75)");
+                    if (zoomableAreaTranslateStyleText.indexOf('translateX(') != -1){
+                        let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
+                        currentXPosition = parseFloat(translateXText);
                     }
+
+                    let scaleText = (zoomableAreaTranslateStyleText.split('scale(')[1]).split(')')[0];
+                    let currentScale = parseFloat(scaleText);
+
+                    let NewXPosition = currentXPosition + (70 * scaleOfSwipeInX);
+                    let NewYPosition = currentYPosition + (35 * scaleOfSwipeInY);
+
+                    if (NewXPosition > (240 * currentScale))
+                        NewXPosition = (240 * currentScale)
+                    else if (NewXPosition < -(240 * currentScale))
+                        NewXPosition = -(240 * currentScale)
+
+                    if (NewYPosition > (100 * currentScale))
+                        NewYPosition = (100 * currentScale)
+                    else if (NewYPosition < -(100 * currentScale))
+                        NewYPosition = -(100 * currentScale)
+
+                    zoomableArea.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +") translateY(" + NewYPosition +"px)");
                 }
                 
             },
@@ -350,7 +350,7 @@
                         <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
                     </div>
 
-                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:panleft="locationImageContainerPanLeft" v-on:panright="locationImageContainerPanRight" >
+                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:pan="locationImageContainerPan($event)" v-bind:pan-options="{ direction: 'all', threshold: 0 }">
                     <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                         <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                         <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
@@ -379,8 +379,7 @@
                 </div>
                 
             </div>
-             <button class="sold-out-button" @click="backToOverview()">Back to the Masterplan</button>
-
+            <button class="sold-out-button" @click="backToOverview()">Back to the Masterplan</button>
         </div>
     </div>
 </div>
