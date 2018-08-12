@@ -350,7 +350,7 @@
                         <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
                     </div>
 
-                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:pan="locationImageContainerPan($event)" v-bind:pan-options="{ direction: 'all', threshold: 0 }">
+                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:pan="locationImageContainerPan($event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
                     <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                         <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                         <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
