@@ -561,6 +561,31 @@
             }
         },
         mounted(){
+
+            var $section = $('#svg-container');
+            var $panzoom = $section.find('.panzoom').panzoom( {
+                $zoomIn: $section.find(".zoom-in"),
+                $zoomOut: $section.find(".zoom-out"),
+                $zoomRange: $section.find(".zoom-range"),
+                $reset: $section.find(".reset"),
+                startTransform: 'scale(1.1)',
+                increment: 0.1,
+                minScale: 1,
+                contain: 'invert'
+            });
+            debugger;
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                debugger;
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    focal: e
+                });
+            });
+
             let callback = () => {
                 this.loadingComplete = true;
                 this.markerSelected = this.getDefaultMarkerContent();
@@ -584,7 +609,6 @@
         }
      });
 </script>
-
 <template>
 <div class="app">
     <AppHeader :logo="headerLogo" back="true" v-on:back="backFunctionality" />
@@ -743,56 +767,7 @@
                         </div>
                     </div>
                     <!-- End of Sharjah Road -->
-                    <!-- Dubai -->
-                    <div
-                        class="png-image-container-scale"
-                        :style="[scaleStyles['app_x5F_Dubai--parent']]"
-                        :class="{ 'active': selectedView === 'app_x5F_Dubai--parent' }">
-                        <div
-                            class="png-image-container-translate"
-                            :style="[translationStyles['app_x5F_Dubai--parent']]">
-                            <div
-                                class="png-image-container-rotation"
-                                :style="[rotationStyles['app_x5F_Dubai--parent']]">
-                                <img
-                                    v-if="ipad"
-                                    id="app_x5F_Dubai--image"
-                                    class="png-image"
-                                    :src="pngImages.ipad.DubaiCity" />
-                                <img
-                                    v-if="!ipad"
-                                    id="app_x5F_Dubai--image"
-                                    class="png-image"
-                                    :src="pngImages.table.DubaiCity" />
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Dubai -->
-                    <!-- Dubai Road -->
-                    <div
-                        class="png-image-container-scale"
-                        :style="[scaleStyles['app_x5F_Dubai-road--parent']]"
-                        :class="{ 'active': selectedView === 'app_x5F_Dubai-road--parent' }">
-                        <div
-                            class="png-image-container-translate"
-                            :style="[translationStyles['app_x5F_Dubai-road--parent']]">
-                            <div
-                                class="png-image-container-rotation"
-                                :style="[rotationStyles['app_x5F_Dubai-road--parent']]">
-                                <img
-                                    v-if="ipad"
-                                    id="app_x5F_Dubai-road--image"
-                                    class="png-image"
-                                    :src="pngImages.ipad.DubaiRoad" />
-                                <img
-                                    v-if="!ipad"
-                                    id="app_x5F_Dubai-road--image"
-                                    class="png-image"
-                                    :src="pngImages.table.DubaiRoad" />
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Dubai Road -->
+                   
                     <!-- Lebanon City -->
                     <div
                         class="png-image-container-scale"
@@ -897,8 +872,8 @@
 
                 <!-- Marker Pulses -->
                 <div id="marker-animations"></div>
-
-                <div id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
+                
+                <section id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
                     <!-- World -->
                     <transition name="map-switch">
                         <WorldImage
@@ -975,7 +950,7 @@
                     <transition name="map-switch">
                         <DubaiCityImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Dubai--parent'" />
                         <DubaiCityIpadImage
                             v-if="ipad"
@@ -987,7 +962,7 @@
                     <transition name="map-switch">
                         <DubaiRoadImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
                         <DubaiRoadIpadImage
                             v-if="ipad"
@@ -1043,7 +1018,7 @@
                             v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
                     </transition>
                     <!-- End of Muscat Road -->
-                </div>
+                </section>
                 <div class="loading" v-if="!loadingComplete"></div>
             </v-touch>
             </div>
@@ -1064,6 +1039,11 @@
         </div>
 </div>
 </template>
+<style>
+    section { text-align: center; margin: 50px 0; }
+      .panzoom-parent { border: 2px solid #333; }
+      .panzoom-parent .panzoom { border: 2px dashed #666; }
+</style>
 
 <style lang="scss">
     #marker-animations {
@@ -1113,6 +1093,7 @@
     }
 </style>
 <style lang="scss">
+
 .zoom-container {
     visibility: hidden !important;
 }
