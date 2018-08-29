@@ -561,31 +561,23 @@
             }
         },
         mounted(){
-
             var $section = $('#svg-container');
-            var $panzoom = $section.find('.panzoom').panzoom( {
-                $zoomIn: $section.find(".zoom-in"),
-                $zoomOut: $section.find(".zoom-out"),
-                $zoomRange: $section.find(".zoom-range"),
-                $reset: $section.find(".reset"),
-                startTransform: 'scale(1.1)',
-                increment: 0.1,
-                minScale: 1,
+            var $panzoom = $section.find('.panzoom').panzoom({
                 contain: 'invert'
             });
-            debugger;
+            // debugger;
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
-                debugger;
                 e.preventDefault();
                 var delta = e.delta || e.originalEvent.wheelDelta;
                 var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
                 $panzoom.panzoom('zoom', zoomOut, {
                     increment: 0.1,
                     animate: false,
-                    focal: e
+                    panOnlyWhenZoomed: true,
+                    minScale: 1
+                    // focal:e
                 });
             });
-
             let callback = () => {
                 this.loadingComplete = true;
                 this.markerSelected = this.getDefaultMarkerContent();
@@ -873,7 +865,7 @@
                 <!-- Marker Pulses -->
                 <div id="marker-animations"></div>
                 
-                <section id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
+                <section id="svg-container" :style="[fullscreenTransform.svg[selectedView]]" >
                     <!-- World -->
                     <transition name="map-switch">
                         <WorldImage
@@ -954,7 +946,7 @@
                             v-show="selectedView === 'app_x5F_Dubai--parent'" />
                         <DubaiCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Dubai--parent'" />
                     </transition>
                     <!-- End of Dubai -->
@@ -966,7 +958,7 @@
                             v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
                         <DubaiRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
                     </transition>
                     <!-- End of Dubai Road -->
@@ -1093,6 +1085,7 @@
     }
 </style>
 <style lang="scss">
+
 
 .zoom-container {
     visibility: hidden !important;
