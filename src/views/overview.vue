@@ -198,10 +198,33 @@
             if(this.selectedCommunity === 'tilalalghaf'){
                 svgImage.setAttribute("style", "opacity:0");
             }
+
+            var $section = $('#container-zoom');
+            var $panzoom = $section.find('.panzoom').panzoom({
+                contain: 'invert'
+            });
+            debugger;
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    panOnlyWhenZoomed: true,
+                    minScale: 1
+                });
+            });
     
         }
     });
 </script>
+<style>
+    section { text-align: center; margin: 50px 0; }
+      .panzoom-parent { border: 2px solid #333; }
+      .panzoom-parent .panzoom { border: 2px dashed #666; }
+</style>
+
 
 <template>
 <div class="app">
@@ -213,7 +236,7 @@
                 <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
                 <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
                 <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
-                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]"/>
+                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]" class="panzoom" />
                 <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
             </div>
         </v-touch>
