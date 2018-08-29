@@ -198,7 +198,8 @@
                     increment: 0.1,
                     animate: false,
                     panOnlyWhenZoomed: true,
-                    minScale: 1
+                    minScale: 1,
+                    focal:e
                 });
             });
     
