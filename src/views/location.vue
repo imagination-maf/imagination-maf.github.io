@@ -28,9 +28,7 @@
     import MuscatRoadIpadImage from '../images/maps-ipad/Muscat-road-ipad.svg';
     import MarkerInfo from '../components/markerInfo.vue';
     import AppHeader from '../components/header.vue';
-
     import config from '../data/config.js';
-
     export default Vue.component('location', {
         components: {
             WorldImage,
@@ -268,7 +266,6 @@
                             this.$router.push({ query: { 'view': newViewElement } });
                             break;
                         }
-
                         if(splitId[splitId.length - 1].match(this.definitions.marker)){
                             let country = splitId[0].split(this.definitions.separator).reverse()[0];
                             this.removeActiveMarker();
@@ -297,11 +294,9 @@
                 let childElement = document.getElementById(viewToFind);
                 // finds the coordinates of the child element in its parent
                 let locationCoords = this.findSVGPosition(childElement);
-
                 let scale = parentElement.width.baseVal.value / locationCoords.width;
                 let translateX = (parentElement.width.baseVal.value / 2) - (locationCoords.x + (locationCoords.width / 2) );
                 let translateY = (parentElement.height.baseVal.value / 2) - (locationCoords.y + (locationCoords.height / 2) );
-
                 return {
                     translateX: translateX,
                     translateY: translateY,
@@ -356,7 +351,6 @@
                 let imageElement = document.getElementById(id);
                 let width = (imageElement instanceof SVGElement) ? imageElement.width.baseVal.value : imageElement.width;
                 let height = (imageElement instanceof SVGElement) ? imageElement.height.baseVal.value : imageElement.height;
-
                 let scaleX = window.innerWidth / width;
                 let scaleY = window.innerHeight / height;
                 return (scaleX < scaleY) ? scaleX : scaleY;
@@ -364,14 +358,12 @@
             setupSvgImages: function() {
                 let svgContainer = document.getElementById('svg-container');
                 let svgImages = Array.from(svgContainer.children).filter((child) => child instanceof SVGElement);
-
                 for(let i = 0; i < svgImages.length; i++) {
                     // Adds class to each zoom container
                     let zoomPaths = svgImages[i].querySelectorAll('rect[id$=--zoom]');
                     for(let j = 0; j < zoomPaths.length; j++) {
                         zoomPaths[j].classList.add('container');
                     }
-
                     let scale = this.fitToWindow(svgImages[i].id);
                     let transform = {
                         'transform': `scale( ${ scale } )`,
@@ -390,7 +382,6 @@
                     return Array.from(child.children)[0];
                 });
                 let pngsLoaded = 0;
-
                 let fitPngsToWindow = () => {
                     for(let i = 0; i < pngImages.length; i++) {
                         let imageParentName = pngImages[i].id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent;
@@ -401,17 +392,14 @@
                         }
                         Vue.set(this.fullscreenTransform.png, imageParentName, transform);
                     }
-
                     callback();
                 }
-
                 let pngLoaded = () => {
                     pngsLoaded++;
                     if(pngImages.length === pngsLoaded) {
                         fitPngsToWindow();
                     }
                 }
-
                 for(let j = 0; j < pngImages.length; j++) {
                     pngImages[j].addEventListener('load', () => {
                         pngImages[j].removeEventListener('load', () => {});
@@ -422,28 +410,22 @@
             setupTransforms: function() {
                 let container = document.getElementById('svg-container');
                 let maps = Array.from(container.children).filter((child) => child instanceof SVGElement);
-
                 // Increment the number of SVGs loaded
                 for(let index = 0; index < maps.length; index++) {
                     // The SVG Name image;
                     let name = maps[index].id;
-
                     // Get all the transformation states possible for this map element
                     let scales = {};
                     let rotations = {};
                     let translations = {};
-
                     translations[name] = {transform: 'translate3d(0px, 0px, 0px)'};
                     scales[name] = {transform: 'scale(1)'};
                     rotations[name] = {transform: 'rotate(0deg)'};
-
                     /** GETS THE POSITION WHERE IT SHOULD BE IN THE PARENT SVG **/
                     // Gets the map elements parent SVG;
                     let parentSVG = this.findParentSVG(name.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom);
-
                     // If it has a parent, finds the position it should be when parent active;
                     let positionInParent = (parentSVG !== '') ? this.getPlacement(name.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.zoom, parentSVG) : null;
-
                     // Set the CSS style when map elements parent is active
                     if(positionInParent) {
                         rotations[parentSVG] = {
@@ -455,13 +437,11 @@
                         scales[parentSVG] = {
                             transform: `scale( ${ 1 / positionInParent.scale }, ${ 1 / positionInParent.scale } )`
                         };
-
                         rotations[name] = {
                             'transform-origin': `${ (-positionInParent.translateX * positionInParent.scale) + ((maps[index].width.baseVal / 2) * positionInParent.scale) }px ${ (-positionInParent.translateX * positionInParent.scale) + ((maps[index].width.baseVal / 2) * positionInParent.scale) }px }`,
                             'transform': 'rotate(0deg)'
                         };
                     }
-
                     /** GETS THE CHILDREN IN THE MAP ELEMENT **/
                     // So can zoom into each of these
                     let childSVGContainer = Array.from(maps[index].children);
@@ -473,7 +453,6 @@
                             let childParent = child.id.split(this.definitions.modifier)[0] + this.definitions.modifier + this.definitions.parent;
                             // Gets the position of the child in the current map element
                             let positionInImage = this.getPlacement(child.id, name);
-
                             // Sets the CSS transform when the child id is active
                             rotations[childParent] = {
                                 'transform': `rotate( ${ -positionInImage.rotate.angle }deg )`,
@@ -487,7 +466,6 @@
                             };
                         }
                     });
-
                     // Vue call to bind the new styles to the data object
                     Vue.set(this.rotations, name, rotations);
                     Vue.set(this.scales, name, scales);
@@ -520,78 +498,61 @@
             pulsateMarkers: function() {
                 window.clearTimeout(this.pulseTimer);
                 window.clearInterval(this.pulseInterval);
-
                 let element = document.getElementById(this.selectedView);
                 let animationContainer = document.getElementById('marker-animations');
                 while (animationContainer.firstChild) {
                     animationContainer.removeChild(animationContainer.firstChild);
                 }
-
                 let markers = element.querySelectorAll('rect[id$=--tap]');
                 markers.forEach( marker => {
                     let x = marker.x.baseVal.value;
                     let y = marker.y.baseVal.value;
                     let width = marker.width.baseVal.value;
                     let height = marker.height.baseVal.value;
-
                     let div = document.createElement('div');
                     div.id = marker.id.split('--')[0] + '--pulse';
                     div.classList.add('pulse');
-
                     let scale = parseFloat(this.fullscreenTransform.svg[this.selectedView].transform.replace( /^\D+/g, ''));
-
                     div.style.left = (x * scale) + 'px';
                     div.style.top = (y * scale) + 'px';
                     div.style.width = (width * scale) + 'px';
                     div.style.height = (height * scale) + 'px';
-
                     animationContainer.appendChild(div);
                 } )
-
                 this.pulseInterval = window.setInterval( () => {
                     animationContainer.classList.remove('active');
                     this.pulseTimer = window.setTimeout( () => {
                         animationContainer.classList.add('active');
                     }, 750)
                 }, 2000);
-
                 this.animationTimer = window.setTimeout( () => {
                     this.disableAnimation = false;
                 }, 100 )
             }
         },
         mounted(){
-
             var $section = $('#svg-container');
-            var $panzoom = $section.find('.panzoom').panzoom( {
-                $zoomIn: $section.find(".zoom-in"),
-                $zoomOut: $section.find(".zoom-out"),
-                $zoomRange: $section.find(".zoom-range"),
-                $reset: $section.find(".reset"),
-                startTransform: 'scale(1.1)',
-                increment: 0.1,
-                minScale: 1,
+            var $panzoom = $section.find('.panzoom').panzoom({
                 contain: 'invert'
             });
-            debugger;
+            // debugger;
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
-                debugger;
                 e.preventDefault();
                 var delta = e.delta || e.originalEvent.wheelDelta;
                 var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
                 $panzoom.panzoom('zoom', zoomOut, {
                     increment: 0.1,
                     animate: false,
-                    focal: e
+                    panOnlyWhenZoomed: true,
+                    minScale: 1
+                    // focal:e
                 });
             });
-
             let callback = () => {
                 this.loadingComplete = true;
                 this.markerSelected = this.getDefaultMarkerContent();
                 this.pulsateMarkers();
             }
-
             this.setupSvgImages();
             this.setupTransforms();
             this.setupPngImages(callback);
@@ -873,7 +834,7 @@
                 <!-- Marker Pulses -->
                 <div id="marker-animations"></div>
                 
-                <section id="svg-container" :style="[fullscreenTransform.svg[selectedView]]">
+                <section id="svg-container" :style="[fullscreenTransform.svg[selectedView]]" >
                     <!-- World -->
                     <transition name="map-switch">
                         <WorldImage
@@ -954,7 +915,7 @@
                             v-show="selectedView === 'app_x5F_Dubai--parent'" />
                         <DubaiCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Dubai--parent'" />
                     </transition>
                     <!-- End of Dubai -->
@@ -966,7 +927,7 @@
                             v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
                         <DubaiRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Dubai-road--parent'" />
                     </transition>
                     <!-- End of Dubai Road -->
@@ -1065,13 +1026,11 @@
             }
         }
     }
-
     .marker-active {
         polygon {
             fill: #b4975a;
         }
     }
-
     .pulse {
         position: absolute;
         display: flex;
@@ -1093,11 +1052,9 @@
     }
 </style>
 <style lang="scss">
-
 .zoom-container {
     visibility: hidden !important;
 }
-
 #png-container {
     position: absolute;
     left: 0;
@@ -1138,7 +1095,6 @@
                 transition: transform 0.25s linear 0.75s;
             }
         }
-
     }
     &.out {
         .png-image-container-scale {
@@ -1160,13 +1116,11 @@
         }
     }
 }
-
 #svg-container {
     position: absolute;
     left: 0;
     top: 0;
 }
-
 .loading {
     position: absolute;
     left: 0;
@@ -1194,7 +1148,6 @@
         pointer-events: auto;
     }
 }
-
 .map {
     width: 100%;
     height: 100%;
@@ -1220,21 +1173,17 @@
         box-shadow: 0.1rem 0.1rem 1rem #cccccc;
     }
 }
-
 .image {
     overflow: visible !important;
     will-change: opacity;
 }
-
 svg:not(:root) {
     overflow: visible !important;
 }
-
 .menu {
     display: flex;
     flex-direction: column;
 }
-
 .controls {
     position: absolute;
     bottom: 1.5rem;
