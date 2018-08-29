@@ -9,7 +9,6 @@
     import Uptown from '../images/overalls/overview-uptown.svg';
     import config from '../data/config.js';
     import AppHeader from '../components/header.vue';
-
     export default Vue.component('overview', {
         components: {
             AppHeader,
@@ -87,13 +86,10 @@
                     else {
                         this.$router.push({ path: 'community', query: { 'community': this.$route.query.community, 'neighbourhood': neighbourhood } });
                     }
-
                 }
             },
-
             locationImageContainerZoomIn: function(args) {
                 if ( args === 'alzahia'){
-
                 }
                 else{
                     let locationImageContainer = document.getElementById("community_image");
@@ -118,13 +114,11 @@
                     }
                     
                     this.zoomed = true;
-
                 }
                 
             },
             locationImageContainerZoomOut: function(args) {
                 if ( args === 'alzahia'){
-
                 }
                 else{
                     let locationImageContainer = document.getElementById("community_image");
@@ -137,7 +131,6 @@
                       locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")");
                       let locationSVGContainer = document.getElementById("svg");
                       locationImageContainer.setAttribute("style","transform:scale(" + newScale + ")"); 
-
                     }
                     else{
                         this.zoomed = false;
@@ -152,7 +145,6 @@
                 console.log(scaleOfSwipeInX, scaleOfSwipeInY);
                 
                 if ( args === 'alzahia'){
-
                     }
                 else{
                     if (this.zoomed){
@@ -171,22 +163,16 @@
                         console.log(currentXPosition, currentYPosition);
                         let scaleText = (transformStyleText.split('scale(')[1]).split(')')[0];
                         let currentScale = parseFloat(scaleText);
-
                         let NewXPosition = currentXPosition + (70 * scaleOfSwipeInX);
                         let NewYPosition = currentYPosition + (35 * scaleOfSwipeInY);
-
                         if (NewXPosition > (240 * currentScale))
                             NewXPosition = (240 * currentScale)
                         else if (NewXPosition < -(240 * currentScale))
                             NewXPosition = -(240 * currentScale)
-
                         if (NewYPosition > (100 * currentScale))
                             NewYPosition = (100 * currentScale)
                         else if (NewYPosition < -(100 * currentScale))
                             NewYPosition = -(100 * currentScale)
-
-
-
                         locationImageContainer.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +") translateY(" + NewYPosition +"px)");
                     }
                 }
@@ -198,6 +184,23 @@
             if(this.selectedCommunity === 'tilalalghaf'){
                 svgImage.setAttribute("style", "opacity:0");
             }
+
+            
+            var $panzoom = $('#community_image').panzoom({
+                contain: 'invert'
+            });
+            
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    panOnlyWhenZoomed: true,
+                    minScale: 1
+                });
+            });
     
         }
     });
@@ -241,6 +244,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+        position: static !important;
     .image {
         width: 100%;
         height: 100%;
