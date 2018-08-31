@@ -870,11 +870,11 @@
                     <transition name="map-switch">
                         <WorldImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_world--parent'" />
                         <WorldIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_world--parent'" />
                     </transition>
                     <!-- End of World -->
@@ -882,11 +882,11 @@
                     <transition name="map-switch">
                         <UAERegionImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_UAE--parent'" />
                         <UAERegionIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_UAE--parent'" />
                     </transition>
                     <!-- End of UAE -->
@@ -894,11 +894,11 @@
                     <transition name="map-switch">
                         <OmanRegionImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Oman--parent'" />
                         <OmanRegionIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Oman--parent'" />
                     </transition>
                     <!-- End of UAE -->
@@ -906,11 +906,11 @@
                     <transition name="map-switch">
                         <LebanonRegionImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon-region--parent'" />
                         <LebanonRegionIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon-region--parent'" />
                     </transition>
                     <!-- End of UAE -->
@@ -918,11 +918,11 @@
                     <transition name="map-switch">
                         <SharjahCityImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah--parent'" />
                         <SharjahCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah--parent'" />
                     </transition>
                     <!-- End of Sharjah City -->
@@ -930,11 +930,11 @@
                     <transition name="map-switch">
                         <SharjahRoadImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
                         <SharjahRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
                     </transition>
                     <!-- End of Sharjah Road -->
@@ -966,11 +966,11 @@
                     <transition name="map-switch">
                         <LebanonCityImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon--parent'" />
                         <LebanonCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon--parent'" />
                     </transition>
                     <!-- End of Lebanon City -->
@@ -978,11 +978,11 @@
                     <transition name="map-switch">
                         <LebanonRoadImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
                         <LebanonRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
                     </transition>
                     <!-- End of Lebanon Road -->
@@ -990,11 +990,11 @@
                     <transition name="map-switch">
                         <MuscatCityImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat--parent'" />
                         <MuscatCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat--parent'" />
                     </transition>
                     <!-- End of Muscat City -->
@@ -1002,11 +1002,11 @@
                     <transition name="map-switch">
                         <MuscatRoadImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
                         <MuscatRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
                     </transition>
                     <!-- End of Muscat Road -->

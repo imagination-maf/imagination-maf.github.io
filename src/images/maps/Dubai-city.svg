@@ -4,7 +4,8 @@
 	 x="0px" y="0px" width="3840px" height="2160px" viewBox="0 0 3840 2160" style="enable-background:new 0 0 3840 2160;"
 	 xml:space="preserve" preserveAspectRatio="none">
 
-	 <image xlink:href="https://s3.amazonaws.com/zoom-feature/maps-png/Dubai-city.png" width="100%" height="100%" x="0" y="0" />
+	  <image xlink:href="https://s3.amazonaws.com/zoom-feature/maps-png/Dubai-city.png" width="100%" height="100%" x="0" y="0" />
+
 <g id="map-data" style="display:none;">
 	<g id="Map_Data" style="display:inline;">
 		<g>
@@ -6514,6 +6515,4 @@
 <g id="app_x5F_Dubai-road--zoom">
 	<rect x="690.2" y="872.5" style="fill:none;" width="2200" height="1248.7"/>
 </g>
-
-
 </svg>
