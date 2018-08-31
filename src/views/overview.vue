@@ -185,8 +185,8 @@
                 //svgImage.setAttribute("style", "opacity:0");
             }
 
-            
             var $panzoom = $('#container-zoom > svg').panzoom({
+
                 contain: 'invert'
             });
             
@@ -198,7 +198,8 @@
                     increment: 0.1,
                     animate: false,
                     panOnlyWhenZoomed: true,
-                    minScale: 1
+                    minScale: 1,
+                    focal:e
                 });
             });
     
@@ -213,7 +214,7 @@
         <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:pan="locationImageContainerPan(selectedCommunity, $event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
             <div class="container" @click="svgPressed($event)" id="container-zoom">
                 
-                <AlZahia class="image" id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+                <AlZahia class="image" id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" /    >
                 <AlMouj class="image" id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
                 <WaterfrontCity class="image" id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
                 <TilalAlGhaf class="image" id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]"/>
