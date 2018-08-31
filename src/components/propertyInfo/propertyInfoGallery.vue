@@ -30,14 +30,32 @@ export default Vue.component('property-info-gallery', {
         backToSummary: function() {
             this.$emit('changeView', 'summary');
         }
-    }
+    },
+    mounted() {
+        var $panzoom = $('#community_image').panzoom({
+                contain: 'invert'
+            });
+            
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    panOnlyWhenZoomed: true,
+                    minScale: 1,
+                    focal:e
+                });
+            });
+    },
 });
 </script>
 
 <template>
     <div class="info-gallery">
         <div class="info-gallery-container">
-            <img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" />
+            <div id="community_image"><img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" /></div>
             <button class="arrow left" type="button" @click="changeSlide(-1)"></button>
             <button class="arrow right" type="button" @click="changeSlide(1)"></button>
             <div class="pagination">

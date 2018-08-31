@@ -143,6 +143,8 @@
             },
             svgPressed: function($event) {
                 // Polyfill path if not on Chrome
+                console.log("click for popup ....")
+                debugger;
                 let pathElements = $event.path;
                 if (!pathElements) pathElements = this.getComposedPath($event.target);
                 let elementPressed = pathElements[0];
@@ -232,7 +234,29 @@
         mounted() {
             let pngImage = document.getElementById('png-image');
              
-            
+            // panzoom
+            var $panzoom = $('#area').panzoom({
+                contain: 'invert'
+            });
+
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                 var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                 $panzoom.panzoom('zoom', zoomOut, {
+                     increment: 0.1,
+                     animate: false,
+                     panOnlyWhenZoomed: true,
+                     minScale: 1,
+                     focal:e
+                 });
+             });
+
+            // querySelector('#svg-container').addEventListener('click', function () {
+            //     this.svgPressed($event)
+            // });
+            // $('#svg-container').click(function(){ this.svgPressed(event)});
+
             pngImage.addEventListener('load', () => {
                 // add query here
                 if(soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
@@ -350,7 +374,7 @@
                         <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
                     </div>
 
-                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:pan="locationImageContainerPan($event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
+                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:tap="svgPressed($event)" v-on:pan="locationImageContainerPan($event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
                     <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                         <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                         <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
