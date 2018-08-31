@@ -887,11 +887,11 @@
                     <transition name="map-switch">
                         <SharjahCityImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah--parent'" />
                         <SharjahCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah--parent'" />
                     </transition>
                     <!-- End of Sharjah City -->
@@ -899,11 +899,11 @@
                     <transition name="map-switch">
                         <SharjahRoadImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
                         <SharjahRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Sharjah-road--parent'" />
                     </transition>
                     <!-- End of Sharjah Road -->
@@ -935,11 +935,11 @@
                     <transition name="map-switch">
                         <LebanonCityImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon--parent'" />
                         <LebanonCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon--parent'" />
                     </transition>
                     <!-- End of Lebanon City -->
@@ -947,11 +947,11 @@
                     <transition name="map-switch">
                         <LebanonRoadImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
                         <LebanonRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Lebanon-road--parent'" />
                     </transition>
                     <!-- End of Lebanon Road -->
@@ -959,11 +959,11 @@
                     <transition name="map-switch">
                         <MuscatCityImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat--parent'" />
                         <MuscatCityIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat--parent'" />
                     </transition>
                     <!-- End of Muscat City -->
@@ -971,11 +971,11 @@
                     <transition name="map-switch">
                         <MuscatRoadImage
                             v-if="!ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
                         <MuscatRoadIpadImage
                             v-if="ipad"
-                            class="image"
+                            class="image panzoom"
                             v-show="selectedView === 'app_x5F_Muscat-road--parent'" />
                     </transition>
                     <!-- End of Muscat Road -->
@@ -1165,7 +1165,7 @@
         display: flex;
         position: fixed;
         left: 0;
-        top: calc(12.5% + 4rem);
+        top: 8rem;
         justify-content: center;
         align-items: center;
         overflow: hidden;
