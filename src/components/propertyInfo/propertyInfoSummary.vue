@@ -62,12 +62,30 @@ export default Vue.component('property-info-summary', {
         changeView: function(view) {
             this.$emit('changeView', view);
         }
-    }
+    },
+    mounted() {
+        var $panzoom = $('#property-info-summary').panzoom({
+                contain: 'invert'
+            });
+            
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    panOnlyWhenZoomed: true,
+                    minScale: 1,
+                    focal:e
+                });
+            });
+    },
 });
 </script>
 
 <template>
-    <div class="info-summary">
+    <div class="info-summary" id="property-info-summary">
         <h3 class="info-title">{{ name }} {{ type }}</h3>
         <div class="info-row">
             <div class="info-features">
