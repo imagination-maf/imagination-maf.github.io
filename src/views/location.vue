@@ -1002,7 +1002,7 @@
 </div>
 </template>
 <style>
-    section { text-align: center; margin: 50px 0; }
+    section { text-align: center; margin: 50px 0;margin-top:0px; }
       .panzoom-parent { border: 2px solid #333; }
       .panzoom-parent .panzoom { border: 2px dashed #666; }
 </style>
