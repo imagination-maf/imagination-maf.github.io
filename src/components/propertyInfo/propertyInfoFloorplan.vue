@@ -31,7 +31,26 @@ export default Vue.component('property-info-floorplan', {
             let imageContainer = document.getElementById("image-container");
             imageContainer.setAttribute("style","transform:scale(1)");
         },
-    }
+    },
+        mounted() {
+            var $panzoom = $('#image-container').panzoom({
+                contain: 'invert'
+            });
+            
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    panOnlyWhenZoomed: true,
+                    minScale: 1,
+                    focal:e
+                });
+            });
+    
+        }
 });
 </script>
 
