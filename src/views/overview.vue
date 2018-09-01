@@ -186,7 +186,7 @@
             }
 
             
-            var $panzoom = $('#community_image,#svg').panzoom({
+            var $panzoom = $('#community_image').panzoom({
                 contain: 'invert'
             });
             
