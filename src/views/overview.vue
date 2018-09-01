@@ -182,12 +182,13 @@
             let svgImage = document.getElementById('svg');
             this.svgScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
             if(this.selectedCommunity === 'tilalalghaf'){
-                svgImage.setAttribute("style", "opacity:0");
+                // svgImage.setAttribute("style", "opacity:0");
             }
 
             
-            var $panzoom = $('#community_image').panzoom({
-                contain: 'invert'
+            var $panzoom = $('#container-zoom > svg').panzoom({
+                contain: 'invert',
+                minScale: 1
             });
             
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
@@ -213,7 +214,7 @@
     <transition name="page" appear>
         <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:pan="locationImageContainerPan(selectedCommunity, $event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
             <div class="container" @click="svgPressed($event)" id="container-zoom">
-                <img class="image" :src="images[selectedCommunity]" id="community_image"/>
+                <!-- <img class="image" :src="images[selectedCommunity]" id="community_image"/> -->
                 <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
                 <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
                 <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />

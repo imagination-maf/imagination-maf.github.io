@@ -533,7 +533,8 @@
         mounted(){
             var $section = $('#svg-container');
             var $panzoom = $section.find('.panzoom').panzoom({
-                contain: 'invert'
+                contain: 'invert',
+                minScale: 1
             });
             // debugger;
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
