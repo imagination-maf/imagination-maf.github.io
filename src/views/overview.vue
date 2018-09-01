@@ -182,11 +182,11 @@
             let svgImage = document.getElementById('svg');
             this.svgScale = {'transform': 'scale(' + (window.innerWidth / svgImage.width.baseVal.value) + ')' };
             if(this.selectedCommunity === 'tilalalghaf'){
-                svgImage.setAttribute("style", "opacity:0");
+                //svgImage.setAttribute("style", "opacity:0");
             }
 
-            
-            var $panzoom = $('#community_image').panzoom({
+            var $panzoom = $('#container-zoom > svg').panzoom({
+
                 contain: 'invert'
             });
             
@@ -213,12 +213,12 @@
     <transition name="page" appear>
         <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:pan="locationImageContainerPan(selectedCommunity, $event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
             <div class="container" @click="svgPressed($event)" id="container-zoom">
-                <img class="image" :src="images[selectedCommunity]" id="community_image"/>
-                <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
-                <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
-                <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
-                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]"/>
-                <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
+                
+                <AlZahia class="image" id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" /    >
+                <AlMouj class="image" id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
+                <WaterfrontCity class="image" id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
+                <TilalAlGhaf class="image" id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]"/>
+                <Uptown class="image" id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
             </div>
         </v-touch>
     </transition>
