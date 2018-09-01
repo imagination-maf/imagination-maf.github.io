@@ -67,7 +67,7 @@ export default Vue.component('property-info-summary', {
 </script>
 
 <template>
-    <div class="info-summary" id="property-info-summary">
+    <div class="info-summary">
         <h3 class="info-title">{{ name }} {{ type }}</h3>
         <div class="info-row">
             <div class="info-features">
