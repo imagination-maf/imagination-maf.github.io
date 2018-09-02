@@ -27,13 +27,34 @@ export default Vue.component('property-info', {
         changeView: function(key) {
             this.currentView = key;
         },
-    }
+    },
+        mounted() {
+
+            var $panzoom = $('#info-zoom-container').panzoom({
+                minScale: 1,
+                contain: 'invert'
+            });
+            
+            $panzoom.parent().on('mousewheel.focal', ( e ) => {
+                e.preventDefault();
+                var delta = e.delta || e.originalEvent.wheelDelta;
+                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+                $panzoom.panzoom('zoom', zoomOut, {
+                    increment: 0.1,
+                    animate: false,
+                    panOnlyWhenZoomed: true,
+                    minScale: 1,
+                    focal:e
+                });
+            });
+    
+        }
 });
 </script>
 
 <template>
     <div class="info">
-        <div class="info-content">
+        <div class="info-content" id="info-zoom-container">
             <div class="info-close" @click="closeInfo()"></div>
             <PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoFloorplan v-if="currentView === 'floorplan'" :property="property" v-on:changeView="changeView" />

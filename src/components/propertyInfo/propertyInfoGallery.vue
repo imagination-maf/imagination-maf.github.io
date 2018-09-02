@@ -29,10 +29,14 @@ export default Vue.component('property-info-gallery', {
         },
         backToSummary: function() {
             this.$emit('changeView', 'summary');
+        },
+        changeToSlideNum: function(index) {
+            this.slide = index;
         }
     },
     mounted() {
         var $panzoom = $('#community_image').panzoom({
+                minScale: 1,
                 contain: 'invert'
             });
             

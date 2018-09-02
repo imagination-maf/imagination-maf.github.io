@@ -54,6 +54,9 @@
                     this.slide = 0;
                     this.filter = filter;
                 }
+            },
+            changeToSlideNum: function(index) {
+                this.slide = index;
             }
         },
         mounted() {
