@@ -54,9 +54,9 @@ export default Vue.component('property-info', {
 
 <template>
     <div class="info">
-        <div class="info-content" id="info-zoom-container">
+        <div class="info-content">
             <div class="info-close" @click="closeInfo()"></div>
-            <PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" />
+            <div  id="info-zoom-container"><PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" /></div>
             <PropertyInfoFloorplan v-if="currentView === 'floorplan'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoTour v-if="currentView === 'tour'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoGallery v-if="currentView === 'gallery'" :property="property" v-on:changeView="changeView" />
