@@ -166,7 +166,7 @@ export default Vue.component('property-info-summary', {
         position: absolute;
         right: 0px;
         top: 26px;
-        z-index: 99;
+        z-index: 9999;
         .info-cta-item {
             padding-left: 3.5rem;
             position: relative;
