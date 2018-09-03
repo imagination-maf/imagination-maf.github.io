@@ -32,7 +32,8 @@ export default Vue.component('property-info', {
 
             var $panzoom = $('#info-zoom-container').panzoom({
                 minScale: 1,
-                contain: 'invert'
+                contain: 'invert',
+                linearZoom: true
             });
             
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
