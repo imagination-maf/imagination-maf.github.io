@@ -168,6 +168,7 @@ export default Vue.component('property-info-summary', {
             font-size: 1.25rem;
             line-height: 2rem;
             margin: 0.5rem 0 1.25rem;
+            z-index: 99;
             &:before {
                 content: '';
                 position: absolute;
