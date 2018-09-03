@@ -123,6 +123,7 @@ export default Vue.component('property-info-summary', {
         width: 100%;
         display: flex;
         padding: 1rem 0;
+        position: relative;
     }
     .info-row-title {
         display: block;
@@ -162,13 +163,16 @@ export default Vue.component('property-info-summary', {
         padding: 0 2rem;
         margin: 1.5rem 0 0;
         list-style-type: none;
+        position: absolute;
+        right: 0px;
+        top: 26px;
+        z-index: 99;
         .info-cta-item {
             padding-left: 3.5rem;
             position: relative;
             font-size: 1.25rem;
             line-height: 2rem;
             margin: 0.5rem 0 1.25rem;
-            z-index: 99;
             &:before {
                 content: '';
                 position: absolute;
