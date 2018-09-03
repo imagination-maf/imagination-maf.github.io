@@ -80,7 +80,7 @@ export default Vue.component('property-info', {
         width: 70%;
         background-color: #ffffff;
         position: relative;
-        padding: 5rem 3rem 5rem 6rem;
+        padding: 5rem 5rem 5rem 5rem;
         box-shadow: 0.1rem 0.1rem 0.25rem #cccccc;
         margin-top: 4rem;
         .info-close {
