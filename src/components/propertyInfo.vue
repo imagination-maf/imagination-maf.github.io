@@ -30,7 +30,7 @@ export default Vue.component('property-info', {
     },
         mounted() {
 
-            var $panzoom = $('#info-zoom-container').panzoom({
+            var $panzoom = $('#info-zoom-container1').panzoom({
                 minScale: 1,
                 contain: 'invert'
             });
