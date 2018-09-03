@@ -40,7 +40,7 @@ export default Vue.component('property-info-gallery', {
                 contain: 'invert'
             });
         
-        $(document).on( "click", ".arrow", function() {
+        $(document).on( "click", ".arrow,.pagination-item", function() {
           $panzoom.panzoom("reset");
         });
             
