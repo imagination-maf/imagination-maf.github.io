@@ -30,7 +30,7 @@ export default Vue.component('property-info', {
     },
         mounted() {
 
-            var $panzoom = $('#info-zoom-container1').panzoom({
+            var $panzoom = $('#info-zoom-container').panzoom({
                 minScale: 1,
                 contain: 'invert'
             });
@@ -80,9 +80,12 @@ export default Vue.component('property-info', {
         width: 70%;
         background-color: #ffffff;
         position: relative;
-        padding: 5rem 3rem 5rem 6rem;
+        
         box-shadow: 0.1rem 0.1rem 0.25rem #cccccc;
-        margin-top: 4rem;
+        #info-zoom-container{
+            padding: 5rem 3rem 5rem 6rem;
+
+        }
         .info-close {
             position: absolute;
             top: 0.65rem;
