@@ -39,6 +39,10 @@ export default Vue.component('property-info-gallery', {
                 minScale: 1,
                 contain: 'invert'
             });
+        
+        $(document).on( "click", ".arrow", function() {
+          $panzoom.panzoom("reset");
+        });
             
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
                 e.preventDefault();
