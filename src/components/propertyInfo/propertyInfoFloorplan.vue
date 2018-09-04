@@ -34,8 +34,12 @@ export default Vue.component('property-info-floorplan', {
     },
         mounted() {
             var $panzoom = $('#image-container').panzoom({
+                minScale: 1,
                 contain: 'invert'
             });
+            $(document).on( "click", ".arrow,.pagination-item", function() {
+                $panzoom.panzoom("reset");
+                });
             
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
                 e.preventDefault();
