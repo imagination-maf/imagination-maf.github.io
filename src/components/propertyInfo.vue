@@ -30,9 +30,13 @@ export default Vue.component('property-info', {
     },
         mounted() {
 
-            var $panzoom = $('#info-zoom-container1').panzoom({
+            var $panzoom = $('#info-zoom-container').panzoom({
                 minScale: 1,
                 contain: 'invert'
+            });
+
+            $('.info-cta-item').on('mousedown touchstart', function( e ) {
+              e.stopImmediatePropagation();
             });
             
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
