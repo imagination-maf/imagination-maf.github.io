@@ -34,8 +34,12 @@ export default Vue.component('property-info-floorplan', {
     },
         mounted() {
             var $panzoom = $('#image-container').panzoom({
+                minScale: 1,
                 contain: 'invert'
             });
+            $(document).on( "click", ".arrow,.pagination-item", function() {
+                $panzoom.panzoom("reset");
+                });
             
             $panzoom.parent().on('mousewheel.focal', ( e ) => {
                 e.preventDefault();
@@ -58,8 +62,8 @@ export default Vue.component('property-info-floorplan', {
     <div class="info-floorplan">
         <h3 class="info-title">FLOORPLAN</h3>
         <v-touch v-on:pinchout="imageContainerZoomIn" v-on:pinchin="imageContainerZoomOut">
-            <div class="info-image-container" id="image-container">
-                <img v-for="(plan, i) in floorplan" v-if="i === slide" class="info-image" :src="url + plan" />
+            <div class="info-image-container">
+                <div id="image-container"><img v-for="(plan, i) in floorplan" v-if="i === slide" class="info-image" :src="url + plan" /></div>
                 <button v-if="floorplan.length > 1" class="arrow left" type="button" @click="changeSlide(-1)"></button>
                 <button v-if="floorplan.length > 1" class="arrow right" type="button" @click="changeSlide(1)"></button>
             </div>

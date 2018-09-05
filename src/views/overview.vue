@@ -187,6 +187,7 @@
 
             
             var $panzoom = $('#community_image').panzoom({
+                minScale: 1,
                 contain: 'invert'
             });
             
