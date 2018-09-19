@@ -187,6 +187,10 @@
             var $panSelector = '#community_image';
             if(this.selectedCommunity == 'alzahia'){
                 var $panSelector = '#svg';
+                $('#community_image').hide();
+                 $('#svg polygon').on('mousedown touchstart', function( e ) {
+                    e.stopImmediatePropagation();
+                });
             }
             var $panzoom = $($panSelector).panzoom({
                 minScale: 1,
