@@ -184,9 +184,11 @@
             if(this.selectedCommunity === 'tilalalghaf'){
                 svgImage.setAttribute("style", "opacity:0");
             }
-
-            
-            var $panzoom = $('#community_image').panzoom({
+            var $panSelector = '#community_image';
+            if(this.selectedCommunity == 'alzahia'){
+                var $panSelector = '#svg';
+            }
+            var $panzoom = $($panSelector).panzoom({
                 minScale: 1,
                 contain: 'invert'
             });
