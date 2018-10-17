@@ -193,7 +193,7 @@
                 });
             }
 
-            $('#container-zoom').pinchzoomer();
+            $($panSelector).pinchzoomer();
             // var $panzoom = $($panSelector).panzoom({
             //     minScale: 1,
             //     contain: 'invert'
