@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="app_x5F_Sharjah--parent" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="1024px" height="576px" viewBox="0 0 1024 576" style="enable-background:new 0 0 1024 576;"
+	 xml:space="preserve" preserveAspectRatio="none">
+	 
+	 <image xlink:href="https://s3.amazonaws.com/zoom-feature/maps-png/ipad/Sharjah-city-ipad.png" width="100%" height="100%" x="0" y="0" />
+
+
+
+<g id="map-data" style="display:none;">
+	<polyline style="display:inline;fill:#E0DAD5;" points="738.4,509.4 736,513.6 737.6,514.6 739.2,512 745.4,515.6 746.4,513.8 
+		738.4,509.4 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="753.6,517.8 752.6,519.6 763,525.6 764,523.8 753.6,517.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="731.6,520.6 729.2,524.6 724,521.4 723.8,523 723.8,524 724.4,524 
+		730,527.2 733.4,521.6 731.6,520.6 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="771.2,527.8 770.2,529.6 780.8,535.4 781.8,533.8 771.2,527.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="723.2,532 723,534.2 732.6,540 734,538.2 725.2,533.2 725.2,532.2 
+		723.2,532 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="789,537.8 787.6,539.4 798.4,545.4 799.4,543.8 789,537.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="722.8,540.2 722.4,542 722.4,545 724.4,545 724.4,543.8 731.2,547.4 
+		732.2,545.6 722.8,540.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="84.2,427.6 82.6,429.2 86.2,432.6 82.2,436 83.4,437.4 89.2,433 
+		84.2,427.6 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="176,425.8 174,426.4 177,434.6 177,434.6 179,437.6 180.8,436.6 
+		178.8,433.6 176,425.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="338,426.2 337,428 338,428.6 339,429.6 339.4,429.6 340.4,430.2 
+		341.4,431.4 341.6,431.4 342.6,432 343.6,433.2 344.4,434 344.8,434.6 345,434.6 346,435.2 346.4,435.2 347.8,434 347.4,433.4 
+		347,433.2 346,433 345.8,432.6 345,431.6 343.8,430.2 343.6,430.2 342.6,429.6 341.4,428.4 341,428.4 340,428 339.6,427.2 
+		339.4,427 338,426.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="202.4,431.6 202.2,432 199.6,432.4 199.6,432.4 197.6,433.4 197.6,433.4 
+		197.2,434 196.4,434.4 196.4,435 196.4,435.4 195.6,436 195,436.4 195,437 195,437.4 195,437.4 194.2,438.2 194,438.4 194,439.4 
+		194,439.8 196,440.2 196,439.4 196,439.2 196.2,439 197,438.4 197,438 197,437.4 197.2,437.4 198.2,436.2 198.4,436 198.4,435.4 
+		198.4,435.4 199,435.2 200.2,434.4 203,433.6 203,433.6 203.4,433.4 202.4,431.6 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="66.4,435.4 65.8,437.2 66.2,437.4 66.2,437.4 67.4,438 68.8,438.4 
+		69.8,439 70.4,439.6 70.8,439.8 72,440.2 72,440.2 73,440.6 73.2,441.2 73.4,441.2 74.4,441.6 75.2,442.4 76.2,443.4 77,442.8 
+		77.2,442.6 76.4,441.8 77,441.4 76.6,440.8 76.6,440.8 75.8,439.8 75.4,439.8 74.4,439.4 74.2,439 74,439 72.8,438.4 71.8,438 
+		71,437.2 70.8,437 69.4,436.4 68.2,436 68.2,436.2 67,435.6 67,435.6 66.4,435.4 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="406.8,424.8 405.6,426.4 405.8,426.8 407.8,428.6 407.8,429 410.2,430.6 
+		411.6,432.2 413.2,434.2 413.2,434.2 414.2,435 415.6,433.4 414.8,432.6 413.2,431 411.6,429.2 411.6,429 409.2,427.2 407.2,425.2 
+		407,425 406.8,424.8 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M153.2,435.2l-0.4,0.4l-1,0.8l-1,0.8l-0.4,0.4l-1,0.8l-0.4,0.4l0,0l-0.4,0.4
+		l-1.8,1.4l-2.2,1l0,0l-1.2,1l1.2,1.4l1-1l2.2-1l0,0l1.8-1.4l0.4-0.4l0,0l0.4-0.4c0.8-0.8,3.4-2.8,3.8-3.4l0,0l-1-0.4L153.2,435.2"
+		/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="85.6,437 77.6,443.4 78.2,444.2 80,446.4 81.6,445.4 80.4,443.6 87,438.4 
+		85.6,437 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="93.4,437 91.8,438.2 92.6,439.2 93.8,440.6 95.2,441.8 95.4,442.2 
+		96.6,442.8 97.8,444.2 98.2,444.4 99.6,445.2 100.6,446.4 100.8,446.6 100.8,446.6 101.4,445.6 102,444.8 100.8,443.6 100.6,443.4 
+		99.2,442.6 98.2,441.4 97.8,441.2 96.4,440.4 95.4,439.2 94.2,438 93.4,437 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="371.6,439.2 371.4,439.4 370.2,439.6 369.8,439.6 367.8,439.4 367.8,439.4 
+		367,439.6 367.4,441.6 368,441.4 369.4,441.6 370.4,441.6 370.8,441.6 371.4,441.4 372.6,441.8 373.2,441.6 374,441.6 375.2,441.8 
+		375.6,441.8 376.4,441.6 377.6,442.2 377.6,442.2 378.4,442.2 378.6,442.2 379.4,440.4 379,440.2 378.6,440.2 378,440.2 
+		376.6,439.6 376.4,439.6 375.4,439.8 374.2,439.4 374,439.4 373,439.6 371.6,439.2 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M349.6,440.4l-1.4,1.2l0.2,0.2l0.8,0.8h0.4h0.4l0,0l1,1.2l0.8-0.8l0,0l0.8,1l0.4-0.4
+		l0.4,0.4l0.8-0.8l0,0h0.4h1.8h0.2l1.2-0.2l1.2-0.2h0.2l-0.4-2h-0.2c-1.8,0.4-2.2,0.8-2.8,0.8c-0.4,0-1,0-2.2-0.2l-0.4-0.4l-0.4,0.4
+		h-0.4h-1.2l-0.4-0.4H350h-0.4l0,0V440.4"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="185.2,443.4 183.4,444.6 186.2,448.6 186.2,448.6 187,449.4 187.2,449.6 
+		187.8,449.6 188.2,449.8 188.4,449.8 189.4,450.2 190.2,450.2 190.2,450.2 191.4,450.2 191.8,449.8 192,449.8 192.8,449.8 
+		193,449.6 193.4,449.2 194,448.8 194.2,448.6 192.8,447.2 192.4,447.2 192.2,447.6 192,447.6 191.2,447.6 191,447.8 190.8,448.2 
+		190.2,448.2 189.4,448.2 189.4,448.2 189,447.8 188.8,447.6 188.2,447.6 188,447.4 187.8,447.4 185.2,443.4 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M137,447.2l-2,1c-2.2,1.2-6,2.8-8.2,4l-0.4,0.2l0.4,2l1-0.2c2-1.4,6-2.8,8.2-4l2-1
+		L137,447.2"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="108.4,449.2 107.6,451 108,451 109.6,452 111.4,453 111.4,453 112.2,453.4 
+		112.8,454 113.2,454 113.6,454 114,454.6 114.6,454.6 115,454.6 116.2,455 116.6,455 116.8,455 117.2,455.6 117.8,455.6 
+		118.6,455.6 118.8,455.6 119,453.6 118.6,453.6 118.2,453.6 117.8,453 117.6,453 116.8,453 115.6,452.6 115.2,452.6 115,452.6 
+		114.6,452 114.2,452 113.8,452 113.6,451.8 113.2,451.6 112,451 110.6,450.4 109,449.4 108.8,449.4 108.4,449.2 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M387.6,442.6l-1.4,1.2l0.4,0.4c5,2.4,5,1.8,10.2,5.2l0.2,0.2l1-1.8l-0.2-0.2
+		C392.6,444.6,392.8,445.2,387.6,442.6L387.6,442.6"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M421.2,439.4l-1.4,1.2l0.8,1l2,2.2l1.4,1.8l3.4,4l0.2,0.2l1.8-1l-0.2-0.4
+		c-2.2-2.8-4.8-5.2-7-8L421.2,439.4"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="86.4,451.8 84.6,453 91.8,462.8 93.6,461.6 86.4,451.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="404.8,452.4 403.8,454 405,454.8 406.8,456 408,457.6 408.2,457.6 
+		409.6,458.4 411.2,460 411.2,460.4 412.8,461 413,461.4 414.6,460 414,459.6 414,459.4 412.6,458.6 411,456.8 410.8,456.8 
+		409.2,455.8 408.2,454.6 408,454.6 406,453 406,453 404.8,452.4 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="434.4,455 432.4,456 433.4,458 433.6,458 435.2,459.8 436.6,462.4 
+		436.6,462.4 438.2,464 439.4,466 441.2,465 440,462.8 439.6,462.8 438.2,461 436.6,458.6 436.6,458.6 435.2,456.8 434.4,455 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="98.4,468.2 96.6,469.6 100.6,474.8 103.6,479.4 105.4,478.2 102.4,473.8 
+		98.4,468.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="420.2,465.8 418.8,467 419.8,468 420,468.2 421.4,469 422.8,470.8 424,472 
+		425,473.2 426.2,475.4 426.2,475.4 426.8,476 428.2,474.8 428,474.2 426.8,472 426.8,472 425.4,470.8 424.4,469.2 422.8,467.6 
+		422.4,467.2 421.2,466.6 420.2,465.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="109.6,485.2 107.8,486.2 108.4,487 108.4,487 108.4,487.2 108.4,487.4 
+		108.4,488 108.4,488.2 108,488.2 107.6,488.2 106.8,488.2 106.8,488.2 106.6,488.2 106.4,488 105.8,487.4 105.6,487.2 102.6,485.8 
+		102.6,485.8 102,485.8 101.6,487.6 102,487.6 104.6,489 104.8,489.2 105.6,490 105.8,490.2 106.8,490.2 106.8,490.2 107,490.2 
+		107.8,491 108.6,490.4 109,490 109,490 109.6,489.6 110.4,489 110.4,488.4 110.4,488.2 111.4,487.4 110.6,486.4 110.4,486.2 
+		109.8,485.8 109.6,485.2 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M444.8,472.2l-1.8,1l0.2,0.2c3.8,3.4,2.4,5.4,4.8,9l0.8,1.4l1.8-1l-0.8-1.4
+		C447.8,477.8,448.6,475.8,444.8,472.2L444.8,472.2"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="425.4,479 424.4,482.8 429.8,484.4 430,485 430.2,485 431.2,485.4 
+		431.6,486 432.2,486 432.2,486.2 432.4,485 433,484.4 432.4,483.8 432.2,483.8 431.2,483.2 430.6,482.8 430.4,482.8 427,481.4 
+		427,481.2 428.8,481.8 429.2,479.4 425.4,479 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="93.6,486 91.4,487.4 86.4,492.6 85.6,493.2 84.4,494 85.4,495.6 86.6,495 
+		87,495 87.6,494 92.6,489 94.6,487.6 93.6,486 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="78.2,499.6 78,499.8 76.2,501.4 74.4,503.2 72.8,504.6 72.4,504.6 
+		71.2,506.6 69.8,508.2 71,509.6 72.8,508.2 73,507.8 74.2,506.2 76,504.6 77.6,502.8 79.4,501.4 79.4,501.2 79.6,500.8 78.2,499.6 
+			"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="439.2,489.4 437.4,491 437.6,491.2 437.6,491.2 438.2,491.6 438.2,492.4 
+		438.4,493 439.4,494 439.6,495.2 440,495.4 440.6,496.2 441.4,498 441.4,498 442.2,498.8 442.8,499.6 443.4,500.8 445.2,499.8 
+		444.6,498.4 444.4,498.4 443.6,497.4 443.2,496.6 442.4,495 442.2,495 441.6,494.2 441.2,493 441.2,492.6 440.2,491.6 440.2,491 
+		440,490.6 439.2,489.6 439.2,489.6 439.2,489.4 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M451.6,490.6v0.8c0.8,4.2,1.4,8.4,0.8,13l-0.4,0.8l-0.2-0.2h-0.4h-0.8v0.8l-1,0.8
+		l0.4,0.4h0.4h0.4l0.4,0.4h0.4h1.4l0.2-0.4l1-1.8V497h-1l1-0.2l-0.2-1V495v-0.2l-0.2-1V493v-0.2l-0.2-1v-0.4L451.6,490.6"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="232,356.2 228.8,356.2 219.8,356.2 219.8,358.2 229,358.2 229,358.2 
+		232.2,358.2 232,356.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="209.4,356.2 209.4,356.2 205.2,357 201.4,357 201.4,357 199.4,357.4 
+		200,359.4 201.6,359.2 205.4,359 205.4,359 209.6,358.4 211.8,358.2 211.8,356.2 209.4,356.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="240.2,356.2 240,358.2 245,359 252.2,359.2 252.4,357.2 245.2,357 
+		240.2,356.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="191.4,359.2 189.4,359.8 189.4,359.8 185.8,360.8 181.8,361.8 181.6,362 
+		179.8,363 180.8,364.8 182.4,363.8 186.2,362.8 190,361.8 192,361.2 191.4,359.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="260.4,359.2 260,361.2 261.2,361.4 269.4,363.8 270.6,364.2 270.6,364.2 
+		271.8,364.4 272.2,362.4 271.2,362.2 269.8,361.8 261.6,359.4 260.4,359.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="280,364 279.8,366 280,366 291.6,368.6 292,366.8 280.6,364 280.6,364 
+		280,364 280,364 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="134.2,373 134,373 132.8,373.2 131.2,373.2 129.4,373 129.2,373 128,373.4 
+		127.8,373.4 128.2,375.4 128.4,375.4 129.8,375 131.2,375.2 133,375.2 133.2,375.2 134,375 135.2,375.4 135.2,375.4 137.2,375.4 
+		137.2,375.4 138.2,375.2 139.2,375.6 139.4,375.6 139.6,375.6 140,373.6 139.6,373.6 138.4,373.2 138,373.2 137,373.4 135.6,373.4 
+		134.2,373 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="300,368.4 299.6,370.4 309.4,372.6 311.2,373.4 312,371.4 310,371 
+		300,368.4 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="172.8,367.4 172,368 168.4,371.2 165.6,374.4 165.6,374.6 164.6,377 
+		166.6,377.6 167.4,375.6 169.8,372.6 173.2,369.4 174,369 172.8,367.4 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M119.8,374.4H119c-4,1.2-5.8,1.2-9.4,2.8L108,378l0.8,1.8l1.4-0.8
+		c4-1.4,5.4-1.2,9.2-2.8h0.8L119.8,374.4"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="319.6,374.2 319,376.2 330.4,380.4 331.2,378.4 319.6,374.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="100.4,380.8 99.6,381.2 97.8,381.8 97.6,382.2 96.2,383.6 94.4,384.2 
+		94.4,384.2 92.2,385.4 92.2,385.4 90.8,386.6 89.8,386.8 90.6,388.8 91.8,388.4 92.2,388.2 93.4,387.2 95.4,386.2 97.2,385.4 
+		97.4,385.2 98.8,383.6 100.4,383.2 101,382.8 100.4,380.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="147.4,377 146,378.2 146.4,378.6 146.6,379.2 147.2,379.6 147.6,380 
+		147.6,380.2 147.6,380.8 147.8,381.2 148.6,382.2 148.6,382.2 149.2,382.6 149.2,382.6 149.2,383.6 149.4,383.8 149.4,383.8 
+		149.4,384.4 149.4,384.6 150.2,388.4 152.2,387.8 151.4,384.4 151.6,383.2 151.4,382.8 151.2,382.8 151.2,381.8 150.8,381.6 
+		150.6,381.2 150.2,380.8 149.6,380.2 149.6,379.4 149.4,379.2 149.2,378.6 149.2,378.6 148.6,378.2 147.8,377.4 147.4,377 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="338.6,381.4 337.8,383.2 345.8,386.6 348.8,388.2 349.8,386.4 346.6,384.6 
+		338.6,381.4 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="162.6,385.2 162.6,386.8 162.4,389.4 162.4,389.4 162.6,392.4 163.6,397.4 
+		163.6,397.4 165.6,397 164.6,392 164.4,389.4 164.6,386.8 164.8,385.2 162.6,385.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="83.2,392.4 83.2,392.6 83,392.8 82,393.6 81.4,394 81.2,394.4 81,395.4 
+		80.4,395.8 80.4,396 80,397 79.4,397.4 79.4,397.6 79,398.6 78.4,399 78.4,399.6 78.4,400 78,401.4 78,401.6 77.6,402.4 77.6,403 
+		79.6,403.4 80,402.6 80,402.6 80,401.8 80.4,400.6 80.4,400.4 80.4,400 80.6,399.8 81.2,398.6 81.6,398 81.6,397.8 82.2,396.8 
+		82.6,396.6 82.6,396.4 83.2,395.4 83.4,395 84.2,394.4 85,393.8 85,393.6 85.2,393 83.2,392.4 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="357,390.2 356,391.8 362,395.4 362.2,395.6 364.4,396.4 367,397.6 
+		367.8,395.8 365.4,394.6 365.4,394.6 363,393.6 357,390.2 357,390.2 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="153.8,395.8 151.8,396.4 152.6,399.8 152.6,399.8 153.6,403.4 160.4,402 
+		160,400 155.2,400.8 154.6,399.4 153.8,395.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="162.4,402.6 153.6,404.6 153.8,405.6 154.8,409.8 156.8,409.2 156.2,406.2 
+		162.8,404.6 162.4,402.6 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="374.6,400.4 373.4,401.8 377.2,404.6 377.2,404.6 380,406 382.2,407.8 
+		383.4,408.8 384.6,407 383.4,406.2 381.2,404.2 381,404.2 378.2,402.8 376,401 374.6,400.4 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="168.6,406.8 166.6,407.6 171.2,419 173,418.2 168.6,406.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="76.6,411 76.2,415 75.2,416 76,416.8 76,416.8 76,417.2 76,418 76,419.2 
+		76.2,419.4 76.2,419.8 76.2,420.4 76.4,420.8 76.6,421 76.4,421.8 76.6,422 77.6,423 78.2,422.4 79.4,422.4 79.4,422 79.2,421.8 
+		78.6,421 78.6,420.2 78.4,420 78.2,419.8 78.4,419 78,418.8 78,418.4 78,418.2 78,417.2 78,417.2 78.2,416 78.2,416 78.2,415.8 
+		78.6,411.2 76.6,411 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="308.2,417.2 308.2,417.2 307,417.4 305.4,417.4 303.8,417.2 303.4,417.2 
+		302.4,417.4 301,417.4 299.8,417.4 299.2,417.8 299,418 299.6,418.8 299.2,420 300,420 300.2,419.8 300.4,419.4 300.8,419.4 
+		302.8,419.8 302.8,419.8 304,419.2 305.4,419.4 307.2,419.4 307.2,419.4 308.4,419.2 309.8,419.2 311,419.8 311.2,419.8 
+		311.2,419.8 311.2,418.8 311.8,417.8 310.2,417.2 310,417.2 308.2,417.2 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M256,419.8L256,419.8l-2,0.2l-2.4-0.2l0,0L250,420l0.2,2l1.4-0.2
+		c0.8,0,1.4,0.2,2,0.2c0.8,0,1.2,0,1.8-0.2c0.4,0,1.2-0.2,2-0.2s1.8,0,3,0.2h2l0.2-2h-2h-1.8H256"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M241.8,420.8l-1.2,0.2c-3,0.4-6.2,0.4-9,1.4l-2,0.2l0.2,2l2-0.2c2.8-1,6-1,8.8-1.4
+		l1.2-0.2l0,0V420.8"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="391.2,412 389.8,413.8 391.8,415 394.2,416.8 396.8,419 396.8,419 
+		399.4,421 399.6,421.2 400.8,419.4 400.6,419.2 398,417.4 395.4,415.2 395.4,415.2 393.2,413.6 391.2,412 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="270.2,420.8 269.8,422.8 271.4,422.8 273.6,423.2 273.8,423.2 275.6,423 
+		277.6,423.4 279.6,424 279.8,424 281.8,424.2 282,422.2 280,422 278,421.4 275.8,421 275.6,421 273.6,421.2 271.8,420.8 
+		271.6,420.8 270.2,420.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="319.2,418.8 319.2,420.8 319.6,420.8 321,421.2 321,421.2 322.4,421.2 
+		324,422.2 324,422.2 325.2,422.8 326.6,423.2 326.6,423.2 328.2,423.2 329.2,423.8 330.2,424.2 331.2,422.4 330.2,422 330.2,421.8 
+		328.6,421.2 328.4,421.2 326.8,421.2 325.8,420.8 324.8,420.2 323.2,419.2 323,419.2 321.4,419.2 320.2,418.8 320,418.8 
+		319.2,418.8 	"/>
+	<polyline style="display:inline;fill:#E0DAD5;" points="158.6,417.2 156.6,417.8 158.2,424.2 157.6,425.2 157.6,425.4 157.6,426.2 
+		157.6,427 157.2,428.2 156.8,428.4 156.8,429.2 157.8,429.2 158.6,430.2 158.8,429.6 158.8,429.2 159,428.6 159.6,427.4 
+		159.6,427.2 159.6,426.4 159.6,425.8 160,424.4 158.6,417.2 	"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M221.8,424.4H221c-2.4,0.8-6.2,1.8-8.8,2.8l-2.4,0.8l0.4,2l2.4-0.8
+		c2.8-1,5.4-2,8.4-2.8h1L221.8,424.4"/>
+	<path style="display:inline;fill:#E0DAD5;" d="M290,428.4L290,428.4 M292,421.8l-0.2,0.2v0.4v0.4l-1,0.8l0.4,0.4v0.4v0.4l-0.4,0.4
+		v0.4v0.8l0,0v0.8v0.4h-0.2l0,0l-0.4,0.4l0,0l-0.4-0.4l-0.4,0.4l0,0l0,0l-2-0.2v0.8l0.2,0.2l0.4,0.4l0.4,0.4l0,0l1,1.2l0.4-0.4
+		l0.4,0.4l0.8-0.8l0.4-0.4l0.4-0.4l0.4-0.2l0.8-0.8v-0.4V427v-0.8v-0.4l0.4-0.4V425v-0.4l1-0.8l-0.4-0.4V423v-0.8h-1L292,421.8"/>
+</g>
+<rect id="app_x5F_Sharjah-road--zoom" x="753.1" y="340.9" transform="matrix(-0.9884 0.1521 -0.1521 -0.9884 1670.9697 620.0101)" style="fill:none;" width="117.3" height="66"/>
+<g id="Map_labels">
+	<path id="Line-2_26_" style="fill:#8A1538;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" d="M819.5,427.3h17.8"/>
+	<text transform="matrix(1 0 0 1 513.3345 254.2269)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Burj Khali</text>
+	<text transform="matrix(1 0 0 1 545.3882 254.2269)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">f</text>
+	<text transform="matrix(1 0 0 1 547.7886 254.2269)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">a</text>
+	<text transform="matrix(1 0 0 1 406.6313 263.7825)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Um Suqeim</text>
+	<g>
+		
+			<text transform="matrix(0.9996 -2.672097e-02 2.672094e-02 0.9996 462.2292 303.3015)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3066px;">Sheikh Zayed Road</text>
+	</g>
+	<g>
+		
+			<text transform="matrix(0.1951 0.9808 -0.9808 0.1951 346.5992 323.4803)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3089px;">Hessa St</text>
+		
+			<text transform="matrix(0.1951 0.9808 -0.9808 0.1951 350.6578 343.8804)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3089px;">r</text>
+		
+			<text transform="matrix(0.1951 0.9808 -0.9808 0.1951 351.0436 345.816)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3089px;">eet</text>
+	</g>
+	<g>
+		
+			<text transform="matrix(0.9945 -0.1049 0.1049 0.9945 712.45 375.6228)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3089px;">Sheikh Mohammed Bin Zayed Road</text>
+	</g>
+	<g>
+		
+			<text transform="matrix(0.9458 -0.3249 0.3249 0.9458 839.2374 538.1053)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3114px;">Emi</text>
+		
+			<text transform="matrix(0.9458 -0.3249 0.3249 0.9458 848.0143 535.0892)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3114px;">r</text>
+		
+			<text transform="matrix(0.9458 -0.3249 0.3249 0.9458 849.8304 534.4675)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3114px;">ates Road</text>
+	</g>
+	<g>
+		
+			<text transform="matrix(0.3249 0.9458 -0.9458 0.3249 832.5421 361.752)" style="fill:#3C3C3D; font-family:'MarselisPro-Bold'; font-size:5.3114px;">Al Dhaid Road</text>
+	</g>
+	<text transform="matrix(1 0 0 1 542.9302 286.0795)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">DIFC</text>
+	<text transform="matrix(1 0 0 1 572.2607 238.9647)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Port Rashid</text>
+	<text transform="matrix(1 0 0 1 655.6061 177.9158)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Dei</text>
+	<text transform="matrix(1 0 0 1 666.3257 177.9158)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">r</text>
+	<text transform="matrix(1 0 0 1 668.8857 177.9158)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">a Islands (Planned)</text>
+	<text transform="matrix(1 0 0 1 734.3081 227.2859)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Al Qasba</text>
+	<text transform="matrix(1 0 0 1 455.2065 126.5546)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">The </text>
+	<text transform="matrix(1 0 0 1 468.9673 126.5546)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">W</text>
+	<text transform="matrix(1 0 0 1 475.5269 126.5546)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">orld</text>
+	<text transform="matrix(1 0 0 1 310.6772 199.5483)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Atlantis Hotel</text>
+	<text transform="matrix(1 0 0 1 370.3706 382.2986)" style="fill:#FFFFFF; font-family:'MarselisPro'; font-size:7.4322px;"> </text>
+	<text transform="matrix(1 0 0 1 695.2604 401.4101)" style="fill:#FFFFFF; font-family:'MarselisPro'; font-size:7.4322px;"> </text>
+	<text transform="matrix(1 0 0 1 335.2272 460.3358)" style="fill:#FFFFFF; font-family:'MarselisPro'; font-size:7.4322px;"> </text>
+	<text transform="matrix(1 0 0 1 389.5093 243.1453)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">The Palm Jumei</text>
+	<text transform="matrix(1 0 0 1 441.7764 243.1453)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">r</text>
+	<text transform="matrix(1 0 0 1 444.2827 243.1453)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">ah</text>
+	<text transform="matrix(1 0 0 1 399.0659 436.4467)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Global Village</text>
+	<text transform="matrix(1 0 0 1 56.2612 426.3603)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Al Maktoum International Airport</text>
+	<text transform="matrix(1 0 0 1 855.0142 280.9949)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Museums</text>
+	<text transform="matrix(1 0 0 1 855.0142 289.8904)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Public Lib</text>
+	<text transform="matrix(1 0 0 1 886.2681 289.8904)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">r</text>
+	<text transform="matrix(1 0 0 1 888.7749 289.8904)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">ary</text>
+	<text transform="matrix(1 0 0 1 855.0142 298.8525)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Cultu</text>
+	<text transform="matrix(1 0 0 1 872.2944 298.8525)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">r</text>
+	<text transform="matrix(1 0 0 1 874.8013 298.8525)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">al Palace</text>
+	<text transform="matrix(1 0 0 1 494.6216 444.4095)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Dubai Land</text>
+	<text transform="matrix(1 0 0 1 764.4341 449.9833)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Uni</text>
+	<text transform="matrix(1 0 0 1 775.687 449.9833)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">v</text>
+	<text transform="matrix(1 0 0 1 779.314 449.9833)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">ersity City</text>
+	<text transform="matrix(1 0 0 1 844.9575 429.0984)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Matajer</text>
+	<text transform="matrix(1 0 0 1 773.9888 274.1357)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Mega Mall</text>
+	<text transform="matrix(1 0 0 1 714.0015 307.4462)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Saha</text>
+	<text transform="matrix(1 0 0 1 730.3218 307.4462)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">r</text>
+	<text transform="matrix(1 0 0 1 732.8813 307.4462)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">a Mall</text>
+	<text transform="matrix(1 0 0 1 884.939 391.8358)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Sharjah International Airport</text>
+	<text transform="matrix(1 0 0 1 627.8701 328.1492)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Dubai International Airport</text>
+	<text transform="matrix(1 0 0 1 874.853 373.4018)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Airport </text>
+	<text transform="matrix(1 0 0 1 899.6528 373.4018)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">F</text>
+	<text transform="matrix(1 0 0 1 903.3862 373.4018)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">r</text>
+	<text transform="matrix(1 0 0 1 905.9995 373.4018)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">ee </text>
+	<text transform="matrix(1 0 0 1 915.5464 373.4018)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Z</text>
+	<text transform="matrix(1 0 0 1 919.7061 373.4018)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">one</text>
+	<text transform="matrix(1 0 0 1 843.5308 345.7576)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Al </text>
+	<text transform="matrix(1 0 0 1 852.0112 345.7576)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">T</text>
+	<text transform="matrix(1 0 0 1 855.4248 345.7576)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">alah Park</text>
+	<text transform="matrix(1 0 0 1 843.5308 327.0732)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Al Qassimi Hospital</text>
+	<text transform="matrix(1 0 0 1 871.7983 251.9482)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">International School </text>
+	<text transform="matrix(1 0 0 1 940.0112 251.9482)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">o</text>
+	<text transform="matrix(1 0 0 1 944.0649 251.9482)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">f Chouei</text>
+	<text transform="matrix(1 0 0 1 970.7848 251.9482)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">f</text>
+	<text transform="matrix(1 0 0 1 973.1852 251.9482)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">at</text>
+	<text transform="matrix(1 0 0 1 687.7231 493.5146)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Private School Compound</text>
+	<polygon id="Path-6" style="fill:#B4985A;fill-opacity:0.75;stroke:#B4985A;stroke-width:0.166;" points="804.1,366.1 806.4,380.7 
+		823,378.5 820.7,368 813.5,369 812.7,365 	"/>
+	<text transform="matrix(1 0 0 1 824.6567 397.1639)" style="fill:#FFFFFF; font-family:'MarselisPro'; font-size:7.4322px;"> </text>
+	<text transform="matrix(1 0 0 1 782.3229 345.6693)" style="fill:#FFFFFF; font-family:'MarselisPro'; font-size:7.4322px;"> </text>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="841.7" y1="427.1" x2="819.1" y2="427.1"/>
+			<g>
+				<circle style="fill:#8A1538;" cx="819.3" cy="427.1" r="2.5"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="788.5" y1="440.7" x2="788.5" y2="417.5"/>
+			<g>
+				<path style="fill:#8A1538;" d="M791,417.6c0-1.4-1.1-2.5-2.5-2.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5
+					C789.9,420.1,791,419,791,417.6z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="810.9" y1="387.7" x2="810.9" y2="377.2"/>
+			<g>
+				<path style="fill:#8A1538;" d="M813.3,377.4c0-1.4-1.1-2.5-2.5-2.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5
+					C812.2,379.9,813.3,378.8,813.3,377.4z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line style="fill:none;" x1="787.7" y1="348.6" x2="809.7" y2="370.6"/>
+		<g>
+			<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="787.7" y1="348.6" x2="808" y2="368.9"/>
+			<g>
+				<path style="fill:#8A1538;" d="M806.1,370.6c1,1,2.5,1,3.5,0s1-2.5,0-3.5s-2.5-1-3.5,0C805.1,368,805.1,369.6,806.1,370.6z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="729.9" y1="484.1" x2="729.9" y2="468.2"/>
+			<g>
+				<path style="fill:#8A1538;" d="M732.4,468.3c0-1.4-1.1-2.5-2.5-2.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5
+					C731.3,470.8,732.4,469.7,732.4,468.3z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="672.5" y1="410.3" x2="672.5" y2="425.1"/>
+			<g>
+				<path style="fill:#8A1538;" d="M670,424.9c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C671.1,422.4,670,423.5,670,424.9z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="672.3" y1="331.7" x2="672.3" y2="350"/>
+			<g>
+				<path style="fill:#8A1538;" d="M669.8,349.8c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C670.9,347.3,669.8,348.4,669.8,349.8z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="733.3" y1="310.3" x2="733.3" y2="318.9"/>
+			<g>
+				<path style="fill:#8A1538;" d="M730.8,318.8c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C731.9,316.2,730.8,317.4,730.8,318.8z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="790.8" y1="277" x2="790.8" y2="288.6"/>
+			<g>
+				<path style="fill:#8A1538;" d="M788.3,288.5c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C789.4,286,788.3,287.1,788.3,288.5z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="748.6" y1="230.5" x2="748.6" y2="292.6"/>
+			<g>
+				<path style="fill:#8A1538;" d="M746.2,292.5c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C747.3,289.9,746.2,291.1,746.2,292.5z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="693.3" y1="180" x2="693.3" y2="242.1"/>
+			<g>
+				<path style="fill:#8A1538;" d="M690.7,242c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C691.9,239.5,690.7,240.6,690.7,242z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line style="fill:none;" x1="869.2" y1="249.1" x2="790.8" y2="327.5"/>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="869.2" y1="249.1" x2="792.5" y2="325.8"/>
+			<g>
+				<path style="fill:#8A1538;" d="M790.8,323.9c-1,1-1,2.5,0,3.5s2.5,1,3.5,0s1-2.5,0-3.5C793.4,322.9,791.8,322.9,790.8,323.9z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line style="fill:none;" x1="852.7" y1="279.5" x2="820" y2="312.3"/>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="852.7" y1="279.5" x2="821.7" y2="310.6"/>
+			<g>
+				<ellipse style="fill:#8A1538;" cx="821.7" cy="310.5" rx="2.5" ry="2.5"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="513.3" y1="447.6" x2="513.3" y2="466.7"/>
+			<g>
+				<path style="fill:#8A1538;" d="M510.9,466.6c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5S510.9,465.2,510.9,466.6z"
+					/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="425.9" y1="266.6" x2="425.9" y2="285.7"/>
+			<g>
+				<path style="fill:#8A1538;" d="M423.4,285.5c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5S423.4,284.2,423.4,285.5z"
+					/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="110.5" y1="429.5" x2="110.5" y2="460.6"/>
+			<g>
+				<path style="fill:#8A1538;" d="M108,460.5c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5S108,459.1,108,460.5z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="333.3" y1="202.2" x2="333.3" y2="221.3"/>
+			<g>
+				<path style="fill:#8A1538;" d="M330.7,221.2c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C331.8,218.7,330.7,219.8,330.7,221.2z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="471.8" y1="129.6" x2="471.8" y2="156.6"/>
+			<g>
+				<path style="fill:#8A1538;" d="M469.3,156.5c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5S469.3,155.2,469.3,156.5z"
+					/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="532.6" y1="257.7" x2="532.6" y2="309.5"/>
+			<g>
+				<path style="fill:#8A1538;" d="M530.1,309.4c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C531.2,306.9,530.1,308,530.1,309.4z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="550.6" y1="289.1" x2="550.6" y2="301.1"/>
+			<g>
+				<path style="fill:#8A1538;" d="M548.2,301c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5
+					C549.3,298.5,548.2,299.6,548.2,301z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="591.3" y1="241.3" x2="591.3" y2="260.5"/>
+			<g>
+				<path style="fill:#8A1538;" d="M588.7,260.3c0,1.4,1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5c0-1.4-1.1-2.5-2.5-2.5
+					C589.8,257.8,588.7,258.9,588.7,260.3z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="613.5" y1="347.3" x2="613.5" y2="329.2"/>
+			<g>
+				<path style="fill:#8A1538;" d="M616.1,329.3c0-1.4-1.1-2.5-2.5-2.5c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5
+					C614.9,331.8,616.1,330.7,616.1,329.3z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="312.3" y1="450.9" x2="312.3" y2="435"/>
+			<g>
+				<path style="fill:#8A1538;" d="M314.9,435.2c0-1.4-1.1-2.5-2.5-2.5s-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5S314.9,436.6,314.9,435.2z"
+					/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="319.1" y1="382.5" x2="307.4" y2="382.5"/>
+			<g>
+				<path style="fill:#8A1538;" d="M307.5,379.9c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5
+					C310,381.1,308.8,379.9,307.5,379.9z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="387.5" y1="240.8" x2="364.6" y2="240.8"/>
+			<g>
+				<path style="fill:#8A1538;" d="M364.8,238.3c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5
+					S366.2,238.3,364.8,238.3z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="392.3" y1="324.3" x2="392.3" y2="310.9"/>
+			<g>
+				<path style="fill:#8A1538;" d="M394.9,311c0-1.4-1.1-2.5-2.5-2.5s-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5S394.9,312.4,394.9,311z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="422.6" y1="439.1" x2="422.6" y2="458.2"/>
+			<g>
+				<path style="fill:#8A1538;" d="M420.1,458.1c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5S420.1,456.7,420.1,458.1z"
+					/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="881.6" y1="389.5" x2="864.5" y2="389.5"/>
+			<g>
+				<circle style="fill:#8A1538;" cx="864.6" cy="389.5" r="2.5"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="872.1" y1="371.1" x2="854.8" y2="371.1"/>
+			<g>
+				<circle style="fill:#8A1538;" cx="855" cy="371.1" r="2.5"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="841.1" y1="343.5" x2="821.7" y2="343.5"/>
+			<g>
+				<circle style="fill:#8A1538;" cx="821.9" cy="343.5" r="2.5"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<g>
+			
+				<line style="fill:none;stroke:#8A1538;stroke-width:0.6638;stroke-linecap:square;" x1="841.1" y1="324.7" x2="815.7" y2="324.7"/>
+			<g>
+				<path style="fill:#8A1538;" d="M815.9,322.3c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5c1.4,0,2.5-1.1,2.5-2.5
+					C818.4,323.4,817.3,322.3,815.9,322.3z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_8_" style="fill:#FFFFFF;" d="M321.5,372.7h52.6c1.4,0,2.7,1.2,2.7,2.7v13.8c0,1.4-1.2,2.7-2.7,2.7
+			h-52.6c-1.4,0-2.7-1.2-2.7-2.7v-13.8C318.9,373.9,320.1,372.7,321.5,372.7z"/>
+		<text transform="matrix(1 0 0 1 334.8315 380.9716)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">City Cent</text>
+		<text transform="matrix(1 0 0 1 364.9116 380.9716)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">r</text>
+		<text transform="matrix(1 0 0 1 367.6313 380.9716)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">e</text>
+		
+			<text transform="matrix(1 0 0 1 334.8315 388.4031)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">Me’aisem</text>
+		<g>
+			<path id="Path" style="fill:#8A1538;" d="M326.9,378.6c-2.5,0-4.3,1.5-4.3,3.5v3.9h1.4c0,0,0-2.2,0-3.9c0-1.9,1.6-3.2,3.2-3.5
+				c0.1,0,0.1,0,0.1,0H326.9L326.9,378.6z"/>
+			<path id="Path_1_" style="fill:#8A1538;" d="M327.2,378.7c-0.1,0.1-0.3,0.1-0.5,0.3c-0.9,0.6-1.4,1.8-1.4,2.9c0,0.1,0,0.1,0,0.2
+				l0,0v0.1v3.9h1.2v-3.9c0-0.3,0.1-0.5,0.3-0.6l0.5,0.6l0.5-0.6c0.2,0.1,0.3,0.4,0.3,0.6v3.9h1.2v-3.9c0-1.1-0.9-2.1-2-2.1
+				c-0.3,0-0.5,0.1-0.7,0.1l0,0c0.3-0.3,0.6-0.5,1.1-0.5l0,0c0.1,0,0.3,0,0.4,0.1c1.1,0.2,1.9,1.1,1.9,2.3c0,0.1,0,0.1,0,0.1v3.8
+				h1.2c0,0,0-3.8,0-3.9c0-1.7-0.9-3-2.6-3.5c-0.1,0-0.1-0.1-0.3-0.1c-0.1,0-0.3,0-0.4,0C327.7,378.6,327.5,378.6,327.2,378.7z"/>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_9_" style="fill:#FFFFFF;" d="M366.1,324.4h52.5c1.4,0,2.7,1.2,2.7,2.7v13.8c0,1.4-1.2,2.7-2.7,2.7H366
+			c-1.4,0-2.7-1.2-2.7-2.7v-13.8C363.5,325.6,364.6,324.4,366.1,324.4z"/>
+		<text transform="matrix(1 0 0 1 379.4243 332.663)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Mall </text>
+		<text transform="matrix(1 0 0 1 395.4772 332.663)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">o</text>
+		<text transform="matrix(1 0 0 1 399.5308 332.663)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">f the </text>
+		<text transform="matrix(1 0 0 1 379.4243 340.0942)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">Emi</text>
+		<text transform="matrix(1 0 0 1 392.0107 340.0942)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">r</text>
+		<text transform="matrix(1 0 0 1 394.5708 340.0942)" style="fill:#8A1538; font-family:'MarselisPro'; font-size:7.4322px;">ates</text>
+		<g>
+			<path id="Path_2_" style="fill:#8A1538;" d="M371.6,330.2c-2.5,0-4.3,1.5-4.3,3.5v3.9h1.4c0,0,0-2.2,0-3.9c0-1.9,1.6-3.2,3.2-3.5
+				c0.1,0,0.1,0,0.1,0H371.6L371.6,330.2z"/>
+			<path id="Path_3_" style="fill:#8A1538;" d="M371.8,330.4c-0.1,0.1-0.3,0.1-0.5,0.3c-0.9,0.6-1.4,1.8-1.4,2.9c0,0.1,0,0.1,0,0.2
+				l0,0v0.1v3.9h1.2v-3.9c0-0.3,0.1-0.5,0.3-0.6l0.5,0.6l0.5-0.6c0.2,0.1,0.3,0.4,0.3,0.6v3.9h1.2v-3.9c0-1.1-0.9-2.1-2-2.1
+				c-0.3,0-0.5,0.1-0.7,0.1l0,0c0.3-0.3,0.6-0.5,1.1-0.5l0,0c0.1,0,0.3,0,0.4,0.1c1.1,0.2,1.9,1.1,1.9,2.3c0,0.1,0,0.1,0,0.1v3.8
+				h1.2c0,0,0-3.8,0-3.9c0-1.7-0.9-3-2.6-3.5c-0.1,0-0.1-0.1-0.3-0.1c-0.2,0-0.3,0-0.4,0C372.2,330.2,372,330.3,371.8,330.4z"/>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_10_" style="fill:#FFFFFF;" d="M646.2,391.8h52.6c1.4,0,2.7,1.2,2.7,2.7v13.8c0,1.4-1.2,2.7-2.7,2.7
+			h-52.6c-1.4,0-2.7-1.2-2.7-2.7v-13.8C643.6,393.1,644.8,391.8,646.2,391.8z"/>
+		<text transform="matrix(1 0 0 1 659.5171 400.0823)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">City Cent</text>
+		<text transform="matrix(1 0 0 1 689.5972 400.0823)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">r</text>
+		<text transform="matrix(1 0 0 1 692.3169 400.0823)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">e</text>
+		
+			<text transform="matrix(1 0 0 1 659.5171 407.5135)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">Mi</text>
+		
+			<text transform="matrix(1 0 0 1 667.3042 407.5135)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">r</text>
+		<text transform="matrix(1 0 0 1 669.811 407.5135)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">dif</text>
+		<g>
+			<path id="Path_4_" style="fill:#8A1538;" d="M651.6,397.7c-2.5,0-4.3,1.5-4.3,3.5v3.9h1.4c0,0,0-2.2,0-3.9c0-1.9,1.6-3.2,3.2-3.5
+				c0.1,0,0.1,0,0.1,0H651.6L651.6,397.7z"/>
+			<path id="Path_5_" style="fill:#8A1538;" d="M651.9,397.8c-0.1,0.1-0.3,0.1-0.5,0.3c-0.9,0.6-1.4,1.8-1.4,2.9c0,0.1,0,0.1,0,0.2
+				l0,0v0.1v3.9h1.2v-3.9c0-0.3,0.1-0.5,0.3-0.6l0.5,0.6l0.5-0.6c0.2,0.1,0.3,0.4,0.3,0.6v3.9h1.2v-3.9c0-1.1-0.9-2.1-2-2.1
+				c-0.3,0-0.5,0.1-0.7,0.1l0,0c0.3-0.3,0.6-0.5,1.1-0.5l0,0c0.1,0,0.3,0,0.4,0.1c1.1,0.2,1.9,1.1,1.9,2.3c0,0.1,0,0.1,0,0.1v3.8
+				h1.2c0,0,0-3.8,0-3.9c0-1.7-0.9-3-2.6-3.5c-0.1,0-0.1-0.1-0.3-0.1c-0.1,0-0.3,0-0.4,0C652.3,397.7,652.2,397.8,651.9,397.8z"/>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_11_" style="fill:#FFFFFF;" d="M587.3,347.3h52.6c1.4,0,2.7,1.2,2.7,2.7v13.8c0,1.4-1.2,2.7-2.7,2.7
+			h-52.6c-1.4,0-2.7-1.2-2.7-2.7v-13.9C584.6,348.4,585.8,347.3,587.3,347.3z"/>
+		<text transform="matrix(1 0 0 1 600.5298 355.4891)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">City Cent</text>
+		<text transform="matrix(1 0 0 1 630.6099 355.4891)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">r</text>
+		<text transform="matrix(1 0 0 1 633.3306 355.4891)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">e</text>
+		
+			<text transform="matrix(1 0 0 1 600.5298 362.9218)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">Dei</text>
+		
+			<text transform="matrix(1 0 0 1 610.9839 362.9218)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">r</text>
+		<text transform="matrix(1 0 0 1 613.437 362.9218)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">a</text>
+		<g>
+			<path id="Path_6_" style="fill:#8A1538;" d="M592.6,353.1c-2.5,0-4.3,1.5-4.3,3.5v3.9h1.4c0,0,0-2.2,0-3.9c0-1.9,1.6-3.2,3.2-3.5
+				c0.1,0,0.1,0,0.1,0H592.6L592.6,353.1z"/>
+			<path id="Path_7_" style="fill:#8A1538;" d="M593,353.2c-0.1,0.1-0.3,0.1-0.5,0.3c-0.9,0.6-1.4,1.8-1.4,2.9c0,0.1,0,0.1,0,0.2
+				l0,0v0.1v3.9h1.2v-3.9c0-0.3,0.1-0.5,0.3-0.6l0.5,0.6l0.5-0.6c0.2,0.1,0.3,0.4,0.3,0.6v3.9h1.2v-3.9c0-1.1-0.9-2.1-2-2.1
+				c-0.3,0-0.5,0.1-0.7,0.1l0,0c0.3-0.3,0.6-0.5,1.1-0.5l0,0c0.1,0,0.3,0,0.4,0.1c1.1,0.2,1.9,1.1,1.9,2.3c0,0.1,0,0.1,0,0.1v3.8
+				h1.2c0,0,0-3.8,0-3.9c0-1.7-0.9-3-2.6-3.5c-0.1,0-0.1-0.1-0.3-0.1c-0.1,0-0.3,0-0.4,0C593.3,353.1,593.2,353.1,593,353.2z"/>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_12_" style="fill:#FFFFFF;" d="M282.3,450.8h56.8c1.4,0,2.7,1.2,2.7,2.7v13.8c0,1.4-1.2,2.7-2.7,2.7
+			h-56.8c-1.4,0-2.7-1.2-2.7-2.7v-13.8C279.6,452,280.8,450.8,282.3,450.8z"/>
+		<text transform="matrix(1 0 0 1 295.5483 459.0082)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">Tilal Al Ghaf</text>
+		
+			<text transform="matrix(1 0 0 1 295.5483 466.4407)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">Dubai</text>
+		<g>
+			<path id="Path_8_" style="fill:#8A1538;" d="M287.6,456.6c-2.5,0-4.3,1.5-4.3,3.5v3.9h1.4c0,0,0-2.2,0-3.9c0-1.9,1.6-3.2,3.2-3.5
+				c0.1,0,0.1,0,0.1,0H287.6L287.6,456.6z"/>
+			<path id="Path_9_" style="fill:#8A1538;" d="M288,456.8c-0.1,0.1-0.3,0.1-0.5,0.3c-0.9,0.6-1.4,1.8-1.4,2.9c0,0.1,0,0.1,0,0.2
+				l0,0v0.1v3.9h1.2v-3.9c0-0.3,0.1-0.5,0.3-0.6l0.5,0.6l0.5-0.6c0.2,0.1,0.3,0.4,0.3,0.6v3.9h1.2v-3.9c0-1.1-0.9-2.1-2-2.1
+				c-0.3,0-0.5,0.1-0.7,0.1l0,0c0.3-0.3,0.6-0.5,1.1-0.5l0,0c0.1,0,0.3,0,0.4,0.1c1.1,0.2,1.9,1.1,1.9,2.3c0,0.1,0,0.1,0,0.1v3.8
+				h1.2c0,0,0-3.8,0-3.9c0-1.7-0.9-3-2.6-3.5c-0.1,0-0.1-0.1-0.3-0.1c-0.1,0-0.3,0-0.4,0C288.4,456.6,288.2,456.6,288,456.8z"/>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_29_" style="fill:#FFFFFF;" d="M784.6,387.6h52.6c1.4,0,2.7,1.2,2.7,2.7v13.8c0,1.4-1.2,2.7-2.7,2.7
+			h-52.6c-1.4,0-2.7-1.2-2.7-2.7v-13.8C782,388.8,783.1,387.6,784.6,387.6z"/>
+		<text transform="matrix(1 0 0 1 797.8735 395.8358)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">Al Zahia</text>
+		
+			<text transform="matrix(1 0 0 1 797.8735 403.2675)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">Sharjah</text>
+		<g>
+			<path id="Path_10_" style="fill:#8A1538;" d="M790,393.4c-2.5,0-4.3,1.5-4.3,3.5v3.9h1.4c0,0,0-2.2,0-3.9c0-1.9,1.6-3.2,3.2-3.5
+				c0.1,0,0.1,0,0.1,0H790L790,393.4z"/>
+			<path id="Path_11_" style="fill:#8A1538;" d="M790.2,393.6c-0.1,0.1-0.3,0.1-0.5,0.3c-0.9,0.6-1.4,1.8-1.4,2.9c0,0.1,0,0.1,0,0.2
+				l0,0v0.1v3.9h1.2v-3.9c0-0.3,0.1-0.5,0.3-0.6l0.5,0.6l0.5-0.6c0.2,0.1,0.3,0.4,0.3,0.6v3.9h1.2v-3.9c0-1.1-0.9-2.1-2-2.1
+				c-0.3,0-0.5,0.1-0.7,0.1l0,0c0.3-0.3,0.6-0.5,1.1-0.5l0,0c0.1,0,0.3,0,0.4,0.1c1.1,0.2,1.9,1.1,1.9,2.3c0,0.1,0,0.1,0,0.1v3.8
+				h1.2c0,0,0-3.8,0-3.9c0-1.7-0.9-3-2.6-3.5c-0.1,0-0.1-0.1-0.3-0.1c-0.1,0-0.3,0-0.4,0C790.7,393.4,790.5,393.5,790.2,393.6z"/>
+		</g>
+	</g>
+	<g>
+		<path id="Rectangle-Copy-2_30_" style="fill:#FFFFFF;" d="M733.5,336.1h52.6c1.4,0,2.7,1.2,2.7,2.7v13.8c0,1.4-1.2,2.7-2.7,2.7
+			h-52.6c-1.4,0-2.7-1.2-2.7-2.7v-13.8C730.8,337.3,732.1,336.1,733.5,336.1z"/>
+		<text transform="matrix(1 0 0 1 746.7827 344.3417)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">City Cent</text>
+		<text transform="matrix(1 0 0 1 776.8623 344.3417)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">r</text>
+		<text transform="matrix(1 0 0 1 779.5825 344.3417)" style="fill:#8A1538; font-family:'MarselisPro-Bold'; font-size:7.4322px;">e</text>
+		
+			<text transform="matrix(1 0 0 1 746.7827 351.7733)" style="fill:#8A1538; font-family:'MarselisPro-Light'; font-size:7.4322px;">Al Zahia</text>
+		<g>
+			<path id="Path_12_" style="fill:#8A1538;" d="M738.9,341.9c-2.5,0-4.3,1.5-4.3,3.5v3.9h1.4c0,0,0-2.2,0-3.9
+				c0-1.9,1.6-3.2,3.2-3.5c0.1,0,0.1,0,0.1,0H738.9L738.9,341.9z"/>
+			<path id="Path_13_" style="fill:#8A1538;" d="M739.2,342.1c-0.1,0.1-0.3,0.1-0.5,0.3c-0.9,0.6-1.4,1.8-1.4,2.9c0,0.1,0,0.1,0,0.2
+				l0,0v0.1v3.9h1.2v-3.9c0-0.3,0.1-0.5,0.3-0.6l0.5,0.6l0.5-0.6c0.2,0.1,0.3,0.4,0.3,0.6v3.9h1.2v-3.9c0-1.1-0.9-2.1-2-2.1
+				c-0.3,0-0.5,0.1-0.7,0.1l0,0c0.3-0.3,0.6-0.5,1.1-0.5l0,0c0.1,0,0.3,0,0.4,0.1c1.1,0.2,1.9,1.1,1.9,2.3c0,0.1,0,0.1,0,0.1v3.8
+				h1.2c0,0,0-3.8,0-3.9c0-1.7-0.9-3-2.6-3.5c-0.1,0-0.1-0.1-0.3-0.1c-0.1,0-0.3,0-0.4,0C739.6,341.9,739.4,342,739.2,342.1z"/>
+		</g>
+	</g>
+	
+		<g id="NorthPoint" transform="translate(1831.070256, 181.453972) rotate(50.000000) translate(-1831.070256, -181.453972) translate(1792.570256, 137.953972)">
+		<path id="Fill-933" style="fill:#8A1538;" d="M-587.1,665.4l-2.1,6.2l-1.7-6.1L-587.1,665.4z M-592.6,665.5l3.5,10.6l3.4-10.5
+			l-3.5-10.6L-592.6,665.5z M-587.1,665.4l-2.1,6.2l-1.7-6.1L-587.1,665.4z M-592.6,665.5l3.5,10.6l3.4-10.5l-3.5-10.6L-592.6,665.5
+			z M-587.1,665.4l-2.1,6.2l-1.7-6.1L-587.1,665.4z M-589.2,676.1l3.4-10.5l-3.5-10.6l-3.4,10.5L-589.2,676.1z M-583.3,654.9
+			c5.7,3.3,7.7,10.6,4.4,16.3c-3.3,5.7-10.6,7.7-16.3,4.4c-5.7-3.3-7.7-10.6-4.4-16.3C-596.4,653.6-589,651.7-583.3,654.9z
+			 M-596.6,677.9c7,4.1,15.9,1.7,20-5.4c4.1-7,1.6-15.8-5.4-19.9s-15.8-1.7-19.9,5.3C-606,665-603.6,673.9-596.6,677.9z
+			 M-587.1,665.4l-2.1,6.2l-1.7-6.1L-587.1,665.4z M-592.6,665.5l3.5,10.6l3.4-10.5l-3.5-10.6L-592.6,665.5z M-587.1,665.4l-2.1,6.2
+			l-1.7-6.1L-587.1,665.4z M-592.6,665.5l3.5,10.6l3.4-10.5l-3.5-10.6L-592.6,665.5z M-587.1,665.4l-2.1,6.2l-1.7-6.1L-587.1,665.4z
+			 M-592.6,665.5l3.5,10.6l3.4-10.5l-3.5-10.6L-592.6,665.5z M-587.1,665.4l-2.1,6.2l-1.7-6.1L-587.1,665.4z M-592.6,665.5l3.5,10.6
+			l3.4-10.5l-3.5-10.6L-592.6,665.5z"/>
+		<g id="Back-Copy-5_1_" transform="translate(34.000000, 0.000000)">
+			<text transform="matrix(1 0 0 1 -625.6757 648.461)" style="fill:#8A1538; font-family:'ArialMT'; font-size:7.4322px;">N</text>
+		</g>
+	</g>
+</g>
+</svg>

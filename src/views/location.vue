@@ -532,23 +532,24 @@
         },
         mounted(){
             var $section = $('#svg-container');
-            var $panzoom = $section.find('.panzoom').panzoom({
-                contain: 'invert',
-                minScale: 1
-            });
-            // debugger;
-            $panzoom.parent().on('mousewheel.focal', ( e ) => {
-                e.preventDefault();
-                var delta = e.delta || e.originalEvent.wheelDelta;
-                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-                $panzoom.panzoom('zoom', zoomOut, {
-                    increment: 0.1,
-                    animate: false,
-                    panOnlyWhenZoomed: true,
-                    minScale: 1
-                    // focal:e
-                });
-            });
+            $section.find('.panzoom').pinchzoomer();
+            // var $panzoom = $section.find('.panzoom').panzoom({
+            //     contain: 'invert',
+            //     minScale: 1
+            // });
+            // // debugger;
+            // $panzoom.parent().on('mousewheel.focal', ( e ) => {
+            //     e.preventDefault();
+            //     var delta = e.delta || e.originalEvent.wheelDelta;
+            //     var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            //     $panzoom.panzoom('zoom', zoomOut, {
+            //         increment: 0.1,
+            //         animate: false,
+            //         panOnlyWhenZoomed: true,
+            //         minScale: 1
+            //         // focal:e
+            //     });
+            // });
             let callback = () => {
                 this.loadingComplete = true;
                 this.markerSelected = this.getDefaultMarkerContent();
@@ -1121,6 +1122,7 @@
     position: absolute;
     left: 0;
     top: 0;
+    overflow: visible !important;
 }
 .loading {
     position: absolute;
@@ -1184,6 +1186,9 @@ svg:not(:root) {
 .menu {
     display: flex;
     flex-direction: column;
+}
+.controlHolder{
+    display: none;
 }
 .controls {
     position: absolute;
