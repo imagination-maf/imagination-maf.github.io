@@ -187,13 +187,16 @@
             var $panSelector = '#community_image';
             if(this.selectedCommunity == 'alzahia'){
                 var $panSelector = '#svg';
-                $('#community_image').hide();
-                 $('#svg polygon,#svg path').on('mousedown touchstart', function( e ) {
-                    e.stopImmediatePropagation();
-                });
+                //$('#community_image').hide();
+                 
             }
 
-            $($panSelector).pinchzoomer();
+
+            $('#container-zoom').pinchzoomer();
+
+            $('#svg polygon,#svg path').on('mousedown touchstart', function( e ) {
+                e.stopImmediatePropagation();
+            });
             // var $panzoom = $($panSelector).panzoom({
             //     minScale: 1,
             //     contain: 'invert'
