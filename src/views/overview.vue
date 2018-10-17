@@ -192,23 +192,25 @@
                     e.stopImmediatePropagation();
                 });
             }
-            var $panzoom = $($panSelector).panzoom({
-                minScale: 1,
-                contain: 'invert'
-            });
+
+            $('#container-zoom').pinchzoomer();
+            // var $panzoom = $($panSelector).panzoom({
+            //     minScale: 1,
+            //     contain: 'invert'
+            // });
             
-            $panzoom.parent().on('mousewheel.focal', ( e ) => {
-                e.preventDefault();
-                var delta = e.delta || e.originalEvent.wheelDelta;
-                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-                $panzoom.panzoom('zoom', zoomOut, {
-                    increment: 0.1,
-                    animate: false,
-                    panOnlyWhenZoomed: true,
-                    minScale: 1,
-                    focal:e
-                });
-            });
+            // $panzoom.parent().on('mousewheel.focal', ( e ) => {
+            //     e.preventDefault();
+            //     var delta = e.delta || e.originalEvent.wheelDelta;
+            //     var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            //     $panzoom.panzoom('zoom', zoomOut, {
+            //         increment: 0.1,
+            //         animate: false,
+            //         panOnlyWhenZoomed: true,
+            //         minScale: 1,
+            //         focal:e
+            //     });
+            // });
     
         }
     });
@@ -257,7 +259,7 @@
         width: 100%;
         height: 100%;
         object-fit: contain;
-        position: absolute;
+       /* position: absolute;*/
         object-position: top;
         left: 0;
         top: 0;
