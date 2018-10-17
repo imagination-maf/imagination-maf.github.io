@@ -577,7 +577,7 @@
     <AppHeader :logo="headerLogo" back="true" v-on:back="backFunctionality" />
     <div class="container" :class="{'loaded': loadingComplete}">
         <div id="map-container" class="map" :class="{'ipad': ipad}" @click="mapClick($event)">
-            <v-touch v-on:pinchout="zoomIn" v-on:pinchin="zoomOut">
+            <v-touch>
                 <div id="png-container" :style="[fullscreenTransform.png[selectedView]]" :class="{'in': direction === 'in', 'out': direction === 'out', 'disable-animation': disableAnimation }">
                     <!-- World -->
                     <div
