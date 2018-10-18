@@ -235,22 +235,24 @@
             let pngImage = document.getElementById('png-image');
              
             // panzoom
-            var $panzoom = $('#area').panzoom({
-                contain: 'invert'
-            });
+            $('#container_zoom').pinchzoomer();
 
-            $panzoom.parent().on('mousewheel.focal', ( e ) => {
-                e.preventDefault();
-                var delta = e.delta || e.originalEvent.wheelDelta;
-                 var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-                 $panzoom.panzoom('zoom', zoomOut, {
-                     increment: 0.1,
-                     animate: false,
-                     panOnlyWhenZoomed: true,
-                     minScale: 1,
-                     focal:e
-                 });
-             });
+            // var $panzoom = $('#area').panzoom({
+            //     contain: 'invert'
+            // });
+
+            // $panzoom.parent().on('mousewheel.focal', ( e ) => {
+            //     e.preventDefault();
+            //     var delta = e.delta || e.originalEvent.wheelDelta;
+            //      var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            //      $panzoom.panzoom('zoom', zoomOut, {
+            //          increment: 0.1,
+            //          animate: false,
+            //          panOnlyWhenZoomed: true,
+            //          minScale: 1,
+            //          focal:e
+            //      });
+            //  });
 
             // querySelector('#svg-container').addEventListener('click', function () {
             //     this.svgPressed($event)
@@ -369,7 +371,7 @@
     
         <div class="container" :class="{'blur': soldOutDetails}" id="container_zoom">
             <div id="area" :class="{ 'visible': loaded, 'one-community': this.oneFilterCommunity }">
-                
+                <div id="image_area">
                     <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
                         <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
                     </div>
@@ -382,7 +384,7 @@
                         <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
                     </div>
                     </v-touch>
-                
+                </div>
             </div>
             <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
             <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
@@ -417,6 +419,7 @@
     display: flex;
     align-items: stretch;
     justify-content: center;
+    margin-top: 8rem;
     &.blur {
         filter: blur(0.5rem);
     }
