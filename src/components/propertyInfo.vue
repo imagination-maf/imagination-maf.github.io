@@ -30,7 +30,7 @@ export default Vue.component('property-info', {
     },
         mounted() {
 
-            $('#info-zoom-container').pinchzoomer();
+            $('#info-zoom-container1').pinchzoomer();
 
             // var $panzoom = $('#info-zoom-container').panzoom({
             //     minScale: 1,
