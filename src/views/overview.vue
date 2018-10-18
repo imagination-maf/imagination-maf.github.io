@@ -256,6 +256,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    margin-top: -8rem;
     align-items: center;
         position: static !important;
     .image {
