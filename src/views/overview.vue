@@ -192,7 +192,7 @@
             }
 
 
-            $('#container-zoom').pinchzoomer();
+            $('#image_wrap').pinchzoomer();
 
             $('#svg polygon,#svg path').on('mousedown touchstart', function( e ) {
                 e.stopImmediatePropagation();
@@ -224,13 +224,15 @@
     <AppHeader :logo="selectedCommunity" v-on:back="backToMap" back="true" />
     <transition name="page" appear>
         <v-touch v-on:pinchout="locationImageContainerZoomIn(selectedCommunity)" v-on:pinchin="locationImageContainerZoomOut(selectedCommunity)" v-on:pan="locationImageContainerPan(selectedCommunity, $event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
-            <div class="container" @click="svgPressed($event)" id="container-zoom">
-                <img class="image" :src="images[selectedCommunity]" id="community_image"/>
-                <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
-                <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
-                <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
-                <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]"/>
-                <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
+            <div id="image_wrap">
+                <div class="container" @click="svgPressed($event)" id="container-zoom">
+                    <img class="image" :src="images[selectedCommunity]" id="community_image"/>
+                    <AlZahia id="svg" v-if="selectedCommunity === 'alzahia'" :style="[svgScale]" />
+                    <AlMouj id="svg" v-if="selectedCommunity === 'almouj'" :style="[svgScale]" />
+                    <WaterfrontCity id="svg" v-if="selectedCommunity === 'waterfrontcity'" :style="[svgScale]" />
+                    <TilalAlGhaf id="svg" v-if="selectedCommunity === 'tilalalghaf'" :style="[svgScale]"/>
+                    <Uptown id="svg" v-if="selectedCommunity === 'uptown'" :style="[svgScale]" />
+                </div>
             </div>
         </v-touch>
     </transition>
@@ -250,6 +252,9 @@
 .app {
     position: relative;
     overflow: hidden;
+}
+#image_wrap {
+    margin-top: -8rem;
 }
 .container {
     width: 100%;
