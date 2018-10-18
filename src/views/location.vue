@@ -532,7 +532,7 @@
         },
         mounted(){
             var $section = $('#svg-container');
-            $section.find('.panzoom').pinchzoomer();
+            $('#map-container').pinchzoomer();
             // var $panzoom = $section.find('.panzoom').panzoom({
             //     contain: 'invert',
             //     minScale: 1
