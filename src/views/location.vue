@@ -532,7 +532,7 @@
         },
         mounted(){
             var $section = $('#svg-container');
-            $section.find('.panzoom').pinchzoomer();
+            $('#map-container').pinchzoomer();
             // var $panzoom = $section.find('.panzoom').panzoom({
             //     contain: 'invert',
             //     minScale: 1
@@ -990,7 +990,9 @@
                 <MarkerInfo v-if="markersAvailable" :country="markerSelected"></MarkerInfo>
             </transition>
 
-            <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
+            
+        </div>
+        <div class="controls" v-show="optionsAvailable === 1 || optionsAvailable === 0">
                 <div class="controls-row">
                     <button class="button zoom" type="button" @click="zoomOut()">Zoom Out</button>
                     <button class="button zoom" :class="{ 'disabled': optionsAvailable === 0 }" type="button" @click="zoomIn()">Zoom In</button>
@@ -999,7 +1001,6 @@
                     <button class="button masterplan" type="button" @click="viewMasterplan()">View Masterplan</button>
                 </div>
             </div>
-        </div>
 </div>
 </template>
 <style>
