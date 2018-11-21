@@ -35,27 +35,28 @@ export default Vue.component('property-info-gallery', {
         }
     },
     mounted() {
-        var $panzoom = $('#community_image').panzoom({
-                minScale: 1,
-                contain: 'invert'
-            });
+        var $pzoom = $('#community_image').pinchzoomer();
+        // var $panzoom = $('#community_image').panzoom({
+        //         minScale: 1,
+        //         contain: 'invert'
+        //     });
         
         $(document).on( "click", ".arrow,.pagination-item", function() {
-          $panzoom.panzoom("reset");
+          //$pzoom.reset();
         });
             
-            $panzoom.parent().on('mousewheel.focal', ( e ) => {
-                e.preventDefault();
-                var delta = e.delta || e.originalEvent.wheelDelta;
-                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-                $panzoom.panzoom('zoom', zoomOut, {
-                    increment: 0.1,
-                    animate: false,
-                    panOnlyWhenZoomed: true,
-                    minScale: 1,
-                    focal:e
-                });
-            });
+            // $panzoom.parent().on('mousewheel.focal', ( e ) => {
+            //     e.preventDefault();
+            //     var delta = e.delta || e.originalEvent.wheelDelta;
+            //     var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+            //     $panzoom.panzoom('zoom', zoomOut, {
+            //         increment: 0.1,
+            //         animate: false,
+            //         panOnlyWhenZoomed: true,
+            //         minScale: 1,
+            //         focal:e
+            //     });
+            // });
     },
 });
 </script>
@@ -98,6 +99,7 @@ export default Vue.component('property-info-gallery', {
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+            z-index: 9;
         &.left {
             left: 2rem;
             transform: scaleX(-1);

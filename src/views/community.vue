@@ -143,8 +143,7 @@
             },
             svgPressed: function($event) {
                 // Polyfill path if not on Chrome
-                console.log("click for popup ....")
-                debugger;
+                
                 let pathElements = $event.path;
                 if (!pathElements) pathElements = this.getComposedPath($event.target);
                 let elementPressed = pathElements[0];
@@ -235,7 +234,7 @@
             let pngImage = document.getElementById('png-image');
              
             // panzoom
-            $('#container_zoom').pinchzoomer();
+            $('#image_area').pinchzoomer();
 
             // var $panzoom = $('#area').panzoom({
             //     contain: 'invert'
@@ -376,14 +375,14 @@
                         <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
                     </div>
 
-                    <v-touch v-on:pinchout="locationImageContainerZoomIn" v-on:pinchin="locationImageContainerZoomOut" v-on:tap="svgPressed($event)" v-on:pan="locationImageContainerPan($event)" v-bind:pan-options="{ direction: 'all', threshold: 10 }">
+                    
                     <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
                         <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
                         <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
                         <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image thinner-outlines" id="svg-image" :style="svgTransform" />
                         <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
                     </div>
-                    </v-touch>
+                    
                 </div>
             </div>
             <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
@@ -419,7 +418,7 @@
     display: flex;
     align-items: stretch;
     justify-content: center;
-    margin-top: 8rem;
+   /* margin-top: 8rem;*/
     &.blur {
         filter: blur(0.5rem);
     }
@@ -437,6 +436,7 @@
     height: 100%;
     position: relative;
     opacity: 0;
+    /*top: -43rem;*/
 }
 
 #svg-container {
