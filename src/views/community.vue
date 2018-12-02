@@ -234,7 +234,7 @@
             let pngImage = document.getElementById('png-image');
              
             // panzoom
-            $('#image_area').pinchzoomer();
+            $('#container_zoom').pinchzoomer();
 
             // var $panzoom = $('#area').panzoom({
             //     contain: 'invert'
@@ -418,7 +418,7 @@
     display: flex;
     align-items: stretch;
     justify-content: center;
-   /* margin-top: 8rem;*/
+    margin-top: 8rem;
     &.blur {
         filter: blur(0.5rem);
     }
@@ -436,7 +436,7 @@
     height: 100%;
     position: relative;
     opacity: 0;
-    /*top: -43rem;*/
+    
 }
 
 #svg-container {

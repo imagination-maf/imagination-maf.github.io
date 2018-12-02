@@ -35,6 +35,10 @@ export default Vue.component('property-info-gallery', {
         }
     },
     mounted() {
+        $(document).on( "click", ".info-cta-item", function() {
+            //alert('here');
+            $('#community_image').pinchzoomer();
+        });
         var $pzoom = $('#community_image').pinchzoomer();
         // var $panzoom = $('#community_image').panzoom({
         //         minScale: 1,
