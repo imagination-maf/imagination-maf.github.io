@@ -1,7 +1,5 @@
 <script>
-import Vue from 'vue';    
-var VueTouch = require('vue-touch');
-Vue.use(VueTouch, {name: 'v-touch'});
+import Vue from 'vue';
 import PropertyInfoSummary from './propertyInfo/propertyInfoSummary.vue';
 import PropertyInfoFloorplan from './propertyInfo/propertyInfoFloorplan.vue';
 import PropertyInfoTour from './propertyInfo/propertyInfoTour.vue';
@@ -26,35 +24,8 @@ export default Vue.component('property-info', {
         },
         changeView: function(key) {
             this.currentView = key;
-        },
-    },
-        mounted() {
-
-            //$('#info-zoom-container').pinchzoomer();
-
-            // var $panzoom = $('#info-zoom-container').panzoom({
-            //     minScale: 1,
-            //     contain: 'invert'
-            // });
-
-            $('.info-cta-item').on('mousedown touchstart', function( e ) {
-              e.stopImmediatePropagation();
-            });
-            
-            // $panzoom.parent().on('mousewheel.focal', ( e ) => {
-            //     e.preventDefault();
-            //     var delta = e.delta || e.originalEvent.wheelDelta;
-            //     var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-            //     $panzoom.panzoom('zoom', zoomOut, {
-            //         increment: 0.1,
-            //         animate: false,
-            //         panOnlyWhenZoomed: true,
-            //         minScale: 1,
-            //         focal:e
-            //     });
-            // });
-    
         }
+    }
 });
 </script>
 
@@ -62,7 +33,7 @@ export default Vue.component('property-info', {
     <div class="info">
         <div class="info-content">
             <div class="info-close" @click="closeInfo()"></div>
-            <div  id="info-zoom-container"><PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" /></div>
+            <PropertyInfoSummary v-if="currentView === 'summary'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoFloorplan v-if="currentView === 'floorplan'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoTour v-if="currentView === 'tour'" :property="property" v-on:changeView="changeView" />
             <PropertyInfoGallery v-if="currentView === 'gallery'" :property="property" v-on:changeView="changeView" />
@@ -86,9 +57,9 @@ export default Vue.component('property-info', {
         width: 70%;
         background-color: #ffffff;
         position: relative;
-        padding: 5rem 5rem 5rem 5rem;
+        padding: 5rem 3rem 5rem 6rem;
         box-shadow: 0.1rem 0.1rem 0.25rem #cccccc;
-        margin-top: 4rem;
+        /*margin-top: 4rem;*/
         .info-close {
             position: absolute;
             top: 0.65rem;

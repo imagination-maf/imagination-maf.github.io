@@ -1,7 +1,5 @@
 <script>
     import Vue from 'vue';
-    var VueTouch = require('vue-touch');
-    Vue.use(VueTouch, {name: 'v-touch'});
     import AppHeader from '../components/header.vue';
     import PropertyFilter from '../components/propertyFilter.vue';
     import PropertyInfo from '../components/propertyInfo.vue';
@@ -9,7 +7,7 @@
     import AlZahia from '../images/masterplans/al_zahia_masterplan.svg';
     import AlMouj from '../images/masterplans/al_mouj_masterplan.svg';
     import WaterfrontCity from '../images/masterplans/waterfront_city_masterplan.svg';
-    import TilalAlGhaf from '../images/masterplans/tilal_al_ghaf_masterplan.svg';
+    import TilalAlGhaf from '../images/masterplans/al_mouj_masterplan.svg';
     import axios from 'axios';
     import config from '../data/config.js';
     import soldOutCommunities from '../data/soldOutCommunities.js';
@@ -29,8 +27,6 @@
         },
         data() {
             return {
-                soldOutContainerWidth: 0,
-                soldOutContainerHeight: 0,
                 loaded: false,
                 oneFilterCommunity: config.oneFilterCommunities.indexOf(this.$route.query.community) !== -1,
                 propertyTypeFilter: {},
@@ -78,7 +74,7 @@
                         waterfrontcity: require('../images/masterplans/waterfront-waterfront.jpg')
                     },
                     tilalalghaf: {
-                        phasea: require('../images/masterplans/tilalalghaf-phasea.png')
+                        tilalalghaf: require('../images/overalls/overview-tilalalghaf.png')
                     }
                 },
                 propertyList: [],
@@ -143,7 +139,6 @@
             },
             svgPressed: function($event) {
                 // Polyfill path if not on Chrome
-                
                 let pathElements = $event.path;
                 if (!pathElements) pathElements = this.getComposedPath($event.target);
                 let elementPressed = pathElements[0];
@@ -156,7 +151,6 @@
             },
             getData: function(query) {
                 let url = query ? config.url[config.mode] + 'maf_plot?' + query : config.url[config.mode] + 'maf_plot';
-                console.log(url);
                 return axios({
                     method: 'GET',
                     url: url,
@@ -164,100 +158,11 @@
                         'Authorization': 'Basic ' + btoa('maf:25st0rest')
                     }
                 })
-            },
-            soldOutContainerZoomIn: function() {
-                let soldOutContainer = document.getElementById("sold-out");
-                let soldOutContainerCurrentWidth = soldOutContainer.clientWidth;
-                let soldOutContainerNewWidth = soldOutContainerCurrentWidth + 25;
-                soldOutContainer.setAttribute("style","width:" + soldOutContainerNewWidth + "px");
-
-            },
-            soldOutContainerZoomOut: function() {
-                let soldOutContainer = document.getElementById("sold-out");
-                let soldOutContainerCurrentWidth = soldOutContainer.clientWidth;
-                let soldOutContainerNewWidth = soldOutContainerCurrentWidth - 10;
-                if ((soldOutContainerNewWidth / window.innerWidth) * 100 < 70)
-                    soldOutContainer.setAttribute("style","width:70%");
-                else
-                    soldOutContainer.setAttribute("style","width:" + soldOutContainerNewWidth + "px");
-            },
-            locationImageContainerZoomIn: function() {
-                let zoomableArea = document.getElementById("area");
-                zoomableArea.setAttribute("style","transform:scale(1.75, 1.75)");
-                this.zoomed = true;
-            },
-            locationImageContainerZoomOut: function() {
-                let zoomableArea = document.getElementById("area");
-                zoomableArea.setAttribute("style","transform:scale(1)");
-                this.zoomed = false;
-            },
-            locationImageContainerPan: function(event) {
-                let scaleOfSwipeInX = Math.round((event.deltaX) / 150);
-                let scaleOfSwipeInY = Math.round((event.deltaY) / 75);
-                if (this.zoomed){
-                    let zoomableArea = document.getElementById("area");
-                    let zoomableAreaTranslateStyleText = zoomableArea.style.transform;
-
-                    let currentYPosition = 0;
-                    let currentXPosition = 0;
-                    if (zoomableAreaTranslateStyleText.indexOf('translateY(') != -1){
-                        let translateYText = (zoomableAreaTranslateStyleText.split('translateY(')[1]).split('px)')[0];
-                        currentYPosition = parseFloat(translateYText);
-                    }
-                    if (zoomableAreaTranslateStyleText.indexOf('translateX(') != -1){
-                        let translateXText = (zoomableAreaTranslateStyleText.split('translateX(')[1]).split('px)')[0];
-                        currentXPosition = parseFloat(translateXText);
-                    }
-
-                    let scaleText = (zoomableAreaTranslateStyleText.split('scale(')[1]).split(')')[0];
-                    let currentScale = parseFloat(scaleText);
-
-                    let NewXPosition = currentXPosition + (70 * scaleOfSwipeInX);
-                    let NewYPosition = currentYPosition + (35 * scaleOfSwipeInY);
-
-                    if (NewXPosition > (240 * currentScale))
-                        NewXPosition = (240 * currentScale)
-                    else if (NewXPosition < -(240 * currentScale))
-                        NewXPosition = -(240 * currentScale)
-
-                    if (NewYPosition > (100 * currentScale))
-                        NewYPosition = (100 * currentScale)
-                    else if (NewYPosition < -(100 * currentScale))
-                        NewYPosition = -(100 * currentScale)
-
-                    zoomableArea.setAttribute("style","transform:translateX("+ NewXPosition +"px) scale("+ currentScale +") translateY(" + NewYPosition +"px)");
-                }
-                
-            },
+            }
         },
         mounted() {
-            let pngImage = document.getElementById('png-image');
-             
-            // panzoom
             $('#container_zoom').pinchzoomer();
-
-            // var $panzoom = $('#area').panzoom({
-            //     contain: 'invert'
-            // });
-
-            // $panzoom.parent().on('mousewheel.focal', ( e ) => {
-            //     e.preventDefault();
-            //     var delta = e.delta || e.originalEvent.wheelDelta;
-            //      var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-            //      $panzoom.panzoom('zoom', zoomOut, {
-            //          increment: 0.1,
-            //          animate: false,
-            //          panOnlyWhenZoomed: true,
-            //          minScale: 1,
-            //          focal:e
-            //      });
-            //  });
-
-            // querySelector('#svg-container').addEventListener('click', function () {
-            //     this.svgPressed($event)
-            // });
-            // $('#svg-container').click(function(){ this.svgPressed(event)});
-
+            let pngImage = document.getElementById('png-image');
             pngImage.addEventListener('load', () => {
                 // add query here
                 if(soldOutCommunities.filter( (soldOut) => soldOut.id === this.neighbourhood ).length === 0) {
@@ -275,15 +180,7 @@
                                 return item;
                             });
                         }
-                        if(this.community === 'tilalalghaf') {
-                            this.data = this.data.map( (item) => {
-                                //item.id = item.id.replace(/\-/g, '.');
-                                item.aspect = item.aspect ? item.aspect : 'general';
-                                item.images = galleryMapping[this.community][this.neighbourhood][item.unit_type]
-                                return item;
-                            });
 
-                        }
                         this.data = this.data.map( (item) => {
                             item.aspect = item.aspect ? item.aspect : 'general';
                             return item;
@@ -301,6 +198,7 @@
 
                         let plotBoundaryContainer = communityPositions[this.community][this.neighbourhood].plot_boundary;
                         let plotBoundaries = Array.from(document.getElementById(plotBoundaryContainer).children);
+
                         for(let index = 0; index < plotBoundaries.length; index++) {
                             let dataItem = this.data.filter( (item) => {
                                 if(this.community === 'almouj') {
@@ -310,19 +208,12 @@
                             })[0];
 
                             if(dataItem) {
-                                
+                                // console.log(dataItem);
 
                                 let type = Object.keys(config.houseTypes).filter( (houseType) => config.houseTypes[houseType].indexOf(dataItem.type) !== -1)[0];
 
                                 let beds = dataItem.bedrooms.replace(/\D/g, '');
                                 let propertyType = type + beds;
-
-                                //Townhouse 4 bedroom from tilalalghaf removed here
-                                if(this.community === 'tilalalghaf' && beds == 4 && dataItem.type === "Town house"){
-                                    console.log("Here");
-                                    continue;
-                                }
-
                                 if(beds && propertyType) {
                                     plotBoundaries[index].classList.add('svg-house-icon');
                                     plotBoundaries[index].classList.add('type_' + propertyType);
@@ -333,6 +224,7 @@
                                 }
                             }
                         }
+
                         this.loaded = true;
 
                     }, (err) => {
@@ -364,51 +256,40 @@
 </script>
 
 <template>
-
 <div class="app">
     <AppHeader :logo="community" back="true" v-on:back="backToOverview" />
-    
-        <div class="container" :class="{'blur': soldOutDetails}" id="container_zoom">
-            <div id="area" :class="{ 'visible': loaded, 'one-community': this.oneFilterCommunity }">
-                <div id="image_area">
-                    <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
-                        <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
-                    </div>
-
-                    
-                    <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
-                        <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
-                        <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
-                        <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image thinner-outlines" id="svg-image" :style="svgTransform" />
-                        <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
-                    </div>
-                    
+    <div class="container" :class="{'blur': soldOutDetails}" id="container_zoom">
+        <div id="area" :class="{ 'visible': loaded, 'one-community': this.oneFilterCommunity }">
+            <div id="image_area">
+                <div id="png-container" :style="pngContainerScale" :class="{ 'filters' : filterPng }">
+                    <img :src="images[community][neighbourhood]" class="png-image" id="png-image" />
+                </div>
+                <div id="svg-container" :style="svgContainerScale" :class="propertyTypeFilter" @click="svgPressed($event)">
+                    <AlZahia v-if="community === 'alzahia'" class="svg-image" id="svg-image" :style="svgTransform" />
+                    <AlMouj v-if="community === 'almouj'" class="svg-image" id="svg-image" :style="svgTransform" />
+                    <WaterfrontCity v-if="community === 'waterfrontcity'" class="svg-image thinner-outlines" id="svg-image" :style="svgTransform" />
+                    <TilalAlGhaf v-if="community === 'tilalalghaf'" class="svg-image" id="svg-image" :style="svgTransform" />
                 </div>
             </div>
-            <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
-            <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
         </div>
-    
+        <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
+        <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
+    </div>
     <div class="sold-out" v-if="soldOutDetails">
-        <div class="sold-out-content" id="sold-out">
+        <div class="sold-out-content">
             <h2 class="sold-out-title">{{ soldOutDetails.title }}</h2>
             <div class="sold-out-row">
                 <p class="sold-out-text" v-html="soldOutDetails.text"></p>
-                
                 <div class="sold-out-image-container">
-                    <v-touch v-on:pinchout="soldOutContainerZoomIn" v-on:pinchin="soldOutContainerZoomOut">
-                        <img v-if="!table" class="sold-out-image" :src="soldOutDetails.image" />
-                        <img v-if="table" class="sold-out-image" :src="soldOutDetails['image-local']" />
-                        <span class="sold-out-image-text">{{ soldOutDetails['image-text'] }}</span>
-                    </v-touch>
+                    <img v-if="!table" class="sold-out-image" :src="soldOutDetails.image" />
+                    <img v-if="table" class="sold-out-image" :src="soldOutDetails['image-local']" />
+                    <span class="sold-out-image-text">{{ soldOutDetails['image-text'] }}</span>
                 </div>
-                
             </div>
             <button class="sold-out-button" @click="backToOverview()">Back to the Masterplan</button>
         </div>
     </div>
 </div>
-
 </template>
 
 <style lang="scss" scoped>
@@ -436,7 +317,6 @@
     height: 100%;
     position: relative;
     opacity: 0;
-    
 }
 
 #svg-container {
@@ -764,127 +644,4 @@ svg:not(:root) {
         }
     }
 }
-
-.active_bungalow4 {
-    .type_bungalow4 {
-        &.available {
-            fill: rgba(135,43,192,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(135,43,192,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_bungalow5 {
-    .type_bungalow5 {
-        &.available {
-            fill: rgba(255,166,0,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(255,166,0,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_bungalow6 {
-    .type_bungalow6 {
-        &.available {
-            fill: rgba(180,180,160,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(180,180,160,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-
-.active_harmony_bungalow4 {
-    .type_harmony_bungalow4 {
-        &.available {
-            fill: rgba(248, 151, 21, 0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(248, 151, 21, 0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_harmony_bungalow5 {
-    .type_harmony_bungalow5 {
-        &.available {
-            fill: rgba(108, 164, 57, 0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(108, 164, 57, 0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_harmony_villa4 {
-    .type_harmony_villa4 {
-        &.available {
-            fill: rgba(0, 177, 176, 0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0, 177, 176,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_harmony_villa5 {
-    .type_harmony_villa5 {
-        &.available {
-            fill: rgba(0, 150, 214, 0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0, 150, 214, 0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_harmony_villa6 {
-    .type_harmony_villa6 {
-        &.available {
-            fill: rgba(95, 96, 98, 0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(95, 96, 98,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_serenity_villa5 {
-    .type_serenity_villa5 {
-        &.available {
-            fill: rgba(0, 150, 214,0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(0, 150, 214,0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-.active_serenity_villa6 {
-    .type_serenity_villa6 {
-        &.available {
-            fill: rgba(253, 185, 19, 0.9) !important;
-            stroke: #3C3C3D !important;
-        }
-        &.unavailable {
-            fill: rgba(253, 185, 19, 0.25) !important;
-            stroke: #3C3C3D !important;
-        }
-    }
-}
-
 </style>
