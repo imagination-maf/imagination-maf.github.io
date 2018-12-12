@@ -1236,7 +1236,10 @@
         box-shadow: 0.1rem 0.1rem 1rem #cccccc;
     }
 }
-
+.panel{
+    z-index: 9;
+        top: 1px !important;
+}
 .image {
     overflow: visible !important;
     will-change: opacity;
