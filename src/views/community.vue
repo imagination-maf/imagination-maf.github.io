@@ -359,6 +359,7 @@ svg:not(:root) {
     display: flex;
     align-items: center;
     justify-content: center;
+        z-index: 9;
     .sold-out-content {
         width: 70%;
         background-color: #ffffff;

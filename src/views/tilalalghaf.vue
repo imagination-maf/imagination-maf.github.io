@@ -49,6 +49,9 @@
             changeSlide: function(dir) {
                 this.slide = ((this.slide + dir) + this.data[this.neighbourhood].images[this.property][this.filter].length) % this.data[this.neighbourhood].images[this.property][this.filter].length;
             },
+            changeToSlideNum: function(index) {
+                this.slide = index;
+            },
             changeFilter: function(filter) {
                 if(this.filter !== filter) {
                     this.slide = 0;
