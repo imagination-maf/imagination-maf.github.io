@@ -329,36 +329,6 @@ export default {
                 'translate': [0, 0],
                 'rotate': 0
             }
-        },
-        serenity: {
-            'fullname': 'SERENITY',
-            'plot_boundary': 'PLOT_BOUNDARIES',
-            'amenities': [],
-            'svg': {
-                'scale': 1,
-                'translate': [0, 0],
-                'rotate': 0
-            }
-        },
-        harmony: {
-            'fullname': 'HARMONY',
-            'plot_boundary': 'PLOT_BOUNDARIES',
-            'amenities': [],
-            'svg': {
-                'scale': 1,
-                'translate': [0, 0],
-                'rotate': 0
-            }
-        },
-        phasea: {
-            'fullname': 'HARMONY & SERENITY',
-            'plot_boundary': 'PLOT_BOUNDARIES',
-            'amenities': [],
-            'svg': {
-                'scale': .770,
-                'translate': [-58, 12],
-                'rotate': 0
-            }
         }
     }
 }

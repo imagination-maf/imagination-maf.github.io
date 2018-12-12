@@ -57,12 +57,9 @@ export default {
     },
     houseTypes: {
         'villa': ['Boutique villa', 'Villa Plus', 'Villa', 'villa', 'Courtyard'],
-        'harmony_villa': ['Harmony Villas', 'Harmony villas', 'harmony villas'],
-        'serenity_villa': [ 'Serenity Luxury Villa', 'Upper Luxury Villa' ],
-        'townhouse': ['Town house Plus', 'Town house', 'Townhouse'],
+        'townhouse': ['Town house Plus', 'Town house'],
         'apartment': ['Apartments', 'Apartment'],
-        'office': ['Offices'],
-        'harmony_bungalow': ['Harmony Bungalows']
+        'office': ['Offices']
     },
     houseTypeNames: {
         'apartmentStudio': 'Apartment Studio',
@@ -71,12 +68,6 @@ export default {
         'apartment3': '3-Bedroom Apartment',
         'apartment4': '4-Bedroom Apartment',
         'apartment5': '5-Bedroom Apartment',
-        'bungalow1' : '1-Bedroom Bungalow',
-        'bungalow2' : '2-Bedroom Bungalow',
-        'bungalow3' : '3-Bedroom Bungalow',
-        'bungalow4' : '4-Bedroom Bungalow',
-        'bungalow5' : '5-Bedroom Bungalow',
-        'bungalow6' : '6-Bedroom Bungalow',
         'townhouse2': '2-Bedroom Townhouse',
         'townhouse3': '3-Bedroom Townhouse',
         'townhouse4': '4-Bedroom Townhouse',
@@ -84,15 +75,7 @@ export default {
         'villa4': '4-Bedroom Villa',
         'villa5': '5-Bedroom Villa',
         'villa6': '6-Bedroom Villa',
-        'villa31': '3+1-Bedroom Villa',
-        'harmony_bungalow4': 'Harmony Bungalow 4-Bedrooms',
-        'harmony_bungalow5': 'Harmony Bungalow 5-Bedrooms',
-        'harmony_villa4': 'Harmony Villa 4-Bedrooms',
-        'harmony_villa5': 'Harmony Villa 5-Bedrooms',
-        'harmony_villa6': 'Harmony Villa 6-Bedrooms',
-        'serenity_villa5': 'Serenity Luxury Villa 5-Bedrooms',
-        'serenity_villa6': 'Serenity Luxury Villa 6-Bedrooms',
-
+        'villa31': '3+1-Bedroom Villa'
     },
     neighbourhoodNames: {
         'allilac': 'AL LILAC',

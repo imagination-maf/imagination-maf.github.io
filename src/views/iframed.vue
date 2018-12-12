@@ -18,7 +18,7 @@
                 return this.$route.fullPath;
             },
             isTablet: function() {
-              return !!(navigator.userAgent.match(/iPad/i));
+			  return !!(navigator.userAgent.match(/iPad/i));
             },
             switchMode: function() {
                 let msg = this.hostActive ? 'CLOSE_HOST' : 'LAUNCH_HOST';
@@ -27,16 +27,9 @@
             },
             resetSync: function() {
                 Socket.instance.emit( 'MESSAGE', { event: 'resetSync', toAll:true } );  
-            },
-            handleResize: function() { 
-                console.log("Window resized"); 
-            },
-        },
-        created(){
-            console.log("Ready called", "");
+            }
         },
         mounted() {
-            
             var self = this;
 
             Socket.instance.on('MESSAGE', (data) => {
@@ -55,7 +48,6 @@
                         break;
                 }
             });
-            
 
         }
     }
@@ -69,10 +61,10 @@
         <button v-if="isTablet()" class="reset" :class="{ active: hostActive }" @click="resetSync">RESET</button>
 
         <div class="iframes" v-if="!hostActive && !isTablet()">
-            <iframe id="iframe1" ref="iframe1" :src="httpServer" @click="handleResize"></iframe>
-            <iframe id="iframe2" ref="iframe2" :src="httpServer" @click="handleResize"></iframe>
-            <iframe id="iframe3" ref="iframe3" :src="httpServer" @click="handleResize"></iframe>
-            <iframe id="iframe4" ref="iframe4" :src="httpServer" @click="handleResize"></iframe>
+            <iframe id="iframe1" ref="iframe1" :src="httpServer"></iframe>
+            <iframe id="iframe2" ref="iframe2" :src="httpServer"></iframe>
+            <iframe id="iframe3" ref="iframe3" :src="httpServer"></iframe>
+            <iframe id="iframe4" ref="iframe4" :src="httpServer"></iframe>
         </div>
     </div>
 

@@ -29,41 +29,15 @@ export default Vue.component('property-info-gallery', {
         },
         backToSummary: function() {
             this.$emit('changeView', 'summary');
-        },
-        changeToSlideNum: function(index) {
-            this.slide = index;
         }
-    },
-    mounted() {
-        var $panzoom = $('#community_image').panzoom({
-                minScale: 1,
-                contain: 'invert'
-            });
-        
-        $(document).on( "click", ".arrow,.pagination-item", function() {
-          $panzoom.panzoom("reset");
-        });
-            
-            $panzoom.parent().on('mousewheel.focal', ( e ) => {
-                e.preventDefault();
-                var delta = e.delta || e.originalEvent.wheelDelta;
-                var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-                $panzoom.panzoom('zoom', zoomOut, {
-                    increment: 0.1,
-                    animate: false,
-                    panOnlyWhenZoomed: true,
-                    minScale: 1,
-                    focal:e
-                });
-            });
-    },
+    }
 });
 </script>
 
 <template>
     <div class="info-gallery">
         <div class="info-gallery-container">
-            <div id="community_image"><img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" /></div>
+            <img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" />
             <button class="arrow left" type="button" @click="changeSlide(-1)"></button>
             <button class="arrow right" type="button" @click="changeSlide(1)"></button>
             <div class="pagination">
