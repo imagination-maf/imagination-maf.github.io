@@ -24,6 +24,7 @@ export default Vue.component('property-info-gallery', {
         }
     },
     methods: {
+        var $pzoom = $('#community_image').pinchzoomer();
         changeSlide: function(dir) {
             this.slide = ((this.slide + dir) + this.images.length) % this.images.length;
         },
