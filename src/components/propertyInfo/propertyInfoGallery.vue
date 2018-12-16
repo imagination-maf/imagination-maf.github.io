@@ -31,7 +31,7 @@ export default Vue.component('property-info-gallery', {
         backToSummary: function() {
             this.$emit('changeView', 'summary');
         }
-    }
+    },
     mounted() {
         $(document).on( "click", ".info-cta-item", function() {
             //alert('here');
@@ -66,11 +66,13 @@ export default Vue.component('property-info-gallery', {
 <template>
     <div class="info-gallery">
         <div class="info-gallery-container">
-            <img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" />
-            <button class="arrow left" type="button" @click="changeSlide(-1)"></button>
-            <button class="arrow right" type="button" @click="changeSlide(1)"></button>
-            <div class="pagination">
-                <div v-for="(page, index) in images" class="pagination-item" :class="{'active': index === slide}" @click="changeToSlideNum(index)"></div>
+            <div id="community_image">
+                <img class="gallery-image" v-for="(image, index) in images" v-if="slide === index" :src="image" />
+                <button class="arrow left" type="button" @click="changeSlide(-1)"></button>
+                <button class="arrow right" type="button" @click="changeSlide(1)"></button>
+                <div class="pagination">
+                    <div v-for="(page, index) in images" class="pagination-item" :class="{'active': index === slide}" @click="changeToSlideNum(index)"></div>
+                </div>
             </div>
         </div>
         <button class="info-button" type="button" @click="backToSummary()">Go Back to Summary</button>
