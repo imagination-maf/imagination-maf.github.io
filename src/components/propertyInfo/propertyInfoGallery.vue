@@ -30,14 +30,22 @@ export default Vue.component('property-info-gallery', {
         },
         backToSummary: function() {
             this.$emit('changeView', 'summary');
+        },
+        changeToSlideNum: function(index) {
+            this.slide = index;
         }
     },
     mounted() {
+
         $(document).on( "click", ".info-cta-item", function() {
             //alert('here');
             //$('#community_image').pinchzoomer();
         });
-        var $pzoom = $('#community_image').pinchzoomer();
+        setTimeout(function(){
+            var $pzoom = $('#community_image').pinchzoomer();
+        }, 3000);
+
+        
         // var $panzoom = $('#community_image').panzoom({
         //         minScale: 1,
         //         contain: 'invert'
@@ -103,6 +111,7 @@ export default Vue.component('property-info-gallery', {
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+        z-index: 9;
         &.left {
             left: 2rem;
             transform: scaleX(-1);
@@ -123,6 +132,10 @@ export default Vue.component('property-info-gallery', {
         outline: none;
     }
 }
+#community_image{
+    position: relative;
+    z-index: 9;
+}
 
 .pagination {
     position: absolute;
@@ -130,6 +143,7 @@ export default Vue.component('property-info-gallery', {
     left: 0;
     right: 0;
     display: flex;
+    z-index: 9;
     justify-content: center;
     .pagination-item {
         background-color: #ffffff;

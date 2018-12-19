@@ -273,8 +273,9 @@
             </div>
         </div>
         <PropertyFilter class="prop-filter" :class="{'visible': !soldOutDetails && loaded}" :propertyTypeList="propertyList" :propertyTypeFilter="propertyTypeFilter" :amenitiesFilter="amenitiesFilter" v-on:setPropertyTypeFilter="setPropertyTypeFilter" v-on:setAmenitiesFilter="setAmenitiesFilter" />
-        <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
+        
     </div>
+    <PropertyInfo v-if="propertyInfoActive" :property="activeProperty" v-on:close="closePropertyInfo" />
     <div class="sold-out" v-if="soldOutDetails">
         <div class="sold-out-content">
             <h2 class="sold-out-title">{{ soldOutDetails.title }}</h2>
@@ -304,7 +305,6 @@
         filter: blur(0.5rem);
     }
 }
-
 .prop-filter {
     opacity: 0;
     &.visible {
