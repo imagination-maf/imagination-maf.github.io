@@ -45,9 +45,13 @@
             },
             showProperty: function(propertyId) {
                 this.property = propertyId;
+                 setTimeout(function(){
+                    $('.image-container').pinchzoomer();
+                }, 1000);
             },
             changeSlide: function(dir) {
                 this.slide = ((this.slide + dir) + this.data[this.neighbourhood].images[this.property][this.filter].length) % this.data[this.neighbourhood].images[this.property][this.filter].length;
+                 $('.image-container').pinchzoomer();
             },
             changeFilter: function(filter) {
                 if(this.filter !== filter) {
@@ -62,6 +66,11 @@
                 this.loaded = true;
                 this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
             });
+             $(document).on( "click", ".arrow,.pagination-item", function() {
+                setTimeout(function(){
+                    $('.image-container').pinchzoomer();
+                }, 1000);
+             });
         }
     });
 </script>
@@ -268,6 +277,7 @@ svg:not(:root) {
             background-color: transparent;
             border-radius: 100%;
             outline: none;
+            z-index: 9;
             background-image: url('../images/overlay/circle.png');
             background-position: center;
             background-size: 33.33%;
@@ -325,6 +335,7 @@ svg:not(:root) {
         right: 0;
         display: flex;
         justify-content: center;
+        z-index: 9;
         .pagination-item {
             background-color: #ffffff;
             border: 0.1rem solid #8A1538;

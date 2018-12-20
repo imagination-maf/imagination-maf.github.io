@@ -72,6 +72,11 @@
                 this.loaded = true;
                 this.pngContainerScale = {'transform': 'scale(' + (window.innerWidth / pngImage.width) + ')' };
             });
+            $(document).on( "click", ".arrow,.pagination-item", function() {
+                setTimeout(function(){
+                    $('.image-container').pinchzoomer();
+                }, 1000);
+             });
         }
     });
 </script>
