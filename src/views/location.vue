@@ -1222,7 +1222,7 @@
     align-items: center;
     overflow: hidden;
     background-color: #ffffff;
-    &.ipad {
+   /* &.ipad {
         width: 100%;
         height: 75%;
         display: flex;
@@ -1234,7 +1234,7 @@
         overflow: hidden;
         background-color: #ffffff;
         box-shadow: 0.1rem 0.1rem 1rem #cccccc;
-    }
+    }*/
 }
 .panel{
     z-index: 9;
